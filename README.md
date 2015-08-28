@@ -10,13 +10,13 @@ This the place to suggest large enhancements that may impact several repositorie
 
 ## Enhancement Proposal Submission Guidlines
 
-When submitting a enhancement proposal, please include the following information in your submission.
+When submitting an enhancement proposal, please include the following information in your submission.
 
-1. The problem that this enhancement addresses. If possible include code or anecodotes to describe this problem to readers.
-2. A brief (1-2 sentences) overview of the enhancement you are prposing. If possible include hypothetical code sample to describe how the solution would work to readers.
+1. The problem that this enhancement addresses. If possible include code or anecdotes to describe this problem to readers.
+2. A brief (1-2 sentences) overview of the enhancement you are proposing. If possible include hypothetical code sample to describe how the solution would work to readers.
 3. A detailed explanation covering relevant algorithms, data structures, an API spec, and any other relevant technical information
 4. A list of pros that this implementation has over other potential implementations.
-5. A list of cons that this implmenetation has.
+5. A list of cons that this implementation has.
 6. A list of individuals who would be interested in contributing to this enhancement should it be accepted.
 
 Please use the following headers when submitting a proposal.
