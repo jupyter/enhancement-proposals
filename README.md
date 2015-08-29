@@ -1,16 +1,39 @@
-# enhancement-proposals
+# JEP 0 - Jupyter Enhancement Proposals (JEP) Guidelines
 
-Enhancement proposals for the Jupyter Ecosystem
+## Problem
+Enhancements to the Jupyter ecosystem are currently presented across a multitude of platforms without any centralized management or discussion.
 
-This the place to suggest large enhancements that may impact several repositories or projects at once, tracked in one place and collaborated on together. This can include:
+## Proposed Enhancement
 
+Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem. These changes can include things like:
 * Additions/changes to the message spec
 * API design that is consumed and produced in several contexts (e.g. the notebook kernel API)
 * The notebook format
 
-## Enhancement Proposal Submission Guidlines
+The format of this README is itself a JEP and can be duplicated for the creation of further JEPs.
 
-When submitting an enhancement proposal, please include the following information in your submission.
+## Detail Explanation
+
+### JEP Titles
+
+Jupyter Enhancement Proposals will be submitted with the following schema for the title.
+
+`JEP (JEP Number) - (JEP Title)`
+
+The JEP Number is 0-indexed and incremented by 1 for each JEP. View the `JEP Index` to determine what number your JEP will have before submitting a JEP. The JEP title must be no longer than 12 words.
+
+### JEP Labels
+
+The pull-request submitted with each JEP will be labeled with the following labels for easy searching:
+* `accepted` — this JEP has been accepted and is currently being implemented
+* `implemented` — this JEP has been implemented
+* `rejected` - this JEP has been rejected and will not be implemented
+* `withdrawn` - this JEP has been withdrawn by the submitter but can be re-submitted if someone is willing to champion it
+* `active` - this JEP is currently under active discussion within the community
+
+### JEP Structure
+
+When submitting an enhancement proposal, individuals will include the following information in their submission.
 
 1. The problem that this enhancement addresses. If possible include code or anecdotes to describe this problem to readers.
 2. A brief (1-2 sentences) overview of the enhancement you are proposing. If possible include hypothetical code sample to describe how the solution would work to readers.
@@ -19,14 +42,24 @@ When submitting an enhancement proposal, please include the following informatio
 5. A list of cons that this implementation has.
 6. A list of individuals who would be interested in contributing to this enhancement should it be accepted.
 
-Please use the following headers when submitting a proposal.
+### JEP Submission Process
+1. Create a Markdown write up of the problem, proposed enhancement, detailed technical explanation, pros and cons, and interested contributors of the enhancement you are proposing.
+2. Create a fork of this repository.
+3. Create a folder with its name set to the JEP title in lower snake-case.
+3. Place the markdown file created in step 1 and any supplemental materials in that folder.
+4. Submit a pull request to the main repository with your JEP. 
+5. Once your PR is accepted, it will be labeled `active` per the guidelines above.
+6. Your JEP will be added to the JEP Index file in this repository.
 
-###  Problem
+## Pros and Cons
 
-### Proposed Enhancement
+Pros associated with this implementation include:
+* A higher quality discussion around enhancement proposals
+* Individuals are encourage to put more thought into an enhancement proposal before submitting it
+* Precedence exists in the form of PEPs (Python Enhancement Proposals) and IPEPs (IPython Enhancement Proposals)
 
-### Detailed Explanation
+Cons associated with this implementation include:
+* Existing IPEPs (IPython Enhancement Proposals) will not be included in this migrated repository
 
-### Pros and Cons
-
-### Interested Contributors
+## Interested Contributors
+@captainsafia, @rgbkrk
