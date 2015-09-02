@@ -39,7 +39,7 @@ When submitting an enhancement proposal, individuals will include the following 
 6. A list of individuals who would be interested in contributing to this enhancement should it be accepted.
 
 ### JEP Submission Process
-1. Create a [Markdown](markdown-guide.md) write up of the problem, proposed enhancement, detailed technical explanation, pros and cons, and interested contributors of the enhancement you are proposing.
+1. Create a [Markdown](https://help.github.com/articles/github-flavored-markdown/) write up of the problem, proposed enhancement, detailed technical explanation, pros and cons, and interested contributors of the enhancement you are proposing.
 2. Create a fork of this repository.
 3. Create a folder with its name set to the JEP title in lower snake-case.
 3. Place the markdown file created in step 1 and any supplemental materials in that folder.
