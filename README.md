@@ -8,4 +8,4 @@ Below is a list of JEPs that have already been accepted. To view the JEPs that a
 
 ## How do I submit a JEP?
 
-In order to submit a JEP, please read the Jupyter Enhancement Proposal Submission Guidelines, located [here](jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md). You can copy this file and use it as the starting point for outlining your own JEP.
+In order to submit a JEP, please read the [Jupyter Enhancement Proposal Submission Guidelines](jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md). You can copy this file and use it as the starting point for outlining your own JEP.
