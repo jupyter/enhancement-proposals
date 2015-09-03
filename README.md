@@ -1,32 +1,11 @@
-# enhancement-proposals
+# Jupyter Enhancement Proposals
 
-Enhancement proposals for the Jupyter Ecosystem
+This repository contains enhnacmenet proposals for the Jupyter ecosystem, known as Jupyter Enhancement Proposals or JEPs. Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem.
 
-This the place to suggest large enhancements that may impact several repositories or projects at once, tracked in one place and collaborated on together. This can include:
+## Index of Accepted JEPs
 
-* Additions/changes to the message spec
-* API design that is consumed and produced in several contexts (e.g. the notebook kernel API)
-* The notebook format
+Below is a list of JEPs that have already been accepted. To view the JEPs that are currently under active discussion, click on the pull request icon to the right.
 
-## Enhancement Proposal Submission Guidlines
+## How do I submit a JEP?
 
-When submitting an enhancement proposal, please include the following information in your submission.
-
-1. The problem that this enhancement addresses. If possible include code or anecdotes to describe this problem to readers.
-2. A brief (1-2 sentences) overview of the enhancement you are proposing. If possible include hypothetical code sample to describe how the solution would work to readers.
-3. A detailed explanation covering relevant algorithms, data structures, an API spec, and any other relevant technical information
-4. A list of pros that this implementation has over other potential implementations.
-5. A list of cons that this implementation has.
-6. A list of individuals who would be interested in contributing to this enhancement should it be accepted.
-
-Please use the following headers when submitting a proposal.
-
-###  Problem
-
-### Proposed Enhancement
-
-### Detailed Explanation
-
-### Pros and Cons
-
-### Interested Contributors
+In order to submit a JEP, please read the [Jupyter Enhancement Proposal Submission Guidelines](jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md). You can copy this file and use it as the starting point for outlining your own JEP.
