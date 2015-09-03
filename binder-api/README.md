@@ -1,3 +1,17 @@
+##
+
+## Problem
+
+The temporary notebook system (tmpnb) was put together to solve some immediate
+demands, the primary of which were:
+
+
+
+* Instantaneous launching of a brand new notebook server
+* Fully reproducible environment (installation, code, data, notebooks, etc.)
+* Launch as user hits a URL (no interaction)
+* Launch via a simple API that works well in frontend JavaScript contexts
+
 As promised during a video chat yesterday, I'm going to post about API design that I've badly wished for after running tmpnb for long enough. Some of this relates to how thebe and other javascript frontends use this type of environment and some of it is about making operations and operational insight easier (as well as automated).
 
 There are three main resources for a REST API here:
