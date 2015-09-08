@@ -52,9 +52,9 @@ Additionally, screen reading could be enhanced by changing pitch, tone, or volum
 Through modifications to the CSS of the notebook application, we can make notebooks easier to read for visually impaired users. We propose tweaks to CSS to change page styling such as colors, font, font size, cell size, and margin size to display the interface in a way that facilitates use for visually impaired users:
 
 - Switch to turn accessibility mode on / off
-- Use of monospace, sans-serif accessible fonts such as Verdana
+- Use of monospace, sans-serif, accessible fonts such as Verdana
 - Boosting contrast by making notebook colors customizable, defaulting to a black background with most text white
-- Widening cells and minimizing margins (whitespace) to allow more room for content by default
+- Widening cells and minimizing margins (and other whitespace) to allow more room for content
 - Bold cell border highlighting and coloring for easier knowledge of which cell is active
 - Resizing and hiding of navigation tools
 
