@@ -91,6 +91,9 @@ The Web client creates new notebooks as layer 3 documents with no attached lower
 
 When a kernel is restarted for an existing notebook, its layers 1 and 2 are attached to the client's layer 3 in addition to layers 1 and 2 from earlier kernels. Existing layer 1/2 attachments can be deleted only when no reference to them exists any more in layer 3.
 
+When already executed code is edited, the execution reference is reverted to a code cell again. To maintain the current notebook functionality identically, the outputs from the execution record would have to be copied and stored in an additional type of cell ("stale output cell"). However, in the interest of consistency, it seems preferable to modify the current behavior and delete stale output immediately.
+
+A cleanup operation ("remove all outputs") replaces execution records by code cells and deletes all layer 1/2 attachments.
 
 ## Pros and Cons
 
