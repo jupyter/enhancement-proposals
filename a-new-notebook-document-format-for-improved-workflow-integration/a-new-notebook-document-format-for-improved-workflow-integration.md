@@ -84,6 +84,10 @@ Code cells are for code that has never been executed. Executed code blocks can b
 
 ### File format
 
+The main difficulty in defining a file format for the data model described above is suitability for version control. The biggest challenge is support for merging independent changes. In general, this creates an inconsistent notebook document because the computed content (layer 2) is not automatically updated after code changes. The use of SHA-1 hashes makes it possible to detect inconsistencies between layers 1 and 2.
+
+In order to make diffs readable, a line-oriented format with light markup is desirable for layers 1 and 3. Moreover, layer 2 should be placed at the end of a notebook document, following layers 1 and 3.
+
 
 ### Implementation
 
