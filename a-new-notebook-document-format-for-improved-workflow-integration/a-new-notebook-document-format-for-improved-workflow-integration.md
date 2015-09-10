@@ -13,24 +13,24 @@ Define a data model and file format for notebooks as digital documents. Include 
 
 ### Notebooks as digital documents
 
-Currently, a Jupyter notebook file is merely an on-disk representation of the internal state of the Jupyter Web tool. The file format mixes user-edited and computationally generated information with insufficient distinction, and does not preserve the history of the computation in enough detail to permit replication and other validation approaches.
+Currently, a Jupyter notebook file is essentially an on-disk representation of the internal state of the Web-based Jupyter editor. The file format mixes human-edited and computationally generated information with insufficient distinction, and does not preserve the history of the computation in enough detail to permit replication and other validation techniques.
 
-The main goal of this proposal is a change of focus: notebooks should become digital documents with well-defined semantics, and the Jupyter Web tool should become just one out of many possible tools that process such notebook documents.
+The main goal of this proposal is a change of focus: notebooks should become digital documents with well-defined semantics, and the Jupyter editor should become just one out of many possible tools that process such notebook documents.
 
 ### A three-layer data model
 
 The proposed data model for notebook documents consists of three layers:
 
-  1. A sequence of code blocks in execution order.
+  1. A sequence of code blocks, in execution order.
   2. A sequence of outputs produced by these code blocks, in execution order
-  3. A narrative containing references to specific code blocks and/or
+  3. A narrative containing references to specific code blocks and
      outputs.
 
-Layers 1 and 3 are user-edited content, subject to version control. Layer 2 consists entirely of computational results. In principle, it can be recomputed at any time. However, since recomputation can be time-consuming, and is often unreliable due to today's fragile computational enviromnents, layer 2 should be archived as well under version control, as a foundation for layer 3.
+Layers 1 and 3 are human-edited content, subject to version control. Layer 2 consists entirely of computational results. In principle, it can be recomputed at any time. However, since recomputation can be time-consuming, and is often unreliable due to today's fragile computational enviromnents, layer 2 should be archived as well under version control, as a foundation for layer 3.
 
-Conceptually, each layer is an independent electronic document, with each layer depending on information from lower layers. A layer 3 document could depend on multiple layer 1/2 documents, e.g. in a multiuser setting. A provenance tracking system would treat a layer 1 document exactly like a script, and a layer 2 document exactly like the console output from a script. Provenance trackers may this need to store the layers as separate files or datasets. The default notebook file format should combine all three layers, but facilitate extraction of individual layers.
+Conceptually, each layer is an independent electronic document, with each layer depending on information from lower layers. A layer 3 document can depend on multiple layer 1/2 documents. A provenance tracking system would treat a layer 1 document exactly like a script, and a layer 2 document exactly like the console output from a script. Provenance trackers may thus need to store the layers as separate files or datasets. The default notebook file format should combine all three layers, but facilitate extraction of individual layers.
 
-Note that today's Jupyter file format contains only level 3, with only the sequence numbers of the output cells preserving a partial trace of the execution order. However, all the information of layers 1 and 2 is available to the kernel.
+Note that today's Jupyter file format resembles layer 3. It contains some information about execution order in the form of the prompt numbers. However, since the executed code is not stored anywhere, replication of the computation is impossible. Even if the prompt numbers in the notebook are sequential and start with 1, the code cells might have been edited after execution. The only guarantee that a notebook file makes is that the outputs were obtained from *some* computation.
 
 In the following, the three layers are described in more detail.
 
@@ -41,20 +41,20 @@ A layer 1 document consists of
  1. a language tag for choosing the right kernel for execution
  2. a sequence of code blocks
 
-Each code block needs a unique identifier to permit layers 2 and 3 to refer to it. A cryptographic hash function such as SHA-1 can be used to generate such a unique identifier, which has the advantage of making a layer 1 document a content-addressable read-only storage. References to code blocks can thus easily be validated, as any change to a code block modifies its unique identifier.
-
 #### Layer 2
 
 A layer 2 document consists of
 
- 1. information about the computational environment (kernel type and version, machine name, date, ...)
- 2. a reference to the layer 1 document containing the code blocks
+ 1. a reference to the layer 1 document containing the code blocks
+ 2. information about the computational environment (kernel type and version, machine name, date, ...)
  3. a complete sequence of execution records for all code executed since the start of the kernel
 
 An execution record contains the following information:
 
- 1. the unique identifier of the code block that was executed
+ 1. the SHA-1 hash of the code block that was executed
  2. a set of outputs produced by the code blocks
+
+The SHA-1 hash makes it possible to verify consistency with the underlying layer-1 document.
 
 In the set of outputs, each output item contains:
 
@@ -65,18 +65,19 @@ Note: this section must be complemented with data models for the standard output
 
 #### Layer 3
 
-A layer 3 document consists of
+A layer 3 document consists of:
 
- 1. a list of references to layer 1 documents
+ 1. a language tag for choosing the right kernel for execution
  2. a list of references to layer 2 documents
  3. a sequence of cells.
 
-Each cell is one of
+Each cell has one of the following types:
 
- 1. a documentation cell, containing text content plus a label identifying the format (Markdown etc.)
- 2. a code cell, containing the unique identifier of a code block in one of the referenced layer 1 documents
- 3. an output cell, containing (1) the index of the layer 2 document that contains the output and (2) the sequence index of the output item inside the layer 2 document
+ - a documentation cell, containing text content plus a label identifying the format (Markdown etc.)
+ - an code cell, containing a code block
+ - a reference to an execution record, consisting of (1) the index of the layer 2 document that contains the record and (2) the sequence index of the record inside the layer 2 document
 
+Code cells are for code that has never been executed. Executed code blocks can be retrieved through the execution record from layer 2.
 
 ### File formats
 
