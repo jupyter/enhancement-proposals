@@ -83,6 +83,14 @@ Code cells are for code that has never been executed. Executed code blocks can b
 
 ### Implementation
 
+Layers 1 and 2 are managed by the kernel, layer 3 is managed by the notebook client.
+
+When a kernel is started, it creates a fresh layer 1 and layer 2 document. All code submitted to the kernel, whether through the notebook client or by other means, is appended to layer 1. Outputs are appended to layer 2. For execution requests coming from the notebook client, the kernel returns updates to layers 1 and 2 since the previous execution request, permitting the client to reconstruct layers 1 and 2 as soon as possible. This limits information loss in case of a kernel shutdown or crash.
+
+The Web client creates new notebooks as layer 3 documents with no attached lower layers. User-edited content is stored as documentation cells or code cells. When a kernel is started, its layer 2 document is attached to the client's layer 3 document. When a code cell is sent to the kernel, it is replaced by a reference to the resulting execution record that is returned by the kernel. The client reconstructs layers 1 and 2 incrementally from this information.
+
+When a kernel is restarted for an existing notebook, its layers 1 and 2 are attached to the client's layer 3 in addition to layers 1 and 2 from earlier kernels. Existing layer 1/2 attachments can be deleted only when no reference to them exists any more in layer 3.
+
 
 ## Pros and Cons
 
