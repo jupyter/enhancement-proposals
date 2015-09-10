@@ -53,8 +53,9 @@ An execution record contains the following information:
 
  1. the SHA-1 hash of the code block that was executed
  2. a set of outputs produced by the code blocks
-
-The SHA-1 hash makes it possible to verify consistency with the underlying layer-1 document.
+ 3. a SHA-1 hash for the output
+ 
+The SHA-1 hash makes it possible to verify consistency with the underlying layer-1 document, and to detect modifications to the execution records by other tools.
 
 In the set of outputs, each output item contains:
 
@@ -74,12 +75,15 @@ A layer 3 document consists of:
 Each cell has one of the following types:
 
  - a documentation cell, containing text content plus a label identifying the format (Markdown etc.)
- - an code cell, containing a code block
  - a reference to an execution record, consisting of (1) the index of the layer 2 document that contains the record and (2) the sequence index of the record inside the layer 2 document
+ - a code cell, containing a code block
+ - a stale output cell, containing output from a prior execution for which no log is available
 
 Code cells are for code that has never been executed. Executed code blocks can be retrieved through the execution record from layer 2.
 
-### File formats
+
+### File format
+
 
 ### Implementation
 
@@ -91,9 +95,12 @@ The Web client creates new notebooks as layer 3 documents with no attached lower
 
 When a kernel is restarted for an existing notebook, its layers 1 and 2 are attached to the client's layer 3 in addition to layers 1 and 2 from earlier kernels. Existing layer 1/2 attachments can be deleted only when no reference to them exists any more in layer 3.
 
-When already executed code is edited, the execution reference is reverted to a code cell again. To maintain the current notebook functionality identically, the outputs from the execution record would have to be copied and stored in an additional type of cell ("stale output cell"). However, in the interest of consistency, it seems preferable to modify the current behavior and delete stale output immediately.
+When already executed code is edited, the execution reference is replaced by a code cell plus a stale output cell. The latter should be displayed in a way that clearly marks it as stale.
 
-A cleanup operation ("remove all outputs") replaces execution records by code cells and deletes all layer 1/2 attachments.
+When opening a stored notebook, the consistency between layers 1 and 2 must be verified because other tools, in particular version control systems, may create inconsistent notebook files. This check consists of comparing the SHA-1 hashes in layer 2 to freshly computed hashes for layer 1, proceding in execution order. If a difference is detected, the layer 2 data is truncated at this point, and references from layer 3 to the invalidated execution records are replaced by code cell/stale output cell pairs.
+
+A cleanup operation ("remove output / remove all outputs") replaces execution records by code cells.
+
 
 ## Pros and Cons
 
