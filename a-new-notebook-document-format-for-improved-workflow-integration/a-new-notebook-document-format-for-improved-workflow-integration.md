@@ -2,21 +2,19 @@
 
 ## Problem
 
-Jupyter notebooks do not integrate well with other tools supporting complex workflows in computational science. Examples of such tools are workflow managers, provenance trackers, and version control systems. The core of the problem is that Jupyter's on-disk notebook format is closely tied to Jupyter's functionality and design. Much information of use for other tools, although available at execution time, is not preserved in notebook files.
+Jupyter notebooks do not integrate well with other tools supporting complex workflows in computational science. Version control systems require a clear separation of human-edited content and computed content. The current notebook file format mixes them. Workflow managers and provenance trackers require that all computations be replicable. For interactive computations, replicability requires storing a full log of user actions. The current notebook file format does not preserve this information, although it is available at execution time. 
+
+The core of the problem is that Jupyter's notebook file format is closely tied to Jupyter's functionality and design. It is essentially an on-disk representation of the internal state of the Jupyter notebook client, storing only the information required to open the notebook later or elsewhere.
 
 
 ## Proposed Enhancement
 
-Define a data model and file format for notebooks as digital documents. Include as much relevant information as possible that is available during a Jupyter session, in particular a complete log of code executed by the kernel. Design the file format with the needs of other tools in mind.
+The main goal of this proposal is a change of focus: notebooks should become digital documents with well-defined semantics, and the Jupyter notebook client should become just one out of many possible tools that process such notebook documents.
+
+This core of this proposal is a new data model and file format notebooks as digital documents. It includes as much relevant information as possible that is available during a Jupyter session, in particular a complete log of the code executed by the kernel. The file format is designed with the specific needs of other tools in mind, in particular version control systems.
 
 
 ## Detailed Explanation
-
-### Notebooks as digital documents
-
-Currently, a Jupyter notebook file is essentially an on-disk representation of the internal state of the Jupyter notebook client. The file format mixes human-edited and computationally generated information with insufficient distinction, and does not preserve the history of the computation in enough detail to permit replication and other validation techniques.
-
-The main goal of this proposal is a change of focus: notebooks should become digital documents with well-defined semantics, and the Jupyter notebook client should become just one out of many possible tools that process such notebook documents.
 
 ### A three-layer data model
 
@@ -54,14 +52,14 @@ An execution record contains the following information:
 
  1. the SHA-1 hash of the code block that was executed
  2. a set of outputs produced by the code blocks
- 3. a SHA-1 hash for each output
  
-The SHA-1 hashes make it possible to verify consistency with the underlying layer-1 document, and to detect modifications to the execution records by other tools.
-
 In the set of outputs, each output item contains:
 
  1. a label defining the output type
  2. the output data, conforming to a data model specific to the output type
+ 3. a SHA-1 hash
+ 
+The SHA-1 hashes make it possible to verify consistency with the underlying layer-1 document, and to detect accidental modifications to the execution records by other tools.
 
 Note: this section must be complemented with data models for the standard output types. Overall, outputs can be handled very much like in the current notebook format.
 
@@ -80,7 +78,7 @@ Each cell has one of the following types:
  - a code cell, containing a code block
  - a stale output cell, containing output from a prior execution for which no log is available
 
-Code cells are for code that has never been executed. Executed code blocks can be retrieved through the execution record from layer 2.
+Code cells contain code that has not yet been executed. Executed code blocks can be retrieved through the execution record from layer 2.
 
 
 ### File format
@@ -121,6 +119,8 @@ A single command would send a code cell from the notebook editor to the interact
 
 An advantage of such a user interface is that it generalizes easily to multi-user setups.
 
+An alternative user interface for users whose computations are short is a literate-programming style editor in which the user mixes code and documentation and a run-time system immediately updates all output cells by re-executing all code from start to end.
+
 
 ## Pros and Cons
 
@@ -131,7 +131,7 @@ Pros:
 * Alternative notebook editing tools can be developed that support different tastes or needs, while maintaining document compatibility and thus avoiding lock-in to any particular tool.
 
 Cons:
-* A data model and file format defined independently of the Jupyter implementation creates constraints on the future evolution of Jupyter.
+* A data model and file format defined independently of the Jupyter implementation generates constraints on the future evolution of Jupyter.
 
 ## Interested Contributors
 @khinsen
