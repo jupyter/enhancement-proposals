@@ -4,6 +4,7 @@
 
 Jupyter notebooks do not integrate well with other tools supporting complex workflows in computational science. Examples of such tools are workflow managers, provenance trackers, and version control systems. The core of the problem is that Jupyter's on-disk notebook format is closely tied to Jupyter's functionality and design. Much information of use for other tools, although available at execution time, is not preserved in notebook files.
 
+
 ## Proposed Enhancement
 
 Define a data model and file format for notebooks as digital documents. Include as much relevant information as possible that is available during a Jupyter session, in particular a complete log of code executed by the kernel. Design the file format with the needs of other tools in mind.
@@ -13,9 +14,9 @@ Define a data model and file format for notebooks as digital documents. Include 
 
 ### Notebooks as digital documents
 
-Currently, a Jupyter notebook file is essentially an on-disk representation of the internal state of the Web-based Jupyter editor. The file format mixes human-edited and computationally generated information with insufficient distinction, and does not preserve the history of the computation in enough detail to permit replication and other validation techniques.
+Currently, a Jupyter notebook file is essentially an on-disk representation of the internal state of the Jupyter notebook client. The file format mixes human-edited and computationally generated information with insufficient distinction, and does not preserve the history of the computation in enough detail to permit replication and other validation techniques.
 
-The main goal of this proposal is a change of focus: notebooks should become digital documents with well-defined semantics, and the Jupyter editor should become just one out of many possible tools that process such notebook documents.
+The main goal of this proposal is a change of focus: notebooks should become digital documents with well-defined semantics, and the Jupyter notebook client should become just one out of many possible tools that process such notebook documents.
 
 ### A three-layer data model
 
@@ -28,9 +29,9 @@ The proposed data model for notebook documents consists of three layers:
 
 Layers 1 and 3 are human-edited content, subject to version control. Layer 2 consists entirely of computational results. In principle, it can be recomputed at any time. However, since recomputation can be time-consuming, and is often unreliable due to today's fragile computational enviromnents, layer 2 should be archived as well under version control, as a foundation for layer 3.
 
-Conceptually, each layer is an independent electronic document, with each layer depending on information from lower layers. A layer 3 document can depend on multiple layer 1/2 documents. A provenance tracking system would treat a layer 1 document exactly like a script, and a layer 2 document exactly like the console output from a script. Provenance trackers may thus need to store the layers as separate files or datasets. The default notebook file format should combine all three layers, but facilitate extraction of individual layers.
+Conceptually, each layer is an independent electronic document, depending on information from lower layers. A layer 3 document can depend on multiple layer 1/2 documents. A provenance tracking system would treat a layer 1 document exactly like a script, and a layer 2 document exactly like the console output from a script. Provenance trackers may thus need to store the layers as separate files or datasets. The default notebook file format should combine all three layers, but facilitate extraction of individual layers.
 
-Note that today's Jupyter file format resembles layer 3. It contains some information about execution order in the form of the prompt numbers. However, since the executed code is not stored anywhere, replication of the computation is impossible. Even if the prompt numbers in the notebook are sequential and start with 1, the code cells might have been edited after execution. The only guarantee that a notebook file makes is that the outputs were obtained from *some* computation.
+Note that today's Jupyter file format resembles layer 3. It contains some information about execution order in the form of the prompt numbers. However, since the executed code is not stored anywhere, replication of the computation is impossible. Even if the prompt numbers in the notebook are sequential and start with 1, the code cells might have been edited after execution, and code might have been submitted to the kernel outside of the notebook. The only guarantee that a notebook file makes is that the outputs were obtained from *some* computation.
 
 In the following, the three layers are described in more detail.
 
@@ -53,16 +54,16 @@ An execution record contains the following information:
 
  1. the SHA-1 hash of the code block that was executed
  2. a set of outputs produced by the code blocks
- 3. a SHA-1 hash for the output
+ 3. a SHA-1 hash for each output
  
-The SHA-1 hash makes it possible to verify consistency with the underlying layer-1 document, and to detect modifications to the execution records by other tools.
+The SHA-1 hashes make it possible to verify consistency with the underlying layer-1 document, and to detect modifications to the execution records by other tools.
 
 In the set of outputs, each output item contains:
 
  1. a label defining the output type
  2. the output data, conforming to a data model specific to the output type
 
-Note: this section must be complemented with data models for the standard output types. Overall, outputs are handled very much like in the current notebook format.
+Note: this section must be complemented with data models for the standard output types. Overall, outputs can be handled very much like in the current notebook format.
 
 #### Layer 3
 
@@ -84,12 +85,14 @@ Code cells are for code that has never been executed. Executed code blocks can b
 
 ### File format
 
-The main difficulty in defining a file format for the data model described above is suitability for version control. The biggest challenge is support for merging independent changes. In general, this creates an inconsistent notebook document because the computed content (layer 2) is not automatically updated after code changes. The use of SHA-1 hashes makes it possible to detect inconsistencies between layers 1 and 2.
+The main difficulty in defining a file format for the data model described above is suitability for version control. The biggest challenge is support for merging independent changes. In general, this creates an inconsistent notebook document because the computed content (layer 2) is not automatically updated after code changes. The use of SHA-1 hashes makes it possible to detect such inconsistencies.
 
 In order to make diffs readable, a line-oriented format with light markup is desirable for layers 1 and 3. Moreover, layer 2 should be placed at the end of a notebook document, following layers 1 and 3.
 
 
 ### Implementation
+
+#### Jupyter notebook client
 
 Layers 1 and 2 are managed by the kernel, layer 3 is managed by the notebook client.
 
@@ -101,16 +104,30 @@ When a kernel is restarted for an existing notebook, its layers 1 and 2 are atta
 
 When already executed code is edited, the execution reference is replaced by a code cell plus a stale output cell. The latter should be displayed in a way that clearly marks it as stale.
 
-When opening a stored notebook, the consistency between layers 1 and 2 must be verified because other tools, in particular version control systems, may create inconsistent notebook files. This check consists of comparing the SHA-1 hashes in layer 2 to freshly computed hashes for layer 1, proceding in execution order. If a difference is detected, the layer 2 data is truncated at this point, and references from layer 3 to the invalidated execution records are replaced by code cell/stale output cell pairs.
-
 A cleanup operation ("remove output / remove all outputs") replaces execution records by code cells.
+
+When opening a stored notebook, all execution records are replaced by code cell/stale output cell pairs and layers 1 and 2 are discarded. Then a new kernel is started, creating new layer 1/2 information.
+
+Publishing tools (including nbviewer) should follow a more careful procedure in order to preserve information about replicability. This requires first of all a verification of the consistency between layers 1 and 2, because other tools, in particular version control systems, may create inconsistent notebook files. The check consists of comparing the SHA-1 hashes in layer 2 to freshly computed hashes for layer 1, proceding in execution order. If a difference is detected, the layer 2 data is truncated at this point, and references from layer 3 to the invalidated execution records are replaced by code cell/stale output cell pairs. A visual marker for stale outputs then tells the reader which parts of the notebook are backed up by replicable computations.
+
+#### Alternative user interfaces
+
+A more natural user interface for the document data model would propose two views on the data:
+
+ 1. an interactive shell much like IPython, but code-block oriented rather than line oriented
+ 2. a notebook editor
+
+A single command would send a code cell from the notebook editor to the interactive shell for execution. In the interactive shell, a single command would append the current execution record to the notebook being edited.
+
+An advantage of such a user interface is that it generalizes easily to multi-user setups.
 
 
 ## Pros and Cons
 
 Pros:
 * The computations in notebooks become replicable, at least in an identical computational environment.
-* Notebooks can be managed as alternatives to scripts by workflow management tools.
+* Computations in notebooks can be handled by version control, including merge operations for independent changes.
+* Notebooks can be managed like scripts by workflow management tools.
 * Alternative notebook editing tools can be developed that support different tastes or needs, while maintaining document compatibility and thus avoiding lock-in to any particular tool.
 
 Cons:
