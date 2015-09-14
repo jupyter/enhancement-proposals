@@ -11,10 +11,12 @@ The core of the problem is that Jupyter's notebook file format is closely tied t
 
 The main goal of this proposal is a change of focus: notebooks should become digital documents with well-defined semantics, and the Jupyter notebook client should become just one out of many possible tools that process such notebook documents.
 
-This core of this proposal is a new data model and file format notebooks as digital documents. It includes as much relevant information as possible that is available during a Jupyter session, in particular a complete log of the code executed by the kernel. The file format is designed with the specific needs of other tools in mind, in particular version control systems.
+The core enhancement is a new data model and file format for notebooks as digital documents. It includes as much relevant information as possible that is available during a Jupyter session, in particular a complete log of the code executed by the kernel. The file format is designed with the specific needs of other tools in mind, in particular version control systems.
 
 
 ## Detailed Explanation
+
+Note: for an illustration of the data model described in the following, see [a simple example](./data_model_example.py) implemented in terms of Python data structures.
 
 ### A three-layer data model
 
@@ -25,11 +27,11 @@ The proposed data model for notebook documents consists of three layers:
   3. A narrative containing references to specific code blocks and
      outputs.
 
-Layers 1 and 3 are human-edited content, subject to version control. Layer 2 consists entirely of computational results. In principle, it can be recomputed at any time. However, since recomputation can be time-consuming, and is often unreliable due to today's fragile computational enviromnents, layer 2 should be archived as well under version control, as a foundation for layer 3.
+Layers 1 and 3 are human-edited content, subject to version control. Layer 2 consists entirely of computational results. In principle, it can be recomputed at any time. However, since recomputation can be time-consuming, and is often unreliable due to today's fragile computational enviromnents, layer 2 must be archived as well under version control, as a foundation for layer 3.
 
 Conceptually, each layer is an independent electronic document, depending on information from lower layers. A layer 3 document can depend on multiple layer 1/2 documents. A provenance tracking system would treat a layer 1 document exactly like a script, and a layer 2 document exactly like the console output from a script. Provenance trackers may thus need to store the layers as separate files or datasets. The default notebook file format should combine all three layers, but facilitate extraction of individual layers.
 
-Note that today's Jupyter file format resembles layer 3. It contains some information about execution order in the form of the prompt numbers. However, since the executed code is not stored anywhere, replication of the computation is impossible. Even if the prompt numbers in the notebook are sequential and start with 1, the code cells might have been edited after execution, and code might have been submitted to the kernel outside of the notebook. The only guarantee that a notebook file makes is that the outputs were obtained from *some* computation.
+Note that today's Jupyter file format resembles layer 3. It contains some information about execution order in the form of the prompt numbers. However, since the executed code is not stored, replication of the computation is impossible. Even if the prompt numbers in the notebook are sequential and start with 1, the code cells might have been edited after execution, and code might have been submitted to the kernel outside of the notebook. The only guarantee that a notebook file makes is that the outputs were obtained from *some* computation.
 
 In the following, the three layers are described in more detail.
 
@@ -73,15 +75,17 @@ A layer 3 document consists of:
 
 Each cell has one of the following types:
 
- - a documentation cell, containing text content plus a label identifying the format (Markdown etc.)
- - a reference to an execution record, consisting of (1) the index of the layer 2 document that contains the record and (2) the sequence index of the record inside the layer 2 document
- - a code cell, containing a code block
- - a stale output cell, containing output from a prior execution for which no log is available
+ - documentation: contains text content plus a label identifying the format (Markdown etc.)
+ - execution record reference: consists of (1) the index of the layer 2 document that contains the record and (2) the sequence index of the record inside the layer 2 document
+ - code: contains a code block
+ - stale output: contains output from a prior execution for which no log is available
 
-Code cells contain code that has not yet been executed. Executed code blocks can be retrieved through the execution record from layer 2.
+Code cells are provided for code that has not yet been executed. Executed code blocks can be retrieved through the execution record from layer 2.
 
 
 ### File format
+
+Note: a detailed file format definition would be premature at this time and only lead to lengthy bikeshedding. This section lists only important file format design criteria. Initial discussion should focus on the data model.
 
 The main difficulty in defining a file format for the data model described above is suitability for version control. The biggest challenge is support for merging independent changes. In general, this creates an inconsistent notebook document because the computed content (layer 2) is not automatically updated after code changes. The use of SHA-1 hashes makes it possible to detect such inconsistencies.
 
@@ -96,9 +100,9 @@ Layers 1 and 2 are managed by the kernel, layer 3 is managed by the notebook cli
 
 When a kernel is started, it creates a fresh layer 1 and layer 2 document. All code submitted to the kernel, whether through the notebook client or by other means, is appended to layer 1. Outputs are appended to layer 2. For execution requests coming from the notebook client, the kernel returns updates to layers 1 and 2 since the previous execution request, permitting the client to reconstruct layers 1 and 2 as soon as possible. This limits information loss in case of a kernel shutdown or crash.
 
-The Web client creates new notebooks as layer 3 documents with no attached lower layers. User-edited content is stored as documentation cells or code cells. When a kernel is started, its layer 2 document is attached to the client's layer 3 document. When a code cell is sent to the kernel, it is replaced by a reference to the resulting execution record that is returned by the kernel. The client reconstructs layers 1 and 2 incrementally from this information.
+The Web client creates new notebooks as layer 3 documents with no attached lower-level layers. User-edited content is stored in documentation and code cells. When a kernel is started, its layer 2 document is attached to the client's layer 3 document. When a code cell is sent to the kernel, it is replaced by a reference to the resulting execution record that is returned by the kernel. The client reconstructs layers 1 and 2 incrementally from this information.
 
-When a kernel is restarted for an existing notebook, its layers 1 and 2 are attached to the client's layer 3 in addition to layers 1 and 2 from earlier kernels. Existing layer 1/2 attachments can be deleted only when no reference to them exists any more in layer 3.
+When a kernel is restarted for an existing notebook, its layers 1 and 2 are attached to the client's layer 3 in addition to layers 1 and 2 from earlier kernel runs. Existing layer 1/2 attachments are deleted only when no reference to them exists any more in layer 3 (i.e. a garbage collection approach).
 
 When already executed code is edited, the execution reference is replaced by a code cell plus a stale output cell. The latter should be displayed in a way that clearly marks it as stale.
 
