@@ -1,20 +1,26 @@
-##
+# Binder API
 
 ## Problem
 
 The temporary notebook system (tmpnb) was put together to solve some immediate
 demands, the primary of which were:
 
-
-
 * Instantaneous launching of a brand new notebook server
 * Fully reproducible environment (installation, code, data, notebooks, etc.)
-* Launch as user hits a URL (no interaction)
-* Launch via a simple API that works well in frontend JavaScript contexts
+* Multi-tenant
+* Launch as a user hits a URL (no interaction)
+* Launch via a simple API (POST to `/api/spawn`), as used by e.g. thebe
 
-As promised during a video chat yesterday, I'm going to post about API design that I've badly wished for after running tmpnb for long enough. Some of this relates to how thebe and other javascript frontends use this type of environment and some of it is about making operations and operational insight easier (as well as automated).
+In operating one of the first prototypes for this (jupyter/tmpnb), there is
 
-There are three main resources for a REST API here:
+In order to make running a multi-tenant service like this simple to operate,
+maintain, and extend we need a REST API that assists three classes of users:
+
+* Front end developers developing against the API (e.g. Thebe and associated contexts)
+* Operators (e.g. codeneuro, try.jupyter.org, mybinder)
+* Users (consuming kernels as developers, readers, scientists, researchers)
+
+There are three main resources for a REST API
 
 * `binders` - create a new binder which is a specification/template for a collection of resources
 * `containers` - spawn containers by `binderID|Name`, list currently running containers
