@@ -22,20 +22,25 @@ maintain, and extend we need a REST API that assists three classes of users:
 
 There are three main resources for a REST API
 
-* `binders` - create a new binder which is a specification/template for a collection of resources
-* `containers` - spawn containers by `binderID|Name`, list currently running containers
-* `pools` - pre-allocate and view details about current pools of running binder containers
+* `bindings` - create a new binding which is a specification/template for a collection of resources
+* `binders` - spawn a binder by `bindingID|Name` as specified by the binding template, list currently running binders
+* `pools` - pre-allocate and view details about current pools of running binders
 
 Some of these operations should have authorization, depending on their usage.
+These are assumed to be run on an API endpoint (e.g. api.mybinder.org) or
+potentially with a leading `/api/` path.
 
-## Building a binder image
+## Building binders from bindings
 
-This is used at the API endpoint (e.g. api.mybinder.org) to work with binder image resources.
+The binding (how a binder is put together) is:
 
-### Creating a new binder
+* The environment the user's code runs in
+* Services attached to that environment (Spark, Postgres, etc.)
+
+### Creating a new binding
 
 ```
-POST /binders/CodeNeuro/notebooks/ HTTP 1.1
+POST /bindings/CodeNeuro/notebooks/ HTTP 1.1
 Content-Type: application/json
 
 {
@@ -56,16 +61,15 @@ Content-Type: application/json
 }
 ```
 
-That's copied straight from your current API, though it would be good to spec those out.
+That's copied straight from the current binder API, so we'll need to flesh this
+out.
 
-### Detail on a binder
+### Detail on a binding
 
-Right now the `GET` on `/apps/<organization>/<repo>/` returns the redirect URI (yes, tmpnb does this too because of its limited purpose, but they're already launched).
-
-In my opinion this should tell you about the resource, returning what the spec was in the `POST` as well as the status.
+Performing a `GET` on the binding returns the current declaration of that binding.
 
 ```
-GET /binders/CodeNeuro/notebooks/ HTTP 1.1
+GET /bindings/CodeNeuro/notebooks/ HTTP 1.1
 ```
 
 would then return
@@ -91,19 +95,15 @@ would then return
 
 That could include that status as well.
 
-Beyond that, I think a `HEAD` request makes sense here for checking to see if a binder exists.
-
+Beyond that, I think a `HEAD` request makes sense here for checking to see if a binding exists.
 
 ## Launching a binder
 
-Right now this is part of the `GithubBuildHandler` as a GET on the `/apps/` resource. This piece could actually be distant from GitHub, relying only on image names (those that have been built, whitelisted, whatever). In the [Docker API](https://docs.docker.com/reference/api/docker_remote_api_v1.20/#create-a-container) (just as a reference), they `POST to /containers/create` with the payload.
-
-Since we're talking "precanned" images (in the sense they were built prior or already existing) that get launched either by a user visiting a resource or via AJAX call by JavaScript, I think we can pick a solid resource name. ~~I'm tilted towards `spawn` since it's a noun and we've already been using it in tmpnb.~~ Picked `containers` after discussion on gitter.
-
-Since we're creating a container, we'd want to start this off as a `POST` with a `GET` retrieving that same information.
+The binder is the instance launched for a user, relying on the collection of
+resources already set up as a binder. Since we're creating a container, we'd want to start this off as a `POST` with a `GET` retrieving that same information.
 
 ```
-POST /containers/CodeNeuro-notebooks/ HTTP 1.1
+POST /binders/CodeNeuro-notebooks/ HTTP 1.1
 Accept: application/json
 ```
 
@@ -115,57 +115,64 @@ Which would return
 }
 ```
 
-If the resource was immediately available, then it could include the `location`. Otherwise, retrieving the location for that specific container would be by `GET`
+unless the resource is immediately available, in which case the return would
+include the `location`.
 
 ```
-GET /containers/CodeNeuro-notebooks/12345
+{
+  "id": "12345",
+  "location": "/user/iASaZmxNijCx"
+}
+```
+
+Otherwise, retrieving the location for that specific binder would be by `GET`
+
+```
+GET /binders/CodeNeuro-notebooks/12345
 ```
 
 which returns
 
 ```
 {
-  "location": "...",
+  "location": "/user/iASaZmxNijCx",
   "id": "12345"
 }
 ```
 
-You may ask yourself then, what if someone GETs the resource directly?
+With an API key, a GET against the top level resource:
 
 ```
-GET /containers/CodeNeuro-notebooks/ HTTP 1.1
+GET /binders/CodeNeuro-notebooks/ HTTP 1.1
 Authorization: 5c011f6b474ed90761a0c1f8a47957a6f14549507f7929cc139cbf7d5b89
 ```
 
-This *should* return all of the current containers that user is allowed to see.
+Returns all of the current containers that user is allowed to see.
 
 ```
 [
   {
     "location": "...",
     "id": "12345",
-    "uri": "/containers/CodeNeuro-notebooks/12345"
+    "uri": "/binders/CodeNeuro-notebooks/12345"
   },
   {
     "location": "...",
     "id": "787234",
-    "uri": "/containers/CodeNeuro-notebooks/787234"
+    "uri": "/binders/CodeNeuro-notebooks/787234"
   }
 ]
 ```
 
-The last thing I posted, about returning all the currently spawned containers, would be *super helpful* for operations (as I've faced with tmpnb). It's probably worth thinking about authentication sooner rather than later, even if for your own administration.
-
-It's easy to defer to a separate authentication store, relying on an LRU key store (that's what I made https://github.com/rgbkrk/lru-key-store for, when deferring to a separate identity service) to keep yourself from making repeated calls to, e.g. GitHub or another provider.
-
-
-
 ## Working with pools of pre-allocated binders
 
-Thinking about the pooling that tmpnb does (and that I would hope for in binder), I imagine we could have an endpoint at `/pool/` to set up capacities (and inspect allocations) for images:
+tmpnb does pooling by default and requires re-launching to change pool size and
+running wholly independent pools for launching with alternative images.
+
+To make this simpler (and for happy admins), we create an endpoint at `/pools/` to set up capacities (and inspect allocations) for images:
 
 ```
-GET /pool/{imageName} HTTP 1.1
+GET /pools/{binderName} HTTP 1.1
 ```
 
 returns
@@ -181,10 +188,17 @@ returns
 Updating the pool (by `POST` or `PUT`):
 
 ```
-POST /pool/{imageName}
+POST /pools/{binderName}
 Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 
 {
   "minPool": 512
 }
 ```
+
+## Interested Collaborators
+
+* [Kyle Kelley (@rgbkrk)](https://github.com/rgbkrk)
+* [Jeremy Freeman (@freeman-lab)](https://github.com/freeman-lab)
+* [Andrew Osheroff (@andrewosh)](https://github.com/andrewosh)
+* [Peter Parente (@parente)](https://github.com/parente)
