@@ -203,3 +203,4 @@ Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 * [Andrew Osheroff (@andrewosh)](https://github.com/andrewosh)
 * [Safia Abdalla @captainsafia](https://github.com/captainsafia)
 * [Peter Parente (@parente)](https://github.com/parente)
+* [Tim Head (@betatim)](https://github.com/betatim)
