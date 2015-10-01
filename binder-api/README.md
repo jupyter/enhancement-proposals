@@ -1,5 +1,7 @@
 # Binder API
 
+## environments, pods, pools
+
 ## Problem
 
 The temporary notebook system (tmpnb) was put together to solve some immediate
@@ -22,31 +24,32 @@ maintain, and extend we need a REST API that assists three classes of users:
 
 There are three main resources for a REST API
 
-* `bindings` - create a new binding which is a specification/template for a collection of resources
-* `binders` - spawn a binder by `bindingID|Name` as specified by the binding template, list currently running binders
+* `environments` - create a new binding which is a specification/template for a collection of resources
+* `pods` - spawn a binder by `bindingID|Name` as specified by the binding template, list currently running binders
 * `pools` - pre-allocate and view details about current pools of running binders
 
 Some of these operations should have authorization, depending on their usage.
 These are assumed to be run on an API endpoint (e.g. api.mybinder.org) or
 potentially with a leading `/api/` path.
 
-## Building binders from bindings
+## Building environments
 
-The binding (how a binder is put together) is:
+An environment is:
 
-* The environment the user's code runs in
+* A description of a runtime and its dependencies
+* Additional resources (e.g. data)
 * Services attached to that environment (Spark, Postgres, etc.)
 
-### Creating a new binding
+### Creating a new environment
 
 ```
-POST /bindings/CodeNeuro/notebooks/ HTTP 1.1
+POST /repos/user/repo/ HTTP 1.1
 Content-Type: application/json
 
 {
   "name": "codeneuro-notebooks",
   "repo": "https://github.com/CodeNeuro/notebooks",
-  "requirements": "repo/requirements.txt",
+  "dependencies": "repo/requirements.txt",
   "notebooks": "repo/notebooks",
   "services": [
     {
@@ -61,8 +64,12 @@ Content-Type: application/json
 }
 ```
 
-That's copied straight from the current binder API, so we'll need to flesh this
-out.
+### Creating an image
+
+```
+POST /images/image-name HTTP 1.1
+
+
 
 ### Detail on a binding
 
@@ -97,13 +104,13 @@ That could include that status as well.
 
 Beyond that, I think a `HEAD` request makes sense here for checking to see if a binding exists.
 
-## Launching a binder
+## Launching an environment
 
 The binder is the instance launched for a user, relying on the collection of
 resources already set up as a binder. Since we're creating a container, we'd want to start this off as a `POST` with a `GET` retrieving that same information.
 
 ```
-POST /binders/CodeNeuro-notebooks/ HTTP 1.1
+POST /api/pods/environmentName/ HTTP 1.1
 Accept: application/json
 ```
 
@@ -124,11 +131,12 @@ include the `location`.
   "location": "/user/iASaZmxNijCx"
 }
 ```
+`location` is either a URI or a full URL
 
 Otherwise, retrieving the location for that specific binder would be by `GET`
 
 ```
-GET /binders/CodeNeuro-notebooks/12345
+GET /api/X/environmentName/12345
 ```
 
 which returns
@@ -143,7 +151,7 @@ which returns
 With an API key, a GET against the top level resource:
 
 ```
-GET /binders/CodeNeuro-notebooks/ HTTP 1.1
+GET /api/X/environmentName/ HTTP 1.1
 Authorization: 5c011f6b474ed90761a0c1f8a47957a6f14549507f7929cc139cbf7d5b89
 ```
 
@@ -152,14 +160,12 @@ Returns all of the current containers that user is allowed to see.
 ```
 [
   {
-    "location": "...",
-    "id": "12345",
-    "uri": "/binders/CodeNeuro-notebooks/12345"
+    "location": "/user/iASaZmxNijCx",
+    "id": "12345"
   },
   {
-    "location": "...",
-    "id": "787234",
-    "uri": "/binders/CodeNeuro-notebooks/787234"
+    "location": "/user/iASaZmxNijCx",
+    "id": "787234"
   }
 ]
 ```
@@ -172,29 +178,52 @@ running wholly independent pools for launching with alternative images.
 To make this simpler (and for happy admins), we create an endpoint at `/pools/` to set up capacities (and inspect allocations) for images:
 
 ```
-GET /pools/{binderName} HTTP 1.1
-```
+GET /pools/{environmentName} HTTP 1.1
 
-returns
-
-```json
 {
   "running": 123,
   "available": 12,
-  "minPool": 1
+  "size": 124
 }
 ```
+(Maybe also add a list of ids if authenticated)
 
 Updating the pool (by `POST` or `PUT`):
 
 ```
-POST /pools/{binderName}
+POST /pools/{environmentName}
 Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 
 {
-  "minPool": 512
+  "size": 512
 }
 ```
+
+Deleting a pool (by `DELETE`):
+
+```
+DELETE /pools/{environmentName}
+Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
+```
+
+```
+GET /pools/ HTTP 1.1
+Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
+
+{
+	{ 
+		"running": 123,
+		"available": 12,
+		"size": 124
+	}, 
+	{ 
+		"running": 2,
+		"available": 10,
+		"size": 12
+	},...
+}
+```
+
 
 ## Interested Collaborators
 
