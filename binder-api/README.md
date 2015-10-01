@@ -1,6 +1,4 @@
-# Binder API
-
-## environments, pods, pools
+# API for on-demand environments
 
 ## Problem
 
@@ -22,99 +20,149 @@ maintain, and extend we need a REST API that assists three classes of users:
 * Operators (e.g. codeneuro, try.jupyter.org, mybinder)
 * Users (consuming kernels as developers, readers, scientists, researchers)
 
-There are three main resources for a REST API
+There are four main actions:
 
-* `environments` - create a new binding which is a specification/template for a collection of resources
-* `pods` - spawn a binder by `bindingID|Name` as specified by the binding template, list currently running binders
-* `pools` - pre-allocate and view details about current pools of running binders
+* `build` - build an image from the contents of a GitHub repository
+* `stage` - make one or more images ready for deployment, including specifying any additional services, and resource allocation
+* `deploy` - deploys a named environment, and provides status about running versions of that environment
+* `pool` - pre-allocate and view details about current pools of running environments
+
+The four resources that support these actions are:
+
+* `images`: `POST` `GET`
+* `stagings`: `POST` `GET`
+* `servers`
+* `pool`
 
 Some of these operations should have authorization, depending on their usage.
 These are assumed to be run on an API endpoint (e.g. api.mybinder.org) or
 potentially with a leading `/api/` path.
 
-## Building environments
 
-An environment is:
+## Build images
 
-* A description of a runtime and its dependencies
-* Additional resources (e.g. data)
-* Services attached to that environment (Spark, Postgres, etc.)
+We build images from GitHub repositories through a `POST` to the `images` resource, by specifying a description of a runtime and its dependencies, and additional resources (e.g. data)
 
-### Creating a new environment
+Create an image from a repository
 
 ```
-POST /repos/user/repo/ HTTP 1.1
+POST /builds/ HTTP 1.1
 Content-Type: application/json
 
 {
-  "name": "codeneuro-notebooks",
-  "repo": "https://github.com/CodeNeuro/notebooks",
-  "dependencies": "repo/requirements.txt",
-  "notebooks": "repo/notebooks",
-  "services": [
-    {
-      "name": "spark",
-      "version": "1.4.1",
-      "params": {
-        "heap_mem": "4g",
-        "stack_mem": "512m"
-      }
-    }
-  ]
+  "repository": "https://github.com/user/name",
+  "dependencies": [""requirements.txt"]
 }
 ```
 
-### Creating an image
-
-```
-POST /images/image-name HTTP 1.1
-
-
-
-### Detail on a binding
-
-Performing a `GET` on the binding returns the current declaration of that binding.
-
-```
-GET /bindings/CodeNeuro/notebooks/ HTTP 1.1
-```
-
-would then return
+*returns*
 
 ```
 {
-  "name": "codeneuro-notebooks",
-  "repo": "https://github.com/CodeNeuro/notebooks",
-  "requirements": "repo/requirements.txt",
-  "notebooks": "repo/notebooks",
-  "services": [
-    {
-      "name": "spark",
-      "version": "1.4.1",
-      "params": {
-        "heap_mem": "4g",
-        "stack_mem": "512m"
-      }
-    }
-  ]
+	"environment-name": "environment-name"
 }
 ```
 
-That could include that status as well.
 
-Beyond that, I think a `HEAD` request makes sense here for checking to see if a binding exists.
-
-## Launching an environment
-
-The binder is the instance launched for a user, relying on the collection of
-resources already set up as a binder. Since we're creating a container, we'd want to start this off as a `POST` with a `GET` retrieving that same information.
+Get info on an image
 
 ```
-POST /api/pods/environmentName/ HTTP 1.1
+GET /images/{environment-name}
+```
+
+*returns*
+
+
+```
+{
+	"environment-name": "environment-name", # convenience layer
+}
+```
+
+
+## Stage stagings
+
+We stage  deployments by providing an image and a set of computing resources, as well as possible add-on services. This lets us either use an image we have already built from a repository (in the `build` step), or use an image that we've whitelisted (e.g. a known image we want to make available for a large-scale `thebe` deployment).
+
+Stage a deployment from a named image.
+
+```
+POST /stagings HTTP 1.1
+Content-Type: application/json
+Authorization: 8a5b42ef54ceafe6af87e5
+
+{
+	"image-name": "image-name",
+	"limits":
+		{
+			"memory": "...",
+			"cpu": "..."
+		}
+	"services": 
+	[
+		{
+			"name": "spark",
+			"version": "1.4.1",
+			"params": {
+				"heap_mem": "4g",
+				"stack_mem": "512m"
+			}
+		}, ...
+ 	]
+}
+```
+
+*returns*
+
+```
+{
+        "environment-name": "environment-name"
+}
+```
+
+Get info on a staging
+
+
+```
+GET /stagings/{environment-name} HTTP 1.1
+Authorization: 8a5b42ef54ceafe6af87e5
+```
+
+```
+{
+	"image-name": "image-name",
+	"limits":
+		{
+			"memory": "...",
+			"cpu": "..."
+		}
+	"services": 
+	[
+		{
+			"name": "spark",
+			"version": "1.4.1",
+			"params": {
+				"heap_mem": "4g",
+				"stack_mem": "512m"
+			}
+		}, ...
+ 	]
+}
+```
+
+## Deploy servers
+
+Once an environment is staged, we can deploy it as an on demand server.
+
+Launch a single server
+
+```
+POST /servers/environment-name/ HTTP 1.1
 Accept: application/json
 ```
 
-Which would return
+*returns*
+
 
 ```
 {
@@ -122,8 +170,7 @@ Which would return
 }
 ```
 
-unless the resource is immediately available, in which case the return would
-include the `location`.
+or if it's already available in a pool
 
 ```
 {
@@ -131,15 +178,14 @@ include the `location`.
   "location": "/user/iASaZmxNijCx"
 }
 ```
-`location` is either a URI or a full URL
 
-Otherwise, retrieving the location for that specific binder would be by `GET`
+Get info on a running server
 
 ```
-GET /api/X/environmentName/12345
+GET /servers/12345
 ```
 
-which returns
+*returns*
 
 ```
 {
@@ -148,14 +194,14 @@ which returns
 }
 ```
 
-With an API key, a GET against the top level resource:
+Get info on all running servers for a named environment
 
 ```
-GET /api/X/environmentName/ HTTP 1.1
+GET /servers/envirnoment-name/ HTTP 1.1
 Authorization: 5c011f6b474ed90761a0c1f8a47957a6f14549507f7929cc139cbf7d5b89
 ```
 
-Returns all of the current containers that user is allowed to see.
+*returns*
 
 ```
 [
@@ -169,47 +215,33 @@ Returns all of the current containers that user is allowed to see.
   }
 ]
 ```
+In all of these specifications, `location` is either a URI or a full URL
 
-## Working with pools of pre-allocated binders
 
-tmpnb does pooling by default and requires re-launching to change pool size and
-running wholly independent pools for launching with alternative images.
+## Pool
 
-To make this simpler (and for happy admins), we create an endpoint at `/pools/` to set up capacities (and inspect allocations) for images:
+Pools make it easy to deploy large-collections of on-demand servers for immediate use (as tmpnb currently does). This endpoint will make it easy to set up capacities for particular environments, and inspect allocations.
+
+Get information on a pool
 
 ```
-GET /pools/{environmentName} HTTP 1.1
-
+GET /pools/{environment-name} HTTP 1.1
+```
+```
 {
   "running": 123,
   "available": 12,
   "size": 124
 }
 ```
-(Maybe also add a list of ids if authenticated)
 
-Updating the pool (by `POST` or `PUT`):
-
-```
-POST /pools/{environmentName}
-Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
-
-{
-  "size": 512
-}
-```
-
-Deleting a pool (by `DELETE`):
-
-```
-DELETE /pools/{environmentName}
-Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
-```
+Get information on all pools with authorization
 
 ```
 GET /pools/ HTTP 1.1
 Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
-
+```
+```
 {
 	{ 
 		"running": 123,
@@ -223,6 +255,25 @@ Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 	},...
 }
 ```
+
+Create a pool or change the size of a running pool
+
+```
+POST /pools/{environment-name}
+Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
+
+{
+  "size": 512
+}
+```
+
+Delete a pool
+
+```
+DELETE /pools/{environment-name}
+Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
+```
+
 
 
 ## Interested Collaborators
