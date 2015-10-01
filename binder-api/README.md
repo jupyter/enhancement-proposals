@@ -22,17 +22,17 @@ maintain, and extend we need a REST API that assists three classes of users:
 
 There are four main actions:
 
-* `build` - build an image from the contents of a GitHub repository
+* `build` - build an image from the contents of a GitHub repository (or possibly some other specification)
 * `stage` - make one or more images ready for deployment, including specifying any additional services, and resource allocation
 * `deploy` - deploys a named environment, and provides status about running versions of that environment
 * `pool` - pre-allocate and view details about current pools of running environments
 
 The four resources that support these actions are:
 
-* `images`: `POST` `GET`
-* `stagings`: `POST` `GET`
+* `builds`
+* `stagings`
 * `servers`
-* `pool`
+* `pools`
 
 Some of these operations should have authorization, depending on their usage.
 These are assumed to be run on an API endpoint (e.g. api.mybinder.org) or
@@ -46,12 +46,12 @@ We build images from GitHub repositories through a `POST` to the `images` resour
 Create an image from a repository
 
 ```
-POST /builds/ HTTP 1.1
+POST /builds/repos HTTP 1.1
 Content-Type: application/json
 
 {
   "repository": "https://github.com/user/name",
-  "dependencies": [""requirements.txt"]
+  "dependencies": ["requirements.txt"]
 }
 ```
 
@@ -59,7 +59,7 @@ Content-Type: application/json
 
 ```
 {
-	"environment-name": "environment-name"
+	"image-name": "image-name"
 }
 ```
 
@@ -67,7 +67,7 @@ Content-Type: application/json
 Get info on an image
 
 ```
-GET /images/{environment-name}
+GET /builds/repos/{image-name}
 ```
 
 *returns*
@@ -75,14 +75,42 @@ GET /images/{environment-name}
 
 ```
 {
-	"environment-name": "environment-name", # convenience layer
+	"image-name": "image-name",
+	"repository": "https://github.com/user/name",
+	"dependencies": ["requirements.txt"]
+}
+```
+
+Get image id for a repository
+
+```
+GET /builds/repos?repository="https://github.com/user/name"
+```
+
+*returns*
+
+```
+{
+	"image-name": "image-name"
+}
+```
+
+Get status on a build
+
+```
+GET /builds/repos/{image-name}/status HTTP 1.1
+Authorization: 8a5b42ef54ceafe6af87e5
+```
+```
+{
+	"status": "completed" | "pending" | "failed"
 }
 ```
 
 
-## Stage stagings
+## Stage deployments
 
-We stage  deployments by providing an image and a set of computing resources, as well as possible add-on services. This lets us either use an image we have already built from a repository (in the `build` step), or use an image that we've whitelisted (e.g. a known image we want to make available for a large-scale `thebe` deployment).
+We stage deployments by providing an image and a set of computing resources, as well as possible add-on services. This lets us either use an image we have already built from a repository (in the `build` step), or use an image that we've whitelisted (e.g. a known image we want to make available for a large-scale `thebe` deployment).
 
 Stage a deployment from a named image.
 
@@ -150,6 +178,18 @@ Authorization: 8a5b42ef54ceafe6af87e5
 }
 ```
 
+Get status on a staging
+
+```
+GET /stagings/{environment-name}/status HTTP 1.1
+Authorization: 8a5b42ef54ceafe6af87e5
+```
+```
+{
+	"status": "completed" | "pending" | "failed"
+}
+```
+
 ## Deploy servers
 
 Once an environment is staged, we can deploy it as an on demand server.
@@ -182,7 +222,7 @@ or if it's already available in a pool
 Get info on a running server
 
 ```
-GET /servers/12345
+GET /servers/{environment-name}/{id}
 ```
 
 *returns*
@@ -197,7 +237,7 @@ GET /servers/12345
 Get info on all running servers for a named environment
 
 ```
-GET /servers/envirnoment-name/ HTTP 1.1
+GET /servers/{envirnoment-name} HTTP 1.1
 Authorization: 5c011f6b474ed90761a0c1f8a47957a6f14549507f7929cc139cbf7d5b89
 ```
 
