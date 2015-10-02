@@ -188,14 +188,14 @@ Authorization: 8a5b42ef54ceafe6af87e5
 }
 ```
 
-## Deploy servers
+## Deploy
 
-Once an environment is staged, we can deploy it as an on demand server.
+Once an environment is staged, we can deploy it as an on-demand server.
 
 Launch a single server
 
 ```
-POST /servers/environment-name/ HTTP 1.1
+POST /deployments/{environment-name} HTTP 1.1
 Accept: application/json
 ```
 
@@ -220,7 +220,7 @@ or if it's already available in a pool
 Get info on a running server
 
 ```
-GET /servers/{environment-name}/{id}
+GET /deployments/{environment-name}/{id}
 ```
 
 *returns*
@@ -235,7 +235,7 @@ GET /servers/{environment-name}/{id}
 Get info on all running servers for a named environment
 
 ```
-GET /servers/{envirnoment-name} HTTP 1.1
+GET /deployments/{envirnoment-name} HTTP 1.1
 Authorization: 5c011f6b474ed90761a0c1f8a47957a6f14549507f7929cc139cbf7d5b89
 ```
 
