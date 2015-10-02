@@ -21,15 +21,15 @@ maintain, and extend we need a REST API that assists three classes of users:
 There are four main actions:
 
 * `build` - build an image from the contents of a GitHub repository (or possibly some other specification)
-* `stage` - make one or more images ready for deployment, including specifying any additional services, and resource allocation
-* `deploy` - deploys a named environment, and provides status about running versions of that environment
-* `pool` - pre-allocate and view details about current pools of running environments
+* `register` - register one or more images as a template for deployment, including specifying any additional services, and resource allocation
+* `deploy` - deploys a named template, and provides status about running application from that template
+* `pool` - pre-allocate and view details about current pools of running applications
 
 The four resources that support these actions are:
 
 * `builds`
-* `stagings`
-* `servers`
+* `templates`
+* `applications`
 * `pools`
 
 Some of these operations should have authorization, depending on their usage.
@@ -106,14 +106,14 @@ Authorization: 8a5b42ef54ceafe6af87e5
 ```
 
 
-## Stage deployments
+## Register templates
 
-We stage deployments by providing an image and a set of computing resources, as well as possible add-on services. This lets us either use an image we have already built from a repository (in the `build` step), or use an image that we've whitelisted (e.g. a known image we want to make available for a large-scale `thebe` deployment).
+We register templates by providing an image and a set of computing resources, as well as possible add-on services. This lets us either use an image we have already built from a repository (in the `build` step), or use an image that we've whitelisted (e.g. a known image we want to make available for a large-scale `thebe` deployment).
 
-Stage a deployment from a named image.
+Register a template for a named image (plus its configuration)
 
 ```
-POST /stagings HTTP 1.1
+POST /templates HTTP 1.1
 Content-Type: application/json
 Authorization: 8a5b42ef54ceafe6af87e5
 
@@ -142,15 +142,15 @@ Authorization: 8a5b42ef54ceafe6af87e5
 
 ```
 {
-        "environment-name": "environment-name"
+        "template-name": "template-name"
 }
 ```
 
-Get info on a staging
+Get info on a template
 
 
 ```
-GET /stagings/{environment-name} HTTP 1.1
+GET /templates/{template-name} HTTP 1.1
 Authorization: 8a5b42ef54ceafe6af87e5
 ```
 
@@ -179,7 +179,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 Get status on a staging
 
 ```
-GET /stagings/{environment-name}/status HTTP 1.1
+GET /templates/{template-name}/status HTTP 1.1
 Authorization: 8a5b42ef54ceafe6af87e5
 ```
 ```
@@ -190,12 +190,12 @@ Authorization: 8a5b42ef54ceafe6af87e5
 
 ## Deploy
 
-Once an environment is staged, we can deploy it as an on-demand server.
+Once a template is regsitered, we can deploy it as an on-demand application (including a container + services + resources)
 
-Launch a single server
+Launch a single application
 
 ```
-POST /deployments/{environment-name} HTTP 1.1
+POST /applications/{template-name} HTTP 1.1
 Accept: application/json
 ```
 
@@ -217,10 +217,10 @@ or if it's already available in a pool
 }
 ```
 
-Get info on a running server
+Get info on a running application
 
 ```
-GET /deployments/{environment-name}/{id}
+GET /applications/{template-name}/{id}
 ```
 
 *returns*
@@ -232,10 +232,10 @@ GET /deployments/{environment-name}/{id}
 }
 ```
 
-Get info on all running servers for a named environment
+Get info on all running servers for a named template
 
 ```
-GET /deployments/{envirnoment-name} HTTP 1.1
+GET /applications/{template-name} HTTP 1.1
 Authorization: 5c011f6b474ed90761a0c1f8a47957a6f14549507f7929cc139cbf7d5b89
 ```
 
@@ -263,7 +263,7 @@ Pools make it easy to deploy large-collections of on-demand servers for immediat
 Get information on a pool
 
 ```
-GET /pools/{environment-name} HTTP 1.1
+GET /pools/{template-name} HTTP 1.1
 ```
 ```
 {
@@ -297,7 +297,7 @@ Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 Create a pool or change the size of a running pool
 
 ```
-POST /pools/{environment-name}
+POST /pools/{template-name}
 Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 
 {
@@ -308,7 +308,7 @@ Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 Delete a pool
 
 ```
-DELETE /pools/{environment-name}
+DELETE /pools/{template-name}
 Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 ```
 
