@@ -11,8 +11,6 @@ demands, the primary of which were:
 * Launch as a user hits a URL (no interaction)
 * Launch via a simple API (POST to `/api/spawn`), as used by e.g. thebe
 
-In operating one of the first prototypes for this (jupyter/tmpnb), there is
-
 In order to make running a multi-tenant service like this simple to operate,
 maintain, and extend we need a REST API that assists three classes of users:
 
@@ -126,7 +124,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 			"memory": "...",
 			"cpu": "..."
 		}
-	"services": 
+	"services":
 	[
 		{
 			"name": "spark",
@@ -164,7 +162,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 			"memory": "...",
 			"cpu": "..."
 		}
-	"services": 
+	"services":
 	[
 		{
 			"name": "spark",
@@ -283,12 +281,12 @@ Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 ```
 ```
 {
-	{ 
+	{
 		"running": 123,
 		"available": 12,
 		"size": 124
-	}, 
-	{ 
+	},
+	{
 		"running": 2,
 		"available": 10,
 		"size": 12
