@@ -176,7 +176,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 }
 ```
 
-Get status on a staging
+Get status on a template
 
 ```
 GET /templates/{template-name}/status HTTP 1.1
