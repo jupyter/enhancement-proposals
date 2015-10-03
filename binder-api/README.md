@@ -14,9 +14,9 @@ demands, the primary of which were:
 In order to make running a multi-tenant service like this simple to operate,
 maintain, and extend we need a REST API that assists three classes of users:
 
-* Front end developers developing against the API (e.g. Thebe and associated contexts)
-* Operators (e.g. codeneuro, try.jupyter.org, mybinder)
-* Users (consuming kernels as developers, readers, scientists, researchers)
+* Front end developers developing against the API (e.g. [Thebe](https://github.com/oreillymedia/thebe) and associated contexts)
+* Operators (e.g. [codeneuro](http://notebooks.codeneuro.org/), [try.jupyter.org](https://try.jupyter.org), [mybinder](http://mybinder.org))
+* Users (consuming Jupyter kernels as developers, readers, scientists, researchers)
 
 There are four main actions:
 
