@@ -312,6 +312,62 @@ DELETE /pools/{template-name}
 Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 ```
 
+## Draft implementation
+
+We imagine the following set of repositories to implement the API. By breaking it up into separate components, it will be easier to iterate them, and also run only subsets (e.g. only the build server, or only register + deploy). Most of these correspond to a individual server, several of which could be managed for local deployments using `docker-compose` (or in another fashion for cloud deployments).
+
+`binder-build`
+
+- runs the build server
+- builds images from repos
+- can trigger a staging after image build
+- puts images on a registry
+- a config for the build server specifies the registry
+- will stay in python (based on the current version)
+
+`binder-registry`
+
+- registers an environment template (image + spec + config) 
+- can submit a image along with a configuration
+
+`binder-launch`
+
+- handles both setting up pooling and routes users
+- relies on a running binder registry
+- config specifies both the binder registry and private docker registery
+- default docker registry is dockerhub
+
+`binder-launch-swarm`
+
+- implement the launch process for docker swarm
+
+`binder-launch-kubernetes`
+
+- implement the launch process for kubernetes
+
+`binder-cli`
+
+- command-line utility for interacting with different components
+- example usage:
+
+```
+binder build --repo
+binder register --image --binder-registry --api-key
+binder launch --template
+```
+
+`binder-logs`
+
+- log image builds
+- log deployments
+
+`binder-db`
+
+- store registry of templates
+- store running applications
+
+
+
 
 
 ## Interested Collaborators
