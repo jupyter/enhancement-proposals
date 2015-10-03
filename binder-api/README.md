@@ -57,7 +57,7 @@ Content-Type: application/json
 
 ```
 {
-	"image-name": "image-name"
+  "image-name": "image-name"
 }
 ```
 
@@ -73,9 +73,9 @@ GET /builds/repos/{image-name}
 
 ```
 {
-	"image-name": "image-name",
-	"repository": "https://github.com/user/name",
-	"dependencies": ["requirements.txt"]
+  "image-name": "image-name",
+  "repository": "https://github.com/user/name",
+  "dependencies": ["requirements.txt"]
 }
 ```
 
@@ -89,7 +89,7 @@ GET /builds/repos?repository="https://github.com/user/name"
 
 ```
 {
-	"image-name": "image-name"
+  "image-name": "image-name"
 }
 ```
 
@@ -101,7 +101,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 ```
 ```
 {
-	"status": "completed" | "pending" | "failed"
+  "status": "completed" | "pending" | "failed"
 }
 ```
 
@@ -118,25 +118,25 @@ Content-Type: application/json
 Authorization: 8a5b42ef54ceafe6af87e5
 
 {
-	"image-name": "image-name",
-	"limits":
-		{
-			"memory": "...",
-			"cpu": "..."
-		},
+  "image-name": "image-name",
+  "limits":
+    {
+      "memory": "...",
+      "cpu": "..."
+    },
   "command": "ipython notebook --no-browser --allow-origin='*' --NotebookApp.base_url={base_path} --ip=0.0.0.0 ",
   "cull-timeout": 3600,
-	"services":
-	[
-		{
-			"name": "spark",
-			"version": "1.4.1",
-			"params": {
-				"heap_mem": "4g",
-				"stack_mem": "512m"
-			}
-		}, ...
- 	]
+  "services":
+  [
+    {
+      "name": "spark",
+      "version": "1.4.1",
+      "params": {
+        "heap_mem": "4g",
+        "stack_mem": "512m"
+      }
+    }, ...
+   ]
 }
 ```
 
@@ -158,23 +158,23 @@ Authorization: 8a5b42ef54ceafe6af87e5
 
 ```
 {
-	"image-name": "image-name",
-	"limits":
-		{
-			"memory": "...",
-			"cpu": "..."
-		}
-	"services":
-	[
-		{
-			"name": "spark",
-			"version": "1.4.1",
-			"params": {
-				"heap_mem": "4g",
-				"stack_mem": "512m"
-			}
-		}, ...
- 	]
+  "image-name": "image-name",
+  "limits":
+    {
+      "memory": "...",
+      "cpu": "..."
+    }
+  "services":
+  [
+    {
+      "name": "spark",
+      "version": "1.4.1",
+      "params": {
+        "heap_mem": "4g",
+        "stack_mem": "512m"
+      }
+    }, ...
+   ]
 }
 ```
 
@@ -186,7 +186,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 ```
 ```
 {
-	"status": "completed" | "pending" | "failed"
+  "status": "completed" | "pending" | "failed"
 }
 ```
 
@@ -283,16 +283,16 @@ Authorization: 9f66083738d8e8fa48e2f19d4bd3bdb4821fa2d3fdc7d84e4228ded5e219
 ```
 ```
 {
-	{
-		"running": 123,
-		"available": 12,
-		"size": 124
-	},
-	{
-		"running": 2,
-		"available": 10,
-		"size": 12
-	},...
+  {
+    "running": 123,
+    "available": 12,
+    "size": 124
+  },
+  {
+    "running": 2,
+    "available": 10,
+    "size": 12
+  },...
 }
 ```
 
@@ -329,7 +329,7 @@ We imagine the following set of repositories to implement the API. By breaking i
 
 `binder-registry`
 
-- registers an environment template (image + spec + config) 
+- registers an environment template (image + spec + config)
 - can submit a image along with a configuration
 
 `binder-launch`
