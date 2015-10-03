@@ -380,3 +380,5 @@ binder launch --template
 * [Safia Abdalla @captainsafia](https://github.com/captainsafia)
 * [Peter Parente (@parente)](https://github.com/parente)
 * [Tim Head (@betatim)](https://github.com/betatim)
+* [Karissa McKelvey (@karissa)](https://github.com/karissa)
+* [Max Ogden (@maxogden)](https://github.com/maxogden)
