@@ -123,7 +123,9 @@ Authorization: 8a5b42ef54ceafe6af87e5
 		{
 			"memory": "...",
 			"cpu": "..."
-		}
+		},
+  "command": "ipython notebook --no-browser --allow-origin='*' --NotebookApp.base_url={base_path} --ip=0.0.0.0 ",
+  "cull-timeout": 3600,
 	"services":
 	[
 		{
