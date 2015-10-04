@@ -144,7 +144,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 
 ```
 {
-    "template-name": "template-name",
+    "name": "template-name",
     "time-created": "2015-10-04T22:20:25.953360391Z",
     "time-modified": "2015-10-04T22:20:25.953360391Z",
 }
@@ -160,6 +160,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 
 ```
 {
+  "name": "template-name",
   "image-name": "image-name",
   "limits":
     {
