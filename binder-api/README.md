@@ -162,6 +162,7 @@ Authorization: 8a5b42ef54ceafe6af87e5
 {
   "name": "template-name",
   "image-name": "image-name",
+  "image-source": "url on dockerhub" | "url on alternate registry"
   "limits":
     {
       "memory": "...",
