@@ -373,9 +373,57 @@ binder launch --template
 - store registry of templates
 - store running applications
 
+## Use Cases
 
+The following narratives apply the proposed API to the use cases documented in the [kernel gateway incubator proposal](https://github.com/jupyter-incubator/proposals/blob/master/kernel_gateway/proposal.md). Within these narratives:
 
+* *Binder* refers to an implementation of both this API spec and an assumed user interface that exposes some of the function declared in the API
+* *Thebe* refers to a version of [oreillymedia/thebe](https://github.com/oreillymedia/thebe) that has been updated to work with Binder and Jupyter protocol 5.0+
+* *Kernel Gateway* refers to a headless implementation of the `/api/kernels` from Jupyter Notebook 4.x+, particularly the websocket-to-0mq proxy layer (e.g., [rgbkrk/juno](https://github.com/rgbkrk/juno), [rgbkrk/kernel-service](https://github.com/rgbkrk/kernels-service), [parente/kernel_gateway#wip](https://github.com/parente/kernel_gateway/tree/wip)).
 
+### Use Case #1: Simple, Static Web Apps w/ Modifiable Code
+
+Alice has a scientific computing blog. In her posts, Alice often includes snippets of code demonstrating concepts in languages like R and Python. She sometimes writes these snippets inline in Markdown code blocks. Other times, she embeds GitHub gists containing her code. To date, her readers can view these snippets on her blog, clone her gists to edit them, and copy/paste other code for their own purposes.
+
+Having heard about Thebe and Binder, Alice is interested in making her code snippets executable and editable by her readers. She adds a bit of JavaScript code on her blog to include the Thebe JS library, and turn her code blocks into edit areas with *Run* buttons.
+
+Alice them visits the web site of a publicly addressable Binder instance (hosted by the good graces of the community). She browses the image templates available on the site to see if there is one suiting her blog post code requirements. She finds one, `jupyter-scipy-kernel`, with the following properties satisfying her Python post requirements.
+
+* Kernel gateway
+* IPython kernel on Python 3.x
+* ipywidgets, matplotlib, seaborn, scipy, pandas, statsmodels, and numpy within the container
+
+And another, `jupyter-r-kernel`, for her typical R posts:
+
+* Kernel gateway
+* IRkernel on R 3.x
+* ggplot2, forecast, randomforest and a few other libs within the container
+
+She writes a bit of JS to configure Thebe to request the proper template on each page of her blog.
+
+When Bob visits Alice's blog, his browser loads the markup and JS for her latest post. On page load, the JS uses Thebe to request a new deployment of the configured template from Binder. Binder spawns it and returns its ID to the requesting in-browser JS client. Thebe polls until the response also contains a location URL for the spawned template. Thebe establishes a websocket connection to that location. The spawned template exists as long as Bob remains on the page.
+
+Under the covers, the launched application is container running a kernel gateway acting as a websocket-to-0mq bridge for a kernel running within the same container. Binder maps this the websocket port to a route in a front proxy for external client access.
+
+### Use Case #2: Notebooks Converted to Standalone Dashboard Applications
+
+Cathy uses Jupyter Notebook in her role as a data scientist at ACME Corp. She writes notebooks to munge data, create models, evaluate models, visualize results, and generate reports for internal stakeholders. Sometimes, her work informs the creation of dashboard web applications that allow other users to explore and interact with her results. In these scenarios, Cathy is faced with the task of rewriting her notebook(s) in the form of a traditional web application. Cathy would love to avoid this costly rewrite step.
+
+One day, Cathy deploys Binder to the same compute cluster where she authors her Jupyter notebooks. She builds a set of container images including her commonly used kernels, libaries, and other backend dependencies. She then defines templates for launching these images and registers them with the Binder CLI.
+
+The next time Cathy needs to build a web app, she creates a new notebook that includes interactive widgets, uses Jupyter extensions to position the widgets in a dashboard-like layout, and transforms the notebook into a standalone NodeJS web app. Cathy deploys this web app to ACME Corp's internal web hosting platform, and configures it with the Binder URL, credentials, and appropriate image template name.
+
+Cathy sends the URL of her running dashboard to David, a colleague from the ACME marketing department. When David visits the URL, the application prompts for his intranet credentials. After login, his browser loads the markup and JS for the frontend of the dashboard web app. The JS contacts Binder to launch an instance of the configured template, establishes a websocket to it (see above), and sends all of the code from the original notebook to the kernel backend for execution at once. The output responses from the kernel are rendered into the dashboard web page in Cathy's previously defined dashboard layout.
+
+### Use Case #3: Notebook Authoring Separated from Kernel/Compute Clusters
+
+Erin is a Jupyter Notebook and Spark user. She would like to pay a third-party provider for a hosted compute plus data storage solution, and drive Spark jobs on it using her local Jupyter Notebook server as the authoring environment.
+
+In a bright and not-so-distant future, Erin chooses a Spark provider that provides a Binder API. Her provider allows Erin to upload her own container images and define her own Binder templates using them. Erin uses this ability to create a handful of container images that include a Jupyter kernel, a Jupyter kernel gateway, and various scientific computing libraries. Erin then configures her local Jupyter Notebook server with the URL of her Binder provider and credentials for accessing its API.
+
+Erin fires up her local Notebook server. In the *New* dropdown, she sees the names of her remote Binder kernel templates fetched from her provider. When Erin clicks one, her Notebook server does the work of requesting an instance from the Binder API. Once available, her Notebook server conveys the location of the launched container to her Notebook frontend code. The frontend code establishes a websocket connection to the kernel gateway running within the launched container. Thereafter, interaction between the Notebook frontend and kernel gateway proceeds as if the kernel were launched locally and the Notebook server itself was acting as the gateway (i.e., how Jupyter Notebook works today).
+
+When Frank, a colleague of Erin, learns about her great setup, he asks to share her compute provider account and make it a team account. Happy to help, Erin does so. Frank then spins up a VM in his current cloud provider, runs Jupyter Notebook server on it, and points it to the Binder API in the same manner that Erin did.
 
 ## Interested Collaborators
 
