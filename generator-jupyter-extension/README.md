@@ -151,9 +151,19 @@ Under what term would you like to release this software? (pick one, probably)
 ```
 
 
+#### Development Line
+```shell
+What versions of Jupyter do you want to support? (pick some)
+  ♢ 3.x (legacy)
+  ♦ 4.x (stable)
+  ♢ 4.x (development with git)
+  ♢ 5.x (experimental with git)
+```
+
+
 #### Extension Point Selection
 ```shell
-What Jupyter function would you like to extend? (pick some)
+What Jupyter x.x-x.x functions would you like to extend? (pick some)
   ♦ JavaScript Notebook (nbextension)
   ♢ JavaScript Dashboard (nbextension)
   ♢ CSS (nbextension)
@@ -172,6 +182,16 @@ What Jupyter function would you like to extend? (pick some)
   ♢ Formatter (nbviewer)
 ```
 
+> Each of these extension points will:
+  - expect some set of files in the templated directory. For
+  example, `Javascript Notebook (nbextension)` would create a
+  `{pypackage}/static/{jspackage}/js/main.js`. _How_ that file comes to be may
+  be direct, i.e. copied directly from the template folder, or it could be
+  transpiled from a source file, `{pypackage}/static/src/ts/main.ts`
+
+  If a user selects a larger range of Jupyter versions to support, some
+  features might not be present.
+
 
 #### Server Package Name
 ```shell
@@ -179,22 +199,20 @@ What Jupyter function would you like to extend? (pick some)
   project when importing it in the python server, e.g. superextension?
 ```
 
+> Assuming a user selected one or more pythonic extension points previously,
+  future questions can be:
+  - hidden altogether as irrelevant
+  - show a reduced set of options, due to incompatibility
+  - prepopulated with defaults
+  Throughout the rest of this document, phrases like `Ah, I see you are...`
+  are human-readable indicators as to how the feature graph is being solved.
+
 
 #### Browser Module Name
 ```shell
 ? Ah, I see you are going to be writing some JavaScript. What will you call
   this project when importing it in the browser, e.g.
   jupyter-js-super-notebook-extension?
-```
-
-
-#### Development Line
-```shell
-What versions of Jupyter do you want to support? (pick some)
-  ♢ 3.x (legacy)
-  ♦ 4.x (stable)
-  ♢ 4.x (development with git)
-  ♢ 5.x (experimental with git)
 ```
 
 
@@ -206,6 +224,11 @@ How would you like to distribute your extension? (pick some)
   ♢ conda
   ♢ npm
 ```
+
+> Multiple package managers allow for capturing a number of development cases:
+  a reference implementation of a widget frontend might be developed and
+  bundled with its "host" kernel language, but allow the frontend code to be
+  packaged for other kernels to consume.
 
 
 #### Frontend Code Transpilation
@@ -239,6 +262,9 @@ How would you like to document your extension? (pick some)
   ♢ automatically generated HTML docs (esdoc|jsdoc|typedoc, sphinx)
   ♢ literate annotated source (pycco, docco)
 ```
+
+> Of interest is the "automatic generation" option, which would change based on
+  previous opinions expressed by the user.
 
 
 #### Automation Task Runner
@@ -370,6 +396,7 @@ What would you like to ensure before being able to make a git commit?
 Creating .gitignore...
 Creating .travis.yml...
 Creating setup.py...
+No Javascript found, not creating package.json...
 ...
 
 WHEW! That's it. Thank you for using the Jupyter extension generator!
