@@ -417,6 +417,46 @@ https://github.com/jupyter/generator-jupyter-extension
 Go get coding!
 ```
 
+### Thoughts on Algorithms
+At its core, the answer to each question above demands a number of features (
+e.g. extension point, process, file, etc.)
+
+Each feature can either:
+- require that another feature (or type of feature) be present,
+- demand that another feature is _not_present or
+- express an "affinity" for another feature, such as `CoffeeScript ♥ Jade ♥
+  Stylus`
+
+Once all features are known, then files can actually be created: a file can
+either appear or not appear based on a feature, and if appearing can include
+templated values.
+
+High-level pseudocode for this might be something like:
+```python
+questions = possible_questions()
+features = []
+
+while questions.unanswered(features):
+    features += questions.get(features).ask_user(features)
+
+for template in possible_files():
+    if template.has_features(features):
+        template.write(features)
+```
+
+Ideally, the members of `possible_files` and `possible_questions` can be
+captured as individual files, discoverable at runtime (yeoman does a fair
+amount of globbing, so it's par for the course), helping keep features more
+modular, PR-able and extensible.
+
+
+### Thoughts on Implementation
+Writing the generators and opinion questions as
+[ES6 classes](http://mammal.io/articles/yeoman-generators-es6/) provides
+the most standards-ready and documentable approach to implementing the
+generator(s). Indeed, actually using es6 generators may be a lovely way to clean
+up some of the "callback hell" for which node is so maligned.
+
 
 ### Future Work
 If this proposal is implemented, future work could include:
