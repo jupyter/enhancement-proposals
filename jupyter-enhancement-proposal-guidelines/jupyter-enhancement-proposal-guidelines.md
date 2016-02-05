@@ -1,100 +1,61 @@
-# Jupyter Notebook Translation and Localization
+# Jupyter Enhancement Proposals (JEP) Guidelines
 
 ## Problem
-
-There is currently no standard approach for translating the GUI of Jupyter notebook. This has driven some people to do a [single language translation for Jupyter 4.1](https://twitter.com/Mbussonn/status/685870031247400960).
+Enhancements to the Jupyter ecosystem are currently presented across a multitude of platforms without any centralized management or discussion.
 
 ## Proposed Enhancement
 
-Use Tornado [translation capabilities](http://www.tornadoweb.org/en/stable/locale.html) to translate the GUI's templates. This will cover translating the words and sentences in the GUI and localized styles (like Right to left languages).
+Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem. These changes can include things like:
+* Additions/changes to the message spec
+* API design that is consumed and produced in several contexts (e.g. the notebook kernel API)
+* The notebook format
+
+The format of this README is itself a JEP and can be duplicated for the creation of further JEPs.
 
 ## Detail Explanation
 
-The language of the GUI is mostly hard coded in [html template files](https://github.com/jupyter/notebook/tree/master/notebook/templates) with some exceptions where some language is written in [javascript files](https://github.com/jupyter/notebook/blob/master/notebook/static/notebook/js/about.js#L12) and even a few words in [python code](https://github.com/jupyter/notebook/blob/4578c34b0f999735ee49e1492be3dd5941951551/notebook/base/handlers.py#L332).
+### JEP Titles
 
-### HTML Templates
+Jupyter Enhancement Proposals will be submitted with a title that is no longer than 12-words long. A JEP is uniquely identified by its title and the pull request number associated with it.
 
-Tornado [exposes](http://www.tornadoweb.org/en/stable/guide/templates.html#template-syntax) its `translate()` function to template rendering using `_` as a shorthand (which is common in other libraries web frameworks like Django). This is an example of how to translate the [menu of a notebook](https://github.com/jupyter/notebook/blob/4.x/notebook/templates/notebook.html#L80):
+### JEP Labels
 
-```HTML
-<a href="#">New Notebook</a>
-```
+The pull-request submitted with each JEP will be labeled with the following labels for easy searching:
+* `accepted` — this JEP has been accepted and is currently being implemented
+* `implemented` — this JEP has been implemented
+* `rejected` - this JEP has been rejected and will not be implemented
+* `withdrawn` - this JEP has been withdrawn by the submitter but can be re-submitted if someone is willing to champion it
+* `active` - this JEP is currently under active discussion within the community
 
-This will be done like this:
+### JEP Structure
 
-```HTML
-<a href="#">{{ _("New Notebook") }}</a>
-```
+When submitting an enhancement proposal, individuals will include the following information in their submission.
 
-### Javascrip files
+1. The problem that this enhancement addresses. If possible include code or anecdotes to describe this problem to readers.
+2. A brief (1-2 sentences) overview of the enhancement you are proposing. If possible include hypothetical code sample to describe how the solution would work to readers.
+3. A detailed explanation covering relevant algorithms, data structures, an API spec, and any other relevant technical information
+4. A list of pros that this implementation has over other potential implementations.
+5. A list of cons that this implementation has.
+6. A list of individuals who would be interested in contributing to this enhancement should it be accepted.
 
-Regarding Javascript we will use the same approach as HTML but we will have to do a few more changes to make sure javascript files get translated before they are sent to the browser. The approach for this is as follows:
-
-1. Subclass `web.StaticFileHandler` and call it `JupyterStaticFileHandler`
-2. Overide `get()` function to make it render static files if they end with .js
-3. Use `JupyterStaticFileHandler` instead of the `web.StaticFileHandler` in the RequestHander for static files.
-
-To demonstrate translation in a [jacascript file](https://github.com/jupyter/notebook/blob/4.x/notebook/static/notebook/js/about.js#L12), we will use the following:
-
-```javascript
-var text = 'You are using Jupyter notebook.<br/><br/>';
-```
-
-Will be done like this
-
-```javascript
-var text = "{{ _('You are using Jupyter notebook.<br/><br/>') }}";
-```
-
-### Python files
-
-We can use `translate(message, plural_message=None, count=None)` (or it's shorthand `_`) in Tornado RequestHandler or anywhere else where text it sent to the GUI.
-
-To demonstrate this I'll be using [existing text in python](https://github.com/jupyter/notebook/blob/4578c34b0f999735ee49e1492be3dd5941951551/notebook/base/handlers.py#L332) that needs translation:
-
-```python
-raise web.HTTPError(400, u'Invalid JSON in body of request')
-```
-
-This will be done like this:
-
-```python
-raise web.HTTPError(400, _(u'Invalid JSON in body of request'))
-```
-
-## Translation Files
-
-All languages will be treated as translations including English. All translation files will be located inside the extensions folder and will be treated as extensions. This will allow Jupyter to be shipped with one translation (English) and allows people to get other translations as an nb-extension.
-
-The files will be .po (Portable Object) files for each language and they will be compiled to .mo (Machine Object) files to work with xgettext which is supported by the `translate()` function in Tornado.
-
-The original PO file can be created using [xgettext](http://www.gnu.org/software/gettext/manual/gettext.html#xgettext-Invocation):
-
-```bash
-xgettext [option] [inputfile]
-```
-
-For the translation, we can use a text edit for the PO files. But I would recommend using a crowd-sourced solution where people can translate words or sentences on a web application like [POEdit](https://poeditor.com/features/)
-
-## Which translation to use?
-
-The default configuration file can be used to add a new configuration variable for the default language.
-
-c.gui_language = 'en_US'
-
-We can also set it to "auto" if we want to use Tornado to detect the end-user language which is provided in `Accept-Language` header. Tornado can find the best match for the end-user language or return the default language if it doesn't have that translation.
+### JEP Submission Process
+1. Create a [Markdown](https://help.github.com/articles/github-flavored-markdown/) write up of the problem, proposed enhancement, detailed technical explanation, pros and cons, and interested contributors of the enhancement you are proposing.
+2. Create a fork of this repository.
+3. Create a folder with its name set to the JEP title in lower snake-case.
+3. Place the markdown file created in step 1 and any supplemental materials in that folder.
+4. Submit a pull request to the main repository with your JEP. 
+5. Once your PR is accepted, it will be labeled `active` per the guidelines above.
+6. Your JEP will be added to the JEP Index file in this repository.
 
 ## Pros and Cons
 
 Pros associated with this implementation include:
-* No extra dependencies
-* Using a well known standard that can be extended for any number of languages
-* Can be used later with Jupyter Hub to set multiple languages for multi-lingual teams.
+* A higher quality discussion around enhancement proposals
+* Individuals are encourage to put more thought into an enhancement proposal before submitting it
+* Precedence exists in the form of PEPs (Python Enhancement Proposals) and IPEPs (IPython Enhancement Proposals)
 
 Cons associated with this implementation include:
-* Javascrip strings and HTML files will have `{{ _(XXX) }}` in the source code.
-* A change in the development guide lines to use translation
-* Rendering javascript files means you cannot use `{{XXX}}` or `{% X %}` inside any javascript files. This means no [mustache](https://mustache.github.io/) (It is not used now, but it cannot be used in the future).
+* Existing IPEPs (IPython Enhancement Proposals) will not be included in this migrated repository
 
 ## Interested Contributors
-@twistedhardware @rgbkrk
+@captainsafia, @rgbkrk
