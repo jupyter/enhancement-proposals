@@ -94,6 +94,7 @@ Pros associated with this implementation include:
 Cons associated with this implementation include:
 * Javascrip strings and HTML files will have `{{ _(XXX) }}` in the source code.
 * A change in the development guide lines to use translation
+* Rendering javascript files means you cannot use `{{XXX}}` or `{% X %}` inside any javascript files. This means no [mustache](https://mustache.github.io/) (It is not used now, but it cannot be used in the future).
 
 ## Interested Contributors
 @twistedhardware @rgbkrk
