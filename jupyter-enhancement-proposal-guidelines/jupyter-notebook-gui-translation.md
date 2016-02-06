@@ -4,6 +4,12 @@
 
 There is currently no standard approach for translating the GUI of Jupyter notebook. This has driven some people to do a [single language translation for Jupyter 4.1](https://twitter.com/Mbussonn/status/685870031247400960).
 
+For information: previous attempts and related issues:
+
+- ipython/ipython#6718
+- ipython/ipython#5922
+- jupyter/notebook#870
+
 ## Proposed Enhancement
 
 Use Tornado [translation capabilities](http://www.tornadoweb.org/en/stable/locale.html) to translate the GUI's templates. This will cover translating the words and sentences in the GUI and localized styles (like Right to left languages).
@@ -97,4 +103,4 @@ Cons associated with this implementation include:
 * Rendering javascript files means you cannot use `{{XXX}}` or `{% X %}` inside any javascript files. This means no [mustache](https://mustache.github.io/) (It is not used now, but it cannot be used in the future).
 
 ## Interested Contributors
-@twistedhardware @rgbkrk
+@twistedhardware @rgbkrk @captainsafia
