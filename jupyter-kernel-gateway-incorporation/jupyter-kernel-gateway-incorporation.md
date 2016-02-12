@@ -47,7 +47,7 @@ The server launches kernels in its local process/filesystem space. It can be con
 
 ### Current Features
 
-The ["What It Gives You" section of the project README](https://github.com/jupyter-incubator/kernel_gateway#what-it-gives-you) details the currently implemented features.
+The ["What It Gives You" section of the project README](https://github.com/jupyter-incubator/kernel_gateway#what-it-gives-you) details the currently implemented features. The [jupyter-incubator/kernel_gateway_demos](https://github.com/jupyter-incubator/kernel_gateway_demos) repository contains many runnable examples.
 
 ### Criteria for Incorporation
 
@@ -92,4 +92,4 @@ The kernel gateway is packaged using setup tools, released in both source and wh
 
 ## Interested Contributors
 
-@parente
+@parente, @rgbkrk
