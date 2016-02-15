@@ -24,7 +24,7 @@ Originally, these applications spawned entire Jupyter Notebook servers in order 
 
 ## Proposed Enhancement
 
-The incubating [Jupyter Kernel Gateway project]() has matured to the point where it addresses the issues noted above, and others. It should be considered for incorporation into the main Jupyter organization as an official Subproject.
+The incubating [Jupyter Kernel Gateway project](https://github.com/jupyter-incubator/kernel_gateway) has matured to the point where it addresses the issues noted above, and others. It should be considered for incorporation into the main Jupyter organization as an official Subproject.
 
 ## Detailed Explanation
 
@@ -35,7 +35,7 @@ The kernel gateway is a web server that supports mechanisms for spawning and com
     * Communicating with those kernels using the [Jupyter kernel protocol](http://jupyter-client.readthedocs.org/en/latest/messaging.html) via Websockets
 2. A notebook-defined API that maps HTTP verbs (e.g., `GET`, `POST`) and resources (e.g., `/foo/:bar`) to code to execute on a kernel
 
-The server launches kernels in its local process/filesystem space. It can be containerized and scaled out using common technology like [tmpnb](https://github.com/jupyter/tmpnb), [Cloud Foundry](), and [Kubernetes]().
+The server launches kernels in its local process/filesystem space. It can be containerized and scaled out using common technology like [tmpnb](https://github.com/jupyter/tmpnb), [Cloud Foundry](https://github.com/cloudfoundry), and [Kubernetes](http://kubernetes.io/).
 
 ### Current and Potential Use Cases
 
@@ -43,7 +43,7 @@ The server launches kernels in its local process/filesystem space. It can be con
 * Enable non-notebook web clients to provision and use kernels via libraries like  [jupyter-js-services](https://github.com/jupyter/jupyter-js-services))
 * Scale Jupyter kernels independently from clients (e.g., via [tmpnb](https://github.com/jupyter/tmpnb), [Binder](https://mybinder.org), your favorite cluster manager)
 * Provision and connect to kernels on a remote cloud provider from a local Jupyter Notebook server
-* Deploy notebooks as [RESTful microservices]()
+* Deploy notebooks as [RESTful microservices](http://blog.ibmjstart.net/2016/01/28/jupyter-notebooks-as-restful-microservices/)
 
 ### Current Features
 
