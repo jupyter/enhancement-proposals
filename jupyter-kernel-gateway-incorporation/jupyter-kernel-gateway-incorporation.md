@@ -13,12 +13,12 @@ People are creating novel applications and libraries that use Jupyter kernels as
 
 These applications have two important properties in common:
 
-1. They spawn kernels using provisioning APIs that run separate, and often remote, from the user-facing web applications themselves.
+1. They spawn kernels using provisioning APIs that run separate, and often remote, from the user-facing applications themselves.
 2. They communicate with kernels using Websockets rather than directly with ZeroMQ.
 
-Originally, these applications spawned entire Jupyter Notebook servers in order to request kernels using notebook HTTP API and communicate with them over Websockets. This approach is less than ideal, however, for various reasons:
+Some of these application have spawned (or still do spawn) entire Jupyter Notebook servers on the backend in order to request kernels using notebook HTTP API and communicate with them over Websockets. This approach is less than ideal, however, for various reasons:
 
-1. The notebook UI is exposed but only the programmatic UI is used
+1. The notebook UI is exposed, but only the programmatic UI is used
 2. The notebook authentication mechanism is form- and cookie-based and meant for humans, not programmatic clients
 3. The notebook transport mechanisms and APIs serve the notebook user experience, and are not meant to be replaced or extended to support other clients
 
