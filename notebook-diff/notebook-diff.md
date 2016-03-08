@@ -217,6 +217,19 @@ behaviour of the multilevel approach must be investigated further and
 other approaches could be considered..
 
 
+### Displaying metadata diffs
+
+The notebook format has metadata in various locations,
+including on each cell, output, and top-level on the notebook.
+These are dictionaries with potentially arbitrary JSON content.
+Computing metadata diffs is not different from any other dictionary diff.
+However, metadata generally does not have a visual representation in the live notebook,
+but it must be indicated in the diff view if there are changes.
+We will explore various represenentations of metadata changes in the notebook view.
+The most primitive would be to display the raw dictionary diff as a JSON field in the notebook view,
+near the displayable item the metadata is associated with.
+
+
 ### Note about the potential addition of a "move" transformation
 
 In the current implementation there is no "move" operation.
