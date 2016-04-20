@@ -18,7 +18,7 @@ advantages over the current situation, including:
 
 When a frontend wants to start a kernel, it currently instantiates a `KernelManager`
 object which reads the kernelspec to find how to start the kernel, writes a
-connection file, and launches the kernel process. With this process, it will
+connection file, and launches the kernel process. With the proposed changes, it will
 instead launch the kernel nanny on the machine where the kernel is to run, and
 the nanny will be responsible for creating the connection file and launching
 the kernel process.
