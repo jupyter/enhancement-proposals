@@ -2,17 +2,28 @@
 
 ## Problem
 
-There is currently no standard approach for translating the GUI of Jupyter notebook. This has driven some people to do a [single language translation for Jupyter 4.1](https://twitter.com/Mbussonn/status/685870031247400960).
+There is currently no standard approach for translating the GUI of Jupyter notebook.
+This has driven some people to do a
+[single language translation for Jupyter 4.1](https://twitter.com/Mbussonn/status/685870031247400960).
 
 For information: previous attempts and related issues:
 
-- ipython/ipython#6718
-- ipython/ipython#5922
-- jupyter/notebook#870
+- https://github.com/ipython/ipython/issues/6718
+- https://github.com/ipython/ipython/pull/5922
+- https://github.com/jupyter/notebook/issues/870
 
 ## Proposed Enhancement
 
-Use Tornado [translation capabilities](http://www.tornadoweb.org/en/stable/locale.html) to translate the GUI's templates. This will cover translating the words and sentences in the GUI and localized styles (like Right to left languages).
+For Python or Jinja2: use [Jinja2 with Babel](http://jinja.pocoo.org/docs/dev/extensions/#i18n-extension) 
+to create `.pot` -> Translators translate -> create `.po` -> compile and create `.mo` from `.po` ( probably at install time ).
+Python or Jinja2 consumes the .mo directly.
+
+For JavaScript (client side), use Babel ( [pybabel extract](http://babel.pocoo.org/en/latest/cmdline.html?highlight=extract) ) to create 
+.pot -> Translators translate -> create .po -> Create JSON as text from .po by 
+[iterating over the catalog](http://babel.pocoo.org/en/latest/api/messages/catalog.html#catalogs)
+and then [export to JSON](https://docs.python.org/2/library/json.html).
+From there, [jQuery Globalize](https://github.com/jquery/globalize/blob/master/doc/api/message/load-messages.md)
+can read and process the message catalog.
 
 ## Detail Explanation
 
@@ -32,7 +43,7 @@ This will be done like this:
 <a href="#">{{ _("New Notebook") }}</a>
 ```
 
-### Javascrip files
+### Javascript files
 
 Regarding Javascript we will use the same approach as HTML but we will have to do a few more changes to make sure javascript files get translated before they are sent to the browser. The approach for this is as follows:
 
@@ -98,9 +109,10 @@ Pros associated with this implementation include:
 * Can be used later with Jupyter Hub to set multiple languages for multi-lingual teams.
 
 Cons associated with this implementation include:
-* Javascrip strings and HTML files will have `{{ _(XXX) }}` in the source code.
+* Javascript strings and HTML files will have `{{ _(XXX) }}` in the source code.
 * A change in the development guide lines to use translation
 * Rendering javascript files means you cannot use `{{XXX}}` or `{% X %}` inside any javascript files. This means no [mustache](https://mustache.github.io/) (It is not used now, but it cannot be used in the future).
 
 ## Interested Contributors
-@twistedhardware @rgbkrk @captainsafia
+@twistedhardware @rgbkrk @captainsafia @JCEmmons @srl295
+
