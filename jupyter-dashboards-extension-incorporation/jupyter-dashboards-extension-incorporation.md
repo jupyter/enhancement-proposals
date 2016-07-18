@@ -86,7 +86,7 @@ The `jupyter-incubator/dashboards` repository has 151 stars and 30 watchers on G
 
 The extension has a small suite of frontend smoke tests that use Selenium to drive the UI additions to the Notebook server. The tests run on SauceLabs via Travis CI on every PR merge.
 
-The documentation for the dashboards extension currently resides in the README, on the dashboards wiki, and in help text situated within the extension UI itself. We can consolidate this documentation into a ReadTheDocs site post-graduation (much like we did with kernel gateway).
+User and developer documentation about the extension resides on ReadTheDocs at http://jupyter-dashboards-layout.readthedocs.io. We plan to migrate additional information to these docs from https://github.com/jupyter-incubator/dashboards/wiki.
 
 #### Demonstrate continued growth and development.
 
