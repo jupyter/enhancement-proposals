@@ -14,104 +14,200 @@ For information: previous attempts and related issues:
 
 ## Proposed Enhancement
 
-For Python or Jinja2: use [Jinja2 with Babel](http://jinja.pocoo.org/docs/dev/extensions/#i18n-extension) 
-to create `.pot` -> Translators translate -> create `.po` -> compile and create `.mo` from `.po` ( probably at install time ).
-Python or Jinja2 consumes the .mo directly.
+Use [Babel](http://babel.pocoo.org/en/latest/)
+to extract translatable strings from the Jupyter code, creating `.pot` files that can be updated
+whenever the code base changes. The `.pot` file can be thought of as the source from which all translations are derived.
 
-For JavaScript (client side), use Babel ( [pybabel extract](http://babel.pocoo.org/en/latest/cmdline.html?highlight=extract) ) to create 
-.pot -> Translators translate -> create .po -> Create JSON as text from .po by 
-[iterating over the catalog](http://babel.pocoo.org/en/latest/api/messages/catalog.html#catalogs)
-and then [export to JSON](https://docs.python.org/2/library/json.html).
-From there, [jQuery Globalize](https://github.com/jquery/globalize/blob/master/doc/api/message/load-messages.md)
-can read and process the message catalog.
+Translators and/or interested contributors can then use utilities such as [Poedit](https://poedit.net/) to create
+translated `.po` files from the master `.pot` file for the desired languages.
 
-## Detail Explanation
+At install time, convert the translated `.po` into two runtime formats:
+* Convert to `.mo` which can be used by Python code using the gettext() APIs in Python, and can also be used by
+the i18n extensions in [Jinja2](http://jinja.pocoo.org/docs/dev/extensions/#i18n-extension)
 
-The language of the GUI is mostly hard coded in [html template files](https://github.com/jupyter/notebook/tree/master/notebook/templates) with some exceptions where some language is written in [javascript files](https://github.com/jupyter/notebook/blob/master/notebook/static/notebook/js/about.js#L12) and even a few words in [python code](https://github.com/jupyter/notebook/blob/4578c34b0f999735ee49e1492be3dd5941951551/notebook/base/handlers.py#L332).
+* Convert to JSON using [po2json](https://github.com/mikeedwards/po2json) for consumption by the Javascript
+code within Jupyter.
 
-### HTML Templates
+## Detailed Explanation
 
-Tornado [exposes](http://www.tornadoweb.org/en/stable/guide/templates.html#template-syntax) its `translate()` function to template rendering using `_` as a shorthand (which is common in other libraries web frameworks like Django). This is an example of how to translate the [menu of a notebook](https://github.com/jupyter/notebook/blob/4.x/notebook/templates/notebook.html#L80):
+The Jupyter notebook code presents a significant challenge in terms of enablement for translation,
+mostly because there are multiple different types of source code from which translatable UI strings
+are derived.
 
-```HTML
-<a href="#">New Notebook</a>
-```
+In Jupyter, translatable strings can come from one of three places:
 
-This will be done like this:
+1. Directly from Python code
 
-```HTML
-<a href="#">{{ _("New Notebook") }}</a>
-```
+2. As part of a Jinja2 HTML template, which is consumed by Python code
 
-### Javascript files
+3. From Javascript code
 
-Regarding Javascript we will use the same approach as HTML but we will have to do a few more changes to make sure javascript files get translated before they are sent to the browser. The approach for this is as follows:
+For each of these three types, it is necessary to follow a few simple steps in order to allow the code
+to work properly in a translated environment.  These steps are:
 
-1. Subclass `web.StaticFileHandler` and call it `JupyterStaticFileHandler`
-2. Overide `get()` function to make it render static files if they end with .js
-3. Use `JupyterStaticFileHandler` instead of the `web.StaticFileHandler` in the RequestHander for static files.
+1. Use an established API to identify those strings in the source code that are presented as UI
+and thus should be translatable.
+2. Provide the hooks in the source code that will allow the code to access translated strings
+at run time.
 
-To demonstrate translation in a [jacascript file](https://github.com/jupyter/notebook/blob/4.x/notebook/static/notebook/js/about.js#L12), we will use the following:
+Once these have been done, the [Babel](http://babel.pocoo.org/en/latest/) utilities provide an easy to
+use mechanism to identify the files in the Jupyter code base that contain translatable strings, and
+extract all of them into a single file ( a `.pot` file ) that is used as the basis for translation.
 
-```javascript
-var text = 'You are using Jupyter notebook.<br/><br/>';
-```
-
-Will be done like this
-
-```javascript
-var text = "{{ _('You are using Jupyter notebook.<br/><br/>') }}";
-```
+Let's look at how this would look for each of the three types mentioned above:
 
 ### Python files
 
-We can use `translate(message, plural_message=None, count=None)` (or it's shorthand `_`) in Tornado RequestHandler or anywhere else where text it sent to the GUI.
-
-To demonstrate this I'll be using [existing text in python](https://github.com/jupyter/notebook/blob/4578c34b0f999735ee49e1492be3dd5941951551/notebook/base/handlers.py#L332) that needs translation:
-
-```python
-raise web.HTTPError(400, u'Invalid JSON in body of request')
-```
-
-This will be done like this:
+Some UI strings in the Jupyter notebook come directly from Python code. For these strings, the most
+widely accepted way to make them translatable is to use Python's gettext() API. When using gettext(),
+the developer simply needs to enclose the translatable Python string within _(), and add the appropriate
+calls in the Python to retrieve that string from the message catalog at run time. So for example:
 
 ```python
-raise web.HTTPError(400, _(u'Invalid JSON in body of request'))
+return info + "The Jupyter Notebook is running at: %s" % self.display_url
 ```
+
+becomes
+
+```python
+return info + _("The Jupyter Notebook is running at: %s") % self.display_url
+```
+
+After this step is complete, then hooks must be put in place in order to tell Python to use gettext()
+to retrieve the string from the message catalog at runtime. This is simply a matter of adding
+```python
+import gettext
+```
+at the top of the python code and then adding
+```python
+# Set up message catalog access
+trans = gettext.translation('notebook', localedir=os.path.join(base_dir, 'locale'), fallback=True)
+trans.install()
+```
+
+Once this is complete, any calls to `_()` in the code will retrieve a translated string from 
+${base_dir}/locale/**xx**/LC_MESSAGES/notebook.mo, where **xx** is the language code in use
+when the notebook is launched.
+For example "de" for German, "fr" for French, etc. If no message catalog is available, or if
+the string doesn't exist in the catalog, then the string passed as the argument to _() is
+returned.
+
+
+### HTML Templates
+The majority of the language of the GUI is contained in [html template files](https://github.com/jupyter/notebook/tree/master/notebook/templates) 
+and accessed via [Jinja2](http://jinja.pocoo.org).
+
+For the HTML templates, I recommend that we use the [Jinja2 i18n extension]
+(http://jinja.pocoo.org/docs/dev/extensions/#i18n-extension) that allows us to specify which portions of each template contain translatable
+strings, and is quite compatible with gettext() as described above.  
+The extension contains some features that allow for things like variable substitution and simple plural handling,
+but in it's simplest form it uses tags `{% trans %}` and `{% endtrans %}` to delimit those strings that are translatable.
+Thus, the message at the top of the first screen you see when starting Jupyter looks like this in the template:
+
+```html
+<div class="dynamic-instructions">
+    {% trans %}Select items to perform actions on them.{% endtrans %}
+</div>
+```
+
+After properly externalizing all the strings, hooking it all up to work with [Jinja2](http://jinja.pocoo.org) is a matter of
+loading the translations from the **SAME** message catalog as was defined in the Python example above, into Jinja2.
+Here's an example of how that would be done within Jupyter:
+
+```python
+        env = Environment(loader=FileSystemLoader(template_path), extensions=['jinja2.ext.i18n'], **jenv_opt)
+        env.install_gettext_translations(trans, newstyle=False)
+```
+
+Note here that **trans** is the same variable initialized by `gettext.translation()` in the Python example earlier.
+
+### Javascript files
+
+For Javascript, there are no established APIs that can consume a compiled `.mo` file directly in the same way as gettext().
+However, there is a library called [Jed](https://slexaxton.github.io/Jed/) that provides an API set similar to gettext().
+[Jed](https://slexaxton.github.io/Jed/) uses JSON as it's input file instead of `.mo` files, but
+the good news here is that there are plenty of 3rd party utilities that can convert from `.po` into a form of JSON that
+can be consumed by Jed. The author of [Jed](https://slexaxton.github.io/Jed/) recommends
+[po2json](https://www.npmjs.com/package/po2json), which can be used
+either as a command line utility, or directly from Javascript.  I suspect that the conversion from `.po` to either
+`.mo` for Python or Jinja2, or conversion to JSON for Javascript would be something we would want to do at install time.
+
+Identification of strings for translation using this method is done similarly to the way we would do it for Python:
+by creating a function named `_()`, enclosing all translatable strings as an argument to this function, and then
+binding it to the `gettext()` API.  The binding in Javascript would look like this:
+
+```javascript
+    var i18n = new Jed(nbjson);
+    var _ = function (text) {
+    	return i18n.gettext(text);
+    }
+
+```
+
+Then to externalize a string, just enclose it in `_()`, for example:
+
+```javascript
+if (selectable !== undefined) {
+    checkbox = $('<input/>')
+        .attr('type', 'checkbox')
+        .attr('title', _('Click here to rename, delete, etc.'))
+        .appendTo(item);
+}
+```
+
+## Use of Babel to extract translatable strings
+
+[Babel](http://babel.pocoo.org/en/latest/) allows us to define a set of rules that define
+where all the extractable strings are (whether Python, HTML template, or Javascript), what the
+extraction methods are (i.e. `_()` for Python or Javascript, and `<% trans >`/`<% endtrans %>`
+for the HTML templates, and do all the necessary extractions to create a single `.pot` in one
+easy step.  This definition is done by creating a `babel.cfg` file, which looks something like this:
+
+```
+[python: **/**.py]
+[jinja2: notebook/templates/**.html]
+ encoding = utf-8
+[extractors] 
+ jinja2 = jinja2.ext:babel_extract
+[javascript: notebook/static/tree/js/*.js]
+extract_messages = $._
+```
+
+Once this is defined, message extraction can be performed using the [pybabel -extract](http://babel.pocoo.org/en/latest/cmdline.html)
+command.  This should be done anytime the English source strings are modified.
 
 ## Translation Files
 
-All languages will be treated as translations including English. All translation files will be located inside the extensions folder and will be treated as extensions. This will allow Jupyter to be shipped with one translation (English) and allows people to get other translations as an nb-extension.
+We haven't yet determined exactly which set of languages we plan to contribute to the project once
+the enablement work is complete, but this framework should allow any other interested parties to
+perform the translation and testing work at their discretion.
 
-The files will be .po (Portable Object) files for each language and they will be compiled to .mo (Machine Object) files to work with xgettext which is supported by the `translate()` function in Tornado.
-
-The original PO file can be created using [xgettext](http://www.gnu.org/software/gettext/manual/gettext.html#xgettext-Invocation):
-
-```bash
-xgettext [option] [inputfile]
-```
-
-For the translation, we can use a text edit for the PO files. But I would recommend using a crowd-sourced solution where people can translate words or sentences on a web application like [POEdit](https://poeditor.com/features/)
-
-## Which translation to use?
-
-The default configuration file can be used to add a new configuration variable for the default language.
-
-c.gui_language = 'en_US'
-
-We can also set it to "auto" if we want to use Tornado to detect the end-user language which is provided in `Accept-Language` header. Tornado can find the best match for the end-user language or return the default language if it doesn't have that translation.
 
 ## Pros and Cons
 
 Pros associated with this implementation include:
-* No extra dependencies
-* Using a well known standard that can be extended for any number of languages
-* Can be used later with Jupyter Hub to set multiple languages for multi-lingual teams.
+* Using established APIs such as `gettext()`, which are stable and have been around for many years.
+* Message extraction can be done in such a way that a single file, or perhaps a small set of files
+can be delivered to a translator.
+* We don't have to have a different file format for each different technology used (Python / HTML template / Javascript )
+* Much of the tooling needed has already been written, we just need to make use of it.
 
 Cons associated with this implementation include:
-* Javascript strings and HTML files will have `{{ _(XXX) }}` in the source code.
-* A change in the development guide lines to use translation
-* Rendering javascript files means you cannot use `{{XXX}}` or `{% X %}` inside any javascript files. This means no [mustache](https://mustache.github.io/) (It is not used now, but it cannot be used in the future).
+* There are many external dependencies: 
+[Babel](http://babel.pocoo.org/en/latest/),
+[Jed](https://slexaxton.github.io/Jed/),
+[po2json](https://github.com/mikeedwards/po2json).  There may be some difficulties with the licensing.
+* Jupyter notebook developers have to be made aware of the proper ways to externalize any new strings
+that are added, and to perform message extraction via [Babel](http://babel.pocoo.org/en/latest/)
+whenever strings change.
+
+
+## Prototype - Proof of Concept
+I have created a **VERY** preliminary prototype of Jupyter notebook at (https://github.com/JCEmmons/notebook/tree/intl)
+using the concepts presented here.  Only a handful of the strings are externalized, but there are some
+from each of the 3 types, and I used [Poedit](https://poedit.net/) to create some hopefully reasonable translations
+into German, Japanese, and Russian.  I haven't yet had time to add the necessary code to the Javascript
+in order to do dynamic loading of the JSON, but that would be the next step.
 
 ## Interested Contributors
 @twistedhardware @rgbkrk @captainsafia @JCEmmons @srl295
