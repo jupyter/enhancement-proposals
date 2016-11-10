@@ -2,7 +2,7 @@
 
 ## Problem
 
-There is currently no standard approach for translating the GUI of Jupyter notebook.
+There is currently no standard approach for translating the GUI of [Jupyter notebook]( https://github.com/jupyter/notebook).
 This has driven some people to do a
 [single language translation for Jupyter 4.1](https://twitter.com/Mbussonn/status/685870031247400960).
 
@@ -11,6 +11,12 @@ For information: previous attempts and related issues:
 - https://github.com/ipython/ipython/issues/6718
 - https://github.com/ipython/ipython/pull/5922
 - https://github.com/jupyter/notebook/issues/870
+
+## Scope
+The proposed enhancement is for "classic" [Jupyter notebook]( https://github.com/jupyter/notebook),
+not [Jupyter lab](https://github.com/jupyterlab/jupyterlab).
+Hopefully, some of the concepts used here will carry over, but for now the scope here is limited to classic
+[Jupyter notebook]( https://github.com/jupyter/notebook).
 
 ## Proposed Enhancement
 
@@ -30,11 +36,11 @@ code within Jupyter.
 
 ## Detailed Explanation
 
-The Jupyter notebook code presents a significant challenge in terms of enablement for translation,
+The [Jupyter notebook code]( https://github.com/jupyter/notebook) presents a significant challenge in terms of enablement for translation,
 mostly because there are multiple different types of source code from which translatable UI strings
 are derived.
 
-In Jupyter, translatable strings can come from one of three places:
+In [Jupyter notebook]( https://github.com/jupyter/notebook), translatable strings can come from one of three places:
 
 1. Directly from Python code
 
