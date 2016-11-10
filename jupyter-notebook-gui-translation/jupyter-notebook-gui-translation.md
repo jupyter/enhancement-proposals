@@ -98,6 +98,10 @@ For example "de" for German, "fr" for French, etc. If no message catalog is avai
 the string doesn't exist in the catalog, then the string passed as the argument to _() is
 returned.
 
+In this context, **${base_dir}** refers to the base installation directory for notebook. We are
+assuming that all provided translations will be small enough so that they can be shipped
+with notebook itself instead of having to be split out into separately installable packages.
+
 
 ### HTML Templates
 The majority of the language of the GUI is contained in [html template files](https://github.com/jupyter/notebook/tree/master/notebook/templates) 
