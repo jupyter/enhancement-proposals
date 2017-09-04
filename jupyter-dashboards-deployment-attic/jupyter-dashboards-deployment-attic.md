@@ -29,7 +29,7 @@ Members of the original development team have moved on from the project for a va
 
 #### Have an active user community.
 
-There is [certainly user interest](https://github.com/jupyter-incubator/dashboards_server/issues/319) in a dashboard deployment solution for Jupyter notebooks. However, users who have tried the deployment projects [have met with limited success](https://github.com/jupyter-incubator/dashboards_server/issues) given the current complexity of [running the full project stack](https://github.com/jupyter/dashboards/wiki#get-started).
+There is [certainly user interest](https://github.com/jupyter-incubator/dashboards_server/issues/319) in a dashboard deployment solution for Jupyter notebooks. However, users who have tried the deployment projects [have met with limited success](https://github.com/jupyter-incubator/dashboards_server/issues) given the current complexity of [running the full project stack](https://github.com/jupyter/dashboards/wiki#get-started) due to lack of work on making it easier over the past year.
 
 #### Demonstrate continued growth and development.
 
