@@ -9,9 +9,8 @@ scientists to run frequent and large workloads against a large Apache Spark clus
 several requirements that were not currently available in the Jupyter open source ecosystem. We tried
 to use the Jupyter Kernel Gateway project, but we quickly realized that the JKG server became the
 bottleneck because the co-located Spark driver application for these kinds of workloads (in this case,
-the kernel process running on behalf of notebook cells) were extremely resource intensive. Toss in a team
-or organization of data scientists, and you quickly saturate the compute resources of the Kernel Gateway
-server.
+the kernel process running on behalf of notebook cells) were extremely resource intensive. In organizations
+with multiple data scientists, you can quickly saturate the compute resources of the Kernel Gateway server.
 
 Jupyter Enterprise Gateway enables Jupyter Notebook to launch and manage remote kernels in a distributed cluster,
 including Apache Spark managed by YARN, IBM Spectrum Conductor or Kubernetes. New platforms can be added via an
@@ -88,7 +87,7 @@ Other then that, below are some stats that have been collected from the Jupyter 
 - 10 contributors
 - 5 different organizations (based on current employment)
 - 205 commits (16,551 additions, 9,616 removals)
-- 59 Stars
+- 60 Stars
 - 26 Forks
 - 10K+ pulls of primary docker image
 
@@ -131,7 +130,9 @@ The Enterprise Gateway is packaged using setup tools, released in both source an
 ## Pros and Cons
 
 Pro: Extend Jupyter Stack to support distributed/remote Kernels
+
 Pro: The runtime can easily be extensible to support new cluster resource managers
+
 Con: Still requires couple extensions (e.g. NB2KG) to connect to the gateway
 
 ## Interested Contributors
