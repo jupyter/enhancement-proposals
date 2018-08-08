@@ -25,9 +25,7 @@ into the main Jupyter organization as an official Subproject.
 
 ## Detailed Explanation
 
-
-
-
+Please see below detailed project information.
 
 ### Current and Potential Use Cases
 
@@ -74,13 +72,13 @@ Jupyter Enterprise Gateway support for Kubernetes enables decoupling the Jupyter
 ![Jupyter Enterprise Gateway enable remote kernels on Kubernetes cluster](jupyter_enterprise_gateway_on_kubernetes.png)
 
 
-### Criteria for Incorporation
+## Criteria for Incorporation
 
-#### Have an active developer community that offers a sustainable model for future development.
+### Have an active developer community that offers a sustainable model for future development.
 
 The enterprise gateway reuses and extends classes from the Jupyter `kernel_gateway` and `notebook` Python package. By virtue of this implementation, it is largely sustained by development of the `jupyter/notebook` project. Minimal maintenance is required to ensure the enterprise gateway codebase continues to interoperate with future releases of the `notebook` package.
 
-#### Have an active user community.
+### Have an active user community.
 
 Enterprise gateway is a fundamental component in multiple IBM Cloud offerings, and has also been adopted in a few large companies that are providing Analytical and/or AI platform for it's internal/external customers.
 
@@ -94,7 +92,7 @@ Other then that, below are some stats that have been collected from the Jupyter 
 - 26 Forks
 - 10K+ pulls of primary docker image
 
-#### Use solid software engineering with documentation and tests hosted with appropriate technologies.
+### Use solid software engineering with documentation and tests hosted with appropriate technologies.
 
 The Enterprise Gateway has a suite of unit and integration tests that are run automatically on Travis on every PR and any commits to master.
 
@@ -108,31 +106,33 @@ The Jupyter Enterprise Gateway community provides multiple resources that both u
 - Related Docker Images available at Elyra organization at DockerHub: https://hub.docker.com/u/elyra/dashboard/
 
 
-#### Demonstrate continued growth and development.
+### Demonstrate continued growth and development.
 
 See "Have an active developer community that offers a sustainable model for future development" and "Have an active user community" sections above.
 
-#### Integrate well with other official Subprojects.
+### Integrate well with other official Subprojects.
 
 The Enterprise Gateway is a `jupyter/jupyter_core#Application` that uses programmatic APIs from `jupyter/notebook` to enable communication with Jupyter kernels like `ipython/ipykernel`. By definition, it integrates with other official Subprojects.
 
 We are also looking for investigating deep integration with `JupyterHib` to decouple the kernel instances into specific pods in a kubernetes environment.
 
-#### Be developed according to the Jupyter governance and contribution model.
+### Be developed according to the Jupyter governance and contribution model.
 
 The Enterprise Gateway is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.
 
-#### Have a well-defined scope.
+### Have a well-defined scope.
 
 Jupyter Enterprise Gateway enables Jupyter Notebook to launch remote kernels in a distributed cluster, including Apache Spark managed by YARN, IBM Spectrum Conductor or Kubernetes.
 
-#### Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.
+### Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.
 
 The Enterprise Gateway is packaged using setup tools, released in both source and wheel format on PyPI, and installable using `pip`.  It is also available in conda forge.
 
 ## Pros and Cons
 
-
+Pro: Extend Jupyter Stack to support distributed/remote Kernels
+Pro: The runtime can easily be extensible to support new cluster resource managers
+Con: Still requires couple extensions (e.g. NB2KG) to connect to the gateway
 
 ## Interested Contributors
 
