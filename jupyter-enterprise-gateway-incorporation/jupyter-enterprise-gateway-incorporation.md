@@ -107,13 +107,15 @@ The Jupyter Enterprise Gateway community provides multiple resources that both u
 
 ### Demonstrate continued growth and development.
 
-See "Have an active developer community that offers a sustainable model for future development" and "Have an active user community" sections above.
+Since entering incubation, the Jupyter Enterprise Gateway have added several new code contributors, performed 7 releases, and added support for two new resource managers - including support for Kubernetes. The community has also seen a recent increase on issues/questions submitted to the project, which implies more users are interested in, and deploying, Enterprise Gateway.
 
-### Integrate well with other official Subprojects.
+In addition, we believe that by building upon the existing Jupyter stack, a majority of the necessary changes on Enterprise Gateway will be in the area of adding/maintaining support for resource managers (i.e., process proxy implementations).  As a result Enterprise Gateway should continue to maintain compatibility/interoperability with new versions of Notebook components with little or no effort.
 
-The Enterprise Gateway is a `jupyter/jupyter_core#Application` that uses programmatic APIs from `jupyter/notebook` to enable communication with Jupyter kernels like `ipython/ipykernel`. By definition, it integrates with other official Subprojects.
+### Integrate well with other official subprojects.
 
-We are also looking for investigating deep integration with `JupyterHib` to decouple the kernel instances into specific pods in a kubernetes environment.
+The Enterprise Gateway is a `jupyter/jupyter_core#Application` that uses programmatic APIs from `jupyter/notebook`, `jupyter/jupyter_client` and `jupyter/kernel_gateway` to enable communication with Jupyter kernels like `ipython/ipykernel`. By definition, it integrates with other official Subprojects.
+
+We are also looking for investigating deep integration with `JupyterHub` to decouple the kernel instances into specific pods in a kubernetes environment.
 
 ### Be developed according to the Jupyter governance and contribution model.
 
