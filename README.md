@@ -1,6 +1,6 @@
 # Jupyter Enhancement Proposals
 
-This repository contains enhancement proposals for the Jupyter ecosystem, known as Jupyter Enhancement Proposals or JEPs. Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem.
+This repository contains enhancement proposals for the Jupyter ecosystem, known as Jupyter Enhancement Proposals or JEPs. Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem OR changes to a single key component.
 
 ## Index of Accepted JEPs
 
