@@ -1,5 +1,15 @@
 # Standalone Jupyter server enhancement proposal [active]
 
+| Item       | Value                                                                                                                        |
+|------------|------------------------------------------------------------------------------------------------------------------------------|
+| JEP Number | 10                                                                                                                           |
+| Title      | Standalone Jupyter Server                                                                                                    |
+| Authors    | Zach Sailer ([@Zsailer](https://github.com/Zsailer)) and Sylvain Corlay ([@SylvainCorlay](https://github.com/sylvaincorlay)) |
+| Status     | Draft                                                                                                                        |
+| Type       | S - [Standards Track](https://www.python.org/dev/peps/#pep-types-key) JEP                                                    |
+| Created    | 20 September 2016                                                                                                            |
+| History    | 20 September 2016, 12 February 2019                                                                                          |
+
 ## Problem
 
 There are now multiple frontends that talk to the backend services provided by the notebook server: the legacy Notebook, the dashboards, JupyterLab, standalone widgets and more. The configuration of legacy notebook and the backend server are tightly coupled. As a consequence, the other applications are forced to load the legacy notebook to use the backend server.
