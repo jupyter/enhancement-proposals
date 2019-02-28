@@ -18,27 +18,27 @@ There are now multiple frontends that talk to the backend services provided by t
 
 Decouple the backend server (and its configuration) from the classic notebook frontend. This will require the following steps:
 
-1. Separate `jupyter_server` repository
+1. [Separate `jupyter_server` repository](#separate-jupyter_server-repository)
     - A fork of the `notebook` repository. 
     - Pure Python package with notebook backend services.
     - `notebook` tornado handlers and frontend logic stay in `notebook` repo.
     - Deprecated notebook server APIs do not move to `jupyter_server`.
-1. Clearly define the smallest unit that is a "Jupyter Server"
+1. [Clearly define the smallest unit that is a "Jupyter Server"](#clearly-define-the-smallest-unit-that-is-a-jupyter-server)
     - Kernel, KernelSpecs, and Session (?) become the only core services
     - Everything else becomes a server extension?
-1. Extensions as Applications
+1. [Extensions as Applications](#extensions-as-applications)
     - server extensions move to `jupyter_server`.
     - New `ExtensionApp` class
     - Notebook, jupyterlab, etc. become ExtensionApps. 
-1. New server extensions mechanism.
+1. [New server extensions mechanism.](#new-server-extensions-mechanism)
     - new base classes to create applications from server extensions. 
     - nbextensions stay in `notebook`. 
     - `jupyter_notebook_config.d` folder becomes `jupyter_server_config.d`
-1. Namespacing static files and REST API urls. 
+1. [Namespacing static files and REST API urls.](#add-namespacing-to-static-endpoints-and-rest-api-urls) 
     - Each extension serves static files at the `/static/<extension>` url.
     - New `ExtensionHandlerApp` class
-1. Migrate application.
-1. Add necessary documentation to notebook and jupyter_server repos.
+1. [Configuration System](#configuration-system)
+1. [Migrate application.](#migration-application)
 
 ## Detailed Explanation
 
@@ -167,7 +167,7 @@ Here are some steps we can take to reduce the friction for transitioning:
 
 For an thorough overview of the configuration system and a side-by-side diff between the (current) notebook and (future) server config layout, take a look at [Zsailer/jupyter_config_overview](https://github.com/Zsailer/jupyter_config_overview).
 
-**Migration application**
+### Migration application
 
 To make migration easier on users, a `migrate` application will be available to split notebook and server configurations into their appropriate locations (listed above).
 
