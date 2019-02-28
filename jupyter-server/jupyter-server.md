@@ -37,10 +37,7 @@ Decouple the backend server (and its configuration) from the classic notebook fr
 1. Namespacing static files and REST API urls. 
     - Each extension serves static files at the `/static/<extension>` url.
     - New `ExtensionHandlerApp` class
-1. Migrate configuration.
-    - Notebook App configuration stays in `jupyter_notebook_config.py`
-    - Server and services configurations move to `jupyter_server_config.py`
-    - Add a `migrate` application to automate this migration.
+1. Migrate application.
 1. Add necessary documentation to notebook and jupyter_server repos.
 
 ## Detailed Explanation
