@@ -12,7 +12,7 @@
 
 ## Problem
 
-There are now multiple frontends that talk to the backend services provided by the notebook server: the legacy Notebook, the dashboards, JupyterLab, standalone widgets and more. The configuration of legacy notebook and the backend server are tightly coupled. As a consequence, the other applications are forced to load the legacy notebook to use the backend server.
+There are now multiple frontends that talk to the backend services provided by the notebook server: the classic Notebook, the dashboards, nteract, JupyterLab, standalone widgets and more. The configuration of classic notebook and the backend server are tightly coupled. As a consequence, the other applications are forced to load the legacy notebook to use the backend server.
 
 ## Proposed Enhancement
 
@@ -74,7 +74,7 @@ Preliminary work resides in [jupyter_server](https://github.com/jupyter/jupyter_
 
 The server-notebook split is an opportunity to clearly define Jupyter's core services. The old notebook server was comprised of many services, and it could be extended by separate "server extensions". However, it isn't clear what should be a core service versus a server extension. Some extensions were "grand-fathered" in as core services to make the notebook application more full-featured (e.g. nbconvert, terminals, contents, ...). Now that we are separating the server from the classic notebook, we need to reevaluate what services are core to the Jupyter Server.
 
-Jupyter server aims to be a core building block for other applications (like dashboards, standalone widgets, etc.). To achieve this, we need to define the simplest "unit" that defines a Jupyter Server: `kernels`, `kernelspec`, and `sessions`. Other services become extensions to the core server (using the `load_jupyter_server_extension` mechanism defined below). 
+Jupyter server aims to be a core building block for other applications (like nteract, lab, dashboards, standalone widgets, etc.). To achieve this, we need to define the simplest "unit" that defines a Jupyter Server: `kernels`, `kernelspec`, and `sessions`. Other services become extensions to the core server (using the `load_jupyter_server_extension` mechanism defined below). 
 
 ### Extensions as Applications
 
