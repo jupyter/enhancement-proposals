@@ -14,7 +14,7 @@ Project Jupyter has an existing repository and process for “Jupyter Enhancemen
 
 <https://github.com/jupyter/enhancement-proposals>
 
-This format was originally used by IPython (IPEP) and continues to be used by the Python Core language (PEP). As currently envisioned, JEPs are written documents, in the form of a Pull Request to this repo, which describes significant proposed units of work on the projects. The README of the repo summarizes this as:
+This format was originally used by [IPython (IPEP)](https://github.com/ipython/ipython/wiki/IPEPs:-IPython-Enhancement-Proposals) and continues to be used by the [Python Core language (PEP)](https://www.python.org/dev/peps/). As currently envisioned, JEPs are written documents, in the form of a Pull Request to this repo, which describes significant proposed units of work on the projects. The README of the repo summarizes this as:
 
 “Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem OR changes to a single key component.”
 
@@ -44,13 +44,13 @@ With that in mind, the JEP process operates under the following tenets:
 
 - **The JEP process naturally complements the PR process, but does not replace it.**  A thoroughly-reviewed and approved JEP is a valuable reference during a PR to reduce friction, reduce time-consuming context sharing, and encapsulate decisions and other discussions.  Moving a premature PR into a JEP should be a lightweight process that doesn’t cause friction for the contributor.
 
-- - GitHub issue and PR templates, for example, across the entire Jupyter project, should have references to the JEP process as a possible outcome of a given PR.
+  - GitHub issue and PR templates, for example, across the entire Jupyter project, should have references to the JEP process as a possible outcome of a given PR.
 
 - **There is one JEP repository, all Jupyter-governed projects must use it.**  To faciliate the easiest possible adoption and high visibility of ideas, a single JEP repository will be used.  Even if a JEP only applies to a single organization.
 
 - The JEP process **has multiple valid use cases**.  Each use case might have a slightly different expected workflow or base JEP template.  Some expected use cases include:
 
-- - Non-trivial feature proposals within a single component that would benefit from process.  (e.g., a non-trivial change to JupyterLab that would benefit from formal process within the JupyterLab project)
+  - Non-trivial feature proposals within a single component that would benefit from process.  (e.g., a non-trivial change to JupyterLab that would benefit from formal process within the JupyterLab project)
   - Non-trivial features or improvements that span multiple projects.
   - Any proposed changes to published APIs or core specifications (e.g., nbformat)
   - Changes to the JEP process itself.
@@ -112,18 +112,21 @@ If in the course of the implementation, the implementer(s) can choose to withdra
 
 This section contains a list of principles and scenarios that can be used to help define a set of principles for determining when something is a JEP. The principles will be used both to determine when something becomes a PR during the JEP pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.
 
-**Principles (If yes, Requires a JEP)**
+**Principles to follow**
+
+Below are a few example guidelines to follow when deciding if an idea should include
+a JEP (If yes, it requires a JEP). Under each question is a relevant example proposal.
 
 - Does the proposal/implementation require PRs across multiple orgs?
-- - Defining a unique cell identifier
+  - Defining a unique cell identifier
 - Does the proposal/implementation PR impact multiple orgs, or have widespread community impact?
-- - Updating nbformat
+  - Updating nbformat
 - Does the proposal/implementation change an invariant in one or more orgs?
-- - Defining a unique cell identifier
+  - Defining a unique cell identifier
   - Deferred kernel startup
 - Does the proposal/implementation create a new concept that will impact multiple repositories?
-- - Sandboxed cell outputs
-- The proposal involve creating a new repository or subproject?
+  - Sandboxed cell outputs
+- Does the proposal involve creating a new repository or subproject?
 
 ## Distribution
 
@@ -139,17 +142,17 @@ for the JEP. When a JEP enters into a final state (e.g., "Completed",
 
 ## Glossary
 
-- Jupyter Enhancement Proposal (JEP): A written document that describes a proposed unit of significant work on Jupyter.
+- **Jupyter Enhancement Proposal (JEP)**: A written document that describes a proposed unit of significant work on Jupyter.
 
-- Contributor: The person who is submitting the JEP, and might but not necessarily also have intention on organizing the implementation if so approved.
+- **Contributor**: The person who is submitting the JEP, and might but not necessarily also have intention on organizing the implementation if so approved.
 
-- Shepherd: A senior Jupyter contributor that manages the pre-proposal, submission, review, approval process of a JEP.
+- **Shepherd**: A senior Jupyter contributor that manages the pre-proposal, submission, review, approval process of a JEP.
 
-- Review Team (RT): A group of Jupyter contributors, with expertise in a particular area of the project that reviews and approves JEPs related to that area.
+- **Review Team (RT)**: A group of Jupyter contributors, with expertise in a particular area of the project that reviews and approves JEPs related to that area.
 
-- Final Comment Period (FCP): A finite-time, post-approval period for the community to make final comments.
+- **Final Comment Period (FCP)**: A finite-time, post-approval period for the community to make final comments.
 
-- JEP Status:
+- JEP Statuses:
 
   - Inactive
   - Submitted

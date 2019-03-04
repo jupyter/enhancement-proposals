@@ -25,7 +25,7 @@ Below is a list of JEPs that have been submitted. To view the discussion around 
 | 0025 | Completed | [Enterprise Gateway](https://github.com/jupyter/enhancement-proposals/pull/25) |
 | 0026 | **Submitted** | [Add Language Server Support to Jupyter Server and jupyterlab-monaco](https://github.com/jupyter/enhancement-proposals/pull/26) |
 | 0028 | **Submitted** | [Standalone Jupyter Server](https://github.com/jupyter/enhancement-proposals/pull/28) |
-
+| 0029 | **Submitted** | [Jupyter Enhancement Proposal updates](https://github.com/jupyter/enhancement-proposals/pull/29)
 
 ## How do I submit a JEP?
 
