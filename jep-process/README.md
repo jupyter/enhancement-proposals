@@ -1,6 +1,12 @@
-# Jupyter Enhancement Proposal Pre-Read
-
-Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu))
+| Item       | Value                                                        |
+| ---------- | ------------------------------------------------------------ |
+| JEP number | 29                                                           |
+| Title      | Jupyter Enhancement Proposal                                 |
+| Authors    | Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu)) |
+| Status     | Submitted                                                    |
+| Type       | P - Process                                                  |
+| Created    | 23-Feb-2019                                                  |
+| History    | 04-Mar-2019                                                  |
 
 ### Background
 
@@ -50,7 +56,6 @@ With that in mind, the JEP process operates under the following tenets:
   - Changes to the JEP process itself.
   - Creating a new GitHub repo in one of the official Jupyter orgs
 
-- 
 
 ## JEP Submission Workflow
 
@@ -61,7 +66,6 @@ This is the least formal stage of any jupyter enhancement proposals. During this
 In order to transition out of the pre-proposal stage, the following checklist must be complete:
 
 1. A github issue on the Jupyter Enhancement Proposals repo is created that
-
 2. 1. Briefly outlines the proposal
 
    2. Suggested review team (optional)
@@ -69,8 +73,8 @@ In order to transition out of the pre-proposal stage, the following checklist mu
    3. Why it should be a JEP 
 
    4. 1. See the “JEP / Not-a-JEP Rubric” below.
-
 3. A *Shepherd* is identified to see the process through. (Shepherds are assigned on a round-robin basis from a set of interested engaged volunteers).
+4. A number is assigned to the JEP to track it through the rest of the process.
 
 Outcome: 
 
@@ -111,25 +115,17 @@ This section contains a list of principles and scenarios that can be used to hel
 **Principles (If yes, Requires a JEP)**
 
 - Does the proposal/implementation require PRs across multiple orgs?
-
 - - Defining a unique cell identifier
-
 - Does the proposal/implementation PR impact multiple orgs, or have widespread community impact?
-
 - - Updating nbformat
-
 - Does the proposal/implementation change an invariant in one or more orgs?
-
 - - Defining a unique cell identifier
   - Deferred kernel startup
-
 - Does the proposal/implementation create a new concept that will impact multiple repositories?
-
 - - Sandboxed cell outputs
-
 - The proposal involve creating a new repository or subproject?
 
-- ## Glossary
+### Glossary
 
 - Jupyter Enhancement Proposal (JEP): A written document that describes a proposed unit of significant work on Jupyter.
 
@@ -152,7 +148,3 @@ This section contains a list of principles and scenarios that can be used to hel
   - Approved
   - In progress
   - Completed
-
-- 
-
-- 
