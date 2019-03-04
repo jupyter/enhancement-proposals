@@ -40,7 +40,7 @@ Several sub-goals exist for this process:
 
 With that in mind, the JEP process operates under the following tenets:
 
-- **The JEP process is intended for proposed changes of non-trivial scope.  “**Non-trivial” is addressed below in the “JEP / Not-a-JEP Rubric” of this document.  If proposals that go through the JEP process do not receive the benefits listed above, the JEP process should be amended to better scope what applied.
+- **The JEP process is intended for proposed changes of non-trivial scope.**  “Non-trivial” is addressed below in the “JEP / Not-a-JEP Rubric” of this document.  If proposals that go through the JEP process do not receive the benefits listed above, the JEP process should be amended to better scope what applied.
 
 - **The JEP process naturally complements the PR process, but does not replace it.**  A thoroughly-reviewed and approved JEP is a valuable reference during a PR to reduce friction, reduce time-consuming context sharing, and encapsulate decisions and other discussions.  Moving a premature PR into a JEP should be a lightweight process that doesn’t cause friction for the contributor.
 
@@ -70,18 +70,18 @@ In order to transition out of the pre-proposal stage, the following checklist mu
 
    2. Suggested review team (optional)
 
-   3. Why it should be a JEP 
+   3. Why it should be a JEP
 
    4. 1. See the “JEP / Not-a-JEP Rubric” below.
 3. A *Shepherd* is identified to see the process through. (Shepherds are assigned on a round-robin basis from a set of interested engaged volunteers).
 4. A number is assigned to the JEP to track it through the rest of the process.
 
-Outcome: 
+Outcome:
 
 The Shepard decides if the JEP criteria have been met.
 
-- *It's a JEP! Please create a new PR with the JEP contents using template X.  On that basis, you can resolve this issue unless you have further questions.*
-- It’s not a JEP. (Provide reasons and close the issue.)
+- *It's a JEP!* Please create a new PR with the JEP contents using template X.  On that basis, you can resolve this issue unless you have further questions.*
+- *It’s not a JEP*. (Provide reasons and close the issue.)
 
 ### Phase 2: RFC for the JEP
 
@@ -125,7 +125,19 @@ This section contains a list of principles and scenarios that can be used to hel
 - - Sandboxed cell outputs
 - The proposal involve creating a new repository or subproject?
 
-### Glossary
+## Distribution
+
+This section describes how information about the JEP process (e.g., new JEPs, updates to
+current JEPs, etc) is communicated to the community.
+
+### The JEP public archive website
+
+A list of all current JEPs and the content present in the pull request exists at
+the JEP text, all relevant metadata about the JEP, and links to PRs and issues
+for the JEP. When a JEP enters into a final state (e.g., "Completed",
+"Withdrawn", "Rejected"), it is added to this website.
+
+## Glossary
 
 - Jupyter Enhancement Proposal (JEP): A written document that describes a proposed unit of significant work on Jupyter.
 
@@ -139,7 +151,7 @@ This section contains a list of principles and scenarios that can be used to hel
 
 - JEP Status:
 
-- - Inactive
+  - Inactive
   - Submitted
   - Assigned
   - Rejected
