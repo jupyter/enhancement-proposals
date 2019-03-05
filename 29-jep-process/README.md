@@ -78,7 +78,7 @@ In order to transition out of the pre-proposal stage, the following checklist mu
 
 Outcome:
 
-The Shepard decides if the JEP criteria have been met.
+The Shepherd decides if the JEP criteria have been met.
 
 - *It's a JEP!* Please create a new PR with the JEP contents using template X.  On that basis, you can resolve this issue unless you have further questions.*
 - *It’s not a JEP*. (Provide reasons and close the issue.)
@@ -133,6 +133,8 @@ a JEP (If yes, it requires a JEP). Under each question is a relevant example pro
 This section describes how information about the JEP process (e.g., new JEPs, updates to
 current JEPs, etc) is communicated to the community.
 
+Note: This JEP repo is the **canonical "source of truth"** for individual JEPs, the JEP process, and activity on JEPs. 
+
 ### The JEP public archive website
 
 A list of all current JEPs and the content present in the pull request exists at
@@ -144,11 +146,11 @@ for the JEP. When a JEP enters into a final state (e.g., "Completed",
 
 - **Jupyter Enhancement Proposal (JEP)**: A written document that describes a proposed unit of significant work on Jupyter.
 
-- **Contributor**: The person who is submitting the JEP, and might but not necessarily also have intention on organizing the implementation if so approved.
+- **Contributor**: The person (or persons) who is submitting the JEP. The implementation of a JEP may be done by others if so approved.
 
-- **Shepherd**: A senior Jupyter contributor that manages the pre-proposal, submission, review, approval process of a JEP.
+- **Shepherd**: A senior Jupyter contributor who guides the **JEP Contributor** through the pre-proposal, submission, review, approval process of a JEP.
 
-- **Review Team (RT)**: A group of Jupyter contributors, with expertise in a particular area of the project that reviews and approves JEPs related to that area.
+- **Review Team (RT)**: A group of Jupyter contributors, with expertise in a particular area of the project, that reviews JEPs related to that area.
 
 - **Final Comment Period (FCP)**: A finite-time, post-approval period for the community to make final comments.
 
