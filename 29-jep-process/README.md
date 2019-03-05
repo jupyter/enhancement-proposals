@@ -133,14 +133,18 @@ a JEP (If yes, it requires a JEP). Under each question is a relevant example pro
 This section describes how information about the JEP process (e.g., new JEPs, updates to
 current JEPs, etc) is communicated to the community.
 
-Note: This JEP repo is the **canonical "source of truth"** for individual JEPs, the JEP process, and activity on JEPs. 
+Note: This JEP repo is the **canonical "source of truth"** for individual JEPs, the JEP process, and activity on JEPs.
 
 ### The JEP public archive website
 
-A list of all current JEPs and the content present in the pull request exists at
-the JEP text, all relevant metadata about the JEP, and links to PRs and issues
-for the JEP. When a JEP enters into a final state (e.g., "Completed",
-"Withdrawn", "Rejected"), it is added to this website.
+A public website contains a readable archive of all JEP proposals.
+It contains list of all JEPs that have entered a "final" state
+(e.g., "Completed", "Withdrawn", "Rejected"). The content of each JEP will
+be displayed in a readable fashion. When a JEP enters into a final state, it
+is added to this website.
+
+Note that the JEPs themselves contain the content, while the website is just a
+quick way to display them in a reading-friendly format.
 
 ## Glossary
 
@@ -152,7 +156,7 @@ for the JEP. When a JEP enters into a final state (e.g., "Completed",
 
 - **Review Team (RT)**: A group of Jupyter contributors, with expertise in a particular area of the project, that reviews JEPs related to that area.
 
-- **Final Comment Period (FCP)**: A finite-time, post-approval period for the community to make final comments.
+- **Final Comment Period (FCP)**: A finite-time, pre-approval period for the community to make final comments.
 
 - JEP Statuses:
 
