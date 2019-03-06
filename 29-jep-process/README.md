@@ -27,7 +27,7 @@ Since the JEP process was created, Jupyter has grown in the number of users, div
 
 As a result, there is a need to revitalize and reorganize an efficient and robust centralized proposal and decision making process for major work units across the project.
 
-## Goals and Tenants
+## Goals and Tenets
 
 Project Jupyter has adopted the Jupyter Enhancement Proposal process (JEP) to address distributed collaboration and experimentation as the project scales in the dimensions of contributors, components, and lines of code.  At a high level, the primary guiding principle of the JEP process is to encourage collaboration and discussion as early as possible in the lifecycle of a major proposed change in Jupyter, with the goal of preventing costly rework, competing ideas, and unnecessary forking or fragmentation of ideas.
 
@@ -76,9 +76,9 @@ In order to transition out of the pre-proposal stage, the following checklist mu
 3. A *Shepherd* is identified to see the process through. (Shepherds are assigned on a round-robin basis from a set of interested engaged volunteers).
 4. A number is assigned to the JEP to track it through the rest of the process.
 
-Outcome: 
+Outcome:
 
-The Shepard decides if the JEP criteria have been met.
+The Shepherd decides if the JEP criteria have been met.
 
 - *It's a JEP! Please create a new PR with the JEP contents using template X.  On that basis, you can resolve this issue unless you have further questions.*
 - It’s not a JEP. (Provide reasons and close the issue.)
@@ -100,7 +100,7 @@ As the JEP is being implemented, the implementer(s) are submitting pull requests
 1. In progress implementation via (list of PRs).
 2. Fully implemented via (list of PRs).
 
-If in the course of implementation, it is discovered that the implementation needs to be radically different from what was defined in the original JEP, then a pull request needs to be submitted to modify the original JEP with the new necessary implementation and a note sighting the need for a modification to the JEP. This pull request should be re-approved by the original review team.
+If in the course of implementation, it is discovered that the implementation needs to be radically different from what was defined in the original JEP, then a pull request needs to be submitted to modify the original JEP with the new necessary implementation and a note citing the need for a modification to the JEP. This pull request should be re-approved by the original review team.
 
 If in the course of the implementation, the implementer(s) can choose to withdraw from the original JEP if they are no longer interested in implementing the JEP or see infeasibilities in the JEP.
 
@@ -110,7 +110,7 @@ If in the course of the implementation, the implementer(s) can choose to withdra
 
 ## What qualifies as a JEP?
 
-This section contains a list of principles and scenarios that can be used to help define a set of principles for determining when something is a JEP. The principles will be used both to determine when something becomes a PR during the JEP pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.
+This section contains a set of principles to help determine when something is a JEP. The principles will be used to determine when something becomes a PR during the JEP pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.
 
 **Principles (If yes, Requires a JEP)**
 
@@ -123,7 +123,7 @@ This section contains a list of principles and scenarios that can be used to hel
   - Deferred kernel startup
 - Does the proposal/implementation create a new concept that will impact multiple repositories?
 - - Sandboxed cell outputs
-- The proposal involve creating a new repository or subproject?
+- Does the proposal involve creating a new repository or subproject?
 
 ### Glossary
 
