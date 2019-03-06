@@ -3,7 +3,7 @@
 | JEP number | 29                                                           |
 | Title      | Jupyter Enhancement Proposal                                 |
 | Authors    | Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu)) |
-| Status     | Submitted                                                    |
+| Status     | Draft                                                   |
 | Type       | P - Process                                                  |
 | Created    | 23-Feb-2019                                                  |
 | History    | 04-Mar-2019                                                  |
