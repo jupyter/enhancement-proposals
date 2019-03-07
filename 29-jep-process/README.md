@@ -3,10 +3,10 @@
 | JEP number | 29                                                           |
 | Title      | Jupyter Enhancement Proposal                                 |
 | Authors    | Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu)) |
-| Status     | Submitted                                                    |
+| Status     | Draft                                                   |
 | Type       | P - Process                                                  |
 | Created    | 23-Feb-2019                                                  |
-| History    | 04-Mar-2019                                                  |
+| History    | 04-Mar-2019, 07-Mar-2019                                                  |
 
 ### Background
 
@@ -27,7 +27,7 @@ Since the JEP process was created, Jupyter has grown in the number of users, div
 
 As a result, there is a need to revitalize and reorganize an efficient and robust centralized proposal and decision making process for major work units across the project.
 
-## Goals and Tenants
+## Goals and Tenets
 
 Project Jupyter has adopted the Jupyter Enhancement Proposal process (JEP) to address distributed collaboration and experimentation as the project scales in the dimensions of contributors, components, and lines of code.  At a high level, the primary guiding principle of the JEP process is to encourage collaboration and discussion as early as possible in the lifecycle of a major proposed change in Jupyter, with the goal of preventing costly rework, competing ideas, and unnecessary forking or fragmentation of ideas.
 
@@ -100,7 +100,7 @@ As the JEP is being implemented, the implementer(s) are submitting pull requests
 1. In progress implementation via (list of PRs).
 2. Fully implemented via (list of PRs).
 
-If in the course of implementation, it is discovered that the implementation needs to be radically different from what was defined in the original JEP, then a pull request needs to be submitted to modify the original JEP with the new necessary implementation and a note sighting the need for a modification to the JEP. This pull request should be re-approved by the original review team.
+If in the course of implementation, it is discovered that the implementation needs to be radically different from what was defined in the original JEP, then a pull request needs to be submitted to modify the original JEP with the new necessary implementation and a note citing the need for a modification to the JEP. This pull request should be re-approved by the original review team.
 
 If in the course of the implementation, the implementer(s) can choose to withdraw from the original JEP if they are no longer interested in implementing the JEP or see infeasibilities in the JEP.
 
@@ -110,7 +110,7 @@ If in the course of the implementation, the implementer(s) can choose to withdra
 
 ## What qualifies as a JEP?
 
-This section contains a list of principles and scenarios that can be used to help define a set of principles for determining when something is a JEP. The principles will be used both to determine when something becomes a PR during the JEP pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.
+This section contains a set of principles to help determine when something is a JEP. The principles will be used to determine when something becomes a PR during the JEP pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.
 
 **Principles to follow**
 
@@ -145,6 +145,7 @@ is added to this website.
 
 Note that the JEPs themselves contain the content, while the website is just a
 quick way to display them in a reading-friendly format.
+
 
 ## Glossary
 
