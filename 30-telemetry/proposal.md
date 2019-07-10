@@ -176,7 +176,7 @@ HTTP PUT /api/telemetry/event
 
 #### Open Questions
 
-1. Is this work done on the standalone jupyter-server implementation or on the classic jupyter/notebook?
+1. This work is going to be done on the classic jupyter/notebook? What is the plan for porting to the standalone jupyter_server?
 
 ### JupyterHub
 
