@@ -24,7 +24,7 @@ Telemetry data serves a number of purposes for organizations deploying Jupyter: 
 ### User Stories
 
 1. As a Jupyter user, I can view and understand the events being collected, so that I have visibility into what information is being collected.
-2. As a Jupyter user, I need to opt-in to event collection, so that I can choose what data about my usage is gathered.
+2. As a Jupyter user, I may be able to opt-in to event collection, so that I can choose what data about my usage is gathered.
 3. As a Jupyter extension developer, I can publish custom events using a well defined interface, from the browser as well as the server.
 4. As a Jupyter operator, I can configure events sinks for my deployment, so that I have control over where events are sent to.
 5. As a Jupyter operator, I can write a custom event sink for my deployment, so that I can control where event data is stored.
