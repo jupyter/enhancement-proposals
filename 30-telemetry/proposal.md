@@ -52,7 +52,7 @@ The enhancement spans two categories - general concepts applicable across all Ju
 
 ### Event Schema
 
-Each event is published conforming a given [JSON schema](https://json-schema.org/) and this is the contract followed by each step in the event lifecycle. These are referred to by all publishers regardless of whether the event comes from the server or the browser.
+Each event is published conforming to a given [JSON schema](https://json-schema.org/) and this is the contract followed by each step in the event lifecycle. These are referred to by all publishers regardless of whether the event comes from the server or the browser.
 
 Example event schema
 
@@ -165,9 +165,9 @@ In addition to the above sub-components, a REST interface is exposed on the Jupy
 ```json
 HTTP PUT /api/telemetry/event
 {
-    "name" : "org.jupyter.kernel_lifecycle_event",
-    "schema_version : "1",
-    "args" : {
+    "name": "org.jupyter.kernel_lifecycle_event",
+    "schema_version: "1",
+    "args": {
         "kernel_name": "python3",
         "state": "restarted"
     }
@@ -224,7 +224,7 @@ should be able to configure it as they would a standalone application.
 
 #### Authenticated routing service
 
-Events sent from user's notebook servers or client side interfaces directly to a
+Events sent from users' notebook servers or client side interfaces directly to a
 sink are untrusted - they are from user controlled code & can be anything. It
 would be useful to provide a JupyterHub service that can validate that the
 users are who they say they are - even though the rest of the event data
