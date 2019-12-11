@@ -47,7 +47,7 @@ The Xeus project has a steadily growing user base. The C++ kernel, in particular
 
 ### Demonstrate continued growth and development
 
-Beyond the xeus-based kernels, there is a new push in the project motivated by the development of the JupyterLab visual debugger. We think that the core library is fairly complete already and that most of the work will be done in xeus-based language kernels such as xeus-cling and xeus-python.
+Beyond the xeus-based kernels, there is a new push in the project motivated by the development of the JupyterLab visual debugger. We think that the core xeus library is fairly complete already and that most of the work already done will apply to other xeus-based language kernels such as xeus-cling.
 
 ### Integrate well with other official Subprojects.
 
