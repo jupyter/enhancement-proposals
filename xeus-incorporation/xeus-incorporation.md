@@ -27,7 +27,7 @@ We propose to make the Xeus project officially part of Jupyter, alongside other 
 
 If this incorporation is accepted, the different projects will be modified to reflect this affiliation. Links to the governance documents, code of conduct, and contributing guidelines will be added to the readme and the documentation.
 
-Xeus and the projects listed above would be moved to the [jupyter-native](https://github.com/jupyter-native) GitHub organization.
+Xeus and the projects listed above would be moved to the [jupyter-xeus](https://github.com/jupyter-xeus) GitHub organization.
 
 The [xwidgets](https://github.com/QuantStack/xwidgets), [xplot](https://github.com/QuantStack/xplot), [xleaflet](https://github.com/QuantStack/xleaflet), and [xthreejs](https://github.com/QuantStack/xthreejs) would also be moved to the same organization. Xwidgets is a C++ implementation of the Jupyter widgets protocol built upon xeus. xplot, xleaflet, and xthreejs are C++ backends to the bqplot, ipyleaflet, and PythreeJS Jupyter widget packages.
 
