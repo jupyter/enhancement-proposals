@@ -20,9 +20,9 @@ I propose we use this design work as a template for a new Jupyter.org website us
 
 ## Detailed Explanation
 ### Design details
-The design of this new website is finished and be viewed [here](https://www.figma.com/proto/PQD2GrejGoeZdYGhXthnAuEs/jupyter_master?node-id=1804%3A10&viewport=-221%2C462%2C0.26528623700141907&scaling=min-zoom).
+The design of this new website is finished and be viewed [here](https://www.figma.com/proto/PQD2GrejGoeZdYGhXthnAuEs/jupyter_master?node-id=1804%3A10&viewport=-61%2C345%2C0.10204222798347473&scaling=min-zoom).
 
-(Add some screenshots of website?)
+
 
 ### Development details
 Development is the next step. We need a static site generator. (@marwahaha made an initial [prototype](https://guarded-sands-77993.herokuapp.com/)) There is (at least) one custom component in the current design that requires some custom Javascript. Preferably, we could write such components using a well-known framework like ReactJS.
