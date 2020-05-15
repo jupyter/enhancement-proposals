@@ -6,8 +6,8 @@
 | Title      | Jupyter Website Re-Design Implementation Process.                                                                            |
 | Authors    | Tim George [@tgeorgeux](https://github.com/tgeorgeux) |
 | Status     | Draft                                                                                                                        |
-| Created    | 7 May, 2020                                                                                                            |
-| History    | 7 May, 2020                                                                                         |
+| Created    | 15 May, 2020                                                                                                            |
+| History    | 15 May, 2020                                                                                         |
 ## Problem
 Technical: The existing Jupyter Website is a mix of Jekyll templates and bespoke hand-crafted Javascript. Over time the templates have experienced bit-rot and the website is difficult to update significantly without breaking it. 
 
