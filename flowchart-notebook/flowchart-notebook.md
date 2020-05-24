@@ -13,20 +13,11 @@ using.
 ## Detail Explanation
 
 Jupyter is already set up to support a flowchart-based UI. A standard Jupyter notebook already takes the form of a linear,
-sequential flowchart. In order for Jupyter to support a fully flowchart-based UI, 
+sequential flowchart. By implementing basic multithreading techniques, flowcharts can be run multiple branches concurrently. Flowcharts also graphically stratify code, and branching charts with logic operations can vastly improve readability of code that makes heavy use of if/else/elif statements.
 
 ### JEP Titles
 
 Jupyter Enhancement Proposals will be submitted with a title that is no longer than 12-words long. A JEP is uniquely identified by its title and the pull request number associated with it.
-
-### JEP Labels
-
-The pull-request submitted with each JEP will be labeled with the following labels for easy searching:
-* `accepted` — this JEP has been accepted and is currently being implemented
-* `implemented` — this JEP has been implemented
-* `rejected` - this JEP has been rejected and will not be implemented
-* `withdrawn` - this JEP has been withdrawn by the submitter but can be re-submitted if someone is willing to champion it
-* `active` - this JEP is currently under active discussion within the community
 
 ### JEP Structure
 
@@ -51,9 +42,9 @@ When submitting an enhancement proposal, individuals will include the following 
 ## Pros and Cons
 
 Pros associated with this implementation include:
-* A higher quality discussion around enhancement proposals
-* Individuals are encourage to put more thought into an enhancement proposal before submitting it
-* Precedence exists in the form of PEPs (Python Enhancement Proposals) and IPEPs (IPython Enhancement Proposals)
+* Code becomes easier to write and modify for users that prefer graphical environments
+* Improved readability of logic-heavy code
+* Concurrently-running code will be easier to read and write than if multithreading was implemented manually
 
 Cons associated with this implementation include:
 * Existing IPEPs (IPython Enhancement Proposals) will not be included in this migrated repository
