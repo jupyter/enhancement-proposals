@@ -6,7 +6,7 @@ suited for professional use.
 
 ## Proposed Enhancement
 
-Provide a UI that formats blocks of code into flowchart diagrams to improve readability. By converting code to medium that is
+Provide a UI that formats blocks of code into flowchart diagrams to improve readability. By converting code to a medium that is
 both text-based and graphical, users less familiar with programming will have a better time understanding the code that they're
 using.
 
