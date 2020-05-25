@@ -21,7 +21,7 @@ Pros associated with this implementation include:
 * Concurrently-running code will be easier to read and write than if multithreading was implemented manually
 
 Cons associated with this implementation include:
-* Branching programs would be inherently more complicated than sequential programs. Because of this added complexity, users writing branching programs might be led to make their otherwise simple programs more complicated due to the more options that are available.
+* Branching programs would be inherently more complicated than sequential programs. Because of this added complexity, users writing branching programs might be led to make their otherwise simple programs more complicated than necessary due to the more options that are available.
 * Large branched programs could become visually messy, and spaghetti code could become very complicated to manage.
 * Retrofitting/Refactoring could become a much more tedious process
 
