@@ -58,6 +58,10 @@ The JEP process operates under the following tenets:
 
 ## JEP Submission Workflow
 
+The following sections describe the major checkpoints in the JEP process.
+Note that at any time, the JEP author may withdraw their JEP (and if it has
+been added to the README, its status becomes "withdrawn").
+
 ### Phase 1: Pre-proposal
 
 This is the least formal stage of any jupyter enhancement proposals. During this
@@ -136,28 +140,28 @@ This pull request should be re-approved by the original review team.
 Below is a rough guide that describes the JEP process and its possible pathways.
 
 ```
-                                                                    +-----------+
-                                                                    |           |
-                                              +-----------+         | withdrawn |
-                                              |           |         |           |
-                                              |  rejected |         +-----------+
-                                              |           |
-                                              +-----^-----+
-                                                    |
-                                                    |
-+--------------+   +-----------+              +-----+-----+             +-------------+   +-----------+
-|              |   |           |              |           |             |             |   |           |
-| pre-proposal +---> submitted +-------------->  RFC/FCP  +-------------> in progress +---> completed |
-|              |   |           |   identify   |           |  approved   |             |   |           |
-+--------------+   +-----------+    review    +-----+-----+             +-------------+   +-----------+
-                                     team           |
-                                                    |
-                                              +-----v-----+
-                                              |           |
-                                              | postponed |
-                                              |           |
                                               +-----------+
-
+                                              |           |
+                                              | withdrawn |
+                                              |           |             +-----------+
+                                              +-----------+             |           |
+                                          JEP may be withdrawn          |  rejected |
+                                              at any stage              |           |
+                                                                        +-----^-----+
+                                                                              |
+                                                                       +------+------+
+                          +--------------+   +-----------+             |             |            +-------------+   +-----------+
+                          |              |   |           |             | Request for |            |             |   |           |
+                          | pre+proposal +---> submitted +------------->  Comments   +------------> in progress +---> completed |
+                          |              |   |           |  identify   |    (RFC)    |  approved  |             |   |           |
+                          +--------------+   +-----------+   review    |             |            +-------------+   +-----------+
+                                                              team     +------+------+
+                                                                              |
+                                                                        +-----v-----+
+                                                                        |           |
+                                                                        | postponed |
+                                                                        |           |
+                                                                        +-----------+
 ```
 
 
