@@ -140,28 +140,22 @@ This pull request should be re-approved by the original review team.
 Below is a rough guide that describes the JEP process and its possible pathways.
 
 ```
-                                              +-----------+
-                                              |           |
-                                              | withdrawn |
-                                              |           |             +-----------+
-                                              +-----------+             |           |
-                                          JEP may be withdrawn          |  rejected |
-                                              at any stage              |           |
-                                                                        +-----^-----+
-                                                                              |
-                                                                       +------+------+
-                          +--------------+   +-----------+             |             |            +-------------+   +-----------+
-                          |              |   |           |             | Request for |            |             |   |           |
-                          | pre+proposal +---> submitted +------------->  Comments   +------------> in progress +---> completed |
-                          |              |   |           |  identify   |    (RFC)    |  approved  |             |   |           |
-                          +--------------+   +-----------+   review    |             |            +-------------+   +-----------+
-                                                              team     +------+------+
-                                                                              |
-                                                                        +-----v-----+
-                                                                        |           |
-                                                                        | postponed |
-                                                                        |           |
-                                                                        +-----------+
+                      +-----------+
+                      |           |
+                      | withdrawn |
+                      |           |             +-----------+
+                      +-----------+             |           |
+                  JEP may be withdrawn          |  rejected |
+                      at any stage              |           |
+                                                +-----^-----+
+                                                      |
+                                                +------+------+
+  +--------------+   +-----------+             |             |            +-------------+   +-----------+
+  |              |   |           |             | Request for |            |             |   |           |
+  | pre-proposal +---> submitted +------------->  Comments   +------------> in progress +---> completed |
+  |              |   |           |  identify   |    (RFC)    |  approved  |             |   |           |
+  +--------------+   +-----------+   review    |             |            +-------------+   +-----------+
+                                      team     +------+------+
 ```
 
 
