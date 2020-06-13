@@ -1,4 +1,4 @@
-# Jupyter Kernel Gateway Incorporation Proposal
+# Jupyter Kernel Gateway Incorporation
 
 ## Problem
 
@@ -7,7 +7,7 @@ People are creating novel applications and libraries that use Jupyter kernels as
 * [pyxie](https://github.com/oreillymedia/pyxie-static) uses kernels to evaluate code from a text area on a web page
 * [Thebe](https://github.com/oreillymedia/thebe) uses kernels to evaluate code from multiple input areas on a web page
 * [gist exec](https://github.com/rgbkrk/gistexec) uses kernels to evaluate code from GitHub gists rendered as web pages
-* [Atom Notebook](github.com/jupyter/atom-notebook) uses kernels to enable a notebook experience in the Atom text editor
+* [Atom Notebook](https://github.com/jupyter/atom-notebook) uses kernels to enable a notebook experience in the Atom text editor
 * [Eclairjs](https://github.com/EclairJS/eclairjs-node) uses the Apache Toree kernel as a means of executing Apache Spark jobs defined in JavaScript
 * [Jupyter dashboard server](https://github.com/jupyter-incubator/dashboards_nodejs_app) uses kernels to evaluate code from notebooks rendered as interactive dashboards
 

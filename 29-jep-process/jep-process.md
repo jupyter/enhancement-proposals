@@ -1,14 +1,16 @@
-| Item       | Value                                                        |
-| ---------- | ------------------------------------------------------------ |
-| JEP number | 29                                                           |
-| Title      | Jupyter Enhancement Proposal                                 |
-| Authors    | Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu)) |
-| Status     | Draft                                                   |
-| Type       | P - Process                                                  |
-| Created    | 23-Feb-2019                                                  |
-| History    | 04-Mar-2019, 07-Mar-2019                                                  |
+---
+title: Jupyter Enhancement Proposal
+authors: |
+  Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu))
+issue-number: 27
+pr-number: 29
+date-started: "2019-02-23"
+type: P - Process
+---
 
-### Background
+# Jupyter Enhancement Proposal
+
+## Background
 
 Project Jupyter has an existing repository and process for “Jupyter Enhancement Proposals” or JEP for short. The repository is here:
 

@@ -1,0 +1,14 @@
+title                       : Jupyter Enhancement Proposals
+author                      : Project Jupyter
+copyright                   : "2020"
+exclude_patterns            : ["LICENSE.md", ".github"]
+home_page_in_navbar         : false
+
+repository:
+  url: https://github.com/jupyter/enhancement-proposals
+  branch: master
+
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true

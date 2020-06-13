@@ -1,4 +1,13 @@
-# Voilà Incorporation Proposal
+---
+title: Voilà Incorporation
+authors: SylvainCorlay
+issue-number: XX
+pr-number: 42
+date-started: "2019-10-14"
+type: S - [Standards Track](https://www.python.org/dev/peps/#pep-types-key)
+---
+
+# Voilà Incorporation
 
 ## Problem
 
