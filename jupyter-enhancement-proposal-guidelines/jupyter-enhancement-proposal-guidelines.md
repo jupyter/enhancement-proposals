@@ -195,5 +195,5 @@ quick way to display them in a reading-friendly format.
 ## Background
 
 For a background of the JEP process, and recent efforts to improve it, see
-[the meta-JEP readme](../29-jep-process/README.md).
+[the meta-JEP readme](../29-jep-process/jep-process.md).
 

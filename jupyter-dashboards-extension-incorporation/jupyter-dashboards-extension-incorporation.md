@@ -1,4 +1,4 @@
-# Jupyter Dashboards Extension Incorporation Proposal
+# Jupyter Dashboards Extension Incorporation
 
 ## Problem
 
@@ -57,7 +57,7 @@ The ["What It Gives You" section of the project README](https://github.com/jupyt
 
 The dashboards extension is a pure JavaScript extension for the Jupyter Notebook frontend. It adds a toolbar and menu items for switching between three views: notebook, dashboard layout, and dashboard preview. It also adds a set of menu items for quickly adding/removing all cells to/from the dashboard layout. Help for creating dashboard layouts appears in situ in the layout mode.
 
-The extension currently supports two types of layout: grid and report. The user moves, resizes, and shows/hides notebook cell widgets/outputs in a responsive grid in the former. The user simply shows/hides cell widgets/outputs in top-down notebook order in the latter. The extension [persists information about the layouts within the notebook document](https://github.com/jupyter-incubator/dashboards/wiki/Dashboard-Metadata-and-Rendering). 
+The extension currently supports two types of layout: grid and report. The user moves, resizes, and shows/hides notebook cell widgets/outputs in a responsive grid in the former. The user simply shows/hides cell widgets/outputs in top-down notebook order in the latter. The extension [persists information about the layouts within the notebook document](https://github.com/jupyter-incubator/dashboards/wiki/Dashboard-Metadata-and-Rendering).
 
 Both the notebook extension and the notebook document specification are extensible. They may grow support for additional kinds of layout in the future (e.g., fixed grids, paged wizards).
 
@@ -114,7 +114,7 @@ The dashboards extension is packaged using setuptools, released on PyPI, and ins
 * Pro: Works with the other incubating projects to enable deployment of dashboard-notebooks as standalone web applications.
 * Pro: Defines a spec for storing layout metadata in notebook documents and steps for rendering those layouts.
 * Pro: Serves as a test bed and reference implementation for future dashboard efforts in Jupyter Lab.
-* Con: There is currently [no consensus on a light proposal](https://github.com/jupyter/enhancement-proposals/pull/15) for where to store layout metadata in notebooks, let alone a single layout metadata spec to be shared across all tools (including those beyond the dashboards use case). 
+* Con: There is currently [no consensus on a light proposal](https://github.com/jupyter/enhancement-proposals/pull/15) for where to store layout metadata in notebooks, let alone a single layout metadata spec to be shared across all tools (including those beyond the dashboards use case).
 
 ## Interested Contributors
 

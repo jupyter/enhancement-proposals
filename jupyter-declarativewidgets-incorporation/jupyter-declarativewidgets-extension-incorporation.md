@@ -1,4 +1,4 @@
-# Jupyter DeclarativeWidgets Extension Incorporation Proposal
+# Jupyter DeclarativeWidgets Extension Incorporation
 
 ## Problem
 
@@ -9,7 +9,7 @@ Alice is a Jupyter Notebook user. Alice has performed some data analysis in a No
 1. Most solutions are Python specific. Other language kernels has either limiting or no available solution in place.
 2. Most solutions would require considerable development investment to make available on other language kernels. Their implementation rely heavily on kernel side code.
 3. Most solutions are bound by a close widget system and are cumbersome to extend.
-4. Layers of abstraction make debugging difficult, requiring "peeking under the hood". 
+4. Layers of abstraction make debugging difficult, requiring "peeking under the hood".
 
 Depending on what language Alice is using for her Notebook, she will experience the following potential setbacks:
 
@@ -43,7 +43,7 @@ The declarativewidgets extension supports the following use cases:
 	* pyspark
 	* Scala Spark
 	* R
-	* sparkR 
+	* sparkR
 * Installing and importing a necessary web-component into the Notebook
 * Creating a UI using HTML markup and connecting the elements using [Polymer's data binding)[https://www.polymer-project.org/1.0/docs/devguide/data-binding].
 * Reacting to changes in data on the Kernel, for example, new data arriving on a Stream.
@@ -72,7 +72,7 @@ The declarativewidgets extensions is a combination of:
 * Kernel side implementations for Python, R[[1]](#1), and Scala[[2]](#2)
 
 #### Elements
-##### Core elements 
+##### Core elements
 
 * `<urth-core-function>` - Enable binding to functions defined in the kernel
 * `<urth-core-dataframe>` - Access to read and query DataFrames
@@ -85,7 +85,7 @@ Some of the `core` elements are a combination of browser and kernel component. O
 
 ##### Viz elements
 
-There is a collection of `<urth-viz-*>` element that are pure client side and are use to display data. These elements include a table view and a variety of plots. 
+There is a collection of `<urth-viz-*>` element that are pure client side and are use to display data. These elements include a table view and a variety of plots.
 
 
 More details about the architecture can be found [here](https://github.com/jupyter-incubator/declarativewidgets/wiki). Additionally, see the [documentation](https://jupyter-incubator.github.io/declarativewidgets/docs.html).

@@ -1,4 +1,4 @@
-# Proposal to Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
+# Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
 
 ## Problem
 
@@ -23,25 +23,25 @@ We should use the remainder of this document to capture:
 
 The [Jupyter Governance - New Subproject Process](https://github.com/jupyter/governance/blob/master/newsubprojects.md) lists eight criteria used to evaluate projects for incorporation into one of the official Jupyter organizations. The dashboard deployment projects have been failing to meet at least five of these criteria for some time.
 
-#### Have an active developer community that offers a sustainable model for future development.
+### Have an active developer community that offers a sustainable model for future development.
 
 Members of the original development team have moved on from the project for a variety of reasons. While developers from the broader Jupyter community have opened a handful of pull requests (PRs) over the past year, there are no active maintainers who review PRs, respond to issues, upgrade components, maintain compatibility with other Jupyter projects, write documentation, fix failing tests, and so on.
 
-#### Have an active user community.
+### Have an active user community.
 
 There is [certainly user interest](https://github.com/jupyter-incubator/dashboards_server/issues/319) in a dashboard deployment solution for Jupyter notebooks. However, users who have tried the deployment projects [have met with limited success](https://github.com/jupyter-incubator/dashboards_server/issues) given the current complexity of [running the full project stack](https://github.com/jupyter/dashboards/wiki#get-started) due to lack of work on making it easier over the past year.
 
-#### Demonstrate continued growth and development.
+### Demonstrate continued growth and development.
 
 Development of new features has ceased. The original project roadmap ends at the current feature set and calls for work to continue on ["how dashboarding features materialize in JupyterLab."](https://github.com/jupyter/dashboards/wiki/Deployment-Roadmap#may-2016-update).
 
-#### Integrate well with other official Subprojects.
+### Integrate well with other official Subprojects.
 
 The [dashboards layout extension](https://github.com/jupyter/dashboards) defines a [notebook metadata format](http://jupyter-dashboards-layout.readthedocs.io/en/latest/metadata.html) and uses it to persist information about on-screen notebook cell arrangements. The dashboard deployment projects depend on this metadata. No other Jupyter projects support it.
 
 Conversely, the dashboard deployment projects use ipywidgets and various JupyterLab components for interactivity and rendering. These two libraries have undergone major development over the past year as they've matured. The dashboard deployment projects have not kept pace, and currently rely on [back-level versions](https://github.com/jupyter-incubator/dashboards_server/blob/master/package.json#L48).
 
-#### Have a well-defined scope.
+### Have a well-defined scope.
 
 The [dashboards incubator proposal](https://github.com/jupyter-incubator/proposals/blob/master/dashboards/proposal.md#scope) includes a section concerning project scope. The stated objective of "establish[ing] a baseline prototype that demonstrates how notebook authors can publish dashboards" is not, however, clearly documented outside the proposal nor refined in response to [evolving technical constraints](https://github.com/jupyter-incubator/dashboards_server/issues/302). Users are left guessing about the scope of "dashboard deployment" supported by the projects.
 

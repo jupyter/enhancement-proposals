@@ -1,10 +1,18 @@
-# Xeus Incorporation Proposal
+---
+title: Xeus Incorporation
+authors: SylvainCorlay
+issue-number: XX
+pr-number: 44
+date-started: "2019-11-30"
+---
+
+# Xeus Incorporation
 
 ## Problem
 
 The [Xeus](https://github.com/QuantStack/xeus/) project is a C++ implementation of the [Jupyter kernel protocol](https://jupyter-client.readthedocs.io/en/stable/messaging.html). Xeus is not a kernel, but a library meant to facilitate the authoring of kernels.
 
-Several Jupyter kernels have been created with Xeus: 
+Several Jupyter kernels have been created with Xeus:
 
  - [xeus-cling](https://github.com/QuantStack/xeus-cling), a kernel for the C++ programming language, based on the Cling C++ interpreter. The [cling](https://github.com/root-project/cling) project comes from CERN and is at the foundation of the [ROOT](https://github.com/root-project/root.git) project.
  - [xeus-python](https://github.com/QuantStack/xeus-python), a kernel for the Python programming language, embedding the Python interpreter.

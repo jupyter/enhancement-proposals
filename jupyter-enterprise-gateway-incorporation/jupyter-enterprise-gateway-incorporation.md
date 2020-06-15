@@ -1,4 +1,4 @@
-# Jupyter Enterprise Gateway Incorporation Proposal
+# Jupyter Enterprise Gateway Incorporation
 
 ## Problem
 
