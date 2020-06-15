@@ -1,0 +1,567 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Diffing and merging notebooks &#8212; Jupyter Enhancement Proposals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Jupyter Kernel Gateway Incorporation" href="../jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a>
+  </li>
+  <li class="">
+    <a href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a>
+  </li>
+  <li class="active">
+    <a href="">Diffing and merging notebooks</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/notebook-diff/notebook-diff.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fnotebook-diff/notebook-diff.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/notebook-diff/notebook-diff.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#problem" class="nav-link">Problem</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#proposed-enhancement" class="nav-link">Proposed Enhancement</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#detailed-explanation" class="nav-link">Detailed Explanation</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#basic-use-cases-of-notebook-diff" class="nav-link">Basic use cases of notebook diff</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#basic-use-cases-of-notebook-merge" class="nav-link">Basic use cases of notebook merge</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#notes-on-initial-implementation" class="nav-link">Notes on initial implementation</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#diff-format" class="nav-link">Diff format</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#diff-format-for-mappings" class="nav-link">Diff format for mappings</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#diff-format-for-sequences-list-and-string" class="nav-link">Diff format for sequences (list and string)</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#relation-to-jsonpatch" class="nav-link">Relation to JSONPatch</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#high-level-diff-algorithm-approach" class="nav-link">High level diff algorithm approach</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#handling-nested-structures-by-alignment-and-recursion" class="nav-link">Handling nested structures by alignment and recursion</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#diff-approach-for-dicts" class="nav-link">Diff approach for dicts</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#diff-approach-for-lists" class="nav-link">Diff approach for lists</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#displaying-metadata-diffs" class="nav-link">Displaying metadata diffs</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#note-about-the-potential-addition-of-a-move-transformation" class="nav-link">Note about the potential addition of a “move” transformation</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#merge-format" class="nav-link">Merge format</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#pros-and-cons" class="nav-link">Pros and Cons</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#interested-contributors" class="nav-link">Interested Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/notebook-diff/notebook-diff.md">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="diffing-and-merging-notebooks">
+<h1>Diffing and merging notebooks<a class="headerlink" href="#diffing-and-merging-notebooks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>Diffing and merging notebooks is not properly handled by standard linebased diff and merge tools.</p>
+</div>
+<div class="section" id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Make a package containing tools for diff and merge of notebooks</p></li>
+<li><p>Command line functionality:</p>
+<ul>
+<li><p>A command nbdiff with diff output as json or pretty-printed to console</p></li>
+<li><p>A command nbmerge which should be git compatible</p></li>
+<li><p>Command line tools for interactive resolution of merge conflicts</p></li>
+<li><p>Optional launching of web gui for interactive resolution of merge conflicts</p></li>
+<li><p>All command line functionality is also available through the Python package</p></li>
+</ul>
+</li>
+<li><p>Web gui functionality:</p>
+<ul>
+<li><p>A simple server with a web api to access diff and merge functionality</p></li>
+<li><p>A web gui for displaying notebook diffs</p></li>
+<li><p>A web gui for displaying notebook merge conflicts</p></li>
+<li><p>A web gui for interactive resolution of notebook merge conflicts</p></li>
+</ul>
+</li>
+<li><p>Plugin framework for mime type specific diffing</p></li>
+</ul>
+</div>
+<div class="section" id="detailed-explanation">
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h2>
+<p>Preliminary work resides in <a class="reference external" href="https://github.com/martinal/nbdime">nbdime</a>.</p>
+<p>Fundamentally, we envision use cases mainly in the categories
+of a merge command for version control integration, and
+diff command for inspecting changes and automated regression
+testing. At the core of it all is the diff algorithms, which
+must handle not only text in source cells but also a number of
+data formats based on mime types in output cells.</p>
+<p>Cell source is usually the primary content, and output can presumably
+be regenerated. In general it is not possible to guarantee that merged
+sources and merged output is consistent or makes any kind of
+sense. For many use cases options to silently drop output instead of
+requiring conflict resolution will produce a smoother workflow.
+However such data loss should only happen when explicitly requested.</p>
+<div class="section" id="basic-use-cases-of-notebook-diff">
+<h3>Basic use cases of notebook diff<a class="headerlink" href="#basic-use-cases-of-notebook-diff" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>View difference between two versions of a file:
+<code class="docutils literal notranslate"><span class="pre">nbdiff</span> <span class="pre">base.ipynb</span> <span class="pre">remote.ipynb</span></code></p></li>
+<li><p>Store difference between two versions of a file to a patch file
+<code class="docutils literal notranslate"><span class="pre">nbdiff</span> <span class="pre">base.ipynb</span> <span class="pre">remote.ipynb</span> <span class="pre">patch.json</span></code></p></li>
+<li><p>Compute diff of notebooks for use in a regression test framework:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="kn">import</span> <span class="nn">nbdime</span>
+  <span class="n">di</span> <span class="o">=</span> <span class="n">nbdime</span><span class="o">.</span><span class="n">diff_notebooks</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="k">assert</span> <span class="ow">not</span> <span class="n">di</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>View difference of output cells after re-executing notebook</p></li>
+</ul>
+<p>Variations will be added on demand with arguments to the nbdiff command, e.g.:</p>
+<ul class="simple">
+<li><p>View diff of sources only</p></li>
+<li><p>View diff of output cells (basic text diff of output cells, image diff with external tool)</p></li>
+</ul>
+</div>
+<div class="section" id="basic-use-cases-of-notebook-merge">
+<h3>Basic use cases of notebook merge<a class="headerlink" href="#basic-use-cases-of-notebook-merge" title="Permalink to this headline">¶</a></h3>
+<p>The main use case for the merge tool will be a git-compatible commandline merge tool:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">nbmerge</span> <span class="n">base</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">local</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">remote</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">merged</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>which can be called from git and launch a console tool or web gui for conflict resolution if needed.
+Ideally the web gui can reuse as much as possible from Jupyter Notebook.</p>
+<p>Goals:</p>
+<ul class="simple">
+<li><p>Trouble free automatic merge when no merge conflicts occur</p></li>
+<li><p>Optional behaviour to drop conflicting output, execution counts, and eventual other secondary data</p></li>
+<li><p>Easy to use interactive conflict resolution</p></li>
+</ul>
+</div>
+<div class="section" id="notes-on-initial-implementation">
+<h3>Notes on initial implementation<a class="headerlink" href="#notes-on-initial-implementation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>An initial version of diff gui can simply show e.g. two differing
+images side by side, but later versions should do something more
+clever.</p></li>
+<li><p>An initial version of merge can simply join or optionally delete
+conflicting output.</p></li>
+<li><p>An initial version of conflict resolution can be to output a
+notebook with conflicts marked within cells, to be manually edited
+as a regular jupyter notebook.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="diff-format">
+<h2>Diff format<a class="headerlink" href="#diff-format" title="Permalink to this headline">¶</a></h2>
+<p>The diff object represents the difference between two objects A and
+B as a list of operations (ops) to apply to A to obtain B. Each
+operation is represented as a dict with at least two items:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;op&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">opname</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">key</span><span class="o">&gt;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>The objects A and B are either mappings (dicts) or sequences (lists),
+and a different set of ops are legal for mappings and sequences.
+Depending on the op, the operation dict usually contains an
+additional argument, documented below.</p>
+<div class="section" id="diff-format-for-mappings">
+<h3>Diff format for mappings<a class="headerlink" href="#diff-format-for-mappings" title="Permalink to this headline">¶</a></h3>
+<p>For mappings, the key is always a string. Valid ops are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;op&quot;:</span> <span class="pre">&quot;remove&quot;,</span>&#160; <span class="pre">&quot;key&quot;:</span> <span class="pre">&lt;string&gt;</span> <span class="pre">}</span></code>: delete existing value at key</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;op&quot;:</span> <span class="pre">&quot;add&quot;,</span>&#160;&#160;&#160;&#160; <span class="pre">&quot;key&quot;:</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;value&quot;:</span> <span class="pre">&lt;value&gt;</span> <span class="pre">}</span></code>: insert new value at key not previously existing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;op&quot;:</span> <span class="pre">&quot;replace&quot;,</span> <span class="pre">&quot;key&quot;:</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;value&quot;:</span> <span class="pre">&lt;value&gt;</span> <span class="pre">}</span></code>: replace existing value at key with new value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;op&quot;:</span> <span class="pre">&quot;patch&quot;,</span>&#160;&#160; <span class="pre">&quot;key&quot;:</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;diff&quot;:</span> <span class="pre">&lt;diffobject&gt;</span> <span class="pre">}</span></code>: patch existing value at key with another diffobject</p></li>
+</ul>
+</div>
+<div class="section" id="diff-format-for-sequences-list-and-string">
+<h3>Diff format for sequences (list and string)<a class="headerlink" href="#diff-format-for-sequences-list-and-string" title="Permalink to this headline">¶</a></h3>
+<p>For sequences the key is always an integer index.  This index is
+relative to object A of length N.  Valid ops are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;op&quot;:</span> <span class="pre">&quot;removerange&quot;,</span>&#160; <span class="pre">&quot;key&quot;:</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;length&quot;:</span> <span class="pre">&lt;n&gt;}</span></code>: delete the values A[key:key+length]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;op&quot;:</span> <span class="pre">&quot;addrange&quot;,</span>&#160;&#160;&#160;&#160; <span class="pre">&quot;key&quot;:</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;valuelist&quot;:</span> <span class="pre">&lt;values&gt;</span> <span class="pre">}</span></code>: insert new items from valuelist before A[key], at end if key=len(A)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;op&quot;:</span> <span class="pre">&quot;patch&quot;,</span>&#160;&#160; <span class="pre">&quot;key&quot;:</span> <span class="pre">&lt;string&gt;,</span> <span class="pre">&quot;diff&quot;:</span> <span class="pre">&lt;diffobject&gt;</span> <span class="pre">}</span></code>: patch existing value at key with another diffobject</p></li>
+</ul>
+</div>
+<div class="section" id="relation-to-jsonpatch">
+<h3>Relation to JSONPatch<a class="headerlink" href="#relation-to-jsonpatch" title="Permalink to this headline">¶</a></h3>
+<p>The above described diff representation has similarities with the
+JSONPatch standard but is different in some significant ways:</p>
+<ul class="simple">
+<li><p>JSONPatch contains operations “move”, “copy”, “test” not used by
+nbdime, and nbdime contains operations “addrange”, “removerange”, and
+“patch” not in JSONPatch.</p></li>
+<li><p>Instead of providing a recursive “patch” op, JSONPatch uses a deep
+JSON pointer based “path” item in each operation instead of the “key”
+item nbdime uses. This way JSONPatch can represent the diff object as
+a single list instead of the ‘tree’ of lists that nbdime uses. The
+advantage of the recursive approach is that e.g. all changes to a cell
+are grouped and do not need to be collected.</p></li>
+<li><p>JSONPatch uses indices that relate to the intermediate (partially
+patched) object, meaning transformation number n cannot be interpreted
+without going through the transformations up to n-1.  In nbdime the
+indices relate to the base object, which means ‘delete cell 7’ means
+deleting cell 7 of the base notebook independently of the previous
+transformations in the diff.</p></li>
+</ul>
+<p>A conversion function can fairly easily be implemented.</p>
+</div>
+</div>
+<div class="section" id="high-level-diff-algorithm-approach">
+<h2>High level diff algorithm approach<a class="headerlink" href="#high-level-diff-algorithm-approach" title="Permalink to this headline">¶</a></h2>
+<p>The package will contain both generic and notebook-specific variants of diff algorithms.</p>
+<p>The generic diff algorithms will handle most json-compatible objects:</p>
+<ul class="simple">
+<li><p>Arbitrary nested structures of dicts and lists are allowed</p></li>
+<li><p>Leaf values can be any strings and numbers</p></li>
+<li><p>Dict keys must always be strings</p></li>
+</ul>
+<p>The generic variants will by extension produce correct diffs for
+notebooks, but the notebook-specific variants aim to produce more
+meaningful diffs. “Meaningful” is a subjective concept and the
+algorithm descriptions below are therefore fairly high-level with
+many details left up to the implementation.</p>
+<div class="section" id="handling-nested-structures-by-alignment-and-recursion">
+<h3>Handling nested structures by alignment and recursion<a class="headerlink" href="#handling-nested-structures-by-alignment-and-recursion" title="Permalink to this headline">¶</a></h3>
+<p>The diff of objects A and B is computed recursively, handling dicts
+and lists with different algorithms.</p>
+</div>
+<div class="section" id="diff-approach-for-dicts">
+<h3>Diff approach for dicts<a class="headerlink" href="#diff-approach-for-dicts" title="Permalink to this headline">¶</a></h3>
+<p>When computing the diff of two dicts, items are always aligned by key
+value, i.e. under no circumstances are values under different keys
+compared or diffed. This makes both diff and merge quite
+straightforward. Modified leaf values that are both a list or both a
+dict will be diffed recursively, with the diff object recording a
+“patch” operation.  Any other modified leaf values are considered
+replaced.</p>
+</div>
+<div class="section" id="diff-approach-for-lists">
+<h3>Diff approach for lists<a class="headerlink" href="#diff-approach-for-lists" title="Permalink to this headline">¶</a></h3>
+<p>We wish to diff sequences and also recurse and diff aligned elements
+within the sequences. The core approach is to first align elements,
+requiring some heuristic for comparing elements, and then recursively
+diff the elements that are determined equal. <em>These heuristics will
+contain the bulk of the notebook-specific diff algorithm
+customizations.</em></p>
+<p>The most used approach for computing linebased diffs of source code is
+to solve the longest common subsequence (lcs) problem or some
+variation of it. We extend the vanilla LCS problem by allowing
+customizable predicates for approximate equality of two items,
+allowing e.g. a source cell predicate to determine that two pieces of
+source code are approximately equal and should be considered the same
+cell, or an output cell predicate to determine that two bitmap images
+are almost equal.</p>
+<p>In addition we have an experimental multilevel algorithm that employs
+a basic LCS algorithm with a sequence of increasingly relaxed equality
+predicates, allowing e.g. prioritizing equality of source+output over
+just equality of source.  Note that determining good heuristics and
+refining the above mentioned algorithms will be a significant part of
+the work and some experimentation must be allowed. In particular the
+behaviour of the multilevel approach must be investigated further and
+other approaches could be considered..</p>
+</div>
+<div class="section" id="displaying-metadata-diffs">
+<h3>Displaying metadata diffs<a class="headerlink" href="#displaying-metadata-diffs" title="Permalink to this headline">¶</a></h3>
+<p>The notebook format has metadata in various locations,
+including on each cell, output, and top-level on the notebook.
+These are dictionaries with potentially arbitrary JSON content.
+Computing metadata diffs is not different from any other dictionary diff.
+However, metadata generally does not have a visual representation in the live notebook,
+but it must be indicated in the diff view if there are changes.
+We will explore various represenentations of metadata changes in the notebook view.
+The most primitive would be to display the raw dictionary diff as a JSON field in the notebook view,
+near the displayable item the metadata is associated with.</p>
+</div>
+<div class="section" id="note-about-the-potential-addition-of-a-move-transformation">
+<h3>Note about the potential addition of a “move” transformation<a class="headerlink" href="#note-about-the-potential-addition-of-a-move-transformation" title="Permalink to this headline">¶</a></h3>
+<p>In the current implementation there is no “move” operation.
+Furthermore we make some assumptions on the structure of the json
+objects and what kind of transformations are meaningful in a diff.</p>
+<p>Items swapping position in a list will be considered added and removed
+instead of moved, but in a future iteration adding a “move” operation
+is an option to be considered. The main use case for this would be to
+resolve merges without conflicts when cells in a notebook are
+reordered on one side and modified on the other side.</p>
+<p>Even if we add the move operation, values will never be moved between
+keys in a dict, e.g.:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>diff({&quot;a&quot;:&quot;x&quot;, &quot;b&quot;:&quot;y&quot;}, {&quot;a&quot;:&quot;y&quot;, &quot;b&quot;:&quot;x&quot;})
+</pre></div>
+</div>
+<p>will be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[{&quot;op&quot;: &quot;replace&quot;, &quot;key&quot;: &quot;a&quot;, &quot;value&quot;: &quot;y&quot;},
+ {&quot;op&quot;: &quot;replace&quot;, &quot;key&quot;: &quot;b&quot;, &quot;value&quot;: &quot;x&quot;}]
+</pre></div>
+</div>
+<p>In a notebook context this means for example that data will never be
+considered to move across input cells and output cells.</p>
+</div>
+</div>
+<div class="section" id="merge-format">
+<h2>Merge format<a class="headerlink" href="#merge-format" title="Permalink to this headline">¶</a></h2>
+<p>A merge takes as input a base object (notebook) and local and remote
+objects (notebooks) that are modified versions of base. The merge
+computes the diffs base-&gt;local and base-&gt;remote and tries to apply all
+changes from each diff to base. The merge returns a merged object
+(notebook) contains all successfully applied changes from both sides,
+and two diff objects merged-&gt;local and merged-&gt;remote which contain
+the remaining conflicting changes that need manual resolution.</p>
+</div>
+<div class="section" id="pros-and-cons">
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
+<p>Pros associated with this implementation include:</p>
+<ul class="simple">
+<li><p>Improved workflows when placing notebooks in version control systems</p></li>
+<li><p>Possibility to use notebooks for self-documenting regression tests</p></li>
+</ul>
+<p>Cons associated with this implementation include:</p>
+<ul class="simple">
+<li><p>Vanilla git installs will not receive the improved behaviour, i.e. this will require installation of the package. To reduce the weight of this issue the package should avoid unneeded heavy dependencies.</p></li>
+</ul>
+</div>
+<div class="section" id="interested-contributors">
+<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this headline">¶</a></h2>
+<p>&#64;martinal &#64;minrk</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html" title="previous page">Jupyter Kernel Gateway Incorporation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

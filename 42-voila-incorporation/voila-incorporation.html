@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Voilà Incorporation &#8212; Jupyter Enhancement Proposals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Enhancement Proposal" href="../29-jep-process/jep-process.html" />
+    <link rel="prev" title="Xeus Incorporation" href="../44-xeus-incorporation/xeus-incorporation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a>
+  </li>
+  <li class="active">
+    <a href="">Voilà Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a>
+  </li>
+  <li class="">
+    <a href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../notebook-diff/notebook-diff.html">Diffing and merging notebooks</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/42-voila-incorporation/voila-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F42-voila-incorporation/voila-incorporation.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/42-voila-incorporation/voila-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#problem" class="nav-link">Problem</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#proposed-enhancement" class="nav-link">Proposed Enhancement</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#criteria-for-incorporation" class="nav-link">Criteria for Incorporation</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#have-an-active-developer-community" class="nav-link">Have an active developer community</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#have-an-active-user-community" class="nav-link">Have an active user community</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#demonstrate-continued-growth-and-development" class="nav-link">Demonstrate continued growth and development</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#integrate-well-with-other-official-subprojects" class="nav-link">Integrate well with other official Subprojects.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" class="nav-link">Use solid software engineering with documentation and tests hosted with appropriate technologies</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#have-a-well-defined-scope" class="nav-link">Have a well-defined scope.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#license" class="nav-link">License</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/42-voila-incorporation/voila-incorporation.md">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="voila-incorporation">
+<h1>Voilà Incorporation<a class="headerlink" href="#voila-incorporation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>Interactive notebooks are not the best communication tool for <em>all</em> audiences. While they have proven invaluable to provide a <em>narrative</em> alongside the source, effectively implementing the <em>literate programming</em> concept, they are not ideal to address <strong>non-technical readers</strong> who may be put off by the presence of code cells or the need to run the notebook to see results. Besides, following the order of the code often results in the most interesting content to be at the end of the document.</p>
+<p>Another challenge with sharing notebooks is the <strong>security model</strong>. How can we offer the interactivity of a notebook making use of e.g. Jupyter widgets without allowing arbitrary code execution by the end-user?</p>
+<p>The goal of the <a class="reference external" href="https://github.com/voila-dashboards/voila">Voilà</a> project is to solve these challenges by providing tools to transform interactive notebooks into standalone web applications.</p>
+</div>
+<div class="section" id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
+<p>We propose to make the Voilà project officially part of Jupyter, alongside the other projects of the voila-dashboards organization.</p>
+<p>If this incorporation is accepted, the different projects will be modified to reflect this affiliation. Links to the governance documents, code of conduct, and contributing guidelines will be added to the readme and the documentation. The voilà public meeting calendar will be added to the calendar of public Jupyter video meetings.</p>
+<p>Voilà and related projects would remain in the voila-dashboards organization that would effectively become a Jupyter-affiliated GitHub organization.</p>
+</div>
+<div class="section" id="criteria-for-incorporation">
+<h2>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/jupyter/governance/blob/master/newsubprojects.md">Jupyter Governance - New Subproject Process</a> lists the criteria used to evaluate projects for incorporation into the official Jupyter organization. We address each of these criteria below.</p>
+<div class="section" id="have-an-active-developer-community">
+<h3>Have an active developer community<a class="headerlink" href="#have-an-active-developer-community" title="Permalink to this headline">¶</a></h3>
+<p><strong>Contributors</strong></p>
+<p>The Voilà project is split across several repositories in the <a class="reference external" href="https://github.com/voila-dashboards/">voila-dashboards</a> GitHub organization</p>
+<ul class="simple">
+<li><p>The main <a class="reference external" href="https://github.com/voila-dashboards/voila">Voilà</a> repository holds the core package, which had contributions from <strong>25</strong> people, with five regular contributors.</p></li>
+<li><p>The <a class="reference external" href="https://github.com/voila-dashboards/gallery">Gallery</a> project has <strong>10</strong> contributors.</p></li>
+<li><p>We also have a <a class="reference external" href="https://voila-dashboards.github.io/">Compass</a> project that holds the calendar for the weekly public team meeting and the minutes of previous meetings.</p></li>
+</ul>
+<p>Other repositories in the organization include “Voilà templates”, and various utilities for authoring plugins for the Voilà project. We should mention the notable <a class="reference external" href="https://github.com/voila-dashboards/voila-vuetify">voila-vuetify</a> project which holds a vuetifyjs-based template that produces applications suitable to mobile devices.</p>
+<p><strong>Growth of the contributor base</strong></p>
+<p>While the project was initially started by QuantStack, the team now comprises developers from Bloomberg, UC Berkeley, JP Morgan, and Cal Poly San Luis Obispo. OVH has been supportive of the project by kindly providing the free hosting of the gallery on their infrastructure.</p>
+<p>We believe that the <em>multi-stakeholder</em> nature of the Voilà project is well-suited for the Jupyter organization.</p>
+</div>
+<div class="section" id="have-an-active-user-community">
+<h3>Have an active user community<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this headline">¶</a></h3>
+<p>The Voilà project has a very rapidly growing user base. The initial release of the project was announced on June 2019. As of today, (October 14th, 2019), the project has <strong>1223 stars</strong> on GitHub.</p>
+<p>The team strives to grow the user and developer communities with the organization of workshops and presentations at various venues. Since the initial announcement, we have presented Voilà at PyConDE, PyData Paris, Scipy Austin, EuroScipy, GeoPython, and CICM.</p>
+<p>We keep finding users at institutions when we visit them or meet them at conferences.</p>
+</div>
+<div class="section" id="demonstrate-continued-growth-and-development">
+<h3>Demonstrate continued growth and development<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this headline">¶</a></h3>
+<p>The adoption and development of the Voilà project have only been accelerating since the original release, which was announced with a <a class="reference external" href="https://blog.jupyter.org/and-voil%C3%A0-f6a2c08a4a93">medium post</a> in June 2019.</p>
+<p>Handling the growing adoption is one of the main motivations for moving to an open-governance model for the project - and we think that Jupyter is the natural home of the project.</p>
+</div>
+<div class="section" id="integrate-well-with-other-official-subprojects">
+<h3>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this headline">¶</a></h3>
+<p><strong>Built upon Jupyter Components</strong></p>
+<p>The Voilà project is largely built upon Jupyter subprojects and standards.</p>
+<ul class="simple">
+<li><p>The standard <strong>notebook file format</strong> is the main entry point to voilà.</p></li>
+<li><p><strong>nbconvert</strong> is used for the conversion to progressively-rendered HTML.</p></li>
+<li><p>naturally, we use <strong>jupyter_client</strong> for handling the execution of notebook cells</p></li>
+<li><p><strong>jupyter_server</strong> is the default backend.</p></li>
+<li><p><strong>jupyterhub</strong> is at the foundation of the voila-gallery project.</p></li>
+<li><p><strong>jupyterlab</strong> components (mime renderers, input and output areas) are used in the front-end implementation.</p></li>
+<li><p><strong>ipywidgets</strong> and custom jupyter widget libraries such as bqplot, ipyvolume, ipyleaflets provide the bulk of the interactivity of Voilà applications.</p></li>
+</ul>
+<p>In fact, Voilà is more a <em>remix</em> of existing Jupyter components (with changes to enable that use case) than a completely new application.</p>
+<p><strong>Integrating improvements upstream</strong></p>
+<p>The Voilà team, which includes several maintainers of Jupyter subprojects strives to improve the underlying components to enable the Voilà use case instead of having Voilà bolted upon the project or duplicate features.</p>
+<ul class="simple">
+<li><p>The Voilà gallery is a <strong>JupyterHub</strong> extension.</p></li>
+<li><p>The Voilà front-end was designed as a <strong>server extension</strong> to jupyter_server or the classic notebook server.</p></li>
+<li><p>The Voilà template system extends that of <strong>nbconvert</strong> and there is ongoing work to upstream the template system of voilà.</p></li>
+<li><p>Voilà includes a “preview” extension for <strong>JupyterLab</strong> that lets users see what their notebook would look like in the form of a voilà dashboard.</p></li>
+<li><p>The front-end of voilà itself reuses several javascript components from jupyterlab, including the theming capability.</p></li>
+</ul>
+<p>The Voilà use case motivated a lot of work in jupyter_server. Besides, the main developers of the projects are maintainers of Jupyter subprojects.</p>
+<p><strong>The Jupyter philosophy: language agnosticism</strong></p>
+<p>Built upon the Jupyter stack, the Voilà project remains <strong>agnostic to the programming language</strong>. This is demonstrated by the presence in the gallery of voilà applications based on the xeus-cling kernel and the xleaflet C++ backend to ipyleaflet.</p>
+<p>The language-agnosticism of Voilà makes it singular compared to other dashboarding systems such as Dash or Panel.</p>
+<p><strong>The relationship with jupyter-dashboards</strong></p>
+<p>The jupyter-dashboards project which provided dashboarding capabilities to jupyter is now unmaintained. The rich layout capability of jupyter-dashboards was based on the GridStackJS library. Unfortunately, jupyter-dashboards is not maintained anymore.</p>
+<p>The voila-dashboards GitHub organization includes a template for laying out notebook cells using the GridStackJS library, <a class="reference external" href="https://github.com/voila-dashboards/voila-gridstack">voila-gridstack</a>. We intend to make voila-gridstack able to read the same layout specification as the original jupyter-dashboards project.</p>
+</div>
+<div class="section" id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
+<h3>Use solid software engineering with documentation and tests hosted with appropriate technologies<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this headline">¶</a></h3>
+<p>Voilà is continuously tested with TravisCI.</p>
+<p>We also continuously build the documentation of Voilà which is hosted on ReadTheDocs at URL https://voila.readthedocs.io.</p>
+<p>The documentation provides extensive resources on how to deploy Voilà on various services such as binder, Heroku, google app engine, etc.</p>
+<p>Similarly, the gallery project that powers the voila-gallery.org public instance can easily be deployed on various infrastructures.</p>
+</div>
+<div class="section" id="have-a-well-defined-scope">
+<h3>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this headline">¶</a></h3>
+<p>Voilà is a tool meant to <em>present</em> read-only notebooks, possibly with a different layout, but <em>without</em> the ability to execute arbitrary code. The scope is defined by the content that the notebook file format can hold.</p>
+</div>
+<div class="section" id="license">
+<h3>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h3>
+<p>The Voilà project is licensed under the BSD-3-Clause license.</p>
+<p>We use a shared copyright model that enables all contributors to maintain the copyright on their contributions.</p>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../44-xeus-incorporation/xeus-incorporation.html" title="previous page">Xeus Incorporation</a>
+    <a class='right-next' id="next-link" href="../29-jep-process/jep-process.html" title="next page">Jupyter Enhancement Proposal</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

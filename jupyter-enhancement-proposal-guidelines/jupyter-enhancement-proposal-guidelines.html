@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jupyter Enhancement Proposals (JEP) Guidelines &#8212; Jupyter Enhancement Proposals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Enterprise Gateway Incorporation" href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" />
+    <link rel="prev" title="Jupyter DeclarativeWidgets Extension Incorporation" href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a>
+  </li>
+  <li class="">
+    <a href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a>
+  </li>
+  <li class="active">
+    <a href="">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../notebook-diff/notebook-diff.html">Diffing and merging notebooks</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#goals-of-the-jep-process" class="nav-link">Goals of the JEP process</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#tenets-of-the-jep-process" class="nav-link">Tenets of the JEP process</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#jep-submission-workflow" class="nav-link">JEP Submission Workflow</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#phase-1-pre-proposal" class="nav-link">Phase 1: Pre-proposal</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#phase-2-request-for-comments-for-the-jep" class="nav-link">Phase 2: Request for Comments for the JEP</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#phase-3-work-commences" class="nav-link">Phase 3: Work Commences</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#jep-pathways-and-status" class="nav-link">JEP Pathways and Status</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#what-qualifies-as-a-jep" class="nav-link">What qualifies as a JEP?</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#the-jep-public-archive" class="nav-link">The JEP public archive</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#background" class="nav-link">Background</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="jupyter-enhancement-proposals-jep-guidelines">
+<h1>Jupyter Enhancement Proposals (JEP) Guidelines<a class="headerlink" href="#jupyter-enhancement-proposals-jep-guidelines" title="Permalink to this headline">¶</a></h1>
+<p><strong>Note</strong>: This JEP repo is the <strong>canonical “source of truth”</strong> for individual JEPs,
+the JEP process, and activity on JEPs.</p>
+<div class="section" id="goals-of-the-jep-process">
+<h2>Goals of the JEP process<a class="headerlink" href="#goals-of-the-jep-process" title="Permalink to this headline">¶</a></h2>
+<p>Project Jupyter uses the Jupyter Enhancement Proposal process (JEP)
+to address distributed collaboration and experimentation.
+The primary guiding principle of the JEP process is to
+encourage collaboration and discussion as early as possible in the lifecycle
+of a major proposed change in Jupyter, with the goal of preventing costly rework,
+competing ideas, and unnecessary forking or fragmentation of ideas.</p>
+<p>Several sub-goals exist for this process:</p>
+<ul class="simple">
+<li><p><strong>Maximize success of large proposals</strong> that get stalled in the wrong venue (e.g. a single PR comment thread)</p></li>
+<li><p>Provide a <strong>better alternative to “piecemeal” development</strong> where multiple PRs
+to build an end-to-end set of functionality are split across multiple GitHub
+project without broad consensus, context, or guidance.</p></li>
+<li><p>Provide a <strong>clear, time-limited, and authoritative process for work proposals</strong>,
+to facilitate funding conversations.  (e.g. provide a concrete artifact to reference
+in a grant proposal, roadmap item, etc.)</p></li>
+<li><p>Provide a <strong>consolidated “stream” of all proposals across the entire Jupyter community</strong>
+that contributors of all levels can monitor and selectively engage in.</p></li>
+</ul>
+</div>
+<div class="section" id="tenets-of-the-jep-process">
+<h2>Tenets of the JEP process<a class="headerlink" href="#tenets-of-the-jep-process" title="Permalink to this headline">¶</a></h2>
+<p>The JEP process operates under the following tenets:</p>
+<ul>
+<li><p><strong>The JEP process is intended for changes of non-trivial scope.</strong>
+“Non-trivial” is addressed below in the “JEP / Not-a-JEP Rubric” of this document.</p></li>
+<li><p><strong>The JEP process naturally complements the PR process, but does not replace it.</strong>
+A thoroughly-reviewed and approved JEP is a valuable reference during a PR to
+reduce friction, reduce time-consuming context sharing, and encapsulate decisions
+and other discussions.  Moving a premature PR into a JEP should be a lightweight
+process that doesn’t cause friction for the contributor.</p>
+<p>For example, GitHub issue and PR templates across the entire Jupyter project should have
+references to the JEP process as a possible outcome of a given PR.</p>
+</li>
+<li><p><strong>There is one JEP repository, all Jupyter-governed projects must use it.</strong>
+To faciliate the easiest possible adoption and high visibility of ideas, a
+single JEP repository will be used.  Even if a JEP only applies to a single organization.</p></li>
+<li><p>The JEP process <strong>has multiple valid use cases</strong>.  Each use case might have a
+slightly different expected workflow.  Some expected use cases include:</p>
+<ul class="simple">
+<li><p>Non-trivial feature proposals within a single component that would benefit from
+process.  (e.g., a non-trivial change to JupyterLab that would benefit from
+formal process within the JupyterLab project)</p></li>
+<li><p>Non-trivial features or improvements that span multiple projects.</p></li>
+<li><p>Any proposed changes to published APIs or core specifications (e.g., nbformat)</p></li>
+<li><p>Changes to the JEP process itself.</p></li>
+<li><p>Launching a major project in one of the Jupyter GitHub organizations.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="jep-submission-workflow">
+<h2>JEP Submission Workflow<a class="headerlink" href="#jep-submission-workflow" title="Permalink to this headline">¶</a></h2>
+<p>The following sections describe the major checkpoints in the JEP process.
+Note that at any time, the JEP author may withdraw their JEP (and if it has
+been added to the README, its status becomes “withdrawn”).</p>
+<div class="section" id="phase-1-pre-proposal">
+<h3>Phase 1: Pre-proposal<a class="headerlink" href="#phase-1-pre-proposal" title="Permalink to this headline">¶</a></h3>
+<p>This is the least formal stage of any jupyter enhancement proposals. During this
+phase, discussions on the mailing list, community forum, in-person, on github issues
+are all fine to gauge community interest, feasibility, consequences, and to
+scope out technical impact and implementation details.</p>
+<p>In order to transition out of the pre-proposal stage, the following checklist must be complete:</p>
+<ol class="simple">
+<li><p><strong>Create a GitHub issue</strong>  in the Jupyter Enhancement Proposals repo that</p></li>
+<li><p>Briefly outlines the proposal</p></li>
+<li><p>Suggests a review team (optional)</p></li>
+<li><p>Declares why it should be a JEP (See the “JEP / Not-a-JEP Rubric” below.)</p></li>
+<li><p><strong>Identify a Shepherd</strong> to see the process through. (Shepherds are assigned
+on a round-robin basis from a set of interested engaged volunteers).</p></li>
+<li><p><strong>Decide if it’s a JEP</strong> according to the criteria listed above. The Shepherd decides if the JEP criteria have been met.</p></li>
+</ol>
+<p><strong>If it’s a JEP</strong>. The JEP author creates a new PR with the contents of the JEP proposal. See <a class="reference internal" href="JEP-TEMPLATE.html"><span class="doc std std-doc">this markdown template</span></a> for a suggested structure of the pull-request.</p>
+<p>Subsequent discussion and decisions about the JEP will happen in that PR, and
+we now <strong>Move to the RFC phase</strong>.</p>
+<p><strong>If it’s not a JEP</strong>. The shepherd provides a reason for why the issue
+doesn’t meet JEP criteria, and closes the issue.</p>
+</div>
+<div class="section" id="phase-2-request-for-comments-for-the-jep">
+<h3>Phase 2: Request for Comments for the JEP<a class="headerlink" href="#phase-2-request-for-comments-for-the-jep" title="Permalink to this headline">¶</a></h3>
+<p>Phase two begins when <strong>the JEP author submits a draft of the JEP as a PR to the JEP repository</strong>.
+The Shepherd assigns a number to the JEP according to the pull-request number, and updates
+the README of the JEP repository with information about the now in-progress JEP.
+The Shepherd then works with the JEP author to
+<strong>identify and notify relevant individuals in the Jupyter community to review and comment</strong>.</p>
+<p>Once this group has been notified, the JEP process enters the RFC phase.</p>
+<p>During the <strong>Request For Comment (RFC) phase</strong>, the proposal is iterated on with
+feedback from the Review Team and the community at large. The Shepherd helps engage
+the Review Team and encourage productive discussion. After the Review Team members
+have signed off on the JEP, with the criteria that there are no major objections,
+and at least some of the Review Team are in favor, the Shepherd initiates the Final Comment Period.</p>
+<p>In the <strong>Final Comment Period (FCP)</strong>, the community at-large has at least 10 calendar days
+to provide any final comments on the JEP. A JEP may revert back to RFC if
+objections from the community are supported by the Review Team.</p>
+<p>At the end of the FCP, the JEP is either:</p>
+<ul class="simple">
+<li><p><strong>approved</strong>, in which case the PR is merged and work may commence on implementing the JEP (see Phase 3, below)</p></li>
+<li><p><strong>rejected</strong>, in which case the PR is closed</p></li>
+<li><p>asked to return to the RFC phase.</p></li>
+</ul>
+<p>In each case, the JEP’s status should be updated in the README of the
+<code class="docutils literal notranslate"><span class="pre">enhancement-proposals</span></code> repository.</p>
+</div>
+<div class="section" id="phase-3-work-commences">
+<h3>Phase 3: Work Commences<a class="headerlink" href="#phase-3-work-commences" title="Permalink to this headline">¶</a></h3>
+<p>Once a JEP has been merged into the <code class="docutils literal notranslate"><span class="pre">jupyter/enhancement-proposal</span></code> repository,
+implementation can commence on the JEP. The JEP author does not need to implement the JEP themselves.</p>
+<p>If the JEP requires one or more pull-requests to be implemented, the author of the PRs should
+provide a reference to the JEP so that reviewer has background context on the JEP.
+As the JEP is being implemented, the JEP text should be amended with with addendums to
+denote the progress of the implementation using the following stages.</p>
+<ol class="simple">
+<li><p>In progress implementation via (list of PRs).</p></li>
+<li><p>Fully implemented via (list of PRs).</p></li>
+</ol>
+<p>If in the course of implementation, it is discovered that the implementation needs to
+be radically different from what was defined in the original JEP, then a pull
+request is submitted to modify the original JEP with the new necessary implementation,
+and a note citing the need for a modification to the JEP.
+This pull request should be re-approved by the original review team.</p>
+</div>
+<div class="section" id="jep-pathways-and-status">
+<h3>JEP Pathways and Status<a class="headerlink" href="#jep-pathways-and-status" title="Permalink to this headline">¶</a></h3>
+<p>Below is a rough guide that describes the JEP process and its possible pathways.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                      <span class="o">+-----------+</span>
+                      <span class="o">|</span>           <span class="o">|</span>
+                      <span class="o">|</span> <span class="n">withdrawn</span> <span class="o">|</span>
+                      <span class="o">|</span>           <span class="o">|</span>             <span class="o">+-----------+</span>
+                      <span class="o">+-----------+</span>             <span class="o">|</span>           <span class="o">|</span>
+                  <span class="n">JEP</span> <span class="n">may</span> <span class="n">be</span> <span class="n">withdrawn</span>          <span class="o">|</span>  <span class="n">rejected</span> <span class="o">|</span>
+                      <span class="n">at</span> <span class="nb">any</span> <span class="n">stage</span>              <span class="o">|</span>           <span class="o">|</span>
+                                                <span class="o">+-----^-----+</span>
+                                                      <span class="o">|</span>
+                                                <span class="o">+------+------+</span>
+  <span class="o">+--------------+</span>   <span class="o">+-----------+</span>             <span class="o">|</span>             <span class="o">|</span>            <span class="o">+-------------+</span>   <span class="o">+-----------+</span>
+  <span class="o">|</span>              <span class="o">|</span>   <span class="o">|</span>           <span class="o">|</span>             <span class="o">|</span> <span class="n">Request</span> <span class="k">for</span> <span class="o">|</span>            <span class="o">|</span>             <span class="o">|</span>   <span class="o">|</span>           <span class="o">|</span>
+  <span class="o">|</span> <span class="n">pre</span><span class="o">-</span><span class="n">proposal</span> <span class="o">+---&gt;</span> <span class="n">submitted</span> <span class="o">+-------------&gt;</span>  <span class="n">Comments</span>   <span class="o">+------------&gt;</span> <span class="ow">in</span> <span class="n">progress</span> <span class="o">+---&gt;</span> <span class="n">completed</span> <span class="o">|</span>
+  <span class="o">|</span>              <span class="o">|</span>   <span class="o">|</span>           <span class="o">|</span>  <span class="n">identify</span>   <span class="o">|</span>    <span class="p">(</span><span class="n">RFC</span><span class="p">)</span>    <span class="o">|</span>  <span class="n">approved</span>  <span class="o">|</span>             <span class="o">|</span>   <span class="o">|</span>           <span class="o">|</span>
+  <span class="o">+--------------+</span>   <span class="o">+-----------+</span>   <span class="n">review</span>    <span class="o">|</span>             <span class="o">|</span>            <span class="o">+-------------+</span>   <span class="o">+-----------+</span>
+                                      <span class="n">team</span>     <span class="o">+------+------+</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="what-qualifies-as-a-jep">
+<h2>What qualifies as a JEP?<a class="headerlink" href="#what-qualifies-as-a-jep" title="Permalink to this headline">¶</a></h2>
+<p>This section contains a set of principles to help determine when something is a JEP.
+These should be used to determine when something becomes a PR during the JEP
+pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.</p>
+<p><strong>Principles to follow</strong></p>
+<p>Below are a few example guidelines to follow when deciding if an idea should include
+a JEP (If yes, it requires a JEP). Under each question is a relevant example proposal.</p>
+<ul class="simple">
+<li><p>Does the proposal/implementation require PRs across multiple orgs?</p>
+<ul>
+<li><p><strong>Example:</strong> Defining a unique cell identifier</p></li>
+</ul>
+</li>
+<li><p>Does the proposal/implementation PR impact multiple orgs, or have widespread community impact?</p>
+<ul>
+<li><p><strong>Example:</strong> Updating nbformat</p></li>
+</ul>
+</li>
+<li><p>Does the proposal/implementation change an invariant in one or more orgs?</p>
+<ul>
+<li><p><strong>Example:</strong> Defining a unique cell identifier</p></li>
+<li><p><strong>Example:</strong> Deferred kernel startup</p></li>
+</ul>
+</li>
+<li><p>Does the proposal/implementation create a new concept that will impact multiple repositories?</p>
+<ul>
+<li><p><strong>Example:</strong> Sandboxed cell outputs</p></li>
+</ul>
+</li>
+<li><p>Does the proposal involve creating a new repository or sub-project?</p></li>
+</ul>
+</div>
+<div class="section" id="the-jep-public-archive">
+<h2>The JEP public archive<a class="headerlink" href="#the-jep-public-archive" title="Permalink to this headline">¶</a></h2>
+<p>A public website contains a readable archive of all JEP proposals.
+It contains list of all JEPs that have entered a “final” state
+(e.g., “Completed”, “Withdrawn”, “Rejected”). The content of each JEP will
+be displayed in a readable fashion. When a JEP enters into a final state, it
+is added to this website.</p>
+<p>Note that the JEPs themselves contain the content, while the website is just a
+quick way to display them in a reading-friendly format.</p>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>For a background of the JEP process, and recent efforts to improve it, see
+<a class="reference internal" href="../29-jep-process/jep-process.html"><span class="doc std std-doc">the meta-JEP readme</span></a>.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" title="previous page">Jupyter DeclarativeWidgets Extension Incorporation</a>
+    <a class='right-next' id="next-link" href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" title="next page">Jupyter Enterprise Gateway Incorporation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

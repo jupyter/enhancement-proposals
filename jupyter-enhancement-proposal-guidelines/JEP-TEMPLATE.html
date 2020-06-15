@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Summary &#8212; Jupyter Enhancement Proposals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a>
+  </li>
+  <li class="">
+    <a href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../notebook-diff/notebook-diff.html">Diffing and merging notebooks</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>One paragraph explanation of the proposal.</p>
+</div>
+<div class="section" id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
+<p>Why are we doing this? What use cases does it support? What is the expected outcome?</p>
+</div>
+<div class="section" id="guide-level-explanation">
+<h1>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this headline">¶</a></h1>
+<p>Explain the proposal as if it was already implemented and you were
+explaining it to another community member. That generally means:</p>
+<ul class="simple">
+<li><p>Introducing new named concepts.</p></li>
+<li><p>Adding examples for how this proposal affects people’s experience.</p></li>
+<li><p>Explaining how others should <em>think</em> about the feature, and how it should impact the experience using Jupyter tools. It should explain the impact as concretely as possible.</p></li>
+<li><p>If applicable, provide sample error messages, deprecation warnings, or migration guidance.</p></li>
+<li><p>If applicable, describe the differences between teaching this to existing Jupyter members and new Jupyter members.</p></li>
+</ul>
+<p>For implementation-oriented JEPs, this section should focus on how other Jupyter
+developers should think about the change, and give examples of its concrete impact. For policy JEPs, this section should provide an example-driven introduction to the policy, and explain its impact in concrete terms.</p>
+</div>
+<div class="section" id="reference-level-explanation">
+<h1>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this headline">¶</a></h1>
+<p>This is the technical portion of the JEP. Explain the design in
+sufficient detail that:</p>
+<ul class="simple">
+<li><p>Its interaction with other features is clear.</p></li>
+<li><p>It is reasonably clear how the feature would be implemented.</p></li>
+<li><p>Corner cases are dissected by example.</p></li>
+</ul>
+<p>The section should return to the examples given in the previous section, and explain more fully how the detailed proposal makes those examples work.</p>
+</div>
+<div class="section" id="rationale-and-alternatives">
+<h1>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Why is this choice the best in the space of possible designs?</p></li>
+<li><p>What other designs have been considered and what is the rationale for not choosing them?</p></li>
+<li><p>What is the impact of not doing this?</p></li>
+</ul>
+</div>
+<div class="section" id="prior-art">
+<h1>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this headline">¶</a></h1>
+<p>Discuss prior art, both the good and the bad, in relation to this proposal.
+A few examples of what this can include are:</p>
+<ul class="simple">
+<li><p>Does this feature exist in other tools or ecosystems, and what experience have their community had?</p></li>
+<li><p>For community proposals: Is this done by some other community and what were their experiences with it?</p></li>
+<li><p>For other teams: What lessons can we learn from what other communities have done here?</p></li>
+<li><p>Papers: Are there any published papers or great posts that discuss this? If you have some relevant papers to refer to, this can serve as a more detailed theoretical background.</p></li>
+</ul>
+<p>This section is intended to encourage you as an author to think about the lessons from other languages, provide readers of your JEP with a fuller picture.
+If there is no prior art, that is fine - your ideas are interesting to us whether they are brand new or if it is an adaptation from other languages.</p>
+</div>
+<div class="section" id="unresolved-questions">
+<h1>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>What parts of the design do you expect to resolve through the JEP process before this gets merged?</p></li>
+<li><p>What related issues do you consider out of scope for this JEP that could be addressed in the future independently of the solution that comes out of this JEP?</p></li>
+</ul>
+</div>
+<div class="section" id="future-possibilities">
+<h1>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this headline">¶</a></h1>
+<p>Think about what the natural extension and evolution of your proposal would
+be and how it would affect the Jupyter community at-large. Try to use this section as a tool to more fully consider all possible
+interactions with the project and language in your proposal.
+Also consider how the this all fits into the roadmap for the project
+and of the relevant sub-team.</p>
+<p>This is also a good place to “dump ideas”, if they are out of scope for the
+JEP you are writing but otherwise related.</p>
+<p>If you have tried and cannot think of any future possibilities,
+you may simply state that you cannot think of anything.</p>
+<p>Note that having something written down in the future-possibilities section
+is not a reason to accept the current or a future JEP; such notes should be
+in the section on motivation or rationale in this or subsequent JEPs.
+The section merely provides additional information.</p>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

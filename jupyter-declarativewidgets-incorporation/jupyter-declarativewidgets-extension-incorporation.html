@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jupyter DeclarativeWidgets Extension Incorporation &#8212; Jupyter Enhancement Proposals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Enhancement Proposals (JEP) Guidelines" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" />
+    <link rel="prev" title="Jupyter Dashboards Extension Incorporation" href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a>
+  </li>
+  <li class="">
+    <a href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a>
+  </li>
+  <li class="active">
+    <a href="">Jupyter DeclarativeWidgets Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../notebook-diff/notebook-diff.html">Diffing and merging notebooks</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#problem" class="nav-link">Problem</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#proposed-enhancement" class="nav-link">Proposed Enhancement</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#detailed-explanation" class="nav-link">Detailed Explanation</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#current-and-potential-use-cases" class="nav-link">Current and Potential Use Cases</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#current-features" class="nav-link">Current Features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#design-and-implementation" class="nav-link">Design and Implementation</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#elements" class="nav-link">Elements</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h5">
+            <a href="#core-elements" class="nav-link">Core elements</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h5">
+            <a href="#viz-elements" class="nav-link">Viz elements</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#notebook-server-extension" class="nav-link">Notebook Server Extension</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#kernel-side-code" class="nav-link">Kernel side code</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#installation" class="nav-link">Installation</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#criteria-for-incorporation" class="nav-link">Criteria for Incorporation</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" class="nav-link">Have an active developer community that offers a sustainable model for future development.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#have-an-active-user-community" class="nav-link">Have an active user community.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" class="nav-link">Use solid software engineering with documentation and tests hosted with appropriate technologies.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#demonstrate-continued-growth-and-development" class="nav-link">Demonstrate continued growth and development.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#integrate-well-with-other-official-subprojects" class="nav-link">Integrate well with other official Subprojects.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" class="nav-link">Be developed according to the Jupyter governance and contribution model.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#have-a-well-defined-scope" class="nav-link">Have a well-defined scope.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" class="nav-link">Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#pros-and-cons" class="nav-link">Pros and Cons</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#interested-contributors" class="nav-link">Interested Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.md">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="jupyter-declarativewidgets-extension-incorporation">
+<h1>Jupyter DeclarativeWidgets Extension Incorporation<a class="headerlink" href="#jupyter-declarativewidgets-extension-incorporation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>“Data science enables the creation of data products.” – Mike Loukides in <a class="reference external" href="https://www.oreilly.com/ideas/what-is-data-science">What is data science?</a></p>
+</div></blockquote>
+<p>Alice is a Jupyter Notebook user. Alice has performed some data analysis in a Notebook and wants to make here results available in the form of an interactive dashboard or application. She does not want to leave the Notebook environment in order to build a rich UI for her intended audience. The UI that may require input from the user, interaction with plots, and other forms of rendering results. Currently some of solutions available for Alice are IPywidgets, Bokeh, and Plotly. These solutions suffer from the following drawbacks:</p>
+<ol class="simple">
+<li><p>Most solutions are Python specific. Other language kernels has either limiting or no available solution in place.</p></li>
+<li><p>Most solutions would require considerable development investment to make available on other language kernels. Their implementation rely heavily on kernel side code.</p></li>
+<li><p>Most solutions are bound by a close widget system and are cumbersome to extend.</p></li>
+<li><p>Layers of abstraction make debugging difficult, requiring “peeking under the hood”.</p></li>
+</ol>
+<p>Depending on what language Alice is using for her Notebook, she will experience the following potential setbacks:</p>
+<ol class="simple">
+<li><p>Her language has very limited support for plotting and widget (i.e. Scala), so she cannot complete here deliverable in the Notebook. She needs to use other tools and potentially seek help due to skill gaps.</p></li>
+<li><p>A particular widget is not available. Either Alice combines other packages into the Notebook and hope they interoperate, or she hits a wall due to here gap in knowledge of web technologies.</p></li>
+</ol>
+<p>Alice cannot simply do the following:</p>
+<ul class="simple">
+<li><p>Rely on a solution that is portable across different popular Data Science languages.</p></li>
+<li><p>Use a simple web native approach to declare widgets and connect then to the data in the kernel.</p></li>
+<li><p>Build interactivity through simple data bindings</p></li>
+<li><p>Easily tap into a growing ecosystem of web components</p></li>
+</ul>
+</div>
+<div class="section" id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
+<p>The incubating <a class="reference external" href="https://github.com/jupyter-incubator/declarativewidgets">declarative widgets extension for Jupyter Notebook</a> (hereafter, <em>declarativewidgets extension</em>) is the incubation projects that addresses the issues above. The community should consider incorporating the declarativewidgets extension as an official Jupyter Subproject that provides another option for building rich interactive Notebooks.</p>
+</div>
+<div class="section" id="detailed-explanation">
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h2>
+<p>The declarativewidets extension focuses on enabling the user to create UI areas of the Notebook that can connect and interact with the code and data in the kernel.</p>
+<p>In conjunction with the (dashboard extension)(https://github.com/jupyter-incubator/dashboards) and related sub-projects, it is possible to turn Notebooks into full-featured dashboards and applications.</p>
+<div class="section" id="current-and-potential-use-cases">
+<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Permalink to this headline">¶</a></h3>
+<p>The declarativewidgets extension supports the following use cases:</p>
+<ul class="simple">
+<li><p>Invoking a function defined on the Kernel and getting the return value (if available)</p></li>
+<li><p>Querying the data off a DataFrame on the Kernel. The DataFrame can be a:</p>
+<ul>
+<li><p>pandas</p></li>
+<li><p>pyspark</p></li>
+<li><p>Scala Spark</p></li>
+<li><p>R</p></li>
+<li><p>sparkR</p></li>
+</ul>
+</li>
+<li><p>Installing and importing a necessary web-component into the Notebook</p></li>
+<li><p>Creating a UI using HTML markup and connecting the elements using [Polymer’s data binding)[https://www.polymer-project.org/1.0/docs/devguide/data-binding].</p></li>
+<li><p>Reacting to changes in data on the Kernel, for example, new data arriving on a Stream.</p></li>
+</ul>
+<p><img alt="taxi_declarative" src="https://cloud.githubusercontent.com/assets/2474841/15164018/a4e871fe-16d1-11e6-9f03-66c96b745cc4.gif" /></p>
+</div>
+<div class="section" id="current-features">
+<h3>Current Features<a class="headerlink" href="#current-features" title="Permalink to this headline">¶</a></h3>
+<p>The following are the most relevant features:</p>
+<ol class="simple">
+<li><p>A set of declarative elements and corresponding kernel side code that enables connecting and interacting with functions, DataFrames and arbitrary data on the Kernel.</p></li>
+<li><p>A set of declarative elements for visualizing data in a variety of chart types.</p></li>
+<li><p>An extension to the <code class="docutils literal notranslate"><span class="pre">&lt;template&gt;</span></code> element that enables data bindings across multiple Notebook output cells.</p></li>
+<li><p>A notebook server extension to install and importing web-components at runtime.</p></li>
+<li><p>An implementation of all features for Python, R<a class="reference external" href="#1">[1]</a>, and Scala<a class="reference external" href="#2">[2]</a> kernels.</p></li>
+</ol>
+<p>More details and information can be found in the <a class="reference external" href="https://jupyter-incubator.github.io/declarativewidgets/docs.html">documentation</a>. The project also contains many example and demo notebooks.</p>
+</div>
+<div class="section" id="design-and-implementation">
+<h3>Design and Implementation<a class="headerlink" href="#design-and-implementation" title="Permalink to this headline">¶</a></h3>
+<p>The declarativewidgets extensions is a combination of:</p>
+<ul class="simple">
+<li><p>A set of <a class="reference external" href="http://webcomponents.org/">web component</a> elements and extensions built using <a class="reference external" href="https://www.polymer-project.org/1.0/">Polymer</a></p></li>
+<li><p>A frontend extension that loads the elements and dependencies</p></li>
+<li><p>A notebook server extension that enables installing web components using <a class="reference external" href="https://bower.io/">Bower</a></p></li>
+<li><p>Kernel side implementations for Python, R<a class="reference external" href="#1">[1]</a>, and Scala<a class="reference external" href="#2">[2]</a></p></li>
+</ul>
+<div class="section" id="elements">
+<h4>Elements<a class="headerlink" href="#elements" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="core-elements">
+<h5>Core elements<a class="headerlink" href="#core-elements" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;urth-core-function&gt;</span></code> - Enable binding to functions defined in the kernel</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;urth-core-dataframe&gt;</span></code> - Access to read and query DataFrames</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;urth-core-bind&gt;</span></code> - Extension to the <code class="docutils literal notranslate"><span class="pre">template</span></code> tag to allow data binding across cells and with data on the kernel</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;urth-core-import&gt;</span></code> - Extension to the <code class="docutils literal notranslate"><span class="pre">link</span></code> tag to allow installing and importing web components</p></li>
+</ul>
+<p>There are other <code class="docutils literal notranslate"><span class="pre">core</span></code> elements, but they play a supporting role.</p>
+<p>Some of the <code class="docutils literal notranslate"><span class="pre">core</span></code> elements are a combination of browser and kernel component. On the browser side, these elements are built on top of the <code class="docutils literal notranslate"><span class="pre">jupyter-js-widgets</span></code> foundation. They communicate with the kernel through the Comm channel<a class="reference external" href="#3">[3]</a>.</p>
+</div>
+<div class="section" id="viz-elements">
+<h5>Viz elements<a class="headerlink" href="#viz-elements" title="Permalink to this headline">¶</a></h5>
+<p>There is a collection of <code class="docutils literal notranslate"><span class="pre">&lt;urth-viz-*&gt;</span></code> element that are pure client side and are use to display data. These elements include a table view and a variety of plots.</p>
+<p>More details about the architecture can be found <a class="reference external" href="https://github.com/jupyter-incubator/declarativewidgets/wiki">here</a>. Additionally, see the <a class="reference external" href="https://jupyter-incubator.github.io/declarativewidgets/docs.html">documentation</a>.</p>
+</div>
+</div>
+<div class="section" id="notebook-server-extension">
+<h4>Notebook Server Extension<a class="headerlink" href="#notebook-server-extension" title="Permalink to this headline">¶</a></h4>
+<p>The extension to the notebook server creates a new route for requesting the installation of new web component. The implementation uses Bower to download the packages for the web component and servers the content from a virtual path. Bower is used because that is what Polymer <a class="reference external" href="https://www.polymer-project.org/1.0/docs/tools/reusable-elements">recommends</a> and uses for installing components.</p>
+</div>
+<div class="section" id="kernel-side-code">
+<h4>Kernel side code<a class="headerlink" href="#kernel-side-code" title="Permalink to this headline">¶</a></h4>
+<p>The declarativewidgets extension contains code to enable support in Python, R<a class="reference external" href="#1">[1]</a>, and Scala<a class="reference external" href="#2">[2]</a>.</p>
+<p>In Python, the code is built on to of the <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> foundation. In the other languages, where only the code necessary exists to enable declarativewidgets, they are built directly on top of the Comm channel support.</p>
+</div>
+<div class="section" id="installation">
+<h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
+<p>The extension has maintained compatibility with:</p>
+<ul class="simple">
+<li><p>Notebook versions 4.0 through 4.2</p></li>
+<li><p>ipywidgets 4.x through 5.x</p></li>
+<li><p>Python 2 and Python 3</p></li>
+</ul>
+<p>Users install it using pip and manage it via the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command line interface.</p>
+</div>
+</div>
+<div class="section" id="criteria-for-incorporation">
+<h3>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/jupyter/governance/blob/master/newsubprojects.md">Jupyter Governance - New Subproject Process</a> lists the criteria used to evaluate projects for incorporation in to the official Jupyter organization. We address each of these criteria below.</p>
+<div class="section" id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
+<h4>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Permalink to this headline">¶</a></h4>
+<p>The project has contributions from 13 developers on GitHub and has been under active development over the past 10 months. We foresee future development of the extension taking the following primary forms:</p>
+<ol class="simple">
+<li><p>Fixes for reported issues</p></li>
+<li><p>Compatibility updates for new versions of Jupyter Notebook (e.g., 4.3, 4.4, …)</p></li>
+<li><p>Contributed enhancements to the existing extension within the scope of the project</p></li>
+<li><p>Enhancements to ease the authoring experience</p></li>
+<li><p>Further work on exploring DataFrames</p></li>
+</ol>
+<p>All items can be handled by current or future maintainers.</p>
+</div>
+<div class="section" id="have-an-active-user-community">
+<h4>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/declarativewidgets</span></code> repository has 55 stars and 18 watchers on GitHub. We have received questions, bug reports, and enhancement requests on GitHub and the Google Group.</p>
+</div>
+<div class="section" id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
+<h4>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this headline">¶</a></h4>
+<p>The extension has comprehensive suite of unit tests. These include unit tests for all supported languages, plus a unit tests for the web code. It also has a suite of system tests that use Selenium to drive the Notebook UI validate key features. These tests are run on a matrix that includes different versions of Python, Jupyter, ipywidgets and kernel languages.</p>
+<p>The project used Travis CI. All PRs are validated against a single browser vendor. On a PR merge, all tests are ran using SauceLabs on a variety of browser vendors.</p>
+<p>Deployment of releases to Pypi is automated using Git tags and Travis CI.</p>
+<p>Installation documentation is available in the README. Usage and API documentation is available off the <a class="reference external" href="https://jupyter-incubator.github.io/declarativewidgets/">project site</a> or embedded in the Notebook using the <code class="docutils literal notranslate"><span class="pre">urth-help</span></code> element. Architectural details are available in the <a class="reference external" href="https://github.com/jupyter-incubator/declarativewidgets/wiki">project’s wiki</a>.</p>
+</div>
+<div class="section" id="demonstrate-continued-growth-and-development">
+<h4>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this headline">¶</a></h4>
+<p>See “Have an active developer community that offers a sustainable model for future development.”</p>
+</div>
+<div class="section" id="integrate-well-with-other-official-subprojects">
+<h4>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this headline">¶</a></h4>
+<p>The declarative extensions have several examples of interoperation with <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code>. It also includes a dedicate element (<code class="docutils literal notranslate"><span class="pre">urth-core-ipywidget</span></code>) that can embed an ipywidget within a declarative template.</p>
+</div>
+<div class="section" id="be-developed-according-to-the-jupyter-governance-and-contribution-model">
+<h4>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Permalink to this headline">¶</a></h4>
+<p>The declarativewidgets extension is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.</p>
+</div>
+<div class="section" id="have-a-well-defined-scope">
+<h4>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this headline">¶</a></h4>
+<p>The purpose of the declarativewidgets extension is to provide a language neutral approach to creating interactive notebooks. It is not the intention of this project to become a widget suite, but rather, to enable incorporating any web-component into a notebook and connecting it to the code and data in the kernel.</p>
+</div>
+<div class="section" id="be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
+<h4>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Permalink to this headline">¶</a></h4>
+<p>The declarativewidgets extension is packaged using setuptools, released on PyPI, and installable using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Users manage the extension after <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> via the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> CLI.</p>
+</div>
+</div>
+</div>
+<div class="section" id="pros-and-cons">
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Pro: Enable a language neutral approach to defining the interactive areas of the notebook.</p></li>
+<li><p>Pro: Supports a variety of kernel language and in doing so, demonstrated the relative ease of enabling more languages.</p></li>
+<li><p>Pro: Leverage the ecosystem of web components. Need a widget? Search for it, don’t write it.</p></li>
+<li><p>Con: HTML can be verbose</p></li>
+<li><p>Con: HTML authoring is not a strong feature of Jupyter Notebooks. Using the <code class="docutils literal notranslate"><span class="pre">%%html</span></code> magic is not an ideal experience</p></li>
+</ul>
+</div>
+<div class="section" id="interested-contributors">
+<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this headline">¶</a></h2>
+<p>&#64;lbustelo</p>
+<hr class="docutils" />
+<p><a name="1"></a> [1] R support though <a class="reference external" href="https://github.com/IRkernel/IRkernel">IRkernel</a></p>
+<p><a name="2"></a> [2] Scala support is only available for <a class="reference external" href="https://toree.incubator.apache.org/">Apache Toree</a></p>
+<p><a name="3"></a> [3] As part of enabling R support, <a class="reference external" href="https://github.com/IRkernel/IRkernel/pull/272">contributions</a> were made to IRkernel to add Comm channel support.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html" title="previous page">Jupyter Dashboards Extension Incorporation</a>
+    <a class='right-next' id="next-link" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" title="next page">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

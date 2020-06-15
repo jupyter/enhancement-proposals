@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jupyter Kernel Gateway Incorporation &#8212; Jupyter Enhancement Proposals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Diffing and merging notebooks" href="../notebook-diff/notebook-diff.html" />
+    <link rel="prev" title="Jupyter Enterprise Gateway Incorporation" href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a>
+  </li>
+  <li class="">
+    <a href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+  </li>
+  <li class="">
+    <a href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
+  </li>
+  <li class="active">
+    <a href="">Jupyter Kernel Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../notebook-diff/notebook-diff.html">Diffing and merging notebooks</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu" aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation" title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i class="fas fa-download"></i></button>
+
+            
+            <div class="dropdown-buttons">
+                <!-- ipynb file if we had a myst markdown file -->
+                
+                <!-- Download raw file -->
+                <a class="dropdown-buttons" href="../_sources/jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <!-- Download PDF via print -->
+                <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+            </div>
+            
+        </div>
+
+        <!-- Source interaction buttons -->
+        
+        <div class="dropdown-buttons-trigger">
+            <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+            <div class="dropdown-buttons sourcebuttons">
+                <a class="repository-button" href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
+                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+            </div>
+        </div>
+        
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+        
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#problem" class="nav-link">Problem</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#proposed-enhancement" class="nav-link">Proposed Enhancement</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#detailed-explanation" class="nav-link">Detailed Explanation</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#current-and-potential-use-cases" class="nav-link">Current and Potential Use Cases</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#current-features" class="nav-link">Current Features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#criteria-for-incorporation" class="nav-link">Criteria for Incorporation</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" class="nav-link">Have an active developer community that offers a sustainable model for future development.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#have-an-active-user-community" class="nav-link">Have an active user community.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" class="nav-link">Use solid software engineering with documentation and tests hosted with appropriate technologies.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#demonstrate-continued-growth-and-development" class="nav-link">Demonstrate continued growth and development.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#integrate-well-with-other-official-subprojects" class="nav-link">Integrate well with other official Subprojects.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" class="nav-link">Be developed according to the Jupyter governance and contribution model.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#have-a-well-defined-scope" class="nav-link">Have a well-defined scope.</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h4">
+            <a href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" class="nav-link">Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#pros-and-cons" class="nav-link">Pros and Cons</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#interested-contributors" class="nav-link">Interested Contributors</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+
+<div class="tocsection editthispage">
+    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.md">
+        <i class="fas fa-pencil-alt"></i> Edit this page
+    </a>
+</div>
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="jupyter-kernel-gateway-incorporation">
+<h1>Jupyter Kernel Gateway Incorporation<a class="headerlink" href="#jupyter-kernel-gateway-incorporation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>People are creating novel applications and libraries that use Jupyter kernels as interactive code execution engines. For example:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/oreillymedia/pyxie-static">pyxie</a> uses kernels to evaluate code from a text area on a web page</p></li>
+<li><p><a class="reference external" href="https://github.com/oreillymedia/thebe">Thebe</a> uses kernels to evaluate code from multiple input areas on a web page</p></li>
+<li><p><a class="reference external" href="https://github.com/rgbkrk/gistexec">gist exec</a> uses kernels to evaluate code from GitHub gists rendered as web pages</p></li>
+<li><p><a class="reference external" href="https://github.com/jupyter/atom-notebook">Atom Notebook</a> uses kernels to enable a notebook experience in the Atom text editor</p></li>
+<li><p><a class="reference external" href="https://github.com/EclairJS/eclairjs-node">Eclairjs</a> uses the Apache Toree kernel as a means of executing Apache Spark jobs defined in JavaScript</p></li>
+<li><p><a class="reference external" href="https://github.com/jupyter-incubator/dashboards_nodejs_app">Jupyter dashboard server</a> uses kernels to evaluate code from notebooks rendered as interactive dashboards</p></li>
+</ul>
+<p>These applications have two important properties in common:</p>
+<ol class="simple">
+<li><p>They spawn kernels using provisioning APIs that run separate, and often remote, from the user-facing applications themselves.</p></li>
+<li><p>They communicate with kernels using Websockets rather than directly with ZeroMQ.</p></li>
+</ol>
+<p>Some of these application have spawned (or still do spawn) entire Jupyter Notebook servers on the backend in order to request kernels using notebook HTTP API and communicate with them over Websockets. This approach is less than ideal, however, for various reasons:</p>
+<ol class="simple">
+<li><p>The notebook UI is exposed, but only the programmatic UI is used</p></li>
+<li><p>The notebook authentication mechanism is form- and cookie-based and meant for humans, not programmatic clients</p></li>
+<li><p>The notebook transport mechanisms and APIs serve the notebook user experience, and are not meant to be replaced or extended to support other clients</p></li>
+</ol>
+</div>
+<div class="section" id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
+<p>The incubating <a class="reference external" href="https://github.com/jupyter-incubator/kernel_gateway">Jupyter Kernel Gateway project</a> has matured to the point where it addresses the issues noted above, and others. It should be considered for incorporation into the main Jupyter organization as an official Subproject.</p>
+</div>
+<div class="section" id="detailed-explanation">
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h2>
+<p>The kernel gateway is a web server that supports mechanisms for spawning and communicating with Jupyter kernels. Currently, it supports two such mechanisms:</p>
+<ol class="simple">
+<li><p>A 100% Jupyter Notebook server compatible API for:</p>
+<ul class="simple">
+<li><p>Creating, listing, and deleting Jupyter kernels via HTTP</p></li>
+<li><p>Communicating with those kernels using the <a class="reference external" href="http://jupyter-client.readthedocs.org/en/latest/messaging.html">Jupyter kernel protocol</a> via Websockets</p></li>
+</ul>
+</li>
+<li><p>A notebook-defined API that maps HTTP verbs (e.g., <code class="docutils literal notranslate"><span class="pre">GET</span></code>, <code class="docutils literal notranslate"><span class="pre">POST</span></code>) and resources (e.g., <code class="docutils literal notranslate"><span class="pre">/foo/:bar</span></code>) to code to execute on a kernel</p></li>
+</ol>
+<p>The server launches kernels in its local process/filesystem space. It can be containerized and scaled out using common technology like <a class="reference external" href="https://github.com/jupyter/tmpnb">tmpnb</a>, <a class="reference external" href="https://github.com/cloudfoundry">Cloud Foundry</a>, and <a class="reference external" href="http://kubernetes.io/">Kubernetes</a>.</p>
+<div class="section" id="current-and-potential-use-cases">
+<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Provide a web-friendly, interactive API for defining, executing, and updating Apache Spark jobs</p></li>
+<li><p>Enable non-notebook web clients to provision and use kernels via libraries like  <a class="reference external" href="https://github.com/jupyter/jupyter-js-services">jupyter-js-services</a>)</p></li>
+<li><p>Scale Jupyter kernels independently from clients (e.g., via <a class="reference external" href="https://github.com/jupyter/tmpnb">tmpnb</a>, <a class="reference external" href="https://mybinder.org">Binder</a>, your favorite cluster manager)</p></li>
+<li><p>Provision and connect to kernels on a remote cloud provider from a local Jupyter Notebook server</p></li>
+<li><p>Deploy notebooks as <a class="reference external" href="http://blog.ibmjstart.net/2016/01/28/jupyter-notebooks-as-restful-microservices/">RESTful microservices</a></p></li>
+</ul>
+</div>
+<div class="section" id="current-features">
+<h3>Current Features<a class="headerlink" href="#current-features" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/jupyter-incubator/kernel_gateway#what-it-gives-you">“What It Gives You” section of the project README</a> details the currently implemented features. The <a class="reference external" href="https://github.com/jupyter-incubator/kernel_gateway_demos">jupyter-incubator/kernel_gateway_demos</a> repository contains many runnable examples.</p>
+</div>
+<div class="section" id="criteria-for-incorporation">
+<h3>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
+<h4>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Permalink to this headline">¶</a></h4>
+<p>The kernel gateway reuses and extends classes from the Jupyter <code class="docutils literal notranslate"><span class="pre">notebook</span></code> Python package. By virtue of this implementation, it is largely sustained by development of the <code class="docutils literal notranslate"><span class="pre">jupyter/notebook</span></code> project. Minimal maintenance is required to ensure the kernel gateway codebase continues to interoperate with future releases of the <code class="docutils literal notranslate"><span class="pre">notebook</span></code> package.</p>
+</div>
+<div class="section" id="have-an-active-user-community">
+<h4>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this headline">¶</a></h4>
+<p>Kernel gateway is already a required component of the <code class="docutils literal notranslate"><span class="pre">jupyter/atom-notebook</span></code> and <code class="docutils literal notranslate"><span class="pre">EclairJS/eclairjs-node</span></code> projects, a key component letting notebooks with layout defined by  <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/dashboards</span></code> run as standalone web applications, and a swap-in replacement for the whole-notebook approach used by <code class="docutils literal notranslate"><span class="pre">oreillymedia/thebe</span></code> and <code class="docutils literal notranslate"><span class="pre">rgbkrk/gistexec</span></code>.</p>
+</div>
+<div class="section" id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
+<h4>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this headline">¶</a></h4>
+<p>The kernel gateway has a suite of unit and integration tests that are run automatically on Travis on every PR and merge to master.</p>
+<p>The documentation for the kernel gateway currently resides in a single README. The document links to docs for various other Jupyter projects to explain the details of the Jupyter protocol and REST APIs. If and when the documentation becomes significantly larger, it can easily migrate to ReadTheDocs or another appropriate site.</p>
+</div>
+<div class="section" id="demonstrate-continued-growth-and-development">
+<h4>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this headline">¶</a></h4>
+<p>See “Have an active developer community that offers a sustainable model for future development.”</p>
+</div>
+<div class="section" id="integrate-well-with-other-official-subprojects">
+<h4>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this headline">¶</a></h4>
+<p>The kernel gateway is a <code class="docutils literal notranslate"><span class="pre">jupyter/jupyter_core#Application</span></code> that uses programmatic APIs from <code class="docutils literal notranslate"><span class="pre">jupyter/notebook</span></code> to enable communication with Jupyter kernels like <code class="docutils literal notranslate"><span class="pre">ipython/ipykernel</span></code>. By definition, it integrates with other official Subprojects.</p>
+</div>
+<div class="section" id="be-developed-according-to-the-jupyter-governance-and-contribution-model">
+<h4>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Permalink to this headline">¶</a></h4>
+<p>The kernel gateway is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.</p>
+</div>
+<div class="section" id="have-a-well-defined-scope">
+<h4>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this headline">¶</a></h4>
+<p>The purpose of the kernel gateway is to provide web-friendly means of accessing kernels. Only features that fit this definition have been included.</p>
+</div>
+<div class="section" id="be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
+<h4>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Permalink to this headline">¶</a></h4>
+<p>The kernel gateway is packaged using setup tools, released in both source and wheel format on PyPI, and installable using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. There is also a <code class="docutils literal notranslate"><span class="pre">jupyter/minimal-kernel</span></code> Docker image that can be used as a base image for combining the kernel gateway with any Jupyter kernel.</p>
+</div>
+</div>
+</div>
+<div class="section" id="pros-and-cons">
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Pro: All of the complex functionality for spawning and bridging Websocket to ZeroMQ comes from the Jupyter <code class="docutils literal notranslate"><span class="pre">notebook</span></code> package and is not reimplemented here.</p></li>
+<li><p>Con: The kernel gateway does not yet support a clean interface for plugging in additional APIs, transports, and protocols for accessing kernels. The two existing modes are “baked in”.</p></li>
+</ul>
+</div>
+<div class="section" id="interested-contributors">
+<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this headline">¶</a></h2>
+<p>&#64;parente, &#64;rgbkrk</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" title="previous page">Jupyter Enterprise Gateway Incorporation</a>
+    <a class='right-next' id="next-link" href="../notebook-diff/notebook-diff.html" title="next page">Diffing and merging notebooks</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
