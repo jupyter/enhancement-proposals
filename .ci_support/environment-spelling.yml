@@ -1,0 +1,7 @@
+name: spelling
+
+channels:
+  - conda-forge
+
+dependencies:
+  - hunspell-en
