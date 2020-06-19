@@ -15,9 +15,9 @@ hunspell \
   > check-spelling.txt
 
 if [ -s "check-spelling.txt" ]; then
-  echo "hunspell found misspelled words"
-  cat check-spelling.txt
+  echo "::warning ::{misspelled words found in built HTML}"
+  echo "::warning ::{$(cat check-spelling.txt)}"
   exit 1
 else
-  echo "hunspell did not find any misspelled words"
+  echo "did not find any misspelled words"
 fi
