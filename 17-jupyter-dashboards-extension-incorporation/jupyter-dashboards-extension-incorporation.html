@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Jupyter Kernel Gateway Incorporation &#8212; Jupyter Enhancement Proposals</title>
+    <title>Jupyter Dashboards Extension Incorporation &#8212; Jupyter Enhancement Proposals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -30,8 +30,8 @@
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Diffing and merging notebooks" href="../notebook-diff/notebook-diff.html" />
-    <link rel="prev" title="Jupyter Enterprise Gateway Incorporation" href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" />
+    <link rel="next" title="Jupyter Kernel Gateway Incorporation" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html" />
+    <link rel="prev" title="Jupyter DeclarativeWidgets Extension Incorporation" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -65,6 +65,12 @@
   
   <ul class="nav sidenav_l1">
   <li class="">
+    <a href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+  </li>
+<li class="navbar-special">
+<p class="margin-caption">Accepted</p>
+</li>
+  <li class="">
     <a href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a>
   </li>
   <li class="">
@@ -76,26 +82,26 @@
   <li class="">
     <a href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a>
   </li>
+<li class="navbar-special">
+<p class="margin-caption">Implemented</p>
+</li>
   <li class="">
-    <a href="../jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
+    <a href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
   </li>
   <li class="">
-    <a href="../jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a>
+    <a href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a>
   </li>
   <li class="">
-    <a href="../jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a>
-  </li>
-  <li class="">
-    <a href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a>
-  </li>
-  <li class="">
-    <a href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a>
+    <a href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a>
   </li>
   <li class="active">
-    <a href="">Jupyter Kernel Gateway Incorporation</a>
+    <a href="">Jupyter Dashboards Extension Incorporation</a>
   </li>
   <li class="">
-    <a href="../notebook-diff/notebook-diff.html">Diffing and merging notebooks</a>
+    <a href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a>
+  </li>
+  <li class="">
+    <a href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a>
   </li>
 </ul>
 </nav>
@@ -130,7 +136,7 @@
                 <!-- ipynb file if we had a myst markdown file -->
                 
                 <!-- Download raw file -->
-                <a class="dropdown-buttons" href="../_sources/jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
+                <a class="dropdown-buttons" href="../_sources/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip" data-placement="left">.md</button></a>
                 <!-- Download PDF via print -->
                 <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF" onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
             </div>
@@ -143,8 +149,8 @@
             <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
             <div class="dropdown-buttons sourcebuttons">
                 <a class="repository-button" href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Source repository"><i class="fab fa-github"></i>repository</button></a>
-                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+                <a class="issues-button" href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html&body=Your%20issue%20content%20here."><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.md"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left" title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
             </div>
         </div>
         
@@ -180,6 +186,10 @@
     
         <li class="nav-item toc-entry toc-h3">
             <a href="#current-features" class="nav-link">Current Features</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#design-and-implementation" class="nav-link">Design and Implementation</a>
         </li>
     
         <li class="nav-item toc-entry toc-h3">
@@ -237,7 +247,7 @@
 
 
 <div class="tocsection editthispage">
-    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.md">
+    <a href="https://github.com/jupyter/enhancement-proposals/edit/master/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.md">
         <i class="fas fa-pencil-alt"></i> Edit this page
     </a>
 </div>
@@ -249,76 +259,89 @@
         
               <div>
                 
-  <div class="section" id="jupyter-kernel-gateway-incorporation">
-<h1>Jupyter Kernel Gateway Incorporation<a class="headerlink" href="#jupyter-kernel-gateway-incorporation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="jupyter-dashboards-extension-incorporation">
+<h1>Jupyter Dashboards Extension Incorporation<a class="headerlink" href="#jupyter-dashboards-extension-incorporation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="problem">
 <h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
-<p>People are creating novel applications and libraries that use Jupyter kernels as interactive code execution engines. For example:</p>
+<blockquote>
+<div><p>“Data science enables the creation of data products.” – Mike Loukides in <a class="reference external" href="https://www.oreilly.com/ideas/what-is-data-science">What is data science?</a></p>
+</div></blockquote>
+<p>Alice is a Jupyter Notebook user. Alice prototypes data access, modeling, plotting, interactivity, etc. in a notebook. Now Alice needs to deliver a dynamic dashboard for non-notebook users. Today, Alice must step outside Jupyter Notebook and build a separate web application. Alice cannot simply do the following:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/oreillymedia/pyxie-static">pyxie</a> uses kernels to evaluate code from a text area on a web page</p></li>
-<li><p><a class="reference external" href="https://github.com/oreillymedia/thebe">Thebe</a> uses kernels to evaluate code from multiple input areas on a web page</p></li>
-<li><p><a class="reference external" href="https://github.com/rgbkrk/gistexec">gist exec</a> uses kernels to evaluate code from GitHub gists rendered as web pages</p></li>
-<li><p><a class="reference external" href="https://github.com/jupyter/atom-notebook">Atom Notebook</a> uses kernels to enable a notebook experience in the Atom text editor</p></li>
-<li><p><a class="reference external" href="https://github.com/EclairJS/eclairjs-node">Eclairjs</a> uses the Apache Toree kernel as a means of executing Apache Spark jobs defined in JavaScript</p></li>
-<li><p><a class="reference external" href="https://github.com/jupyter-incubator/dashboards_nodejs_app">Jupyter dashboard server</a> uses kernels to evaluate code from notebooks rendered as interactive dashboards</p></li>
+<li><p>Select notebook content (widgets, plots, images, markdown, etc.) to show in a dashboard</p></li>
+<li><p>Arrange the dashboard content in a grid- or report-style layout</p></li>
+<li><p>Publish the dashboard layout as a standalone web application</p></li>
+<li><p>Push updates to the published web app when the notebook changes</p></li>
+<li><p>Secure the web app separate from the notebook authoring environment</p></li>
 </ul>
-<p>These applications have two important properties in common:</p>
-<ol class="simple">
-<li><p>They spawn kernels using provisioning APIs that run separate, and often remote, from the user-facing applications themselves.</p></li>
-<li><p>They communicate with kernels using Websockets rather than directly with ZeroMQ.</p></li>
-</ol>
-<p>Some of these application have spawned (or still do spawn) entire Jupyter Notebook servers on the backend in order to request kernels using notebook HTTP API and communicate with them over Websockets. This approach is less than ideal, however, for various reasons:</p>
-<ol class="simple">
-<li><p>The notebook UI is exposed, but only the programmatic UI is used</p></li>
-<li><p>The notebook authentication mechanism is form- and cookie-based and meant for humans, not programmatic clients</p></li>
-<li><p>The notebook transport mechanisms and APIs serve the notebook user experience, and are not meant to be replaced or extended to support other clients</p></li>
-</ol>
 </div>
 <div class="section" id="proposed-enhancement">
 <h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
-<p>The incubating <a class="reference external" href="https://github.com/jupyter-incubator/kernel_gateway">Jupyter Kernel Gateway project</a> has matured to the point where it addresses the issues noted above, and others. It should be considered for incorporation into the main Jupyter organization as an official Subproject.</p>
+<p>The incubating <a class="reference external" href="https://github.com/jupyter-incubator/dashboards">dashboards layout extension for Jupyter Notebook</a> (hereafter, <em>dashboards extension</em>) is one of three incubation projects that, together, address the issues above. The community should consider incorporating the dashboards extension as an official Jupyter Subproject as a first step toward a robust dashboarding solution.</p>
 </div>
 <div class="section" id="detailed-explanation">
 <h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h2>
-<p>The kernel gateway is a web server that supports mechanisms for spawning and communicating with Jupyter kernels. Currently, it supports two such mechanisms:</p>
+<p>The full jupyter-incubator dashboards effort covers:</p>
 <ol class="simple">
-<li><p>A 100% Jupyter Notebook server compatible API for:</p>
-<ul class="simple">
-<li><p>Creating, listing, and deleting Jupyter kernels via HTTP</p></li>
-<li><p>Communicating with those kernels using the <a class="reference external" href="http://jupyter-client.readthedocs.org/en/latest/messaging.html">Jupyter kernel protocol</a> via Websockets</p></li>
-</ul>
-</li>
-<li><p>A notebook-defined API that maps HTTP verbs (e.g., <code class="docutils literal notranslate"><span class="pre">GET</span></code>, <code class="docutils literal notranslate"><span class="pre">POST</span></code>) and resources (e.g., <code class="docutils literal notranslate"><span class="pre">/foo/:bar</span></code>) to code to execute on a kernel</p></li>
+<li><p>Arranging notebook outputs in a grid- or report-like layout (https://github.com/jupyter-incubator/dashboards)</p></li>
+<li><p>Bundling notebooks and associated assets for deployment as dashboards https://github.com/jupyter-incubator/dashboards_bundlers)</p></li>
+<li><p>Serving notebook-defined dashboards as standalone web apps (https://github.com/jupyter-incubator/dashboards_serve</p></li>
 </ol>
-<p>The server launches kernels in its local process/filesystem space. It can be containerized and scaled out using common technology like <a class="reference external" href="https://github.com/jupyter/tmpnb">tmpnb</a>, <a class="reference external" href="https://github.com/cloudfoundry">Cloud Foundry</a>, and <a class="reference external" href="http://kubernetes.io/">Kubernetes</a>.</p>
+<p>The effort has close ties to https://github.com/jupyter-incubator/declarativewidgets which provides one way (but not the only way) of enabling rich interactivity in notebook-defined dashboards.</p>
+<p><strong>N.B.</strong> - Per the discussion at the spring 2016 dev meeting and steps noted in the <a class="reference external" href="https://github.com/jupyter/roadmap#graduate-jupyterdashboards-from-incubator">jupyter/roadmap</a>, this document covers the graduation of the <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/dashboards</span></code> project alone. We will submit proposals for the other related projects in the near future.</p>
 <div class="section" id="current-and-potential-use-cases">
 <h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Permalink to this headline">¶</a></h3>
+<p>The dashboards extension supports the following use cases:</p>
 <ul class="simple">
-<li><p>Provide a web-friendly, interactive API for defining, executing, and updating Apache Spark jobs</p></li>
-<li><p>Enable non-notebook web clients to provision and use kernels via libraries like  <a class="reference external" href="https://github.com/jupyter/jupyter-js-services">jupyter-js-services</a>)</p></li>
-<li><p>Scale Jupyter kernels independently from clients (e.g., via <a class="reference external" href="https://github.com/jupyter/tmpnb">tmpnb</a>, <a class="reference external" href="https://mybinder.org">Binder</a>, your favorite cluster manager)</p></li>
-<li><p>Provision and connect to kernels on a remote cloud provider from a local Jupyter Notebook server</p></li>
-<li><p>Deploy notebooks as <a class="reference external" href="http://blog.ibmjstart.net/2016/01/28/jupyter-notebooks-as-restful-microservices/">RESTful microservices</a></p></li>
+<li><p>Dashboard layout mode for arranging notebook cell outputs in a grid- or report-like fashion</p></li>
+<li><p>Dashboard view mode for interacting with an assembled dashboard within the Jupyter Notebook</p></li>
+<li><p>Ability to share notebooks that have dashboard layout metadata in them with other Jupyter Notebook users for layout and viewing</p></li>
 </ul>
+<p>When used with the other incubating dashboard projects, it supports the following workflow:</p>
+<ol class="simple">
+<li><p>Alice authors a notebook document using Jupyter Notebook. She adds visualizations and interactive widgets.</p></li>
+<li><p>Alice arranges her notebook cells in a grid- or report-like dashboard layout.</p></li>
+<li><p>Alice one-click deploys her notebook and associated assets to a Jupyter Dashboards server.</p></li>
+<li><p>Bob visits the dashboards server and interacts with Alice’s notebook-turned-dashboard application.</p></li>
+<li><p>Alice updates her notebook with new features and redeploys it to the dashboards server.</p></li>
+</ol>
+<p><img alt="End-to-end dashboards workflow" src="https://raw.githubusercontent.com/wiki/jupyter-incubator/dashboards/images/workflow.png" /></p>
+<p>For example,
+<a class="reference external" href="https://ibm.box.com/shared/static/t9zfbloipanirdm8u0vg3ggbmp5c1q8p.gif">here is an animation</a> of a user arrange portions of a notebook into a dashboard and deploying it to a dashboard server.</p>
 </div>
 <div class="section" id="current-features">
 <h3>Current Features<a class="headerlink" href="#current-features" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://github.com/jupyter-incubator/kernel_gateway#what-it-gives-you">“What It Gives You” section of the project README</a> details the currently implemented features. The <a class="reference external" href="https://github.com/jupyter-incubator/kernel_gateway_demos">jupyter-incubator/kernel_gateway_demos</a> repository contains many runnable examples.</p>
+<p>The <a class="reference external" href="https://github.com/jupyter-incubator/dashboards#what-it-gives-you">“What It Gives You” section of the project README</a> details the currently implemented features. The <a class="reference external" href="https://github.com/jupyter-incubator/dashboards/tree/master/etc/notebooks">notebooks directory</a> in the project contains numerous examples.</p>
+</div>
+<div class="section" id="design-and-implementation">
+<h3>Design and Implementation<a class="headerlink" href="#design-and-implementation" title="Permalink to this headline">¶</a></h3>
+<p>The dashboards extension is a pure JavaScript extension for the Jupyter Notebook frontend. It adds a toolbar and menu items for switching between three views: notebook, dashboard layout, and dashboard preview. It also adds a set of menu items for quickly adding/removing all cells to/from the dashboard layout. Help for creating dashboard layouts appears in situ in the layout mode.</p>
+<p>The extension currently supports two types of layout: grid and report. The user moves, resizes, and shows/hides notebook cell widgets/outputs in a responsive grid in the former. The user simply shows/hides cell widgets/outputs in top-down notebook order in the latter. The extension <a class="reference external" href="https://github.com/jupyter-incubator/dashboards/wiki/Dashboard-Metadata-and-Rendering">persists information about the layouts within the notebook document</a>.</p>
+<p>Both the notebook extension and the notebook document specification are extensible. They may grow support for additional kinds of layout in the future (e.g., fixed grids, paged wizards).</p>
+<p>The extension is compatible with notebook version 4.0 through 4.2. Users install it using pip and manage it via the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command line interface.</p>
 </div>
 <div class="section" id="criteria-for-incorporation">
 <h3>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/jupyter/governance/blob/master/newsubprojects.md">Jupyter Governance - New Subproject Process</a> lists the criteria used to evaluate projects for incorporation in to the official Jupyter organization. We address each of these criteria below.</p>
 <div class="section" id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
 <h4>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Permalink to this headline">¶</a></h4>
-<p>The kernel gateway reuses and extends classes from the Jupyter <code class="docutils literal notranslate"><span class="pre">notebook</span></code> Python package. By virtue of this implementation, it is largely sustained by development of the <code class="docutils literal notranslate"><span class="pre">jupyter/notebook</span></code> project. Minimal maintenance is required to ensure the kernel gateway codebase continues to interoperate with future releases of the <code class="docutils literal notranslate"><span class="pre">notebook</span></code> package.</p>
+<p>The project has contributions from 12 developers on GitHub and has been under active development over the past 10 months. We foresee future development of the extension taking the following primary forms:</p>
+<ol class="simple">
+<li><p>Fixes for reported issues</p></li>
+<li><p>Compatibility updates for new versions of Jupyter Notebook (e.g., 4.3, 4.4, …)</p></li>
+<li><p>Contributed enhancements to the existing extension within the scope of the project</p></li>
+<li><p>Enhancements to the metadata spec and layout authoring options to remain compatible with future dashboard features in Jupyter Lab</p></li>
+</ol>
+<p>The first two are straightforward and can be handled by current or future maintainers. The third, if and when it happens, can be integrated by current and future maintainers project as well. The fourth will be driven by future Jupyter Lab efforts to support dashboards.</p>
 </div>
 <div class="section" id="have-an-active-user-community">
 <h4>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this headline">¶</a></h4>
-<p>Kernel gateway is already a required component of the <code class="docutils literal notranslate"><span class="pre">jupyter/atom-notebook</span></code> and <code class="docutils literal notranslate"><span class="pre">EclairJS/eclairjs-node</span></code> projects, a key component letting notebooks with layout defined by  <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/dashboards</span></code> run as standalone web applications, and a swap-in replacement for the whole-notebook approach used by <code class="docutils literal notranslate"><span class="pre">oreillymedia/thebe</span></code> and <code class="docutils literal notranslate"><span class="pre">rgbkrk/gistexec</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/dashboards</span></code> repository has 151 stars and 30 watchers on GitHub. We have received questions, bug reports, and enhancement requests on GitHub, the Google Group, and Gitter.</p>
 </div>
 <div class="section" id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
 <h4>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this headline">¶</a></h4>
-<p>The kernel gateway has a suite of unit and integration tests that are run automatically on Travis on every PR and merge to master.</p>
-<p>The documentation for the kernel gateway currently resides in a single README. The document links to docs for various other Jupyter projects to explain the details of the Jupyter protocol and REST APIs. If and when the documentation becomes significantly larger, it can easily migrate to ReadTheDocs or another appropriate site.</p>
+<p>The extension has a small suite of frontend smoke tests that use Selenium to drive the UI additions to the Notebook server. The tests run on SauceLabs via Travis CI on every PR merge.</p>
+<p>User and developer documentation about the extension resides on ReadTheDocs at http://jupyter-dashboards-layout.readthedocs.io. We plan to migrate additional information to these docs from https://github.com/jupyter-incubator/dashboards/wiki.</p>
 </div>
 <div class="section" id="demonstrate-continued-growth-and-development">
 <h4>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this headline">¶</a></h4>
@@ -326,32 +349,35 @@
 </div>
 <div class="section" id="integrate-well-with-other-official-subprojects">
 <h4>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this headline">¶</a></h4>
-<p>The kernel gateway is a <code class="docutils literal notranslate"><span class="pre">jupyter/jupyter_core#Application</span></code> that uses programmatic APIs from <code class="docutils literal notranslate"><span class="pre">jupyter/notebook</span></code> to enable communication with Jupyter kernels like <code class="docutils literal notranslate"><span class="pre">ipython/ipykernel</span></code>. By definition, it integrates with other official Subprojects.</p>
+<p>The dashboards extension is a <a class="reference external" href="http://jupyter-notebook.readthedocs.io/en/latest/examples/Notebook/Distributing%20Jupyter%20Extensions%20as%20Python%20Packages.html">properly packaged Jupyter Notebook extension</a> with <a class="reference external" href="https://github.com/jupyter-incubator/dashboards/wiki/Dashboard-Metadata-and-Rendering">documentation about its extensible, versioned metadata</a> so that other Jupyter tools may render its dashboard layouts (e.g., <a class="reference external" href="https://github.com/jupyter-incubator/dashboards_server">dashboards server</a> now, Jupyter Lab in the future).</p>
 </div>
 <div class="section" id="be-developed-according-to-the-jupyter-governance-and-contribution-model">
 <h4>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Permalink to this headline">¶</a></h4>
-<p>The kernel gateway is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.</p>
+<p>The dashboards extension is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.</p>
 </div>
 <div class="section" id="have-a-well-defined-scope">
 <h4>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this headline">¶</a></h4>
-<p>The purpose of the kernel gateway is to provide web-friendly means of accessing kernels. Only features that fit this definition have been included.</p>
+<p>The purpose of the dashboards extension is to provide a user interface for arranging notebook cells into interactive dashboard layouts. We have separated features beyond this scope into other projects (e.g., serving dashboards as standalone web applications → jupyter-incubator/dashboards_server project) and have recommended similar actions for community requests (e.g., support for dashboard layouts when converting to PDF → add support for dashboard metadata to nbconvert).</p>
 </div>
 <div class="section" id="be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
 <h4>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Permalink to this headline">¶</a></h4>
-<p>The kernel gateway is packaged using setup tools, released in both source and wheel format on PyPI, and installable using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. There is also a <code class="docutils literal notranslate"><span class="pre">jupyter/minimal-kernel</span></code> Docker image that can be used as a base image for combining the kernel gateway with any Jupyter kernel.</p>
+<p>The dashboards extension is packaged using setuptools, released on PyPI, and installable using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Users manage the extension after <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> via the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> CLI.</p>
 </div>
 </div>
 </div>
 <div class="section" id="pros-and-cons">
 <h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Pro: All of the complex functionality for spawning and bridging Websocket to ZeroMQ comes from the Jupyter <code class="docutils literal notranslate"><span class="pre">notebook</span></code> package and is not reimplemented here.</p></li>
-<li><p>Con: The kernel gateway does not yet support a clean interface for plugging in additional APIs, transports, and protocols for accessing kernels. The two existing modes are “baked in”.</p></li>
+<li><p>Pro: Gives Jupyter users an avenue for creating dashboard layouts in Jupyter notebooks today.</p></li>
+<li><p>Pro: Works with the other incubating projects to enable deployment of dashboard-notebooks as standalone web applications.</p></li>
+<li><p>Pro: Defines a spec for storing layout metadata in notebook documents and steps for rendering those layouts.</p></li>
+<li><p>Pro: Serves as a test bed and reference implementation for future dashboard efforts in Jupyter Lab.</p></li>
+<li><p>Con: There is currently <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/15">no consensus on a light proposal</a> for where to store layout metadata in notebooks, let alone a single layout metadata spec to be shared across all tools (including those beyond the dashboards use case).</p></li>
 </ul>
 </div>
 <div class="section" id="interested-contributors">
 <h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this headline">¶</a></h2>
-<p>&#64;parente, &#64;rgbkrk</p>
+<p>&#64;parente</p>
 </div>
 </div>
 
@@ -364,8 +390,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" title="previous page">Jupyter Enterprise Gateway Incorporation</a>
-    <a class='right-next' id="next-link" href="../notebook-diff/notebook-diff.html" title="next page">Diffing and merging notebooks</a>
+    <a class='left-prev' id="prev-link" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" title="previous page">Jupyter DeclarativeWidgets Extension Incorporation</a>
+    <a class='right-next' id="next-link" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html" title="next page">Jupyter Kernel Gateway Incorporation</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
