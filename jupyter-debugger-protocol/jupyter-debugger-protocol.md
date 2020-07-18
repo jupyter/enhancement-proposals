@@ -2,7 +2,7 @@
 
 | Item       | Value                                                                                                                        |
 |------------|------------------------------------------------------------------------------------------------------------------------------|
-| Title      | Standalone Jupyter Server                                                                                                    |
+| Title      | Jupyter Debugger Protocol                                                                                                    |
 | Authors    | Sylvain Corlay ([@SylvainCorlay](https://github.com/SylvainCorlay)) and Johan Mabille ([@JohanMabille](https://github.com/JohanMabille))|
 | Status     | Draft                                                                                                                        |
 | Type       | S - [Standards Track](https://www.python.org/dev/peps/#pep-types-key) JEP                                                    |
