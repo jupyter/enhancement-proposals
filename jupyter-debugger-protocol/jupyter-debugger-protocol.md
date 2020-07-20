@@ -66,7 +66,7 @@ Together, they provide a rather typical experience of a visual debugger in Jupyt
 
 Typescript classes for the Debug Adapter Protocol message types are available in the MIT-licensed [vscode-debugadapter-node](https://github.com/microsoft/vscode-debugadapter-node/) package, which we were able to leverage in the debugger front-end implementation.
  
-## Relevent Resources (GitHub repositories, Issues, PRs)
+## Relevant Resources (GitHub repositories, Issues, PRs)
 
 ### GitHub repositories
 
