@@ -12,6 +12,8 @@
 
 Jupyter users like to experiment in the notebook, but for more classical software development tasks such as the refactoring of a large codebase, they often switch to a general-purpose IDE. One of the main reasons for switching to other tools is the lack of a visual debugger in Jupyter, with the ability to set breakpoints, step into code, inspect variables, etc. A visual debugger for Jupyter has been a long-standing request from the community.
 
+One available feature in the case of the IPython kernel is [%debug magic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-debug), which can be used both interactively, or for post-mortem analysis, and provides a command-line interface to pdb in Jupyter front-ends.
+
 The absence of a visual debugger was also one of the main pain points for users accustomed to classical IDEs, for whom the main way to enable an interactive workflow was to run their code in a debugger.
 
 The development of a visual debugger for Jupyter required both front-end and back-end work, including additions to the Jupyter kernel protocol. We have been making strides in all aspects of the project over the past few months and made a first release of the Jupyter debugger. This Jupyter Enhancement Proposal is meant to summarize the main changes, and more importantly, to **include the extensions to the Jupyter kernel protocol in the official specification**.
