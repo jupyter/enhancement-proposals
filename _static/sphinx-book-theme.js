@@ -91,6 +91,14 @@ var initTocHide = () => {
   });
 }
 
+var initThebeSBT = () => {
+  var title  = $("div.section h1")[0]
+  if (!$(title).next().hasClass("thebe-launch-button")) {
+    $("<button class='thebe-launch-button'></button>").insertAfter($(title))
+  }
+  initThebe();
+}
+
 sbRunWhenDOMLoaded(initTooltips)
 sbRunWhenDOMLoaded(initTriggerNavBar)
 sbRunWhenDOMLoaded(scrollToActive)
