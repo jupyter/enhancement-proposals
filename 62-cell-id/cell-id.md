@@ -178,7 +178,7 @@ index e3dedf2..4f192e6 100644
 
 #### Option A: strings from an integer counter
 
-A valid strategy, when populating cell ids from a notebook on import from another id-less source or older format version, to use e.g. strings from an integer counter. 
+A valid strategy, when populating cell ids from a notebook on import from another id-less source or older format version, is to use e.g. strings from an integer counter. 
 
 In fact, if an editor app keeps track of current cell ids, the following strategy ensures uniqueness:
 
