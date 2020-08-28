@@ -252,7 +252,7 @@ Use Option B. Option C is also viable but adds a corpus requirement to the id ge
 7. So if nbformat >= 4.5 loads in a pre 4.5 notebook, then a cell ID would be generated and added to each cell?
    - Yes.
 8. If a cell is cut out of a notebook and pasted into another, should the cell ID be retained?
-   - No. Much like copying contents out of one document into another -- you have a new cell with equivalent contends and a new id.
+   - No. Much like copying contents out of one document into another -- you have a new cell with equivalent contents and a new id.
 9. What are the details when splitting cells?
    - One cell (preferably the one with the top half of the code) keeps the id, the other gets a new id. This could be adjusted if folks want a different behavior without being a huge problem so long as we're consistent.
 
