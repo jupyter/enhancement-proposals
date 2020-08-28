@@ -65,7 +65,7 @@ This change is **not** an addition to the cells' `metadata` space, which has an 
 
 The `id` field in cells would _always_ be **required** for any future nbformat versions (4.5+). In contrast to an *optional* field, the required field avoids applications having to conditionally check if an id is present or not.
 
-Relaxing the field to *optional* would lead to undesirable behavior. An optional field would lead to partial implementation in applications and difficulty in having consistent experiences with build on top of the id change.
+Relaxing the field to *optional* would lead to undesirable behavior. An optional field would lead to partial implementation in applications and difficulty in having consistent experiences which build on top of the id change.
 
 #### Reason for Character Restrictions (pattern, min/max length)
 
