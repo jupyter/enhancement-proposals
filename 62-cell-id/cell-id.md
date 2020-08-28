@@ -224,7 +224,7 @@ def get_cell_id(id_length=8):
 
 #### Option C: Join human-readable strings from a corpus randomly 
 
-One frequently used pattern for generating human recognizable ids is to combine common words together instead of arbitrarily random bits. Things like `danger-noodle` is a lot easier to remember or reference for a person than `ZGFuZ2VyLW5vb2RsZQ==`. Below would be how this is achieved, though it requires a set of names to use in id generation. There's dependencies in Python, as well as corpus csv files, for this that make it convienent but it would have to add to the install depenencies.
+One frequently used pattern for generating human recognizable ids is to combine common words together instead of arbitrarily random bits. Things like `danger-noodle` is a lot easier to remember or reference for a person than `ZGFuZ2VyLW5vb2RsZQ==`. Below would be how this is achieved, though it requires a set of names to use in id generation. There are dependencies in Python, as well as corpus csv files, for this that make it convenient but it would have to add to the install dependencies.
 
 ```python
 def get_cell_id(num_words=2):
