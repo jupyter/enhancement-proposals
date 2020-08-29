@@ -1,5 +1,8 @@
 - file: README
-- file: jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines
+
+- part: Guidelines
+  chapters:
+  - file: jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines
 
 - part: Accepted
   chapters:
