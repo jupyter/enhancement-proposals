@@ -3,6 +3,8 @@
 - part: Guidelines
   chapters:
   - file: jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines
+  - url: https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md
+    title: JEP Template
 
 - part: Accepted
   chapters:
