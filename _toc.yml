@@ -1,19 +1,19 @@
 - file: README
 
-- part: Guidelines
+- part: Information
   chapters:
   - file: jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines
   - url: https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md
     title: JEP Template
 
-- part: Accepted
+- part: Accepted JEPs
   chapters:
   - file: 44-xeus-incorporation/xeus-incorporation
   - file: 42-voila-incorporation/voila-incorporation
   - file: 29-jep-process/jep-process
   - file: 28-jupyter-server/jupyter-server
 
-- part: Implemented
+- part: Implemented JEPs
   chapters:
   - file: 25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation
   - file: 22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic
