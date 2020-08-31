@@ -171,7 +171,7 @@ index e3dedf2..4f192e6 100644
     - Human-readable strings are preferable defaults for ids that will be used in links / visible
 5. Uniqueness across notebooks is not a goal.
     - A managed ecosystem might make use of uniqueness across documents, but the spec doesn't expect this behavior
-6. Users should not need to directly view or edit cell ids.
+6. Users should not need to directly view or edit cell ids in order to use a notebook (though applications may choose to display the cell id to the user).
     - Applications need not make any user interface changes to support the 4.5 format with ids added. If they wish to display cell ids they can but generally they should be invisible to the end user unless they're programmatically referencing a cell.
 
 ### Case: loading notebook without cell id
