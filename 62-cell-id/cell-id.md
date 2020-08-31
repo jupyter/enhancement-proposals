@@ -240,7 +240,7 @@ Use Option B. Option C is also viable but adds a corpus requirement to the id ge
 1. How is splitting cells handled?
    - One cell (second part of the split) gets a new cell ID
 2. What if I copy and paste (surely you do not want duplicate ids...)
-   - On paste give the pasted cell a different ID if there's already one with the same ID as being pasted. The copied cell should have a new id
+   - On paste, give the pasted cell a new ID. The copied (source) cell keeps its original ID.
 3. What if you cut-paste (surely you want to keep the id)?
    - On paste give the pasted cell a different ID if there's already one with the same ID as being pasted. For cut this means the id can be preserved because there's no conflict on resolution of the move action
 4. What if you cut-paste, and paste a second time?
