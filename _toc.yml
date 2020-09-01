@@ -8,7 +8,7 @@
 
 - part: Accepted JEPs
   chapters:
-  - file: 62-cell-id
+  - file: 62-cell-id/cell-id
   - file: 44-xeus-incorporation/xeus-incorporation
   - file: 42-voila-incorporation/voila-incorporation
   - file: 29-jep-process/jep-process
