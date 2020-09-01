@@ -199,7 +199,7 @@ def get_cell_id(cell_id=None):
         return cell_id
 
     # generate new unique id
-    cell_id = f"id{cell_id_counter}"
+    cell_id = str(cell_id_counter)
     while cell_id in existing_cell_ids:
        cell_id_counter += 1
        cell_id = f"id{cell_id_counter}"
