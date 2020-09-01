@@ -95,7 +95,7 @@ As an informational data point, the [jupyterlab-interactive-dashboard-editor](ht
 
 ### Reference implementation
 
-The nbformat [PR#189](https://github.com/jupyter/nbformat/pull/189) has a full (unreviewed) working change of the proposal applied to nbformat. Outside of tests and the cell id uniqueness check the change can be captured with this diff:
+The nbformat [PR#189](https://github.com/jupyter/nbformat/pull/189) has a full (unreviewed) working change of the proposal applied to nbformat. Note that the pattern allows for numerics as the first character, which in some places in html4 is not allowed. Outside of tests and the cell id uniqueness check the change can be captured with this diff:
 
 ```
 diff --git a/nbformat/v4/nbformat.v4.schema.json b/nbformat/v4/nbformat.v4.schema.json
@@ -262,7 +262,7 @@ Use Option D for most human readable, but adds a corpus requirement to the id ge
 7. So if nbformat >= 4.5 loads in a pre 4.5 notebook, then a cell ID would be generated and added to each cell?
    - Yes.
 8. If a cell is cut out of a notebook and pasted into another, should the cell ID be retained?
-   - No. Much like copying contents out of one document into another -- you have a new cell with equivalent contents and a new id.
+   - This will depend on the application for now, as this JEP only focuses on Cell ID within an individual notebook. Different applications might handle pasting cells across notebooks differently.
 9. What are the details when splitting cells?
    - One cell (preferably the one with the top half of the code) keeps the id, the other gets a new id. This could be adjusted if folks want a different behavior without being a huge problem so long as we're consistent.
 
