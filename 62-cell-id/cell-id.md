@@ -69,9 +69,9 @@ Relaxing the field to *optional* would lead to undesirable behavior. An optional
 
 #### Reason for Character Restrictions (pattern, min/max length)
 
-The [RFC 3986 (Uniform Resource Identifier (URI): Generic Syntax)](https://www.ietf.org/rfc/rfc3986.txt) defines the unreserved characters allowed for URI generation. Since IDs should be usable as referencable points in web requests, we want to restrict characters to at least these characters. Of these remaining non-alphanumeric reserved characters (`-`, `.`, `_`, and `~`) three of them have semantic meaning or are restricted in URL generation leaving only alphanumeric and `-` as legal characters we want to support. This extra restriction also helps with storage of ids in databases, where non-ascii characters in identifiers can oftentimes lead to query, storage, or application bugs when not handled correctly. Since we don't have a pre-existing strong need for such characters (`.`, `_`, and `~`) in our `id` field, we propose not introducing the additional complexity of allowing these other characters here.
+The [RFC 3986 (Uniform Resource Identifier (URI): Generic Syntax)](https://www.ietf.org/rfc/rfc3986.txt) defines the unreserved characters allowed for URI generation. Since IDs should be usable as referencable points in web requests, we want to restrict characters to at least these characters. Of these remaining non-alphanumeric reserved characters (`-`, `.`, `_`, and `~`), one has semantic meaning which doesn't impact our use-case (`_`) and two of them are restricted in URL generation leaving only alphanumeric, `-`, and `_` as legal characters we want to support. This extra restriction also helps with storage of ids in databases, where non-ascii characters in identifiers can oftentimes lead to query, storage, or application bugs when not handled correctly. Since we don't have a pre-existing strong need for such characters (`.` and `~`) in our `id` field, we propose not introducing the additional complexity of allowing these other characters here.
 
-The length restrictions are there for a few reasons. First, you don't want empty strings in your ids, so enforce some natural minimum. We could use 1 or 2 for accepting bascially any id pattern, or be more restrictive with a higher minimum to reserve a wider combination of min length ids (`63^k` combinations). Second, you want a fixed max length for string identifiers for indexable ids in many database solutions for both performance and ease of implementation concerns. These will certainly be used in recall mechanisms so ease of database use should be a strong criterion. Third, a UUID string takes 36 characters to represent (with the `-` characters), and we likely want to support this as a supported identity pattern for certain applications that want this.
+The length restrictions are there for a few reasons. First, you don't want empty strings in your ids, so enforce some natural minimum. We could use 1 or 2 for accepting bascially any id pattern, or be more restrictive with a higher minimum to reserve a wider combination of min length ids (`63^k` combinations). Second, you want a fixed max length for string identifiers for indexable ids in many database solutions for both performance and ease of implementation concerns. These will certainly be used in recall mechanisms so ease of database use should be a strong criterion. Third, a UUID string takes 36 characters to represent (with the `-` characters), and we likely want to support this as a supported identity pattern for certain applications that want this. Thus we choose a 1-64 character limit range to provide flexibility and some measure of consistency.
 
 ### Updating older formats
 
@@ -118,8 +118,8 @@ index e3dedf2..4f192e6 100644
 +            "description": "A string field representing the identifier of this particular cell.",
 +            "type": "string",
 +            "pattern": "^[a-zA-Z0-9-]+$",
-+            "minLength": 2,
-+            "maxLength": 36
++            "minLength": 1,
++            "maxLength": 64
 +        },
 +
          "cell": {
@@ -218,11 +218,21 @@ If bookkeeping of current cell ids is not desirable, a 64-bit random id (11 char
 
 ```python
 def get_cell_id(id_length=8):
-    # Ok technically this isn't exactly a 64-bit k-length string... but it's close and easy to implement
-    return str(uuid.uuid4())[:id_length]
+    n_bytes = max(id_length * 3 // 4, 1)
+    # since standard base64 uses + and /, which the proposed regex excludes we need to use urlsafe_b64encode
+    urlsafe_b64encode(os.urandom(n_bytes)).decode("ascii").rstrip("=")
 ```
 
-#### Option C: Join human-readable strings from a corpus randomly 
+#### Option C: uuid-subset
+
+Basically the same as Option B, just a different flavor of random generation.
+
+```python
+def get_cell_id(id_length=8):
+    return uuid.uuid4().hex[:id_length]
+```
+
+#### Option D: Join human-readable strings from a corpus randomly 
 
 One frequently used pattern for generating human recognizable ids is to combine common words together instead of arbitrarily random bits. Things like `danger-noodle` is a lot easier to remember or reference for a person than `ZGFuZ2VyLW5vb2RsZQ==`. Below would be how this is achieved, though it requires a set of names to use in id generation. There are dependencies in Python, as well as corpus csv files, for this that make it convenient but it would have to add to the install dependencies.
 
@@ -233,7 +243,7 @@ def get_cell_id(num_words=2):
 
 #### Preference
 
-Use Option B. Option C is also viable but adds a corpus requirement to the id generation step.
+Use Option D for most human readable, but adds a corpus requirement to the id generation step. If corpus is not desired, use Options B or C.
 
 ## Questions
 
