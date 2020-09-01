@@ -248,13 +248,13 @@ Use Option D for most human readable, but adds a corpus requirement to the id ge
 ## Questions
 
 1. How is splitting cells handled?
-   - One cell (second part of the split) gets a new cell ID
+   - One cell (second part of the split) gets a new cell ID.
 2. What if I copy and paste (surely you do not want duplicate ids...)
    - On paste, give the pasted cell a new ID. The copied (source) cell keeps its original ID.
 3. What if you cut-paste (surely you want to keep the id)?
-   - On paste give the pasted cell a different ID if there's already one with the same ID as being pasted. For cut this means the id can be preserved because there's no conflict on resolution of the move action
+   - On paste give the pasted cell a different ID if there's already one with the same ID as being pasted. For cut this means the id can be preserved because there's no conflict on resolution of the move action. This does mean the application would need to keep track of the ids in order to avoid duplications if it's assigning ids to the document's cells.
 4. What if you cut-paste, and paste a second time?
-   - On paste give the pasted cell a different ID if there's already one with the same ID as being pasted. In this case the second paste needs a new id
+   - On paste give the pasted cell a different ID if there's already one with the same ID as being pasted. In this case the second paste needs a new id.
 5. How should loaders handle notebook loading errors?
    - On notebook load, if an older format update and fill in ids. If an invalid id format for a 4.5+ file, then raise a validation error like we do for other schema errors. We could auto-correct for bad ids if that's deemed appropriate.
 6. Would cell ID be changed if the cell content changes, or just created one time when the cell is created? As an extreme example: What if the content of the cell is cut out entirely and pasted into a new cell? My assumption is the ID would remain the same, right?
@@ -264,7 +264,7 @@ Use Option D for most human readable, but adds a corpus requirement to the id ge
 8. If a cell is cut out of a notebook and pasted into another, should the cell ID be retained?
    - This will depend on the application for now, as this JEP only focuses on Cell ID within an individual notebook. Different applications might handle pasting cells across notebooks differently.
 9. What are the details when splitting cells?
-   - One cell (preferably the one with the top half of the code) keeps the id, the other gets a new id. This could be adjusted if folks want a different behavior without being a huge problem so long as we're consistent.
+   - The JEP doesn't explicitly constraint how this action should occur, but we suggest one cell (preferably the one with the top half of the code) keeps the id, the other gets a new id. Each application can choose how to behave here so long as the cell ids are unique and follow the schema.
 
 ## Pros and Cons
 
