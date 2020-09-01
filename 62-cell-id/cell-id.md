@@ -288,18 +288,18 @@ Out of scope for this proposal (notebook ID):
 
 ---
 
-# Appendix 1: Additional Information
+## Appendix 1: Additional Information
 
 In this JEP, we have tried to address the majority of comments made during the
 pre-proposal period. This appendix highlights this feedback and additional items.
 
-## Pre-proposal Feedback
+### Pre-proposal Feedback
 
 Feedback can be found in the pre-proposal discussions listed [above](#Relevant-Issues-PR-and-discussion). Additional feedback can be found in [Notes from JEP Draft: Cell ID/Information Bi-weekly Meeting](https://hackmd.io/AkuHK5lPQ5-0BBTF8-SPzQ?view).
 
 [Min's detailed feedback](https://github.com/jupyter/enhancement-proposals/issues/61#issuecomment-672752443) was taken and incorporated into the JEP.
 
-### $id ref Conclusion
+#### $id ref Conclusion
 
 We had a follow-up conversation with Nick Bollweg and Tony Fast about JSON schema and JSON-LD. In the course of the bi-weekly meeting, we discussed $id ref. From further review of how the [\$id property](https://json-schema.org/understanding-json-schema/structuring.html#the-id-property) works in JSON Schema we determined that the use for this flag is orthogonal to actual proposed usecase presented here. A future JEP may choose to pursue using this field for another use in the future, but we're going to keep it out of scope for this JEP.
 
