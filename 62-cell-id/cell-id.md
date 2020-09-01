@@ -53,9 +53,9 @@ This change would add an `id` field to each cell type in the [4.4 json_schema](h
 "id": {
     "description": "A str field representing the identifier of this particular cell.",
     "type": "string",
-    "pattern": "^[a-zA-Z0-9-]+$",
-    "minLength": 2,
-    "maxLength": 36
+    "pattern": "^[a-zA-Z0-9-_]+$",
+    "minLength": 1,
+    "maxLength": 64
 }
 ```
 
