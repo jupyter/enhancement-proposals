@@ -75,7 +75,7 @@ The length restrictions are there for a few reasons. First, you don't want empty
 
 ### Updating older formats
 
-Older formats can be loaded by nbformat and trivially updated to 4.5 format by running `str(uuid.uuid4())[:8]` to populate the new id field. See the [Case: loading notebook without cell id](#Case-loading-notebook-without-cell-id) section for more options for auto-filling ids.
+Older formats can be loaded by nbformat and trivially updated to 4.5 format by running `uuid.uuid4().hex[:8]` to populate the new id field. See the [Case: loading notebook without cell id](#Case-loading-notebook-without-cell-id) section for more options for auto-filling ids.
 
 ### Alternative Schema Change
 
