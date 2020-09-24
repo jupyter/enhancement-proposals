@@ -250,7 +250,7 @@ Use Option D for most human readable, but adds a corpus requirement to the id ge
 1. How is splitting cells handled?
    - One cell (second part of the split) gets a new cell ID.
 2. What if I copy and paste (surely you do not want duplicate ids...)
-   - On paste, give the pasted cell a new ID. The copied (source) cell keeps its original ID.
+   - A cell in the clipboard should have an id, but paste always needs to check for collisions and generate a new id if and only if there is one. The application can choose to preserve the id if it doesn't violate this constraint.
 3. What if you cut-paste (surely you want to keep the id)?
    - On paste give the pasted cell a different ID if there's already one with the same ID as being pasted. For cut this means the id can be preserved because there's no conflict on resolution of the move action. This does mean the application would need to keep track of the ids in order to avoid duplications if it's assigning ids to the document's cells.
 4. What if you cut-paste, and paste a second time?
@@ -264,7 +264,7 @@ Use Option D for most human readable, but adds a corpus requirement to the id ge
 8. If a cell is cut out of a notebook and pasted into another, should the cell ID be retained?
    - This will depend on the application for now, as this JEP only focuses on Cell ID within an individual notebook. Different applications might handle pasting cells across notebooks differently.
 9. What are the details when splitting cells?
-   - The JEP doesn't explicitly constraint how this action should occur, but we suggest one cell (preferably the one with the top half of the code) keeps the id, the other gets a new id. Each application can choose how to behave here so long as the cell ids are unique and follow the schema.
+   - The JEP doesn't explicitly constraint how this action should occur, but we suggest one cell (preferably the one with the top half of the code) keeps the id, the other gets a new id. Each application can choose how to behave here so long as the cell ids are unique and follow the schema. This can be a per-application choice to learn and adapt to what users expect, without requiring a new JEP.
 
 ## Pros and Cons
 
@@ -277,8 +277,10 @@ Pros associated with this implementation include:
 
 Cons associated with this implementation include:
 
-- lack of UUID and a "notebook-only" uniqueness guarantee makes merging two notebooks difficult without managing the ids so they remain unique in the resulting notebook
-- applications have to add default ID generation if not using nbformat (or not python) for this (took 1 hour to add the proposal PR to nbformat with tests included)
+- Lack of UUID and a "notebook-only" uniqueness guarantee makes merging two notebooks difficult without managing the ids so they remain unique in the resulting notebook
+- Applications have to add default ID generation if not using nbformat (or not python) for this (took 1 hour to add the proposal PR to nbformat with tests included)
+- Notebooks with the same source code can be generated with different cell ids, meaning they are not byte equal. This will make testing / disk comparisons harder in some circumstances
+- Pasting / manipulating cells needs to be aware of the other cells in a notebook. This increases the complexity for applications to implement Jupyter notebook interfaces
 
 ## Relevant Issues, PR, and discussion
 
