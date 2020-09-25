@@ -1,0 +1,824 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cell ID Addition to Notebook Format &#8212; Jupyter Enhancement Proposals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Xeus Incorporation" href="../44-xeus-incorporation/xeus-incorporation.html" />
+    <link rel="prev" title="Jupyter Enhancement Proposals (JEP) Guidelines" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Jupyter Enhancement Proposals
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Information
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">
+   Jupyter Enhancement Proposals (JEP) Guidelines
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
+   JEP Template
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Accepted JEPs
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cell ID Addition to Notebook Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
+   Xeus Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
+   Voilà Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../29-jep-process/jep-process.html">
+   Jupyter Enhancement Proposal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../28-jupyter-server/jupyter-server.html">
+   Standalone Jupyter server enhancement
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Implemented JEPs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">
+   Jupyter Enterprise Gateway Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">
+   Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">
+   Jupyter DeclarativeWidgets Extension Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">
+   Jupyter Dashboards Extension Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">
+   Jupyter Kernel Gateway Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-notebook-diff/notebook-diff.html">
+   Diffing and merging notebooks
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/62-cell-id/cell-id.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F62-cell-id/cell-id.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/62-cell-id/cell-id.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem">
+   Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#existing-limitation">
+     Existing limitation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scope-of-the-jep">
+     Scope of the JEP
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-motivation-for-a-jep">
+   The Motivation for a JEP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proposed-enhancement">
+   Proposed Enhancement
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-an-id-field">
+     Adding an
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       id
+      </span>
+     </code>
+     field
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#required-field">
+       Required Field
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reason-for-character-restrictions-pattern-min-max-length">
+       Reason for Character Restrictions (pattern, min/max length)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#updating-older-formats">
+     Updating older formats
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-schema-change">
+     Alternative Schema Change
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reference-implementation">
+     Reference implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recommended-application-usage-of-id-field">
+   Recommended Application / Usage of ID field
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-loading-notebook-without-cell-id">
+     Case: loading notebook without cell id
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#option-a-strings-from-an-integer-counter">
+       Option A: strings from an integer counter
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#option-b-64-bit-random-id">
+       Option B: 64-bit random id
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#option-c-uuid-subset">
+       Option C: uuid-subset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#option-d-join-human-readable-strings-from-a-corpus-randomly">
+       Option D: Join human-readable strings from a corpus randomly
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#preference">
+       Preference
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions">
+   Questions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pros-and-cons">
+   Pros and Cons
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#relevant-issues-pr-and-discussion">
+   Relevant Issues, PR, and discussion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interested">
+   Interested
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-1-additional-information">
+   Appendix 1: Additional Information
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pre-proposal-feedback">
+     Pre-proposal Feedback
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id-ref-conclusion">
+       $id ref Conclusion
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation-question">
+   Implementation Question
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auto-update">
+     Auto-Update
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auto-fill-on-save">
+     Auto-Fill on Save
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="cell-id-addition-to-notebook-format">
+<h1>Cell ID Addition to Notebook Format<a class="headerlink" href="#cell-id-addition-to-notebook-format" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>Modern applications need a mechanism for referencing and recalling particular cells within a notebook. Referencing and recalling cells are needed across notebooks’ mutation inside a specific notebook session and in future notebook sessions.</p>
+<p>Some application examples include:</p>
+<ul class="simple">
+<li><p>generating URL links to specific cells</p></li>
+<li><p>associating an external document to the cell for applications like code reviews, annotations, or comments</p></li>
+<li><p>comparing a cell’s output across multiple runs</p></li>
+</ul>
+<div class="section" id="existing-limitation">
+<h3>Existing limitation<a class="headerlink" href="#existing-limitation" title="Permalink to this headline">¶</a></h3>
+<p>Traditionally custom <code class="docutils literal notranslate"><span class="pre">tags</span></code> on cells have been used to track particular use-cases for cell activity. Custom <code class="docutils literal notranslate"><span class="pre">tags</span></code> work well for some things like identifying the class of content within a cell (e.g., papermill <code class="docutils literal notranslate"><span class="pre">parameters</span></code> cell tag). The <code class="docutils literal notranslate"><span class="pre">tags</span></code> approach falls short when an application needs to associate a cell with an action or resource <strong>dynamically</strong>. Additionally, the lack of a cell id field has led to applications generating ids in different proprietary or non-standard ways (e.g. <code class="docutils literal notranslate"><span class="pre">metadata[&quot;cell_id&quot;]</span> <span class="pre">=</span> <span class="pre">&quot;some-string&quot;</span></code> vs <code class="docutils literal notranslate"><span class="pre">metadata[application_name][&quot;id&quot;]</span> <span class="pre">=</span> <span class="pre">cell_guuid</span></code>).</p>
+</div>
+<div class="section" id="scope-of-the-jep">
+<h3>Scope of the JEP<a class="headerlink" href="#scope-of-the-jep" title="Permalink to this headline">¶</a></h3>
+<p>Most resource applications include ids as a standard part of the resource / sub-resources. <strong>This proposal focuses only on a cell ID</strong>.</p>
+<p>Out of scope for this proposal is an overall notebook id field. The sub-resource of cells is often treated relationally, so even without adding a notebook id; thin scope change would improve the quality of abstractions built on-top of notebooks. The intention is to focus on notebook id patterns after cell ids.</p>
+</div>
+</div>
+<div class="section" id="the-motivation-for-a-jep">
+<h2>The Motivation for a JEP<a class="headerlink" href="#the-motivation-for-a-jep" title="Permalink to this headline">¶</a></h2>
+<p>The responses to these two questions define requiring a JEP:</p>
+<p><em>1. Does the proposal/implementation PR impact multiple orgs, or have widespread community impact?</em></p>
+<ul class="simple">
+<li><p>Yes, this JEP updates nbformat.</p></li>
+</ul>
+<p><em>2. Does the proposal/implementation change an invariant in one or more orgs?</em></p>
+<ul class="simple">
+<li><p>Yes, the JEP proposes a unique cell identifier.</p></li>
+</ul>
+<p>This proposal covers both questions.</p>
+</div>
+<div class="section" id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-an-id-field">
+<h3>Adding an <code class="docutils literal notranslate"><span class="pre">id</span></code> field<a class="headerlink" href="#adding-an-id-field" title="Permalink to this headline">¶</a></h3>
+<p>This change would add an <code class="docutils literal notranslate"><span class="pre">id</span></code> field to each cell type in the <a class="reference external" href="https://github.com/jupyter/nbformat/blob/master/nbformat/v4/nbformat.v4.4.schema.json">4.4 json_schema</a>. Specifically, the <a class="reference external" href="https://github.com/jupyter/nbformat/blob/master/nbformat/v4/nbformat.v4.4.schema.json#L114">raw_cell</a>, <a class="reference external" href="https://github.com/jupyter/nbformat/blob/master/nbformat/v4/nbformat.v4.4.schema.json#L151">markdown</a>, and <a class="reference external" href="https://github.com/jupyter/nbformat/blob/master/nbformat/v4/nbformat.v4.4.schema.json#L184">code_cell</a> required sections would add the <code class="docutils literal notranslate"><span class="pre">id</span></code> field with the following schema:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A str field representing the identifier of this particular cell.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;^[a-zA-Z0-9-_]+$&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;minLength&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mi">64</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This change is <strong>not</strong> an addition to the cells’ <code class="docutils literal notranslate"><span class="pre">metadata</span></code> space, which has an <code class="docutils literal notranslate"><span class="pre">additionalProperties:</span> <span class="pre">true</span></code> attribute. This is adding to the cell definitions directly at the same level as <code class="docutils literal notranslate"><span class="pre">metadata</span></code>, in which scope <code class="docutils literal notranslate"><span class="pre">additionalProperties</span></code> is false and there’s no potential for collision of existing notebook keys with the addition.</p>
+<div class="section" id="required-field">
+<h4>Required Field<a class="headerlink" href="#required-field" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">id</span></code> field in cells would <em>always</em> be <strong>required</strong> for any future nbformat versions (4.5+). In contrast to an <em>optional</em> field, the required field avoids applications having to conditionally check if an id is present or not.</p>
+<p>Relaxing the field to <em>optional</em> would lead to undesirable behavior. An optional field would lead to partial implementation in applications and difficulty in having consistent experiences which build on top of the id change.</p>
+</div>
+<div class="section" id="reason-for-character-restrictions-pattern-min-max-length">
+<h4>Reason for Character Restrictions (pattern, min/max length)<a class="headerlink" href="#reason-for-character-restrictions-pattern-min-max-length" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://www.ietf.org/rfc/rfc3986.txt">RFC 3986 (Uniform Resource Identifier (URI): Generic Syntax)</a> defines the unreserved characters allowed for URI generation. Since IDs should be usable as referencable points in web requests, we want to restrict characters to at least these characters. Of these remaining non-alphanumeric reserved characters (<code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">.</span></code>, <code class="docutils literal notranslate"><span class="pre">_</span></code>, and <code class="docutils literal notranslate"><span class="pre">~</span></code>), one has semantic meaning which doesn’t impact our use-case (<code class="docutils literal notranslate"><span class="pre">_</span></code>) and two of them are restricted in URL generation leaving only alphanumeric, <code class="docutils literal notranslate"><span class="pre">-</span></code>, and <code class="docutils literal notranslate"><span class="pre">_</span></code> as legal characters we want to support. This extra restriction also helps with storage of ids in databases, where non-ascii characters in identifiers can oftentimes lead to query, storage, or application bugs when not handled correctly. Since we don’t have a pre-existing strong need for such characters (<code class="docutils literal notranslate"><span class="pre">.</span></code> and <code class="docutils literal notranslate"><span class="pre">~</span></code>) in our <code class="docutils literal notranslate"><span class="pre">id</span></code> field, we propose not introducing the additional complexity of allowing these other characters here.</p>
+<p>The length restrictions are there for a few reasons. First, you don’t want empty strings in your ids, so enforce some natural minimum. We could use 1 or 2 for accepting bascially any id pattern, or be more restrictive with a higher minimum to reserve a wider combination of min length ids (<code class="docutils literal notranslate"><span class="pre">63^k</span></code> combinations). Second, you want a fixed max length for string identifiers for indexable ids in many database solutions for both performance and ease of implementation concerns. These will certainly be used in recall mechanisms so ease of database use should be a strong criterion. Third, a UUID string takes 36 characters to represent (with the <code class="docutils literal notranslate"><span class="pre">-</span></code> characters), and we likely want to support this as a supported identity pattern for certain applications that want this. Thus we choose a 1-64 character limit range to provide flexibility and some measure of consistency.</p>
+</div>
+</div>
+<div class="section" id="updating-older-formats">
+<h3>Updating older formats<a class="headerlink" href="#updating-older-formats" title="Permalink to this headline">¶</a></h3>
+<p>Older formats can be loaded by nbformat and trivially updated to 4.5 format by running <code class="docutils literal notranslate"><span class="pre">uuid.uuid4().hex[:8]</span></code> to populate the new id field. See the <a class="reference external" href="#Case-loading-notebook-without-cell-id">Case: loading notebook without cell id</a> section for more options for auto-filling ids.</p>
+</div>
+<div class="section" id="alternative-schema-change">
+<h3>Alternative Schema Change<a class="headerlink" href="#alternative-schema-change" title="Permalink to this headline">¶</a></h3>
+<p>Originally a UUID schema was proposed with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A UUID field representing the identifier of this particular cell.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uuid&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>where the <code class="docutils literal notranslate"><span class="pre">id</span></code> field uses the <code class="docutils literal notranslate"><span class="pre">uuid</span></code> type indicator to resolve its value. This is effectively a more restrictive variant of the string regex above. The <code class="docutils literal notranslate"><span class="pre">uuid</span></code> alternative has been dropped as the primary proposed pattern to better support the existing aforementioned <code class="docutils literal notranslate"><span class="pre">id</span></code> generating schemes and to avoid large URI / content generation by direct insertion of the cell id. If <code class="docutils literal notranslate"><span class="pre">uuid</span></code> were adopted instead applications with custom ids would have to do more to migrate existing documents and byte-compression patterns would be needed for shorter URL generation tasks.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">uuid</span></code> type was recently <a class="reference external" href="https://json-schema.org/draft/2019-09/release-notes.html">added to json-schema</a> referencing <a class="reference external" href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4122.xml">RFC.4122</a> which is linked for those unfamiliar with it.</p>
+<p>As an informational data point, the <a class="reference external" href="https://github.com/jupytercalpoly/jupyterlab-interactive-dashboard-editor/tree/master/src">jupyterlab-interactive-dashboard-editor</a> uses UUID for their cell ID.</p>
+</div>
+<div class="section" id="reference-implementation">
+<h3>Reference implementation<a class="headerlink" href="#reference-implementation" title="Permalink to this headline">¶</a></h3>
+<p>The nbformat <a class="reference external" href="https://github.com/jupyter/nbformat/pull/189">PR#189</a> has a full (unreviewed) working change of the proposal applied to nbformat. Note that the pattern allows for numerics as the first character, which in some places in html4 is not allowed. Outside of tests and the cell id uniqueness check the change can be captured with this diff:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">nbformat</span><span class="o">/</span><span class="n">v4</span><span class="o">/</span><span class="n">nbformat</span><span class="o">.</span><span class="n">v4</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">json</span> <span class="n">b</span><span class="o">/</span><span class="n">nbformat</span><span class="o">/</span><span class="n">v4</span><span class="o">/</span><span class="n">nbformat</span><span class="o">.</span><span class="n">v4</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">json</span>
+<span class="n">index</span> <span class="n">e3dedf2</span><span class="o">..</span><span class="mi">4</span><span class="n">f192e6</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">nbformat</span><span class="o">/</span><span class="n">v4</span><span class="o">/</span><span class="n">nbformat</span><span class="o">.</span><span class="n">v4</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">json</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">nbformat</span><span class="o">/</span><span class="n">v4</span><span class="o">/</span><span class="n">nbformat</span><span class="o">.</span><span class="n">v4</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">json</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+ <span class="p">{</span>
+     <span class="s2">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-04/schema#&quot;</span><span class="p">,</span>
+<span class="o">-</span>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Jupyter Notebook v4.4 JSON schema.&quot;</span><span class="p">,</span>
+<span class="o">+</span>    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Jupyter Notebook v4.5 JSON schema.&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+     <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="s2">&quot;nbformat_minor&quot;</span><span class="p">,</span> <span class="s2">&quot;nbformat&quot;</span><span class="p">,</span> <span class="s2">&quot;cells&quot;</span><span class="p">],</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">98</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">98</span><span class="p">,</span><span class="mi">14</span> <span class="o">@@</span>
+     <span class="p">},</span>
+ 
+     <span class="s2">&quot;definitions&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="o">+</span>        <span class="s2">&quot;cell_id&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="o">+</span>            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A string field representing the identifier of this particular cell.&quot;</span><span class="p">,</span>
+<span class="o">+</span>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="o">+</span>            <span class="s2">&quot;pattern&quot;</span><span class="p">:</span> <span class="s2">&quot;^[a-zA-Z0-9-]+$&quot;</span><span class="p">,</span>
+<span class="o">+</span>            <span class="s2">&quot;minLength&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="o">+</span>            <span class="s2">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mi">64</span>
+<span class="o">+</span>        <span class="p">},</span>
+<span class="o">+</span>
+         <span class="s2">&quot;cell&quot;</span><span class="p">:</span> <span class="p">{</span>
+             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;oneOf&quot;</span><span class="p">:</span> <span class="p">[</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">111</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">119</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+             <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Notebook raw nbconvert cell.&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="o">-</span>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cell_type&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">],</span>
+<span class="o">+</span>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;cell_type&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">],</span>
+             <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="o">+</span>                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;#/definitions/cell_id&quot;</span><span class="p">},</span>
+                 <span class="s2">&quot;cell_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;String identifying the type of cell.&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;raw&quot;</span><span class="p">]</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">148</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">157</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+             <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Notebook markdown cell.&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="o">-</span>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cell_type&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">],</span>
+<span class="o">+</span>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;cell_type&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">],</span>
+             <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="o">+</span>                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;#/definitions/cell_id&quot;</span><span class="p">},</span>
+                 <span class="s2">&quot;cell_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;String identifying the type of cell.&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;markdown&quot;</span><span class="p">]</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">181</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">191</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+             <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Notebook code cell.&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;additionalProperties&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="o">-</span>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cell_type&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;outputs&quot;</span><span class="p">,</span> <span class="s2">&quot;execution_count&quot;</span><span class="p">],</span>
+<span class="o">+</span>            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;cell_type&quot;</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;outputs&quot;</span><span class="p">,</span> <span class="s2">&quot;execution_count&quot;</span><span class="p">],</span>
+             <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="o">+</span>                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$ref&quot;</span><span class="p">:</span> <span class="s2">&quot;#/definitions/cell_id&quot;</span><span class="p">},</span>
+                 <span class="s2">&quot;cell_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;String identifying the type of cell.&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;enum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="recommended-application-usage-of-id-field">
+<h2>Recommended Application / Usage of ID field<a class="headerlink" href="#recommended-application-usage-of-id-field" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Applications should manage id fields as they wish within the rules if they want to have consistent id patterns.</p></li>
+<li><p>Applications that don’t care should use the default id generation of the underlying notebook save/load mechanisms.</p></li>
+<li><p>When loading from older formats, cell ids should be filled out with a unique value.</p></li>
+<li><p>UUIDs are one valid, simple way of ensuring uniqueness, but not necessary.</p>
+<ul class="simple">
+<li><p>Lots of large random strings in notebooks can be frustrating</p></li>
+<li><p>128-bit UUIDs are also vast overkill for the level of uniqueness we need within a notebook with &lt;1000 candidates for collisions. They make for opaque URLs, noise in the files, etc</p></li>
+<li><p>Human-readable strings are preferable defaults for ids that will be used in links / visible</p></li>
+</ul>
+</li>
+<li><p>Uniqueness across notebooks is not a goal.</p>
+<ul class="simple">
+<li><p>A managed ecosystem might make use of uniqueness across documents, but the spec doesn’t expect this behavior</p></li>
+</ul>
+</li>
+<li><p>Users should not need to directly view or edit cell ids in order to use a notebook (though applications may choose to display the cell id to the user).</p>
+<ul class="simple">
+<li><p>Applications need not make any user interface changes to support the 4.5 format with ids added. If they wish to display cell ids they can but generally they should be invisible to the end user unless they’re programmatically referencing a cell.</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="case-loading-notebook-without-cell-id">
+<h3>Case: loading notebook without cell id<a class="headerlink" href="#case-loading-notebook-without-cell-id" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="option-a-strings-from-an-integer-counter">
+<h4>Option A: strings from an integer counter<a class="headerlink" href="#option-a-strings-from-an-integer-counter" title="Permalink to this headline">¶</a></h4>
+<p>A valid strategy, when populating cell ids from a notebook on import from another id-less source or older format version, is to use e.g. strings from an integer counter.</p>
+<p>In fact, if an editor app keeps track of current cell ids, the following strategy ensures uniqueness:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cell_id_counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">existing_cell_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">get_cell_id</span><span class="p">(</span><span class="n">cell_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new unique cell id</span>
+
+<span class="sd">    if cell_id is given, use it if available (e.g. preserving cell id on paste, while ensuring no collisions)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">cell_id_counter</span>
+
+    <span class="k">if</span> <span class="n">cell_id</span> <span class="ow">and</span> <span class="n">cell_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">existing_cell_ids</span><span class="p">:</span>
+        <span class="c1"># requested cell id is available</span>
+        <span class="n">existing_cell_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cell_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cell_id</span>
+
+    <span class="c1"># generate new unique id</span>
+    <span class="n">cell_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cell_id_counter</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">cell_id</span> <span class="ow">in</span> <span class="n">existing_cell_ids</span><span class="p">:</span>
+       <span class="n">cell_id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+       <span class="n">cell_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;id</span><span class="si">{</span><span class="n">cell_id_counter</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">existing_cell_ids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cell_id</span><span class="p">)</span>
+    <span class="n">cell_id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">cell_id</span>
+
+<span class="k">def</span> <span class="nf">free_cell_id</span><span class="p">(</span><span class="n">cell_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;record that a cell id is no longer in use&quot;&quot;&quot;</span>
+    <span class="n">existing_cell_ids</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">cell_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="option-b-64-bit-random-id">
+<h4>Option B: 64-bit random id<a class="headerlink" href="#option-b-64-bit-random-id" title="Permalink to this headline">¶</a></h4>
+<p>If bookkeeping of current cell ids is not desirable, a 64-bit random id (11 chars without padding in b64) has a 10^-14 chance of collisions on 1000 cells, while an 8-char b64 string (48b) is still 10^-9.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_cell_id</span><span class="p">(</span><span class="n">id_length</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">n_bytes</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">id_length</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># since standard base64 uses + and /, which the proposed regex excludes we need to use urlsafe_b64encode</span>
+    <span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="n">n_bytes</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="option-c-uuid-subset">
+<h4>Option C: uuid-subset<a class="headerlink" href="#option-c-uuid-subset" title="Permalink to this headline">¶</a></h4>
+<p>Basically the same as Option B, just a different flavor of random generation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_cell_id</span><span class="p">(</span><span class="n">id_length</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">[:</span><span class="n">id_length</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="option-d-join-human-readable-strings-from-a-corpus-randomly">
+<h4>Option D: Join human-readable strings from a corpus randomly<a class="headerlink" href="#option-d-join-human-readable-strings-from-a-corpus-randomly" title="Permalink to this headline">¶</a></h4>
+<p>One frequently used pattern for generating human recognizable ids is to combine common words together instead of arbitrarily random bits. Things like <code class="docutils literal notranslate"><span class="pre">danger-noodle</span></code> is a lot easier to remember or reference for a person than <code class="docutils literal notranslate"><span class="pre">ZGFuZ2VyLW5vb2RsZQ==</span></code>. Below would be how this is achieved, though it requires a set of names to use in id generation. There are dependencies in Python, as well as corpus csv files, for this that make it convenient but it would have to add to the install dependencies.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_cell_id</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">name_corpus</span><span class="p">,</span> <span class="n">num_words</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preference">
+<h4>Preference<a class="headerlink" href="#preference" title="Permalink to this headline">¶</a></h4>
+<p>Use Option D for most human readable, but adds a corpus requirement to the id generation step. If corpus is not desired, use Options B or C.</p>
+</div>
+</div>
+</div>
+<div class="section" id="questions">
+<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>How is splitting cells handled?</p>
+<ul class="simple">
+<li><p>One cell (second part of the split) gets a new cell ID.</p></li>
+</ul>
+</li>
+<li><p>What if I copy and paste (surely you do not want duplicate ids…)</p>
+<ul class="simple">
+<li><p>A cell in the clipboard should have an id, but paste always needs to check for collisions and generate a new id if and only if there is one. The application can choose to preserve the id if it doesn’t violate this constraint.</p></li>
+</ul>
+</li>
+<li><p>What if you cut-paste (surely you want to keep the id)?</p>
+<ul class="simple">
+<li><p>On paste give the pasted cell a different ID if there’s already one with the same ID as being pasted. For cut this means the id can be preserved because there’s no conflict on resolution of the move action. This does mean the application would need to keep track of the ids in order to avoid duplications if it’s assigning ids to the document’s cells.</p></li>
+</ul>
+</li>
+<li><p>What if you cut-paste, and paste a second time?</p>
+<ul class="simple">
+<li><p>On paste give the pasted cell a different ID if there’s already one with the same ID as being pasted. In this case the second paste needs a new id.</p></li>
+</ul>
+</li>
+<li><p>How should loaders handle notebook loading errors?</p>
+<ul class="simple">
+<li><p>On notebook load, if an older format update and fill in ids. If an invalid id format for a 4.5+ file, then raise a validation error like we do for other schema errors. We could auto-correct for bad ids if that’s deemed appropriate.</p></li>
+</ul>
+</li>
+<li><p>Would cell ID be changed if the cell content changes, or just created one time when the cell is created? As an extreme example: What if the content of the cell is cut out entirely and pasted into a new cell? My assumption is the ID would remain the same, right?</p>
+<ul class="simple">
+<li><p>Correct. It stays the same once created.</p></li>
+</ul>
+</li>
+<li><p>So if nbformat &gt;= 4.5 loads in a pre 4.5 notebook, then a cell ID would be generated and added to each cell?</p>
+<ul class="simple">
+<li><p>Yes.</p></li>
+</ul>
+</li>
+<li><p>If a cell is cut out of a notebook and pasted into another, should the cell ID be retained?</p>
+<ul class="simple">
+<li><p>This will depend on the application for now, as this JEP only focuses on Cell ID within an individual notebook. Different applications might handle pasting cells across notebooks differently.</p></li>
+</ul>
+</li>
+<li><p>What are the details when splitting cells?</p>
+<ul class="simple">
+<li><p>The JEP doesn’t explicitly constraint how this action should occur, but we suggest one cell (preferably the one with the top half of the code) keeps the id, the other gets a new id. Each application can choose how to behave here so long as the cell ids are unique and follow the schema. This can be a per-application choice to learn and adapt to what users expect, without requiring a new JEP.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="pros-and-cons">
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
+<p>Pros associated with this implementation include:</p>
+<ul class="simple">
+<li><p>Enables scenarios that require us to reason about cells as if they were independent entities</p></li>
+<li><p>Used by Colab, among others, for many many years, and it is generally useful. This JEP would standardize to minimize fragmentation and differing approaches.</p></li>
+<li><p>Allows apps that want to reference specific cells within a notebook</p></li>
+<li><p>Makes reasoning about cells unambiguous (e.g. associate comments to a cell)</p></li>
+</ul>
+<p>Cons associated with this implementation include:</p>
+<ul class="simple">
+<li><p>Lack of UUID and a “notebook-only” uniqueness guarantee makes merging two notebooks difficult without managing the ids so they remain unique in the resulting notebook</p></li>
+<li><p>Applications have to add default ID generation if not using nbformat (or not python) for this (took 1 hour to add the proposal PR to nbformat with tests included)</p></li>
+<li><p>Notebooks with the same source code can be generated with different cell ids, meaning they are not byte equal. This will make testing / disk comparisons harder in some circumstances</p></li>
+<li><p>Pasting / manipulating cells needs to be aware of the other cells in a notebook. This increases the complexity for applications to implement Jupyter notebook interfaces</p></li>
+</ul>
+</div>
+<div class="section" id="relevant-issues-pr-and-discussion">
+<h2>Relevant Issues, PR, and discussion<a class="headerlink" href="#relevant-issues-pr-and-discussion" title="Permalink to this headline">¶</a></h2>
+<p>Pre-proposal discussion:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/issues/61">JEP issue #61: Proposal: 4.5 Format Cell ID</a></p></li>
+<li><p><a class="reference external" href="https://hackmd.io/AkuHK5lPQ5-0BBTF8-SPzQ?view">Notes from JEP Draft: Cell ID/Information Bi-weekly Meeting</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jupyter/nbformat/pull/189">nbformat PR#189: Adds this proposal to nbformat</a></p></li>
+</ul>
+<p>Out of scope for this proposal (notebook ID):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jupyter/nbformat/issues/148">nbformat issue #148: Adding unique ID to the notebook metadata</a></p></li>
+</ul>
+</div>
+<div class="section" id="interested">
+<h2>Interested<a class="headerlink" href="#interested" title="Permalink to this headline">¶</a></h2>
+<p>&#64;MSeal, &#64;ellisonbg, &#64;minrk, &#64;jasongrout, &#64;takluyver, &#64;Carreau, &#64;rgbkrk, &#64;choldgraf, &#64;SylvainCorlay, &#64;willingc, &#64;captainsafia, &#64;ivanov, &#64;yuvipanda, &#64;bollwvyl, &#64;blois, &#64;betatim, &#64;echarles, &#64;tonyfast</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="appendix-1-additional-information">
+<h2>Appendix 1: Additional Information<a class="headerlink" href="#appendix-1-additional-information" title="Permalink to this headline">¶</a></h2>
+<p>In this JEP, we have tried to address the majority of comments made during the
+pre-proposal period. This appendix highlights this feedback and additional items.</p>
+<div class="section" id="pre-proposal-feedback">
+<h3>Pre-proposal Feedback<a class="headerlink" href="#pre-proposal-feedback" title="Permalink to this headline">¶</a></h3>
+<p>Feedback can be found in the pre-proposal discussions listed <a class="reference external" href="#Relevant-Issues-PR-and-discussion">above</a>. Additional feedback can be found in <a class="reference external" href="https://hackmd.io/AkuHK5lPQ5-0BBTF8-SPzQ?view">Notes from JEP Draft: Cell ID/Information Bi-weekly Meeting</a>.</p>
+<p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/issues/61#issuecomment-672752443">Min’s detailed feedback</a> was taken and incorporated into the JEP.</p>
+<div class="section" id="id-ref-conclusion">
+<h4>$id ref Conclusion<a class="headerlink" href="#id-ref-conclusion" title="Permalink to this headline">¶</a></h4>
+<p>We had a follow-up conversation with Nick Bollweg and Tony Fast about JSON schema and JSON-LD. In the course of the bi-weekly meeting, we discussed $id ref. From further review of how the <a class="reference external" href="https://json-schema.org/understanding-json-schema/structuring.html#the-id-property">$id property</a> works in JSON Schema we determined that the use for this flag is orthogonal to actual proposed usecase presented here. A future JEP may choose to pursue using this field for another use in the future, but we’re going to keep it out of scope for this JEP.</p>
+</div>
+</div>
+</div>
+<div class="section" id="implementation-question">
+<h2>Implementation Question<a class="headerlink" href="#implementation-question" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="auto-update">
+<h3>Auto-Update<a class="headerlink" href="#auto-update" title="Permalink to this headline">¶</a></h3>
+<p>A decision should be made to determine whether or not to auto-update older notebook formats to 4.5. Our recommendation would be to auto-update to 4.5.</p>
+</div>
+<div class="section" id="auto-fill-on-save">
+<h3>Auto-Fill on Save<a class="headerlink" href="#auto-fill-on-save" title="Permalink to this headline">¶</a></h3>
+<p>In the event of a content save for 4.5 with no id, we can either raise a ValidationError (as the example PR does right now) or auto-fill the missing id with a randomly generated id. We’d prefer the latter pattern, provided that given invalid ids still raise a ValidationError.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./62-cell-id"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" title="previous page">Jupyter Enhancement Proposals (JEP) Guidelines</a>
+    <a class='right-next' id="next-link" href="../44-xeus-incorporation/xeus-incorporation.html" title="next page">Xeus Incorporation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
