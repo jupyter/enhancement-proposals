@@ -19,7 +19,7 @@ The way the client passes its address and the port of the listening socket to th
 
 - A new field "kernel_handshake" would be added to the kernelspec specifying whether the said kernel supports the new mechanism.
 - In this case, the connection file passed to the kernel will specify the handshake port instead of the ports for the different channels.
-- The kernel adds the port numbers for the different channels to the connection file, so that other clients can connect to the kernel.
+- When the client receives the port numbers for the different channels from the kernel, it adds them the connection file, so that other clients can connect to the kernel.
 
 If the new field "kernel_handshake" is missing from the kernelspec, the clients should emit a warning, and assume that the new mechanisms is not supported, and recommend that the key is added to the kernelspec.
 
