@@ -17,7 +17,10 @@ We propose to implement a handshaking pattern: the client lets the kernel find f
 
 The way the client passes its address and the port of the listening socket to the kernel should be similar to that of passing the ports of the kernel socket in the current implementation: a connection file that can be read by local kernels or sent over the network for distant kernels (although this requires an intermediate actor such as a gateway).
 
-- A new field "kernel_handshake" would be added to the kernelspec specifying whether the said kernel supports the new mechanism.
+- A new field "kernel_startup_protocol_version" would be added to the metadata section of the kernelspec. It accepts the following values:
+  - `0`: supports passing ports only (assumed if unspecified)
+  - `1`: supports both handshake and passing ports
+  - `2`: supports handshake only (future value, if we decide to remove the current mechanism)
 - In this case, the connection file passed to the kernel will specify the handshake port instead of the ports for the different channels. The connection file will also specify the address of the client, and a token used to identify the kernel.
 - When the client receives the port numbers for the different channels from the kernel, it adds them the connection file, so that other clients can connect to the kernel.
 
