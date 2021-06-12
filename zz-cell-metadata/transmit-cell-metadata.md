@@ -15,9 +15,10 @@ different usage scenarios implemented in various front-end clients.
 
 # Motivation
 
-By transmitting cell metadata inline with the execute message request, Jupyter
-implementations will have a reliable channel to transmit additional metadata
-to the kernel in a standard way.
+By transmitting cell metadata inline with the `execute`, `inspect_request`,
+and `complete_request` messages, Jupyter implementations will have a
+reliable channel to transmit additional metadata to the kernel in a standard
+way.
 
 Notebook extensions can also use this channel to transmit additional
 information that was often transmitted using magic commands.
@@ -94,16 +95,16 @@ Here's a minimal representation of the execute message for the above cell:
 ```js
 {
   "header" : {
-      "msg_id": "...",
-      "msg_type": "...",
+    "msg_id": "...",
+    "msg_type": "...",
+    "metadata": {
+      "kernel": "python3", 
+    },
       //...
   },
   "parent_header": {},
   "content": {
     "code": "1+1",
-    "metadata": {
-      "kernel": "python3", 
-    },
   },
   "content": {},
   "buffers": [],
@@ -148,8 +149,14 @@ information.
 
 # Reference-level Explanation
 
-Cell metadata will be transmitted to the kernel as part of the
-[Execute](https://jupyter-client.readthedocs.io/en/stable/messaging.html#execute).
+Cell metadata will be transmitted to the kernel as part of the message
+metadata for the
+[execute](https://jupyter-client.readthedocs.io/en/stable/messaging.html#execute),
+[inspect_request](https://jupyter-client.readthedocs.io/en/stable/messaging.html#introspection),
+and
+[complete_request](https://jupyter-client.readthedocs.io/en/stable/messaging.html#completion)
+messages.
+
 The general form of a message is:
 
 ```js
@@ -157,56 +164,16 @@ The general form of a message is:
   "header" : {
     "msg_id": "...",
     "msg_type": "...",
+    "metadata": {},
     //...
   },
   "parent_header": {},
-  "metadata": {},
   "content": {},
   "buffers": [],
 }
 ```
 
-Different message types have different schemas for the `content` dict. The
-schema of the `content` dict of an **Execute** message follows:
-
-```js
-content = {
-  // Source code to be executed by the kernel, one or more lines.
-  "code" : str,
-
-  // A boolean flag which, if True, signals the kernel to execute
-  // this code as quietly as possible.
-  // `silent=True` forces `store_history` to be False,
-  // and will *not*
-  //   - broadcast output on the IOPUB channel
-  //   - have an `execute_result`
-  // The default is False.
-  "silent" : bool,
-
-  // A boolean flag which, if True, signals the kernel to populate history
-  // The default is True. Additionally when `silent` is True, `store_history`
-  // is forced to be False.
-  "store_history" : bool,
-
-  // A dict mapping names to expressions to be evaluated in the
-  // user's dict. The rich display-data representation of each will be evaluated after execution.
-  // See the `display_data` content for the structure of the representation data.
-  "user_expressions" : dict,
-
-  // Some frontends do not support `stdin` requests.
-  // If this is True, code running in the kernel can prompt the user for input
-  // with an `input_request` message (see below). If it is False, the kernel
-  // should not send messages via `stdin`.
-  "allow_stdin" : True,
-
-  // A boolean flag, which, if True, aborts the execution queue if an 
-  // exception is encountered. If False, queued `execute_requests` will 
-  // execute even if this specific request generates an exception.
-  "stop_on_error" : True,
-}
-```
-
-We propose the addition of a new `metadata` dict to the `content` dict schema
+We propose the addition of a new `metadata` dict to the `header` dict schema
 in [nbformat](https://nbformat.readthedocs.io/en/latest/). This will be used
 to transmit the cell metadata for the executed cell. 
 
@@ -245,9 +212,40 @@ Below is the corresponding EXECUTE message:
 ```js
 {
   "header" : {
-      "msg_id": "...",
-      "msg_type": "...",
-      //...
+    "msg_id": "...",
+    "msg_type": "...",
+    "metadata": {
+      "allthekernels:kernel": "python3", 
+      "collapsed": True, 
+      "scrolled": False, 
+    },
+    //...
+  },
+  "parent_header": {},
+  "content": {
+    "code": "1+1",
+  },
+  "content": {},
+  "buffers": [],
+}
+```
+
+# Rationale and Alternatives
+
+## Rejected alternative: Metadata in content
+
+We considered another approach, content-level cell metadata, before we arrived
+at this JEP's proposed recommendation.
+
+Transmitting the metadata as a dict in the content of an EXECUTE message is
+illustrated here:
+
+```js
+{
+  "header" : {
+    "msg_id": "...",
+    "msg_type": "...",
+    //...
   },
   "parent_header": {},
   "content": {
@@ -258,46 +256,18 @@ Below is the corresponding EXECUTE message:
       "scrolled": False, 
     },
   },
-  "content": {},
   "buffers": [],
 }
 ```
 
-# Rationale and Alternatives
+We decided against this pattern as there are types of metadata that could be
+transmitted to the kernel that are not logically associated with the content;
+the examples below describe capabilities of the client:
 
-## Rejected alternative: Metadata at Root
-
-We considered another approach, root-level cell metadata, before we arrived at
-this JEP's proposed recommendation.
-
-Transmitting the metadata as a new root dict in the EXECUTE message is
-illustrated here:
-
-```js
-{
-  "header" : {
-      "msg_id": "...",
-      "msg_type": "...",
-      //...
-  },
-  "parent_header": {},
-  "metadata": {
-    "allthekernels:kernel": "python3", 
-    "collapsed": True, 
-    "scrolled": False, 
-  },
-  "content": {
-    "code": "1+1",
-  },
-  "buffers": [],
-}
-```
-
-We decided against this pattern as the metadata is specifically associated
-with the code being executed, not on the execute request message itself.
-Putting the cell metadata at the root of the payload might conflict with
-future execute specific operators for the message payload that might need to
-be present beyond the header fields in the future.
+-   Provide hints to the kernel for localization purposes, like how the
+    `ACCEPT_LANGUAGE HTTP` header works
+-   Provide hints to the kernel about client capabilities, similar to how
+    hints of a web browser client's capabilities work
 
 ## Rejected approach: Allow-List Pattern
 
