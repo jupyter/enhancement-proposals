@@ -164,18 +164,19 @@ The general form of a message is:
   "header" : {
     "msg_id": "...",
     "msg_type": "...",
-    "metadata": {},
     //...
   },
   "parent_header": {},
+  "metadata": {},
   "content": {},
   "buffers": [],
 }
 ```
 
-We propose the addition of a new `metadata` dict to the `header` dict schema
-in [nbformat](https://nbformat.readthedocs.io/en/latest/). This will be used
-to transmit the cell metadata for the executed cell. 
+We propose adding cell metadata to the existing `message.metadata` dict
+[see Jupyter client
+docs](https://jupyter-client.readthedocs.io/en/stable/messaging.html#metadata).
+This will be used to transmit the cell metadata for the executed cell. 
 
 In cases where Jupyter extensions generate their own metadata, that keys for
 the metadata should be namespaced using an extension-specific prefix. The
@@ -214,14 +215,14 @@ Below is the corresponding EXECUTE message:
   "header" : {
     "msg_id": "...",
     "msg_type": "...",
-    "metadata": {
-      "allthekernels:kernel": "python3", 
-      "collapsed": True, 
-      "scrolled": False, 
-    },
     //...
   },
   "parent_header": {},
+  "metadata": {
+    "allthekernels:kernel": "python3", 
+    "collapsed": True, 
+    "scrolled": False, 
+  },
   "content": {
     "code": "1+1",
   },
