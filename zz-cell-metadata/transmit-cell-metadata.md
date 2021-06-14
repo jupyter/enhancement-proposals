@@ -149,8 +149,8 @@ information.
 
 # Reference-level Explanation
 
-Cell metadata will be transmitted to the kernel as part of the message
-metadata for the
+Cell metadata will be transmitted to the kernel in messages that are
+associated with the cell. Some examples of messages include:
 [execute](https://jupyter-client.readthedocs.io/en/stable/messaging.html#execute),
 [inspect_request](https://jupyter-client.readthedocs.io/en/stable/messaging.html#introspection),
 and
