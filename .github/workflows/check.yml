@@ -1,0 +1,121 @@
+name: Linting
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Restore dependency cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: pip-build-${{ hashFiles('.ci_support/requirements-build.txt') }}
+        restore-keys: |
+          pip-build-
+          pip-
+
+    - name: Install dependencies
+      run: |
+        pip install -U -r .ci_support/requirements-build.txt
+
+    - name: Build the book
+      run: |
+        jupyter-book build .
+
+    - name: Upload book
+      uses: actions/upload-artifact@v2
+      with:
+        name: _build
+        path: _build
+
+  spelling:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download book
+        uses: actions/download-artifact@v2
+        with:
+          name: _build
+          path: _build
+
+      - name: Restore dependency cache
+        uses: actions/cache@v1
+        with:
+          path: ~/conda_pkgs_dir
+          key: conda-spelling-${{ hashFiles('.ci_support/environment-spelling.yml') }}
+          restore-keys: |
+            conda-spelling-
+            conda-
+
+      - name: Install dependencies
+        uses: goanpeca/setup-miniconda@v1.6.0
+        with:
+          activate-environment: spelling
+          channel-priority: strict
+          environment-file: .ci_support/environment-spelling.yml
+          use-only-tar-bz2: true
+
+      - name: Find misspelled words
+        shell: bash -l {0}
+        run: |
+          bash .ci_support/check_spelling.sh
+
+  links:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download book
+        uses: actions/download-artifact@v2
+        with:
+          name: _build
+          path: _build
+
+      - name: Restore link cache
+        uses: actions/cache@v2
+        with:
+          path: .pytest-check-links-cache.sqlite
+          key: links-checked-${{ hashFiles('.ci_support/requirements-check-links.txt') }}
+          restore-keys: |
+            links-checked-
+
+      - name: Restore dependency cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: pip-check-links-${{ hashFiles('.ci_support/requirements-check-links.txt') }}
+          restore-keys: |
+            pip-check-links-
+            pip-
+
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          pip install -U -r .ci_support/requirements-check-links.txt
+
+      - name: Find broken links
+        run: |
+          bash .ci_support/check_links.sh

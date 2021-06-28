@@ -1,0 +1,2 @@
+pytest-check-links >=0.4.2,<1
+requests_cache >=0.5.2,<1
