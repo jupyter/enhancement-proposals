@@ -178,7 +178,7 @@ We propose adding cell metadata to the existing `message.metadata` dict
 docs](https://jupyter-client.readthedocs.io/en/stable/messaging.html#metadata).
 This will be used to transmit the cell metadata for the executed cell. 
 
-In cases where Jupyter extensions generate their own metadata, that keys for
+In cases where Jupyter extensions generate their own metadata, the keys for
 the metadata should be namespaced using an extension-specific prefix. The
 prefix is ideally human-readable and identifies the extension that wrote the
 metadata. There is no current provision to guarantee global uniqueness for
