@@ -2,7 +2,7 @@
 title: Jupyter integration with the Language Server Protocol
 authors: Nicholas Bollweg (@bollwyvl), Jeremy Tuloup (@jtpio), Michał Krassowski (@krassowski)
 issue-number: 67
-pr-number: <proposal-pull-request-number>
+pr-number: 72
 date-started: 2021-06-27
 ---
 
