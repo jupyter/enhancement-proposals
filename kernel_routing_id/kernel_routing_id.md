@@ -17,7 +17,7 @@ kernels and we want to avoid opening a lot of sockets. It is also a perfect solu
 that routes messages from many clients to different kernels.
 
 A common pattern is to use the socket's endpoint as its identity. Since the client already knows to which endpoint
-it will connect, this avoids complex additional excahnges between the client and the kernel, or complex additional
+it will connect, this avoids complex additional exchanges between the client and the kernel, or complex additional
 configuration.
 
 ## Impact on existing implementations
