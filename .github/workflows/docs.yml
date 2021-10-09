@@ -6,6 +6,10 @@ on:
     branches:
     - master
 
+# Allow the bot to push to the repository
+permissions:
+  contents: write
+
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
