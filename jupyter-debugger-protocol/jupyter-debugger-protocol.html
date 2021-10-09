@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jupyter debugger protocol [active] &#8212; Jupyter Enhancement Proposals</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,19 +31,18 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -55,14 +51,14 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -71,30 +67,31 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../README.html">
    Jupyter Enhancement Proposals
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Information
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">
    Jupyter Enhancement Proposals (JEP) Guidelines
@@ -103,17 +100,15 @@
  <li class="toctree-l1">
   <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
    JEP Template
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Accepted JEPs
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../62-cell-id/cell-id.html">
    Cell ID Addition to Notebook Format
@@ -140,12 +135,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Implemented JEPs
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">
    Jupyter Enterprise Gateway Incorporation
@@ -178,6 +173,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -193,21 +189,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -225,7 +221,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -245,25 +241,25 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problem">
    Problem
@@ -336,8 +332,8 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -415,7 +411,7 @@
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>We provide both a front-end and a kernel implementation for the Jupyter kernel protocol. The front-end is a JupyterLab extension, which is available at URL https://github.com/jupyterlab/debugger, and the back-end is implemented as part of the xeus-python kernel, which is a kernel for the Python programming language available at URL https://github.com/jupyter-xeus/xeus-python.</p>
+<p>We provide both a front-end and a kernel implementation for the Jupyter kernel protocol. The front-end is a JupyterLab extension, which is available at URL <a class="reference external" href="https://github.com/jupyterlab/debugger">https://github.com/jupyterlab/debugger</a>, and the back-end is implemented as part of the xeus-python kernel, which is a kernel for the Python programming language available at URL <a class="reference external" href="https://github.com/jupyter-xeus/xeus-python">https://github.com/jupyter-xeus/xeus-python</a>.</p>
 <p>Together, they provide a rather typical experience of a visual debugger in JupyterLab:</p>
 <p><img alt="screencast" src="../_images/debugger-screencast.gif" /></p>
 <p>Typescript classes for the Debug Adapter Protocol message types are available in the MIT-licensed <a class="reference external" href="https://github.com/microsoft/vscode-debugadapter-node/">vscode-debugadapter-node</a> package, which we were able to leverage in the debugger front-end implementation.</p>
@@ -425,10 +421,10 @@
 <div class="section" id="github-repositories">
 <h3>GitHub repositories<a class="headerlink" href="#github-repositories" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p>The JupyterLab debugger extension: https://github.com/jupyterlab/debugger</p>
+<li><p>The JupyterLab debugger extension: <a class="reference external" href="https://github.com/jupyterlab/debugger">https://github.com/jupyterlab/debugger</a></p>
 <p>This is the first implementation of a debugger front-end supporting the described protocol</p>
 </li>
-<li><p>The Xeus-Python Jupyter kernel: https://github.com/jupyter-xeus/xeus-python</p>
+<li><p>The Xeus-Python Jupyter kernel: <a class="reference external" href="https://github.com/jupyter-xeus/xeus-python">https://github.com/jupyter-xeus/xeus-python</a></p>
 <p>This is the first Jupyter kernel implementing the proposed kernel protocol extensions. Xeus-python is a kernel for the Python programming language.</p>
 </li>
 </ul>
@@ -436,25 +432,25 @@
 <div class="section" id="github-issues">
 <h3>GitHub Issues<a class="headerlink" href="#github-issues" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Master issue by Johan Mabille (<a class="reference external" href="https://github.com/johanmabille">&#64;JohanMabille</a>) on the different steps towards supporting the Debug Adapter Protocol in Jupyter: https://github.com/jupyter/jupyter_client/issues/446</p></li>
+<li><p>Master issue by Johan Mabille (<a class="reference external" href="https://github.com/johanmabille">&#64;JohanMabille</a>) on the different steps towards supporting the Debug Adapter Protocol in Jupyter: <a class="reference external" href="https://github.com/jupyter/jupyter_client/issues/446">https://github.com/jupyter/jupyter_client/issues/446</a></p></li>
 </ul>
 </div>
 <div class="section" id="github-pull-requests">
 <h3>GitHub Pull Requests<a class="headerlink" href="#github-pull-requests" title="Permalink to this headline">¶</a></h3>
 <p>In jupyter_client:</p>
 <ul class="simple">
-<li><p>Adding <code class="docutils literal notranslate"><span class="pre">debug_[request|reply]</span></code> and <code class="docutils literal notranslate"><span class="pre">debug_event</span></code> to the Jupyter kernel protocol: https://github.com/jupyter/jupyter_client/pull/464</p></li>
-<li><p>Debug adapter protocol: https://github.com/jupyter/jupyter_client/pull/502</p></li>
+<li><p>Adding <code class="docutils literal notranslate"><span class="pre">debug_[request|reply]</span></code> and <code class="docutils literal notranslate"><span class="pre">debug_event</span></code> to the Jupyter kernel protocol: <a class="reference external" href="https://github.com/jupyter/jupyter_client/pull/464">https://github.com/jupyter/jupyter_client/pull/464</a></p></li>
+<li><p>Debug adapter protocol: <a class="reference external" href="https://github.com/jupyter/jupyter_client/pull/502">https://github.com/jupyter/jupyter_client/pull/502</a></p></li>
 </ul>
 <p>In jupyter_server and notebook:</p>
 <ul class="simple">
-<li><p>Added control channel to ZMQChannelsHandler: https://github.com/jupyter/jupyter_server/pull/56</p></li>
-<li><p>The same change in the classic notebook server: https://github.com/jupyter/notebook/pull/4672</p></li>
+<li><p>Added control channel to ZMQChannelsHandler: <a class="reference external" href="https://github.com/jupyter/jupyter_server/pull/56">https://github.com/jupyter/jupyter_server/pull/56</a></p></li>
+<li><p>The same change in the classic notebook server: <a class="reference external" href="https://github.com/jupyter/notebook/pull/4672">https://github.com/jupyter/notebook/pull/4672</a></p></li>
 </ul>
 <p>In JupyterLab:</p>
 <ul class="simple">
-<li><p>Adds interface for messages sent on the Control channel: https://github.com/jupyterlab/jupyterlab/pull/6544</p></li>
-<li><p>Adding debug messages: https://github.com/jupyterlab/jupyterlab/pull/6704</p></li>
+<li><p>Adds interface for messages sent on the Control channel: <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/pull/6544">https://github.com/jupyterlab/jupyterlab/pull/6544</a></p></li>
+<li><p>Adding debug messages: <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/pull/6704">https://github.com/jupyterlab/jupyterlab/pull/6704</a></p></li>
 </ul>
 <p>In Xeus:</p>
 <ul class="simple">
@@ -462,8 +458,8 @@
 </ul>
 <p>Old resources for past discussions on the debugger:</p>
 <ul class="simple">
-<li><p>The debugger repository in the jupyter-attic repository holds a number of discussions about the implementation of a visual debugger for Jupyter. The repository has been archived.  https://github.com/jupyter-attic/debugger</p></li>
-<li><p>The archived jupyterlab-debugger repository from the QuantStack organization holds the early front-end work by Jeremy Tuloup that was used for the first iterations on a JupyterLab extension: https://github.com/QuantStack/jupyterlab-debugger/</p></li>
+<li><p>The debugger repository in the jupyter-attic repository holds a number of discussions about the implementation of a visual debugger for Jupyter. The repository has been archived.  <a class="reference external" href="https://github.com/jupyter-attic/debugger">https://github.com/jupyter-attic/debugger</a></p></li>
+<li><p>The archived jupyterlab-debugger repository from the QuantStack organization holds the early front-end work by Jeremy Tuloup that was used for the first iterations on a JupyterLab extension: <a class="reference external" href="https://github.com/QuantStack/jupyterlab-debugger/">https://github.com/QuantStack/jupyterlab-debugger/</a></p></li>
 </ul>
 </div>
 </div>
@@ -495,15 +491,19 @@
 
               </div>
               
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
@@ -518,11 +518,9 @@
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

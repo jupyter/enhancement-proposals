@@ -34,6 +34,7 @@ encouraged to commence on the topic.
 | 0042 | **Accepted** | [Voila Incorporation](42-voila-incorporation/voila-incorporation.md) | [#43](https://github.com/jupyter/enhancement-proposals/pull/43) |
 | 0044 | **Accepted** | [Xeus Incorporation](44-xeus-incorporation/xeus-incorporation.md) | [#44](https://github.com/jupyter/enhancement-proposals/pull/44) |
 | 0062 | **Accepted** | [Cell ID Addition to Notebook Format](62-cell-id/cell-id.md) | [#62](https://github.com/jupyter/enhancement-proposals/pull/62) |
+| 0072 | **Accepted** | [Language server protocol (LSP)](72-language-server-protocol/language-server-protocol.md) | [#72](https://github.com/jupyter/enhancement-proposals/pull/72) |
 
 ## How do I submit a JEP?
 

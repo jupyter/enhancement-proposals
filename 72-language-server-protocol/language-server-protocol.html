@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summary &#8212; Jupyter Enhancement Proposals</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Jupyter Enhancement Proposals
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">
+   Jupyter Enhancement Proposals (JEP) Guidelines
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
+   JEP Template
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Accepted JEPs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../62-cell-id/cell-id.html">
+   Cell ID Addition to Notebook Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
+   Xeus Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
+   Voilà Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../29-jep-process/jep-process.html">
+   Jupyter Enhancement Proposal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../28-jupyter-server/jupyter-server.html">
+   Standalone Jupyter server enhancement
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Implemented JEPs
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">
+   Jupyter Enterprise Gateway Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">
+   Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">
+   Jupyter DeclarativeWidgets Extension Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">
+   Jupyter Dashboards Extension Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">
+   Jupyter Kernel Gateway Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../08-notebook-diff/notebook-diff.html">
+   Diffing and merging notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/72-language-server-protocol/language-server-protocol.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F72-language-server-protocol/language-server-protocol.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/72-language-server-protocol/language-server-protocol.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Summary
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#guide-level-explanation">
+   Guide-level explanation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference-level-explanation">
+   Reference-level explanation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dealing-with-jupyter-notebooks-complexity">
+     Dealing with Jupyter notebooks complexity
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#current-implementation">
+     Current implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rationale-and-alternatives">
+   Rationale and alternatives
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prior-art">
+   Prior art
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unresolved-questions">
+   Unresolved questions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#future-possibilities">
+   Future possibilities
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/krassowski/jupyterlab-lsp">jupyter(lab)-lsp</a> is a project bringing integration
+of language-specific IDE features (such as diagnostics, linting, autocompletion, refactoring) to the
+Jupyter ecosystem by leveraging the established
+<a class="reference external" href="https://microsoft.github.io/language-server-protocol/">Language Server Protocol</a> (LSP), with a good
+overview on the <a class="reference external" href="https://langserver.org">community knowledge site</a>. We would like to propose its
+incorporation as an official sub-project of Project Jupyter. We feel this would benefit Jupyter
+users through better discoverability of advanced interactive computing features, supported by the
+(LSP), but otherwise missing in a user’s Jupyter experience. While our repository currently features
+a working implementation, the proposal is not tied to it (beyond a proposal for migration of the
+repository to a Jupyter-managed GitHub organization) but rather aimed to guide the process of
+formalizing and evolving the way of integrating Jupyter with LSP in general.</p>
+</div>
+<div class="section" id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
+<p>A common criticism of the Jupyter environment (regardless of the front-end editor) and of the
+official Jupyter frontends (in light of recent, experimental support of feature-rich notebook
+edition under development by some of the major IDE developers) is the lack of advanced code
+assistance tooling. The proper tooling can improve code quality, validity of computation and
+increase development speed and we therefore believe that it is a key ingredient of a good
+computational notebooks environment, which from the beginning aimed at improving the workflow of
+users.</p>
+<p>Providing support for advanced coding assistance for each language separately is a daunting task,
+challenging not only for volunteer-driven projects, but also for large companies. Microsoft
+recognized the problem creating the Language Server Protocol with reference implementation in
+VSCode(TM).</p>
+<p>Many language servers are community supported and available for free (see the community-maintained
+list of <a class="reference external" href="https://langserver.org/">language servers</a>).</p>
+</div>
+<div class="section" id="guide-level-explanation">
+<h1>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this headline">¶</a></h1>
+<p>Much like
+<a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html">Jupyter Kernel Messaging</a>, LSP
+provides a language-agnostic, JSON-compatible description for multiple clients to integrate with any
+number of language implementations. Unlike Kernel Messaging, the focus is on precise definition of
+the many facets of static analysis and code transformation, with nearly four times the number of
+messages of the Jupyter specification. We will discuss the opportunities and challenges of this
+complexity for users and maintainers of Jupyter Clients, Kernels, and related tools.</p>
+<p>The key component of the repository,
+<a class="reference external" href="https://www.npmjs.com/package/&#64;krassowski/jupyterlab-lsp">&#64;krassowski/jupyterlab-lsp</a>, offers
+Jupyter users an expanded subset of features described by the LSP as an extension to JupyterLab.
+These features include refinements of existing Jupyter interactive computing features, such as
+completion and introspection, as well as new Jupyter features such as linting, reference linking,
+and symbol renaming. It is supported by <a class="reference external" href="https://pypi.org/project/jupyter-lsp/">jupyter-lsp</a>, a
+Language Server- and Jupyter Client-agnostic extension of the Jupyter Notebook Server (for the <code class="docutils literal notranslate"><span class="pre">0.x</span></code>
+line) and Jupyter Server (for the <code class="docutils literal notranslate"><span class="pre">1.x</span></code>). We will discuss the architecture and engineering process
+of maintaining these components at greater length, leveraging a good deal of the user and developer
+<a class="reference external" href="https://jupyterlab-lsp.readthedocs.io/en/latest/?badge=latest">documentation</a>.</p>
+</div>
+<div class="section" id="reference-level-explanation">
+<h1>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this headline">¶</a></h1>
+<p>The current implementation of the LSP integration is a barely a proof of concept. We believe that a
+different implementation should be developed to take the more comprehensive use cases and diversity
+of the Jupyter ecosystem into account; we created detailed proposals for improvement and refactoring
+of our code as explained later.</p>
+<div class="section" id="dealing-with-jupyter-notebooks-complexity">
+<h2>Dealing with Jupyter notebooks complexity<a class="headerlink" href="#dealing-with-jupyter-notebooks-complexity" title="Permalink to this headline">¶</a></h2>
+<p>The following features need to be considered in the design:</p>
+<p>The interactive, data-driven computing paradigm provides additional convenience features on top of
+existing languages:</p>
+<ul class="simple">
+<li><p>cell and line magics</p></li>
+<li><p>tranclusions: “foreign” code in the document, often implemented as magics which uses a different
+language or scope than the rest of the document (e.g. <code class="docutils literal notranslate"><span class="pre">%%html</span></code> magic in IPython)</p></li>
+<li><p>polyglot notebooks using cell metadata to define language</p></li>
+<li><p>the concept of cells, including cell outputs and cell metadata (e.g. enabling LSP extensions to
+warn users about unused empty cells, out of order execution markers, etc., as briefly discussed in
+<a class="reference external" href="https://github.com/krassowski/jupyterlab-lsp/issues/467">#467</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="current-implementation">
+<h2>Current implementation<a class="headerlink" href="#current-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Currently:</p>
+<ul class="simple">
+<li><p>the notebook cells are concatenated into a single temporary (“virtual”) document on the frontend,
+which is then sent to the backend,</p>
+<ul>
+<li><p>the navigation between coordinate system is performed by the frontend and is based solely on the
+total number of lines after concatenation</p></li>
+</ul>
+</li>
+<li><p>as a workaround for some language servers requiring actual presence of the file on the filesystem
+(against the LSP spec, but common in some less advanced servers), our backend Jupyter server
+extension creates a temporary file on the file system (by default in the <code class="docutils literal notranslate"><span class="pre">.virtual_documents</span></code>
+directory); this is scheduled for deprecation,</p></li>
+<li><p>Jupyter server extension serves as:</p>
+<ul>
+<li><p>a transparent proxy between LSP language servers and frontend, speaking over websocket
+connection</p></li>
+<li><p>a manager of language servers, determining whether specific LSP servers are installed and
+starting their processes</p>
+<ul>
+<li><p>JSON files or declarative Python classes registered via entry points are used to define
+specification of the LSP servers (where to look for an executable of the LSP server, for which
+languages/kernels given LSP server should be used, what is its display name, etc.)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rationale-and-alternatives">
+<h1>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this headline">¶</a></h1>
+<p>A previous (stale) JEP proposed to integrate LSP and to adopt Monaco editor, which would entail
+bringing a heavy dependency and large reliance on continuous development of Monaco by Microsoft; it
+was not clear whether Monaco would allow efficient use in multi-editor notebook setting and the work
+on the integration stalled a few years ago. Differently to that previous proposal we <strong>do not</strong>
+propose to adopt any specific implementation, yet we bring a working implementation for CodeMirror 5
+editor, which is already in use by two of the official front-ends for Jupyter (Jupyter Notebook and
+JupyterLab). While the nearly-feature-complete CodeMirror 6 has specifically declared LSP
+integration to be a non-goal, it does however provide a number of features which would allow for
+cleaner integration of multiple sources of editor annotation, such as named bundles of marks.</p>
+<p>The Jupyter originally driving innovation in the field is now in some communities perceived as a
+driver behind bad coding practices due to the lack of available toolset in the official frontends.
+Alternative formats to ipynb were proposed and sometimes the only motivation was a better
+IDE-features support.</p>
+</div>
+<div class="section" id="prior-art">
+<h1>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this headline">¶</a></h1>
+<p>Multiple editors already support the Language Server Protocol, whether directly or via extension
+points, including VSCode, Atom, Brackets (Adobe), Spyder, Visual Studio and many more. The list of
+clients and their capabilities is described at the community-maintained
+<a class="reference external" href="https://langserver.org/">knowledge site</a> in the “LSP clients” section and at official website of
+the <a class="reference external" href="https://microsoft.github.io/language-server-protocol/implementors/tools/">LSP protocol</a>.</p>
+<p>Multiple proprietary notebook interfaces attempted integration of language features such as those
+provided by LSP, including Google Colab, Datalore, Deepnote, and Polynote; due to proprietary
+implementation details it is not clear how many of the existing solutions employ LSP (or its subset)
+under the hood.</p>
+<p>The on-going integration of the <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-debugger-protocol/jupyter-debugger-protocol.md">Debug Adapter Protocol</a> has demonstrated both the user
+benefits, and kernel maintainer costs, of “embracing and extending” existing, non-Jupyter protocols
+rather than re-implementing.</p>
+</div>
+<div class="section" id="unresolved-questions">
+<h1>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this headline">¶</a></h1>
+<p>The current implementation can be improved by:</p>
+<ol class="simple">
+<li><p>embedding cell identifiers (and possibly metadata) as comments in the virtual document at a place
+corresponding to the start of each cell (in jupytext-compatible way), to enable easier
+calculation of positions and implementation of refactoring features (e.g. linting with black)
+that add or remove lines (which is not currently possible),</p>
+<ul class="simple">
+<li><p>adding metadata might be required to enable polyglot SOS notebooks, see discussion in
+<a class="reference external" href="https://github.com/krassowski/jupyterlab-lsp/issues/282">#282</a></p></li>
+<li><p>one might consider if it is worth to delegate this task to jupytext; this would necessitate
+moving the notebook concatenation logic to the server extension, with a positive side effect of
+exposing it for re-use by other clients, but with a potential downsides of the need to
+frequently transfer the entire notebook (on each debounced keypress) to the server extension
+(which could be alleviated if implemented via delta/diffs; this adds more logic but given that
+notebooks is just a JSON it might be feasible to use an existing tool) and with a downside of
+having the notebook-virtual document position transformation code on both backend and frontend
+as the frontend part cannot be easily (or at al?) eliminated; as this option looks promising it
+will be investigated once current performance shortcomings are resolved.</p></li>
+<li><p>see further discussion in <a class="reference external" href="https://github.com/krassowski/jupyterlab-lsp/issues/467">#467</a></p></li>
+</ul>
+</li>
+<li><p>formalizing grammar of substituting magics with equivalent or placeholder (which allows for
+one-to-one mapping of magics to code that can be understood by standard refactoring tools and
+back to the magics after the code was transformed by the refactoring tools, for example moved to
+another file), see <a class="reference external" href="https://github.com/krassowski/jupyterlab-lsp/issues/347">#347</a></p></li>
+<li><p>abstracting the communication layer between client and server so that different mechanisms can be
+used for such communication, for example:</p>
+<ul class="simple">
+<li><p>custom, manually managed websocket between the client and jupyter server extension (existing
+solution),</p></li>
+<li><p>websocket managed reusing the kernel comms (acting as a transparent proxy but reducing the
+number of dependencies since in the context of Jupyter the kernel comms are expected to be
+present either way), see the proposed implementation in
+<a class="reference external" href="https://github.com/krassowski/jupyterlab-lsp/pull/278">#278</a></p></li>
+<li><p>direct connection to a cloud or self-hosted service providing language intelligence as a
+service, e.g. <a class="reference external" href="https://about.sourcegraph.com/">sourcegraph</a></p></li>
+<li><p>(potentially) in-client language servers, such a JSON Schema-aware language server to assist in
+configuration</p></li>
+</ul>
+</li>
+</ol>
+<p>There are also smaller fires to put out in the current implementation which we believe do not
+warrant further discussion; however, we want to enumerate those to assure a potentially concerned
+reader that those topics are being looked at and considered a priority due to the immediate impact
+on user and/or developer experience:</p>
+<ul class="simple">
+<li><p>reorganizing deeply nested code into shallower structure of multiple packages, one per each
+feature (with the current state of the repository in half a monorepo, half complex project being
+an annoyance to maintainers and contributors alike)</p></li>
+<li><p>improving performance of completer and overall robustness of the features</p></li>
+<li><p>enabling integration with other packages providing completion suggestions</p></li>
+<li><p>enabling use of multiple LSP servers for a single document</p></li>
+</ul>
+</div>
+<div class="section" id="future-possibilities">
+<h1>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Amending the kernel messaging protocol to ask only for runtime (e.g. keys in a dictionary, columns
+in a data frame) and kernel-specific completions (e.g. magics), this is excluding static-analysis
+based completions, to improve the performance of the completer</p></li>
+<li><p>Seeding existing linting tools with plugins to support notebook-specific features (empty cells,
+out of order execution, largely as envisioned by pioneering work of
+<a class="reference external" href="https://dew-uff.github.io/julynter/index.html">JuLynter</a> experiment)</p>
+<ul>
+<li><p>also see <a class="reference external" href="https://github.com/deathbeds/lintotype/">lintotype</a></p></li>
+</ul>
+</li>
+<li><p>Encouraging contributions to existing language-servers and offering platform for development of
+Jupyter-optimized language servers</p></li>
+<li><p>Enabling LSP features in markdown cells</p></li>
+<li><p>Implementing support for related Language Server Index Format (LSIF), a protocol closely related
+to LSP and defined on the
+<a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsif/0.5.0/specification/">specification page</a>
+for even faster IDE features for the retrieval of immutable (or infrequently mutable) information,
+such as documentation of built-in functions.</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./72-language-server-protocol"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Project Jupyter<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
