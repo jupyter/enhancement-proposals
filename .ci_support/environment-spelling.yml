@@ -1,0 +1,8 @@
+name: spelling
+
+channels:
+  - conda-forge
+
+dependencies:
+  - hunspell-en >=2020.06.01
+  - hunspell >=1.7.0,<2
