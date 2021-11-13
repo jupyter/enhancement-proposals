@@ -102,7 +102,7 @@ These user stories are guiding principles for the experience of using Notebook v
 
 ## Links and resources
 
-- This PEP was originally posted by @fperez [as a comment in the original discussion opened by @zsailer](https://github.com/jupyter/notebook/issues/6210#issuecomment-957169113).
+- This JEP was originally posted by @fperez [as a comment in the original discussion opened by @zsailer](https://github.com/jupyter/notebook/issues/6210#issuecomment-957169113).
 - The blockers for transitioning Berkeley's Data 8 course to RetroLab are tracked [here](https://github.com/berkeley-dsep-infra/datahub/issues/2422).
 - The [community-contributed Notebook extensions have their own repository](https://github.com/ipython-contrib/jupyter_contrib_nbextensions).
 
