@@ -26,7 +26,7 @@ These three concerns will drive our transition; their specific implications are 
 
 ## Extensions
 
-The Notebook ecosystem for extensions is rich and varied, and some of those are critical to major deployments, especially in educational and institutional contexts. Since the internal APIs of JupyterLab are entirely different from those of v6, existing extensions written for v6 will not work on v7 out of the box. Here we detail the plan for how to minimize the disruption caused by this transition and how to support the community in the process.
+The Notebook ecosystem for extensions is rich and varied, and some of those are critical to major deployments, especially in educational and institutional contexts. Since the internal APIs of JupyterLab are entirely different from those of Notebook v6, existing extensions written for v6 will not work on v7 out of the box. Here we detail the plan for how to minimize the disruption caused by this transition and how to support the community in the process.
 
 There is a [community repository of unofficial Notebook extensions](https://jupyter-contrib-nbextensions.readthedocs.io), along with [corresponding documentation](https://jupyterlab-contrib.github.io/migrate_from_classical.html) indicating which of these extensions have analogs or ports in JupyterLab.
 
