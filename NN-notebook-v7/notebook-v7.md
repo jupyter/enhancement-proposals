@@ -62,7 +62,7 @@ In addition to having parity with the Notebook v6 user experience and widely-use
 - [RetroLab](https://github.com/jupyterlab/retrolab) running on [Jupyter Server](https://github.com/jupyter-server/jupyter_server) will be the basis for Notebook v7.
 - The current [RetroLab](https://github.com/jupyterlab/retrolab) commit history will be grafted into the [Jupyter Notebook repository](https://github.com/jupyter/notebook) in a pull request.
 - Notebook v7 will continue to be released as the `notebook` Python package.
-- Issues and PRs in the [Notebook repo](https://github.com/jupyter/notebook) will be triaged in this transition.
+- Issues and PRs in the [Notebook repository](https://github.com/jupyter/notebook) will be triaged in this transition.
 
 ## Timeline
 
