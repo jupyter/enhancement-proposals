@@ -14,30 +14,30 @@ date-started: 2021-11-12
 
 This JEP presents a path forward for the evolution of the Jupyter Notebook application in a way that is technically consistent with the rest of our tools and thus more sustainable, while meeting the needs of our users.
 
-This document proposes that the next major release of the [Jupyter Notebook](https://jupyter-notebook.readthedocs.io) application, version 7, will be based on the JupyterLab codebase, but will provide an equivalent user experience to the current (v6) application.  Jupyter Notebook version 7 ("Notebook v7" henceforth) will achieve this by using the current version of [RetroLab](https://github.com/jupyterlab/retrolab). The following three key ideas are central to this planned transition:
+This document proposes that the next major release of the [Jupyter Notebook](https://jupyter-notebook.readthedocs.io) application, version 7, will be based on the JupyterLab codebase, but will provide an equivalent user experience to the current (version 6) application.  Jupyter Notebook version 7 ("Notebook v7" henceforth) will achieve this by using the current version of [RetroLab](https://github.com/jupyterlab/retrolab). The following three key ideas are central to this planned transition:
 
-**The Notebook as a document-centric user experience:** The Jupyter Notebook application offers a _document-centric user experience_. That is, in the Notebook application, the landing page that contains a file manager, running tools tab and a few optional extras, is a launching point into opening standalone, individual documents. This document-centric experience is important for many users, and that is the first key point this proposal aims to preserve. Notebook v7 will be based on a different JavaScript implementation than v6, but _it will preserve the document-centric experience, where each individual notebook opens in a separate browser tab and the visible tools and menus are focused on the open document_.
+**The Notebook as a document-centric user experience:** The Jupyter Notebook application offers a _document-centric user experience_. That is, in the Notebook application, the landing page that contains a file manager, running tools tab, and a few optional extras, is a launching point into opening standalone, individual documents. This document-centric experience is important for many users, and that is the first key point this proposal aims to preserve. Notebook v7 will be based on a different JavaScript implementation than v6, but _it will preserve the document-centric experience, where each individual notebook opens in a separate browser tab and the visible tools and menus are focused on the open document_.
 
-**Extensions critical to the Notebook user community:** Furthermore, for many users, certain widely used extensions are critical to their workflow. While we can not port, or commit to every extension in existence (a [full list of community-based extensions is here](https://github.com/ipython-contrib/jupyter_contrib_nbextensions), and [ ](https://jupyterlab-contrib.github.io/migrate_from_classical.html)), we will identify some critical extensions for which, on day 1 of the Notebook v7 release, should work with similar functionality than users currently enjoy. We will engage with the developers of those extensions to identify a concrete technical plan and resources to implement this transition. They are listed below. We will also engage with the broader extension-authoring community to provide resources to ease the transition of their extensions.
+**Extensions critical to the Notebook user community:** Furthermore, for many users, certain widely used extensions are critical to their workflow. While we can not port every Notebook v6 extension ourselves (a list of widely-used community extensions is [here](https://github.com/ipython-contrib/jupyter_contrib_nbextensions)), we will identify some critical extensions (listed below) for which, on day 1 of the Notebook v7 release, should work with similar functionality that users currently enjoy. We will engage with the developers of those extensions to identify a concrete technical plan and resources to implement this transition. We will also engage with the broader extension-authoring community to provide resources to ease the transition of other extensions.
 
-**The body of existing content relying on the Notebook application experience:** Finally, the Notebook v6 community depends the on widely-used educational content (tutorials, textbooks, videos), and these _will not be invalidated_ by the transition. Educators who have such materials online will not need to update their content. While we can not expect a pixel-perfect match between versions 6 and 7 of the Notebook, we will make every effort to ensure that the gap between the visual and operational experience (menu items, available tools and actions, etc.) is small enough that any user can reasonably bridge it without assistance. Their experience should be no different to that of reading an online tutorial based on a previous version of Windows or MacOS, where the visuals or item locations may have changed somewhat in the user's current installation.
+**The body of existing content relying on the Notebook application experience:** Finally, the Notebook v6 community depends on widely-used educational content about the core Notebook application (such as tutorials, textbooks, videos), and these _will not be invalidated_ by the transition. Educators who have such materials online will not need to update their content. While we can not expect a pixel-perfect match between versions 6 and 7 of the Notebook, we will make every effort to ensure that the gap between the visual and operational experience (menu items, available tools and actions, etc.) is small enough that any user can reasonably bridge it without assistance. A user's experience applying a Notebook v6 tutorial to Notebook v7 should be no different than that of reading an online tutorial based on a previous version of Windows or MacOS, where the visuals or item locations may have changed somewhat in the user's current installation.
 
 These three concerns will drive our transition; their specific implications are detailed below in the form of concrete user stories.
 
 ## Extensions
 
-The Notebook ecosystem for extensions is rich and varied, and some of those are critical to major deployments especially in educational contexts. Since the internal APIs of JupyterLab are entirely different from those of v6, existing extensions written for v6 will not work on v7 out of the box. Here we detail the plan for how to minimize the disruption caused by this transition and how to support the community in the process.
+The Notebook ecosystem for extensions is rich and varied, and some of those are critical to major deployments, especially in educational and institutional contexts. Since the internal APIs of JupyterLab are entirely different from those of v6, existing extensions written for v6 will not work on v7 out of the box. Here we detail the plan for how to minimize the disruption caused by this transition and how to support the community in the process.
 
-There is a [community repository of unofficial Notebook extensions](https://jupyter-contrib-nbextensions.readthedocs.io), along with [corresponding documentation in JupyterLab](https://jupyterlab-contrib.github.io/migrate_from_classical.html) indicating which of these extensions have analogs or ports in JupyterLab.
+There is a [community repository of unofficial Notebook extensions](https://jupyter-contrib-nbextensions.readthedocs.io), along with [corresponding documentation](https://jupyterlab-contrib.github.io/migrate_from_classical.html) indicating which of these extensions have analogs or ports in JupyterLab.
 
 ### Critical extensions needed for Notebook v7
 
-The following Notebook extensions have been flagged by the community as critical to several major deployments and widely-used workflows. We will work with the extension developers to help port these (or help make new equivalent extensions) for Notebook v7:
+The following Notebook v6 extensions have been flagged by the community as critical to several major deployments and widely-used workflows. We will work with the extension developers to help port these (or help make new equivalent extensions) for Notebook v7:
 
 - [Nbgrader](https://github.com/jupyter/nbgrader)
 - [RISE](https://github.com/damianavila/RISE)
 - [Jupytext](https://github.com/mwouts/jupytext/issues/271)
-- File browser tab extensions (IPython Parallel)
+- IPython Parallel (filebrowser tab)
 
 ### Extensions whose functionality will be built into Notebook v7
 
@@ -48,7 +48,7 @@ The following extensions will have largely equivalent experiences shipping in co
 
 ## Major new features in Notebook v7
 
-In addition to having parity with the Jupyter Notebook user experience and widely-used extensions, Notebook v7 will inherit major new features that have been developed in the JupyterLab project, thus providing automatically a number of improvements to Notebook users as they transition to v7:
+In addition to having parity with the Notebook v6 user experience and widely-used extensions, Notebook v7 will inherit major new features that have been developed in the JupyterLab project, thus providing automatically a number of improvements to Notebook users as they transition to v7:
 
 - Debugger
 - Real-time collaboration
@@ -57,14 +57,12 @@ In addition to having parity with the Jupyter Notebook user experience and widel
 - Improved Accessibility
 - Support for many JupyterLab extensions
 
-
 ## Technical details
 
-- RetroLab running on Jupyter Server will be the basis for Notebook v7
-- The current RetroLab repo (https://github.com/jupyterlab/retrolab) will be grafted onto Jupyter Notebook repo (https://github.com/jupyter/notebook) in a PR.
+- [RetroLab](https://github.com/jupyterlab/retrolab) running on [Jupyter Server](https://github.com/jupyter-server/jupyter_server) will be the basis for Notebook v7.
+- The current [RetroLab](https://github.com/jupyterlab/retrolab) commit history will be grafted into the [Jupyter Notebook repository](https://github.com/jupyter/notebook) in a pull request.
 - Notebook v7 will continue to be released as the `notebook` Python package.
 - Issues and PRs in the [Notebook repo](https://github.com/jupyter/notebook) will be triaged in this transition.
-- Notebook v7 will depend on the Jupyter Server project.
 
 ## Timeline
 
@@ -72,15 +70,15 @@ We anticipate that Notebook v7 will be released in 2022.
 
 Jupyter Notebook v6 will be maintained with critical security fixes for two years following the release of Jupyter Notebook v7.
 
-The [`nbclassic`](https://github.com/jupyterlab/nbclassic) Python package (which provides Jupyter Notebook version 6 on top of Jupyter Server) will also be maintained with critical security fixes for two years following the release of Notebook v7.  But upon release of Notebook v7, the default URL route for accessing the classic experience will be served by the new code, and nbclassic will likely use a new route. The details of this transition will be worked out in the coming period.
+The [`nbclassic`](https://github.com/jupyterlab/nbclassic) Python package (which provides Jupyter Notebook version 6 on top of Jupyter Server) will also be maintained with critical security fixes for two years following the release of Notebook v7.  However, upon release of Notebook v7, the default URL route for accessing the classic experience will be served by the new code, and nbclassic will likely use a new route. The details of this transition will be worked out in the coming period.
 
 
-## User Stories (north star, long term)
-These user stories are guiding principles for the experience of using Notebook 7, they are not hard deliverables if the JEP is approved.
+## User Stories
+These user stories are guiding principles for the experience of using Notebook v7. They are not specific deliverables if the JEP is approved.
 
 - As a user, when I install JupyterLab or Jupyter Notebook, I get both experiences, so I can choose between them as I work.
-- As a user, when I start the application using `jupyter notebook` or `jupyter lab` the default view that I see will correspond to notebook or lab respectively. The handler is also updated accordingly to point to that application.
-- As a user, when I am using the lab or notebook interface, I can easily move back and forth within the UI using easily discoverable menu items, context menus, buttons, etc.
+- As a user, when I start the application using `jupyter notebook` or `jupyter lab`, the default view that I see will correspond to notebook or lab respectively. The handler is also updated accordingly to point to that application.
+- As a user, when I am using the lab or notebook interface, I can easily move back and forth within the UI using easily-discoverable menu items, context menus, buttons, etc.
     - Open this document in the notebook interface
     - Open this document in the lab interface
     - Open this directory in the notebook file browser
@@ -88,14 +86,14 @@ These user stories are guiding principles for the experience of using Notebook 7
 - As a user, when I am using Notebook v7, the visual design strongly matches what I am used to in Notebook v6.
     - As a user, I want the visual design of the notebook interface to get better over time, so my user experience improves over time.
     - As a user, I want the visual design of Notebook and JupyterLab to be closely aligned, so I know that I am using a single, unified experience.
-    - As a user I want the UI to not change dramatically so that my tutorials, and class material do not get out of date.
+    - As a user I want the UI to not change dramatically so that my tutorials and class materials do not get out of date.
 - As a user, I want extensions for the file browser page of Notebook to be able to add new tabs that sit alongside the file browser (such as the Running Panel).
-- As a user, I want extensions that need a left/right/bottom/status area to work in Notebook, but I want those areas to be entirely hidden by default, so I can have the document oriented notebook experience that I am used to.
+- As a user, I want extensions that need a left/right/bottom/status area to work in Notebook, but I want those areas to be entirely hidden by default, so I can have the document-oriented notebook experience that I am used to.
 - As a user, I want to know all of the great new things I am getting with Notebook v7, so I can make an informed decision to upgrade.
 - As a user, I want the most common notebook extensions to work in both the notebook and lab interfaces, so I can move back and forth without missing functionality (see below).
 -   As a user, I want this user experience to work seamlessly with the [Jupyter Desktop](https://blog.jupyter.org/jupyterlab-desktop-app-now-available-b8b661b17e9a)
     - As a user, I can double-click on an `.ipynb` file on my local computer (Mac, Win, Linux) to open the notebook as a single document which I can edit, run, etc.
-    - As a user, I want to be able to go from that experience, to the full JupyterLab Desktop application, so I can get a more IDE-centric experience, including file management, terminals, and more.
+    - As a user, I want to be able to go from the document-centric experience to the full JupyterLab Desktop application, so I can get a more IDE-centric experience, including file management, terminals, and more.
     - As a user, I can open notebooks via the command-line or open JupyterLab in a particular directory.
     - As a user, I want Jupyter Desktop to let me open my Jupyter editor (with any extensions I may have installed) as a single application and the Jupyter Console.
     - As a user, I can use other Jupyter-based tools in the native desktop experience, such as Consoles attached to Notebooks, in their own Native window.
@@ -110,8 +108,8 @@ These user stories are guiding principles for the experience of using Notebook 7
 
 ## Questions
 
-**Q:** what implications does this transition have for the Notebook `.ipynb` format?
-**A:** _None_. The file format remains unchanged. This JEP is about the Jupyter Notebook application, not the Jupyter notebook format.
+**Q:** What implications does this transition have for the notebook `.ipynb` format?
+**A:** _None_. The file format remains unchanged. This JEP is about the Jupyter Notebook application, not the Jupyter notebook `.ipynb` file format.
 
 **Q:** I wrote a Notebook extension that I'd like to update. Where can I find resources and/or support for that?
 **A:** We will strive to assist the community throughout the transition to the new extension system. There will be a central location with information on how to port extensions for others to do so in the future. We will also host office hours to assist extension developers.
