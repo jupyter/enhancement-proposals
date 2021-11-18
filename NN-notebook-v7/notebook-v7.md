@@ -55,7 +55,7 @@ In addition to having parity with the Notebook v6 user experience and widely-use
 - Theming and dark mode
 - Internationalization
 - Improved Accessibility
-- Support for many JupyterLab extensions
+- Support for many JupyterLab extensions, including Jupyter LSP (Language Server Protocol) for enhanced code completions
 
 ## Technical details
 
