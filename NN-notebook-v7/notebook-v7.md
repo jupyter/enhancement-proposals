@@ -8,7 +8,6 @@ date-started: 2021-11-12
 
 **Note on the status of this document:** this is a very early draft, still not ready even for public vote. It supersedes the existing two open issues [#6210](https://github.com/jupyter/notebook/issues/6210) and [#6220](https://github.com/jupyter/notebook/issues/6220), we aim to collect input and feedback so we can rapidly identify any major remaining concerns and focus energy on implementing this plan. We note that so far feedback on the main plan has been very positive, so we expect to move forward with the main plan, but want to identify specific details and issues that may have been overlooked, to ensure the smoothest transition possible.
 
-<!-- tag Darian, Zach, Kevin Bates. Jeremy. -->
 
 # Jupyter Notebook version 7
 
