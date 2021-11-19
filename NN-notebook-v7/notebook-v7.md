@@ -33,7 +33,7 @@ There is a [community repository of unofficial Notebook extensions](https://jupy
 
 The following Notebook v6 extensions have been flagged by the community as critical to several major deployments and widely-used workflows. We will work with the extension developers to help port these (or help make new equivalent extensions) for Notebook v7:
 
-- [Nbgrader](https://github.com/jupyter/nbgrader)
+- [nbgrader](https://github.com/jupyter/nbgrader)
 - [RISE](https://github.com/damianavila/RISE)
 - [Jupytext](https://github.com/mwouts/jupytext/issues/271)
 - IPython Parallel (filebrowser tab)
