@@ -97,6 +97,7 @@ These user stories are guiding principles for the experience of using Notebook v
     - As a user, I want Jupyter Desktop to let me open my Jupyter editor (with any extensions I may have installed) as a single application and the Jupyter Console.
     - As a user, I can use other Jupyter-based tools in the native desktop experience, such as Consoles attached to Notebooks, in their own Native window.
     - As a user, I want Jupyter Desktop to be able to authenticate to and connect to any local or remote Jupyter Server, so I can have the same native Desktop experience against remote resources.
+
 ## Decision making principles
 
 As we move forward with this plan and begin to make decisions about how to handle the visual design, functionality, and UX of Notebook V7 (how elements are styled, how do they behave, etc.) there will be tension between two paths:
