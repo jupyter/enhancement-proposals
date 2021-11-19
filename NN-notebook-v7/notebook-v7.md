@@ -40,7 +40,7 @@ The following Notebook v6 extensions have been flagged by the community as criti
 
 ### Extensions whose functionality will be built into Notebook v7
 
-The following extensions will have largely equivalent experiences shipping in core Notebook v7. We will need to track whether there are any remaining differences in their functionality that are either regressions, or potentially disrupting or confusing to existing users.
+The following extensions will have largely equivalent experiences shipping in core Notebook v7 and JupyterLab. We will need to track whether there are any remaining differences in their functionality that are either regressions, or potentially disrupting or confusing to existing users.
 
 - [Table of Contents](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/toc2)
 - [Collapsible headings](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/collapsible_headings)
