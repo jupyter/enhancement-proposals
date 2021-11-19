@@ -107,12 +107,13 @@ As we move forward with this plan and begin to make decisions about how to handl
 
 There will always be tradeoffs between these two options. To help us make these tradeoffs, we propose to look at the following questions:
 
-1. Is Option A or Option B be more accessible?
-2. If we were to design this from scratch today, would our design work and look more like Option A or Option B?
-3. Is Option A or Option B more maintainable?
-4. Is Option A or Option B be more secure?
-5. Will Option A confuse or cause friction Jupyter users who work in both Notebook V7 and JupyterLab v4?
-6. What is best for future Jupyter users who have never used either any version of Notebook or JupyterLab?
+* Is Option A or Option B be more accessible?
+* If we were to design this from scratch today, would our design work and look more like Option A or Option B?
+* Is Option A or Option B more maintainable?
+* Is Option A or Option B be more secure?
+* Will Option A confuse or cause friction Jupyter users who work in both Notebook V7 and JupyterLab v4?
+* What is best for future Jupyter users who have never used either any version of Notebook or JupyterLab?
+* Have we done everything possible to minimize the experience gap for users of Notebook v6 (while recognizing, given other constraints, that we can't always eliminate it completely)?
 
 ## Links and resources
 
