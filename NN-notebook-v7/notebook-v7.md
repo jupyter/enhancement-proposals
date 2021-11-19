@@ -1,6 +1,6 @@
 ---
 title: Jupyter Notebook version 7
-authors: Fernando Pérez (@fperez), Jeremy Tuloup (@jtpio), Sharan Foga (@sharanf), Afshin Darian (@afshin), Brian Granger (@ellisonbg), Sylvain Corlay (@SylvainCorlay), Jason Grout (@jasongrout), Zach Sailer (@Zsailer).
+authors: Fernando Pérez (@fperez), Jeremy Tuloup (@jtpio), Sharan Foga (@sharanf), Afshin Darian (@afshin), Brian Granger (@ellisonbg), Sylvain Corlay (@SylvainCorlay), Jason Grout (@jasongrout), Zach Sailer (@Zsailer), Kevin Goldsmith (@KevinGoldsmith).
 issue-number: NN
 pr-number: NN
 date-started: 2021-11-12
