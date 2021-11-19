@@ -129,5 +129,6 @@ There will always be tradeoffs between these two options. To help us make these 
 **Q:** I wrote a Notebook extension that I'd like to update. Where can I find resources and/or support for that?
 **A:** We will strive to assist the community throughout the transition to the new extension system. There will be a central location with information on how to port extensions for others to do so in the future. We will also host office hours to assist extension developers.
 
-**Q:** ...
+**Q:** What will I need to do to get my JupyterLab extension working with Notebook v7?
+**A:** Both JupyterLab and Notebook v7 will use the same extension system and it is our intention to enable extension authors to create extensions that work in both JupyterLab and Notebook v7. We are still working out the technical details of that and will update our documentation with links as more information is available.
 **A:** ...
