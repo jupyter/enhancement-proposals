@@ -69,7 +69,7 @@ We anticipate that Notebook v7 will be released in 2022.
 
 Jupyter Notebook v6 will be maintained with critical security fixes for two years following the release of Jupyter Notebook v7.
 
-The [`nbclassic`](https://github.com/jupyterlab/nbclassic) Python package (which provides Jupyter Notebook version 6 on top of Jupyter Server) will also be maintained with critical security fixes for two years following the release of Notebook v7.  However, upon release of Notebook v7, the default URL route for accessing the classic experience will be served by the new code, and nbclassic will likely use a new route. The details of this transition will be worked out in the coming period.
+The [`nbclassic`](https://github.com/jupyterlab/nbclassic) Python package (which provides Jupyter Notebook version 6 on top of Jupyter Server) will also be maintained with critical security fixes for two years following the release of Notebook v7. 
 
 
 ## User Stories
