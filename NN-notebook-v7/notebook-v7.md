@@ -94,9 +94,6 @@ These user stories are guiding principles for the experience of using Notebook v
     - As a user, I can double-click on an `.ipynb` file on my local computer (Mac, Win, Linux) to open the notebook as a single document which I can edit, run, etc.
     - As a user, I want to be able to go from the document-centric experience to the full JupyterLab Desktop application, so I can get a more IDE-centric experience, including file management, terminals, and more.
     - As a user, I can open notebooks via the command-line or open JupyterLab in a particular directory.
-    - As a user, I want Jupyter Desktop to let me open my Jupyter editor (with any extensions I may have installed) as a single application and the Jupyter Console.
-    - As a user, I can use other Jupyter-based tools in the native desktop experience, such as Consoles attached to Notebooks, in their own Native window.
-    - As a user, I want Jupyter Desktop to be able to authenticate to and connect to any local or remote Jupyter Server, so I can have the same native Desktop experience against remote resources.
 
 ## Decision making principles
 
