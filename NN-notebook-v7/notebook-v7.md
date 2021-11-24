@@ -53,7 +53,7 @@ In addition to having parity with the Notebook v6 user experience and widely-use
 - Real-time collaboration
 - Theming and dark mode
 - Internationalization
-- Improved Web Content Accessibility Accessibility compliance
+- Improved Web Content Accessibility Guidelines (WCAG) compliance
 - Support for many JupyterLab extensions, including Jupyter LSP (Language Server Protocol) for enhanced code completions
 
 ## Technical details
