@@ -108,7 +108,7 @@ There will always be tradeoffs between these two options. To help us make these 
 * If we were to design this from scratch today, would our design work and look more like Option A or Option B?
 * Is Option A or Option B more maintainable?
 * Is Option A or Option B be more secure?
-* Will Option A confuse or cause friction Jupyter users who work in both Notebook V7 and JupyterLab v4?
+* Will Option A confuse or cause friction to Jupyter users who work in both Notebook V7 and JupyterLab v4?
 * What is best for future Jupyter users who have never used either any version of Notebook or JupyterLab?
 * Have we done everything possible to minimize the experience gap for users of Notebook v6 (while recognizing, given other constraints, that we can't always eliminate it completely)?
 
