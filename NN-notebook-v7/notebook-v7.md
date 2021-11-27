@@ -128,4 +128,3 @@ There will always be tradeoffs between these two options. To help us make these 
 
 **Q:** What will I need to do to get my JupyterLab extension working with Notebook v7?
 **A:** Both JupyterLab and Notebook v7 will use the same extension system and it is our intention to enable extension authors to create extensions that work in both JupyterLab and Notebook v7. We are still working out the technical details of that and will update our documentation with links as more information is available.
-**A:** ...
