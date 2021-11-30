@@ -1,15 +1,12 @@
 ---
-title: Jupyter Notebook version 7
+title: Build Jupyter Notebook v7 off of JupyterLab components
 authors:  Fernando Pérez (@fperez), Sylvain Corlay (@SylvainCorlay), Afshin Darian (@afshin), Sharan Foga (@sharanf), Kevin Goldsmith (@KevinGoldsmith), Brian Granger (@ellisonbg) , Jason Grout (@jasongrout), Zach Sailer (@Zsailer), Jeremy Tuloup (@jtpio).
-issue-number: NN
-pr-number: NN
+issue-number: 79
+pr-number: 78
 date-started: 2021-11-12
 ---
 
-**Note on the status of this document:** this is a very early draft, still not ready even for public vote. It supersedes the existing two open issues [#6210](https://github.com/jupyter/notebook/issues/6210) and [#6220](https://github.com/jupyter/notebook/issues/6220), we aim to collect input and feedback so we can rapidly identify any major remaining concerns and focus energy on implementing this plan. We note that so far feedback on the main plan has been very positive, so we expect to move forward with the main plan, but want to identify specific details and issues that may have been overlooked, to ensure the smoothest transition possible.
-
-
-# Jupyter Notebook version 7
+# Build Jupyter Notebook v7 off of JupyterLab components
 
 This JEP presents a path forward for the evolution of the Jupyter Notebook application in a way that is technically consistent with the rest of our tools and thus more sustainable, while meeting the needs of our users.
 
