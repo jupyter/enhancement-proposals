@@ -32,8 +32,8 @@ jobs:
         nox -s docs
 
     # Push the book's HTML to github-pages
-    - name: GitHub Pages action
-      if: ${{ github.event_name == 'push' }}
+    - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.5.9
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
