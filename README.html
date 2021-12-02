@@ -24,12 +24,7 @@
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -37,18 +32,10 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/README.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Jupyter Enhancement Proposals (JEP) Guidelines" href="jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" />
@@ -80,7 +67,7 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs..." aria-label="Search the docs..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
@@ -191,7 +178,7 @@
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
 </div>
 
 </div>
@@ -282,6 +269,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-do-i-submit-a-jep">
    How do I submit a JEP?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docs-hosting">
+   Docs hosting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -441,6 +433,13 @@ encouraged to commence on the topic.</p>
 for guidance on the questions you should answer before officially submitting
 the JEP.</p>
 </div>
+<div class="section" id="docs-hosting">
+<h2>Docs hosting<a class="headerlink" href="#docs-hosting" title="Permalink to this headline">¶</a></h2>
+<p>We use a GitHub action to build the documentation with Sphinx and push it to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of the repository.
+This is then hosted at <code class="docutils literal notranslate"><span class="pre">jupyter.org/enhancement-proposals</span></code>.</p>
+<p>We use a ReadTheDocs build to automatically generate <strong>previews</strong> of the documentation for Pull Requests.
+However this is not the publicly-hosted version of the documentation, it is just for PRs.</p>
+</div>
 <div class="section" id="build-the-enhancement-proposal-docs">
 <h2>Build the enhancement proposal docs<a class="headerlink" href="#build-the-enhancement-proposal-docs" title="Permalink to this headline">¶</a></h2>
 <p>The Enhancement Proposal documentation is structured as a <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx documentation site</a> that uses a them and configuration inspired by <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a>.</p>
@@ -473,25 +472,6 @@ Follow these steps:</p>
 </div>
 </div>
 
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./."
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -515,7 +495,7 @@ Follow these steps:</p>
         
           By Project Jupyter<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
