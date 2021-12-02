@@ -6,7 +6,9 @@ pr-number: 72
 date-started: 2021-06-27
 ---
 
-# Summary
+# Jupyter integration with the Language Server Protocol
+
+## Summary
 
 [jupyter(lab)-lsp](https://github.com/krassowski/jupyterlab-lsp) is a project bringing integration
 of language-specific IDE features (such as diagnostics, linting, autocompletion, refactoring) to the
@@ -20,7 +22,7 @@ a working implementation, the proposal is not tied to it (beyond a proposal for 
 repository to a Jupyter-managed GitHub organization) but rather aimed to guide the process of
 formalizing and evolving the way of integrating Jupyter with LSP in general.
 
-# Motivation
+## Motivation
 
 A common criticism of the Jupyter environment (regardless of the front-end editor) and of the
 official Jupyter frontends (in light of recent, experimental support of feature-rich notebook
@@ -38,7 +40,7 @@ VSCode(TM).
 Many language servers are community supported and available for free (see the community-maintained
 list of [language servers](https://langserver.org/)).
 
-# Guide-level explanation
+## Guide-level explanation
 
 Much like
 [Jupyter Kernel Messaging](https://jupyter-client.readthedocs.io/en/stable/messaging.html), LSP
@@ -59,14 +61,14 @@ line) and Jupyter Server (for the `1.x`). We will discuss the architecture and e
 of maintaining these components at greater length, leveraging a good deal of the user and developer
 [documentation](https://jupyterlab-lsp.readthedocs.io/en/latest/?badge=latest).
 
-# Reference-level explanation
+## Reference-level explanation
 
 The current implementation of the LSP integration is a barely a proof of concept. We believe that a
 different implementation should be developed to take the more comprehensive use cases and diversity
 of the Jupyter ecosystem into account; we created detailed proposals for improvement and refactoring
 of our code as explained later.
 
-## Dealing with Jupyter notebooks complexity
+### Dealing with Jupyter notebooks complexity
 
 The following features need to be considered in the design:
 
@@ -81,7 +83,7 @@ existing languages:
   warn users about unused empty cells, out of order execution markers, etc., as briefly discussed in
   [#467](https://github.com/krassowski/jupyterlab-lsp/issues/467))
 
-## Current implementation
+### Current implementation
 
 Currently:
 
@@ -102,7 +104,7 @@ Currently:
       specification of the LSP servers (where to look for an executable of the LSP server, for which
       languages/kernels given LSP server should be used, what is its display name, etc.)
 
-# Rationale and alternatives
+## Rationale and alternatives
 
 A previous (stale) JEP proposed to integrate LSP and to adopt Monaco editor, which would entail
 bringing a heavy dependency and large reliance on continuous development of Monaco by Microsoft; it
@@ -119,7 +121,7 @@ driver behind bad coding practices due to the lack of available toolset in the o
 Alternative formats to ipynb were proposed and sometimes the only motivation was a better
 IDE-features support.
 
-# Prior art
+## Prior art
 
 Multiple editors already support the Language Server Protocol, whether directly or via extension
 points, including VSCode, Atom, Brackets (Adobe), Spyder, Visual Studio and many more. The list of
@@ -136,7 +138,7 @@ The on-going integration of the [Debug Adapter Protocol][dap] has demonstrated b
 benefits, and kernel maintainer costs, of "embracing and extending" existing, non-Jupyter protocols
 rather than re-implementing.
 
-# Unresolved questions
+## Unresolved questions
 
 The current implementation can be improved by:
 
@@ -185,7 +187,7 @@ on user and/or developer experience:
 - enabling integration with other packages providing completion suggestions
 - enabling use of multiple LSP servers for a single document
 
-# Future possibilities
+## Future possibilities
 
 - Amending the kernel messaging protocol to ask only for runtime (e.g. keys in a dictionary, columns
   in a data frame) and kernel-specific completions (e.g. magics), this is excluding static-analysis

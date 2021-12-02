@@ -33,8 +33,10 @@ encouraged to commence on the topic.
 | 0029 | **Accepted** | [Jupyter Enhancement Proposal updates](29-jep-process/jep-process.md) | [#29](https://github.com/jupyter/enhancement-proposals/pull/29) |
 | 0042 | **Accepted** | [Voila Incorporation](42-voila-incorporation/voila-incorporation.md) | [#43](https://github.com/jupyter/enhancement-proposals/pull/43) |
 | 0044 | **Accepted** | [Xeus Incorporation](44-xeus-incorporation/xeus-incorporation.md) | [#44](https://github.com/jupyter/enhancement-proposals/pull/44) |
+| 0047 | **Accepted** | [Jupyter Debugger Protocol](47-jupyter-debugger-protocol/jupyter-debugger-protocol.md) | [#47](https://github.com/jupyter/enhancement-proposals/pull/47) |
 | 0062 | **Accepted** | [Cell ID Addition to Notebook Format](62-cell-id/cell-id.md) | [#62](https://github.com/jupyter/enhancement-proposals/pull/62) |
 | 0072 | **Accepted** | [Language server protocol (LSP)](72-language-server-protocol/language-server-protocol.md) | [#72](https://github.com/jupyter/enhancement-proposals/pull/72) |
+| 0079 | **Submitted** | Build Jupyter Notebook v7 off of JupyterLab components | [#79](https://github.com/jupyter/enhancement-proposals/pull/79) |
 
 ## How do I submit a JEP?
 
@@ -44,3 +46,31 @@ In addition, read
 [the JEP proposal template](jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md)
 for guidance on the questions you should answer before officially submitting
 the JEP.
+
+## Build the enhancement proposal docs
+
+The Enhancement Proposal documentation is structured as a [Sphinx documentation site](https://www.sphinx-doc.org/) that uses a them and configuration inspired by [Jupyter Book](https://jupyterbook.org).
+
+To build the documentation locally, use [the `nox` automation and environment management tool](https://nox.thea.codes/).
+Follow these steps:
+
+- Install `nox`:
+
+  ```console
+  $ pip install nox
+  ```
+- Build the docs from the `enhancement-proposals` folder:
+  
+  ```console
+  $ nox -s docs
+  ```
+
+This will automatically install the environment needed to build the documentation, and then place the output HTML in the `_build/html` folder.
+
+To build the documentation with a live reload server, run:
+
+```console
+$ nox -s docs-live
+```
+
+To manually install and build the documentation with Sphinx, install the requirements in `requirements.txt` and then run `sphinx-build . _build/html`.
