@@ -47,6 +47,14 @@ In addition, read
 for guidance on the questions you should answer before officially submitting
 the JEP.
 
+## Docs hosting
+
+We use a GitHub action to build the documentation with Sphinx and push it to the `gh-pages` branch of the repository.
+This is then hosted at `jupyter.org/enhancement-proposals`.
+
+We use a ReadTheDocs build to automatically generate **previews** of the documentation for Pull Requests.
+However this is not the publicly-hosted version of the documentation, it is just for PRs.
+
 ## Build the enhancement proposal docs
 
 The Enhancement Proposal documentation is structured as a [Sphinx documentation site](https://www.sphinx-doc.org/) that uses a them and configuration inspired by [Jupyter Book](https://jupyterbook.org).
