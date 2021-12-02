@@ -91,7 +91,7 @@ These user stories are guiding principles for the experience of using Notebook v
     - As a user, I can double-click on an `.ipynb` file on my local computer (Mac, Win, Linux) to open the notebook as a single document which I can edit, run, etc.
     - As a user, I want to be able to go from the document-centric experience to the full JupyterLab Desktop application, so I can get a more IDE-centric experience, including file management, terminals, and more.
     - As a user, I can open notebooks via the command-line or open JupyterLab in a particular directory.
-
+- As a JupyterLab extension author, I want my extension to work with both Notebook 7 and JupyterLab 4, without maintaining two code bases or releasing two packages.
 ## Decision making principles
 
 As we move forward with this plan and begin to make decisions about how to handle the visual design, functionality, and UX of Notebook V7 (how elements are styled, how do they behave, etc.) there will be tension between two paths:
