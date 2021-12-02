@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jupyter Enhancement Proposals &#8212; Jupyter Enhancement Proposals</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -31,19 +31,19 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -53,7 +53,10 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Jupyter Enhancement Proposals (JEP) Guidelines" href="jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -87,7 +90,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Information
  </span>
@@ -104,15 +107,25 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Accepted JEPs
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="72-language-server-protocol/language-server-protocol.html">
+   Jupyter integration with the Language Server Protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="62-cell-id/cell-id.html">
    Cell ID Addition to Notebook Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
+   Jupyter debugger protocol
   </a>
  </li>
  <li class="toctree-l1">
@@ -136,7 +149,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Implemented JEPs
  </span>
@@ -271,6 +284,11 @@
    How do I submit a JEP?
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-the-enhancement-proposal-docs">
+   Build the enhancement proposal docs
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -282,7 +300,7 @@
         
               <div>
                 
-  <div class="section" id="jupyter-enhancement-proposals">
+  <div class="tex2jax_ignore mathjax_ignore section" id="jupyter-enhancement-proposals">
 <h1>Jupyter Enhancement Proposals<a class="headerlink" href="#jupyter-enhancement-proposals" title="Permalink to this headline">¶</a></h1>
 <p>This repository contains enhancement proposals for the Jupyter ecosystem, known as Jupyter Enhancement Proposals or JEPs. Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem OR changes to a single key component.</p>
 <p>See <a class="reference internal" href="jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html"><span class="doc std std-doc">the Enhancement Proposal Guidelines</span></a>
@@ -392,15 +410,25 @@ encouraged to commence on the topic.</p>
 <td><p><a class="reference internal" href="44-xeus-incorporation/xeus-incorporation.html"><span class="doc std std-doc">Xeus Incorporation</span></a></p></td>
 <td><p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/44">#44</a></p></td>
 </tr>
-<tr class="row-even"><td><p>0062</p></td>
+<tr class="row-even"><td><p>0047</p></td>
+<td><p><strong>Accepted</strong></p></td>
+<td><p><a class="reference internal" href="47-jupyter-debugger-protocol/jupyter-debugger-protocol.html"><span class="doc std std-doc">Jupyter Debugger Protocol</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/47">#47</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>0062</p></td>
 <td><p><strong>Accepted</strong></p></td>
 <td><p><a class="reference internal" href="62-cell-id/cell-id.html"><span class="doc std std-doc">Cell ID Addition to Notebook Format</span></a></p></td>
 <td><p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/62">#62</a></p></td>
 </tr>
-<tr class="row-odd"><td><p>0072</p></td>
+<tr class="row-even"><td><p>0072</p></td>
 <td><p><strong>Accepted</strong></p></td>
 <td><p><a class="reference internal" href="72-language-server-protocol/language-server-protocol.html"><span class="doc std std-doc">Language server protocol (LSP)</span></a></p></td>
 <td><p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/72">#72</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>0079</p></td>
+<td><p><strong>Submitted</strong></p></td>
+<td><p>Build Jupyter Notebook v7 off of JupyterLab components</p></td>
+<td><p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/79">#79</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -412,6 +440,30 @@ encouraged to commence on the topic.</p>
 <a class="reference internal" href="jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.html"><span class="doc std std-doc">the JEP proposal template</span></a>
 for guidance on the questions you should answer before officially submitting
 the JEP.</p>
+</div>
+<div class="section" id="build-the-enhancement-proposal-docs">
+<h2>Build the enhancement proposal docs<a class="headerlink" href="#build-the-enhancement-proposal-docs" title="Permalink to this headline">¶</a></h2>
+<p>The Enhancement Proposal documentation is structured as a <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx documentation site</a> that uses a them and configuration inspired by <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a>.</p>
+<p>To build the documentation locally, use <a class="reference external" href="https://nox.thea.codes/">the <code class="docutils literal notranslate"><span class="pre">nox</span></code> automation and environment management tool</a>.
+Follow these steps:</p>
+<ul>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">nox</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install nox
+</pre></div>
+</div>
+</li>
+<li><p>Build the docs from the <code class="docutils literal notranslate"><span class="pre">enhancement-proposals</span></code> folder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox -s docs
+</pre></div>
+</div>
+</li>
+</ul>
+<p>This will automatically install the environment needed to build the documentation, and then place the output HTML in the <code class="docutils literal notranslate"><span class="pre">_build/html</span></code> folder.</p>
+<p>To build the documentation with a live reload server, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox -s docs-live
+</pre></div>
+</div>
+<p>To manually install and build the documentation with Sphinx, install the requirements in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> and then run <code class="docutils literal notranslate"><span class="pre">sphinx-build</span> <span class="pre">.</span> <span class="pre">_build/html</span></code>.</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -444,22 +496,15 @@ the JEP.</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-     <div id="next">
-        <a class="right-next" href="jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Jupyter Enhancement Proposals (JEP) Guidelines</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Jupyter Enhancement Proposals (JEP) Guidelines</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -480,8 +525,7 @@ the JEP.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Summary &#8212; Jupyter Enhancement Proposals</title>
+    <title>Jupyter integration with the Language Server Protocol &#8212; Jupyter Enhancement Proposals</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,19 +31,19 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -51,8 +51,13 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cell ID Addition to Notebook Format" href="../62-cell-id/cell-id.html" />
+    <link rel="prev" title="Jupyter Enhancement Proposals (JEP) Guidelines" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -86,7 +91,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Information
  </span>
@@ -103,15 +108,25 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Accepted JEPs
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Jupyter integration with the Language Server Protocol
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../62-cell-id/cell-id.html">
    Cell ID Addition to Notebook Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
+   Jupyter debugger protocol
   </a>
  </li>
  <li class="toctree-l1">
@@ -135,7 +150,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Implemented JEPs
  </span>
@@ -260,54 +275,54 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#motivation">
    Motivation
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#guide-level-explanation">
    Guide-level explanation
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reference-level-explanation">
    Reference-level explanation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dealing-with-jupyter-notebooks-complexity">
      Dealing with Jupyter notebooks complexity
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#current-implementation">
      Current implementation
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rationale-and-alternatives">
    Rationale and alternatives
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prior-art">
    Prior art
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#unresolved-questions">
    Unresolved questions
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#future-possibilities">
    Future possibilities
   </a>
@@ -323,8 +338,10 @@
         
               <div>
                 
-  <div class="section" id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="jupyter-integration-with-the-language-server-protocol">
+<h1>Jupyter integration with the Language Server Protocol<a class="headerlink" href="#jupyter-integration-with-the-language-server-protocol" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/krassowski/jupyterlab-lsp">jupyter(lab)-lsp</a> is a project bringing integration
 of language-specific IDE features (such as diagnostics, linting, autocompletion, refactoring) to the
 Jupyter ecosystem by leveraging the established
@@ -338,7 +355,7 @@ repository to a Jupyter-managed GitHub organization) but rather aimed to guide t
 formalizing and evolving the way of integrating Jupyter with LSP in general.</p>
 </div>
 <div class="section" id="motivation">
-<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>A common criticism of the Jupyter environment (regardless of the front-end editor) and of the
 official Jupyter frontends (in light of recent, experimental support of feature-rich notebook
 edition under development by some of the major IDE developers) is the lack of advanced code
@@ -354,7 +371,7 @@ VSCode(TM).</p>
 list of <a class="reference external" href="https://langserver.org/">language servers</a>).</p>
 </div>
 <div class="section" id="guide-level-explanation">
-<h1>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this headline">¶</a></h1>
+<h2>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this headline">¶</a></h2>
 <p>Much like
 <a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html">Jupyter Kernel Messaging</a>, LSP
 provides a language-agnostic, JSON-compatible description for multiple clients to integrate with any
@@ -374,13 +391,13 @@ of maintaining these components at greater length, leveraging a good deal of the
 <a class="reference external" href="https://jupyterlab-lsp.readthedocs.io/en/latest/?badge=latest">documentation</a>.</p>
 </div>
 <div class="section" id="reference-level-explanation">
-<h1>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this headline">¶</a></h1>
+<h2>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this headline">¶</a></h2>
 <p>The current implementation of the LSP integration is a barely a proof of concept. We believe that a
 different implementation should be developed to take the more comprehensive use cases and diversity
 of the Jupyter ecosystem into account; we created detailed proposals for improvement and refactoring
 of our code as explained later.</p>
 <div class="section" id="dealing-with-jupyter-notebooks-complexity">
-<h2>Dealing with Jupyter notebooks complexity<a class="headerlink" href="#dealing-with-jupyter-notebooks-complexity" title="Permalink to this headline">¶</a></h2>
+<h3>Dealing with Jupyter notebooks complexity<a class="headerlink" href="#dealing-with-jupyter-notebooks-complexity" title="Permalink to this headline">¶</a></h3>
 <p>The following features need to be considered in the design:</p>
 <p>The interactive, data-driven computing paradigm provides additional convenience features on top of
 existing languages:</p>
@@ -395,7 +412,7 @@ warn users about unused empty cells, out of order execution markers, etc., as br
 </ul>
 </div>
 <div class="section" id="current-implementation">
-<h2>Current implementation<a class="headerlink" href="#current-implementation" title="Permalink to this headline">¶</a></h2>
+<h3>Current implementation<a class="headerlink" href="#current-implementation" title="Permalink to this headline">¶</a></h3>
 <p>Currently:</p>
 <ul class="simple">
 <li><p>the notebook cells are concatenated into a single temporary (“virtual”) document on the frontend,
@@ -427,7 +444,7 @@ languages/kernels given LSP server should be used, what is its display name, etc
 </div>
 </div>
 <div class="section" id="rationale-and-alternatives">
-<h1>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this headline">¶</a></h1>
+<h2>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this headline">¶</a></h2>
 <p>A previous (stale) JEP proposed to integrate LSP and to adopt Monaco editor, which would entail
 bringing a heavy dependency and large reliance on continuous development of Monaco by Microsoft; it
 was not clear whether Monaco would allow efficient use in multi-editor notebook setting and the work
@@ -443,7 +460,7 @@ Alternative formats to ipynb were proposed and sometimes the only motivation was
 IDE-features support.</p>
 </div>
 <div class="section" id="prior-art">
-<h1>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this headline">¶</a></h1>
+<h2>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this headline">¶</a></h2>
 <p>Multiple editors already support the Language Server Protocol, whether directly or via extension
 points, including VSCode, Atom, Brackets (Adobe), Spyder, Visual Studio and many more. The list of
 clients and their capabilities is described at the community-maintained
@@ -458,7 +475,7 @@ benefits, and kernel maintainer costs, of “embracing and extending” existing
 rather than re-implementing.</p>
 </div>
 <div class="section" id="unresolved-questions">
-<h1>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this headline">¶</a></h1>
+<h2>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this headline">¶</a></h2>
 <p>The current implementation can be improved by:</p>
 <ol class="simple">
 <li><p>embedding cell identifiers (and possibly metadata) as comments in the virtual document at a place
@@ -514,7 +531,7 @@ an annoyance to maintainers and contributors alike)</p></li>
 </ul>
 </div>
 <div class="section" id="future-possibilities">
-<h1>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this headline">¶</a></h1>
+<h2>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Amending the kernel messaging protocol to ask only for runtime (e.g. keys in a dictionary, columns
 in a data frame) and kernel-specific completions (e.g. magics), this is excluding static-analysis
@@ -535,6 +552,7 @@ to LSP and defined on the
 for even faster IDE features for the retrieval of immutable (or infrequently mutable) information,
 such as documentation of built-in functions.</p></li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -560,13 +578,22 @@ such as documentation of built-in functions.</p></li>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Jupyter Enhancement Proposals (JEP) Guidelines</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../62-cell-id/cell-id.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Cell ID Addition to Notebook Format</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -587,8 +614,7 @@ such as documentation of built-in functions.</p></li>
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
