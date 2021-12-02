@@ -23,15 +23,10 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: Install dependencies
+    - name: Build the docs
       run: |
-        pip install -U jupyter-book
-
-
-    # Build the book
-    - name: Build the book
-      run: |
-        jupyter-book build .
+        pip install nox
+        nox -s docs
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
