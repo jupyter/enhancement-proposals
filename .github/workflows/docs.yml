@@ -4,7 +4,10 @@ name: deploy-book
 on:
   push:
     branches:
-    - master
+      - master
+  pull_request:
+    branches:
+      - master
 
 # Allow the bot to push to the repository
 permissions:
@@ -30,6 +33,7 @@ jobs:
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
+      if: ${{ github.event_name == 'push' }}
       uses: peaceiris/actions-gh-pages@v3.5.9
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
