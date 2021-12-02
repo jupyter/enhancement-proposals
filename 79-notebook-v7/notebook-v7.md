@@ -1,8 +1,8 @@
 ---
 title: Build Jupyter Notebook v7 off of JupyterLab components
-authors:  Fernando Pérez (@fperez), Sylvain Corlay (@SylvainCorlay), Afshin Darian (@afshin), Sharan Foga (@sharanf), Kevin Goldsmith (@KevinGoldsmith), Brian Granger (@ellisonbg) , Jason Grout (@jasongrout), Zach Sailer (@Zsailer), Jeremy Tuloup (@jtpio).
-issue-number: 79
-pr-number: 78
+authors: (alphabetically) Sylvain Corlay (@SylvainCorlay), Afshin Darian (@afshin), Sharan Foga (@sharanf), Kevin Goldsmith (@KevinGoldsmith), Brian Granger (@ellisonbg) , Jason Grout (@jasongrout), Fernando Pérez (@fperez), Zach Sailer (@Zsailer), Jeremy Tuloup (@jtpio).
+issue-number: 78
+pr-number: 79
 date-started: 2021-11-12
 ---
 
