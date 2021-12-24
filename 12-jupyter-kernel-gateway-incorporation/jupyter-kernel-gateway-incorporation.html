@@ -371,12 +371,12 @@
 <li><p><a class="reference external" href="https://github.com/jupyter-incubator/dashboards_nodejs_app">Jupyter dashboard server</a> uses kernels to evaluate code from notebooks rendered as interactive dashboards</p></li>
 </ul>
 <p>These applications have two important properties in common:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>They spawn kernels using provisioning APIs that run separate, and often remote, from the user-facing applications themselves.</p></li>
 <li><p>They communicate with kernels using Websockets rather than directly with ZeroMQ.</p></li>
 </ol>
 <p>Some of these application have spawned (or still do spawn) entire Jupyter Notebook servers on the backend in order to request kernels using notebook HTTP API and communicate with them over Websockets. This approach is less than ideal, however, for various reasons:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>The notebook UI is exposed, but only the programmatic UI is used</p></li>
 <li><p>The notebook authentication mechanism is form- and cookie-based and meant for humans, not programmatic clients</p></li>
 <li><p>The notebook transport mechanisms and APIs serve the notebook user experience, and are not meant to be replaced or extended to support other clients</p></li>
@@ -389,7 +389,7 @@
 <div class="section" id="detailed-explanation">
 <h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h2>
 <p>The kernel gateway is a web server that supports mechanisms for spawning and communicating with Jupyter kernels. Currently, it supports two such mechanisms:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>A 100% Jupyter Notebook server compatible API for:</p>
 <ul class="simple">
 <li><p>Creating, listing, and deleting Jupyter kernels via HTTP</p></li>

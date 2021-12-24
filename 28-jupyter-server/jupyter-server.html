@@ -366,7 +366,7 @@
 <div class="section" id="proposed-enhancement">
 <h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
 <p>Decouple the backend server (and its configuration) from the classic notebook frontend. This will require the following steps:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><a class="reference external" href="#separate-jupyter_server-repository">Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository</a></p>
 <ul class="simple">
 <li><p>A fork of the <code class="docutils literal notranslate"><span class="pre">notebook</span></code> repository.</p></li>
@@ -410,7 +410,7 @@
 <div class="section" id="separate-jupyter-server-repository">
 <h3>Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository<a class="headerlink" href="#separate-jupyter-server-repository" title="Permalink to this headline">¶</a></h3>
 <p>The first thing to do is fork <code class="docutils literal notranslate"><span class="pre">notebook</span></code>. A new <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repo will keep the server specific logic and remove:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>the notebook frontend code,</p></li>
 <li><p>deprecated notebook server APIs, and</p></li>
 <li><p>tornado handlers to the classic notebook interface. These pieces will stay in the <code class="docutils literal notranslate"><span class="pre">notebook</span></code> repository.</p></li>
