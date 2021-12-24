@@ -36,7 +36,8 @@ encouraged to commence on the topic.
 | 0047 | **Accepted** | [Jupyter Debugger Protocol](47-jupyter-debugger-protocol/jupyter-debugger-protocol.md) | [#47](https://github.com/jupyter/enhancement-proposals/pull/47) |
 | 0062 | **Accepted** | [Cell ID Addition to Notebook Format](62-cell-id/cell-id.md) | [#62](https://github.com/jupyter/enhancement-proposals/pull/62) |
 | 0072 | **Accepted** | [Language server protocol (LSP)](72-language-server-protocol/language-server-protocol.md) | [#72](https://github.com/jupyter/enhancement-proposals/pull/72) |
-| 0079 | **Submitted** | Build Jupyter Notebook v7 off of JupyterLab components | [#79](https://github.com/jupyter/enhancement-proposals/pull/79) |
+| 0079 | **Accepted** | Build Jupyter Notebook v7 off of JupyterLab components | [#79](https://github.com/jupyter/enhancement-proposals/pull/79) |
+| 0080 | **Accepted** | Replace PUB with XPUB socket | [#65](https://github.com/jupyter/enhancement-proposals/pull/65) |
 
 ## How do I submit a JEP?
 
