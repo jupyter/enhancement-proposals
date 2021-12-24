@@ -28,15 +28,16 @@ encouraged to commence on the topic.
 | 0023 | **Submitted** | Jupyter Template as Metadata | [#23](https://github.com/jupyter/enhancement-proposals/pull/23) |
 | 0024 | **Submitted** | Simplifying Error Reporting in Jupyter Protocol | [#24](https://github.com/jupyter/enhancement-proposals/pull/24) |
 | 0025 | Implemented | [Enterprise Gateway](25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.md) | [#25](https://github.com/jupyter/enhancement-proposals/pull/25) |
-| 0026 | **Submitted** | Add Language Server Support to Jupyter Server and jupyterlab-monaco | [#26](https://github.com/jupyter/enhancement-proposals/pull/26) |
-| 0028 | **Accepted** | [Standalone Jupyter Server](28-jupyter-server/jupyter-server.md) | [#28](https://github.com/jupyter/enhancement-proposals/pull/28) |
-| 0029 | **Accepted** | [Jupyter Enhancement Proposal updates](29-jep-process/jep-process.md) | [#29](https://github.com/jupyter/enhancement-proposals/pull/29) |
-| 0042 | **Accepted** | [Voila Incorporation](42-voila-incorporation/voila-incorporation.md) | [#43](https://github.com/jupyter/enhancement-proposals/pull/43) |
-| 0044 | **Accepted** | [Xeus Incorporation](44-xeus-incorporation/xeus-incorporation.md) | [#44](https://github.com/jupyter/enhancement-proposals/pull/44) |
-| 0047 | **Accepted** | [Jupyter Debugger Protocol](47-jupyter-debugger-protocol/jupyter-debugger-protocol.md) | [#47](https://github.com/jupyter/enhancement-proposals/pull/47) |
-| 0062 | **Accepted** | [Cell ID Addition to Notebook Format](62-cell-id/cell-id.md) | [#62](https://github.com/jupyter/enhancement-proposals/pull/62) |
+| 0026 | Withdrawn | Add Language Server Support to Jupyter Server and jupyterlab-monaco | [#26](https://github.com/jupyter/enhancement-proposals/pull/26) |
+| 0028 | Implemented | [Standalone Jupyter Server](28-jupyter-server/jupyter-server.md) | [#28](https://github.com/jupyter/enhancement-proposals/pull/28) |
+| 0029 | Implemented | [Jupyter Enhancement Proposal updates](29-jep-process/jep-process.md) | [#29](https://github.com/jupyter/enhancement-proposals/pull/29) |
+| 0042 | Implemented | [Voila Incorporation](42-voila-incorporation/voila-incorporation.md) | [#43](https://github.com/jupyter/enhancement-proposals/pull/43) |
+| 0044 | Implemented | [Xeus Incorporation](44-xeus-incorporation/xeus-incorporation.md) | [#44](https://github.com/jupyter/enhancement-proposals/pull/44) |
+| 0047 | Implemented | [Jupyter Debugger Protocol](47-jupyter-debugger-protocol/jupyter-debugger-protocol.md) | [#47](https://github.com/jupyter/enhancement-proposals/pull/47) |
+| 0062 | Implemented | [Cell ID Addition to Notebook Format](62-cell-id/cell-id.md) | [#62](https://github.com/jupyter/enhancement-proposals/pull/62) |
+| 0065 | **Accepted** | [Replace PUB socket with XPUB socket](65-jupyter-xpub/jupyter-xpub.md) | [#65](https://github.com/jupyter/enhancement-proposals/pull/65) |
 | 0072 | **Accepted** | [Language server protocol (LSP)](72-language-server-protocol/language-server-protocol.md) | [#72](https://github.com/jupyter/enhancement-proposals/pull/72) |
-| 0079 | **Submitted** | Build Jupyter Notebook v7 off of JupyterLab components | [#79](https://github.com/jupyter/enhancement-proposals/pull/79) |
+| 0079 | **Accepted** | [Build Jupyter Notebook v7 off of JupyterLab components](79-notebook-v7/notebook-v7.md) | [#79](https://github.com/jupyter/enhancement-proposals/pull/79) |
 
 ## How do I submit a JEP?
 
@@ -68,7 +69,7 @@ Follow these steps:
   $ pip install nox
   ```
 - Build the docs from the `enhancement-proposals` folder:
-  
+
   ```console
   $ nox -s docs
   ```
