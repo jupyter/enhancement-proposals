@@ -35,9 +35,11 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/jupyter-xpub/jupyter-xpub.html" />
+    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/65-jupyter-xpub/jupyter-xpub.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build Jupyter Notebook v7 off of JupyterLab components" href="../79-notebook-v7/notebook-v7.html" />
+    <link rel="prev" title="Jupyter integration with the Language Server Protocol" href="../72-language-server-protocol/language-server-protocol.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -98,40 +100,20 @@
   Accepted JEPs
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">
    Jupyter integration with the Language Server Protocol
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../62-cell-id/cell-id.html">
-   Cell ID Addition to Notebook Format
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Replace PUB socket with XPUB socket
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
-   Jupyter debugger protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
-   Xeus Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
-   Voilà Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../29-jep-process/jep-process.html">
-   Jupyter Enhancement Proposal
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../28-jupyter-server/jupyter-server.html">
-   Standalone Jupyter server enhancement
+  <a class="reference internal" href="../79-notebook-v7/notebook-v7.html">
+   Build Jupyter Notebook v7 off of JupyterLab components
   </a>
  </li>
 </ul>
@@ -169,6 +151,36 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../08-notebook-diff/notebook-diff.html">
    Diffing and merging notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../62-cell-id/cell-id.html">
+   Cell ID Addition to Notebook Format
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
+   Jupyter debugger protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
+   Xeus Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
+   Voilà Incorporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../29-jep-process/jep-process.html">
+   Jupyter Enhancement Proposal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../28-jupyter-server/jupyter-server.html">
+   Standalone Jupyter server enhancement
   </a>
  </li>
 </ul>
@@ -212,7 +224,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/jupyter-xpub/jupyter-xpub.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/65-jupyter-xpub/jupyter-xpub.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -232,10 +244,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-xpub/jupyter-xpub.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F65-jupyter-xpub/jupyter-xpub.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-xpub/jupyter-xpub.md"><button
+        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/65-jupyter-xpub/jupyter-xpub.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -414,7 +426,21 @@ The C++ implementation of the Jupyter kernel protocol</p></li>
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../72-language-server-protocol/language-server-protocol.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Jupyter integration with the Language Server Protocol</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../79-notebook-v7/notebook-v7.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Build Jupyter Notebook v7 off of JupyterLab components</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
