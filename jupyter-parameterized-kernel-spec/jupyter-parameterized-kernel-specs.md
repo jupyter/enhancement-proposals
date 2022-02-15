@@ -4,7 +4,7 @@
 
 When creating a new kernel, we need to define a different "specs" file for each possible parameter combination used by the executable. For example, the xeus-cling kernel supports three different versions of the `C++` language, `C++11`, `C++14`, and `C++17`, which is specified by the `--std` command-line option.
 
-When installing xeus-cling, we install three almost identical kernel specs. The only difference is the last parameter of the execution command `-std=c++X`.
+When installing xeus-cling, we install three almost identical kernel specs. The only difference is the last parameter of the execution command `--std=c++X`.
 
 When more than one parameter is available, the number of possible combinations grows in a combinatorics fashion.
 
@@ -22,7 +22,7 @@ Some of the chosen parameter values can be saved in e.g. the notebook metadata s
 
 ## Detailed Explanation
 
-As described in previous sections, we propose to parameterize the kernel specs file. In the example shown below, we can see the kernel specs file from the kernel xeus-cling. We suggest changing the last parameter of the execution command `-std=c++11` to have a variable `-std=${cpp_version}` and adding a new object `parameters` to the metadata of the kernel specs.
+As described in previous sections, we propose to parameterize the kernel specs file. In the example shown below, we can see the kernel specs file from the kernel xeus-cling. We suggest changing the last parameter of the execution command `-std=c++11` to have a variable `-std=${parameters.cpp_version}` and adding a new object `parameters` to the metadata of the kernel specs.
  
 ```=json
 {
@@ -32,6 +32,9 @@ As described in previous sections, we propose to parameterize the kernel specs f
       "-f",
       "{connection_file}",
       "-std=c++11"
+  ],
+  env: [
+    "XEUS_LOGLEVEL=ERROR"
   ],
   "language": "C++11"
 }
@@ -43,19 +46,28 @@ As described in previous sections, we propose to parameterize the kernel specs f
       "/home/user/micromamba/envs/kernel_spec/bin/xcpp",
       "-f",
       "{connection_file}",
-      "-std=${parameters.cpp_version}"
+      "-std={parameters.cpp_version}"
+  ],
+  env: [
+    "XEUS_LOGLEVEL={parameters.xeus_log_level}"
   ],
   "language": "C++"
   "metadata": {
-      "parameters": {
-        "cpp_version": {
-          "type": "string",
-          "default": 'C++14',
-          "enum": ['C++11', 'C++14', 'C++17'],
-          "save": true
-        }
+    "parameters": {
+      "cpp_version": {
+        "type": "string",
+        "default": "C++14",
+        "enum": ["C++11", "C++14", "C++17"],
+        "save": true
+      },
+      "xeus_log_level": {
+        "type": "string",
+        "default": "ERROR",
+        "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"],
+        "save": true
       }
-    },
+    }
+  },
 }
 ```
 
