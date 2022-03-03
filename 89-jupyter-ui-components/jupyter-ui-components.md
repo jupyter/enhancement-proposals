@@ -2,7 +2,7 @@
 title: React.js at Jupyter
 authors: Eric Charles (@echarles)
 issue-number: 88
-pr-number: <proposal-pull-request-number>
+pr-number: 89
 date-started: 2022-02-08
 ---
 
