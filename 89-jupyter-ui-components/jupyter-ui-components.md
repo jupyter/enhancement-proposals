@@ -1,5 +1,5 @@
 ---
-title: React.js at Jupyter
+title: Jupyter UI Components
 authors: Eric Charles (@echarles)
 issue-number: 88
 pr-number: 89
