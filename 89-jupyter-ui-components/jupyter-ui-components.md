@@ -88,7 +88,7 @@ This jupyter-ui-toolkit repository contains three packages:
 - [`@jupyter-notebook/web-components`](https://github.com/jupyterlab-contrib/jupyter-ui-toolkit/tree/main/packages/components/):
   The main package defining the web components.
 - [`@jupyter-notebook/react-components`](https://github.com/jupyterlab-contrib/jupyter-ui-toolkit/tree/main/packages/react-components):
-  A package that wraps the web components for use with [React](https://reactjs.org). This package may become obsolete very soon as native support in `React` for Web Components [may land in v18](https://github.com/facebook/react/issues/11347#issuecomment-988970952).
+  A package that wraps the web components for use with [React](https://reactjs.org). This package will become obsolete as native support in `React` for Web Components [should land in v19](https://github.com/facebook/react/issues/11347#issuecomment-1063490040).
 - [`jupyter-ui-demo`](https://github.com/jupyterlab-contrib/jupyter-ui-toolkit/tree/main/packages/lab-example):
   Unpublished JupyterLab extension to demonstrate the integration of the toolkit.
 
