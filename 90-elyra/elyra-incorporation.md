@@ -1,9 +1,9 @@
 ---
 title: Elyra Incorporation
 authors: LucianoResende
-issue-number: 80
-pr-number: 42
-date-started: "2022-04-09"
+issue-number:
+pr-number: 90
+date-started: "2022-04-22"
 type: S - [Standards Track](https://www.python.org/dev/peps/#pep-types-key)
 ---
 
@@ -102,6 +102,6 @@ Elyra is a tool that provides AI-centric extensions to JupyterLab. It aims to he
 
 ### License
 
-The ELyra project is currently licensed under the Apache License 2.0 and upon incorporation to Jupyter will relicense it to the BSD-3-Clause license.
+The Elyra project is currently licensed under the Apache License 2.0 and upon incorporation to Jupyter will relicense it to the BSD-3-Clause license.
 
 We use a shared copyright model that enables all contributors to maintain the copyright on their contributions.
