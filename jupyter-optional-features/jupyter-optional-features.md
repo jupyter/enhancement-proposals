@@ -22,7 +22,7 @@ rest of the protocol, and it is easy for a client to enable or disable such a
 feature as long as it knows whether the kernel supports it. By the way, the
 debugger is already optional, although it does not explicitly state it.
 
-The goal of this JEP is to introduce the notion of optional feature in the protocol
+The goal of this JEP is to introduce the notion of optional features in the protocol
 and to have an explicit list of such features. This way, we do not prevent kernel
 authors from upgrading to a more recent version of the protocol when we introduce
 a new feature that may be complicated to implement and not mandatory for them.
