@@ -15,7 +15,7 @@ to the version of the protocol that it implements.
 # Motivation
 
 Some of the features that were added (the debugger) or proposed (the subshells)
-may require a lot of work from kernel authors to implement them. Besides, the
+may require a lot of work from kernel authors to implement. Besides, the
 changes they introduce on the protocol are self-contained; it is possible for a
 kernel to not support them without altering its exepected behavior regarding the
 rest of the protocol, and it is easy for a client to enable or disable such a
