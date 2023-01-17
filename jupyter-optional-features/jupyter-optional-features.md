@@ -8,7 +8,7 @@ date-started: 2023-01-16
 
 # Summary
 
-This JEP introduces Jupyter optional features, which eases the way
+This JEP introduces Jupyter optional features, which ease the way
 a kernel advertises which features it supports, without coupling it
 to the version of the protocol that it implements.
 
