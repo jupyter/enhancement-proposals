@@ -8,8 +8,7 @@ date-started: 2022-12-15
 
 # Summary
 
-This JEP introduces kernel sub-shells to allow for concurrent shell requests. This is made possible
-by defining new control channel messages, as well as a new shell ID field in shell messages.
+This JEP introduces kernel sub-shells to allow for concurrent shell requests.
 
 # Motivation
 
@@ -23,12 +22,13 @@ for the following reasons:
 - process
   [Comm messages](https://jupyter-client.readthedocs.io/en/stable/messaging.html#custom-messages)
   immediately (e.g. for widgets).
+- execute arbitrary code in parallel.
 
 Unfortunately, it is currently not possible to do so because the kernel cannot process other
 [shell requests](https://jupyter-client.readthedocs.io/en/stable/messaging.html#messages-on-the-shell-router-dealer-channel)
 until it is idle. The goal of this JEP is to offer a way to process shell requests concurrently.
 
-# Proposed Enhancement
+# Proposed enhancement: kernel sub-shells
 
 The [kernel protocol](https://jupyter-client.readthedocs.io/en/stable/messaging.html) only allows
 for one
@@ -58,9 +58,9 @@ some visual information indicating that the kernel execution mode offered by the
 used at the user's own risks. In particular, because sub-shells may be implemented with threads, it
 is the responsibility of users to not corrupt the kernel state with non thread-safe instructions.
 
-# New control channel messages
+## New control channel messages
 
-## Create sub-shell
+### Create sub-shell
 
 Message type: `create_subshell_request`:
 
@@ -84,7 +84,7 @@ content = {
 }
 ```
 
-## Delete sub-shell
+### Delete sub-shell
 
 Message type: `delete_subshell_request`:
 
@@ -104,7 +104,7 @@ content = {
 }
 ```
 
-## List sub-shells
+### List sub-shells
 
 Message type: `list_subshell_request`: no content.
 
@@ -117,9 +117,9 @@ content = {
 }
 ```
 
-# Behavior
+## Behavior
 
-## Kernels not supporting sub-shells
+### Kernels not supporting sub-shells
 
 The following requests should be ignored: `create_subshell_request`, `delete_subshell_request` and
 `list_subshell_request`. A `shell_id` passed in any shell message should be ignored. This ensures
@@ -133,7 +133,7 @@ Since sub-shells are basically a "no-op", the behavior around
 [kernel interrupt](https://jupyter-client.readthedocs.io/en/stable/messaging.html#kernel-interrupt)
 is unchanged.
 
-## Kernels supporting sub-shells
+### Kernels supporting sub-shells
 
 A sub-shell request may be processed concurrently with other shells. Within a sub-shell, requests
 are processed sequentially.
@@ -142,3 +142,22 @@ A [kernel restart](https://jupyter-client.readthedocs.io/en/stable/messaging.htm
 should delete all sub-shells. A
 [kernel interrupt](https://jupyter-client.readthedocs.io/en/stable/messaging.html#kernel-interrupt)
 should interrupt the main shell and all sub-shells.
+
+# Alternative solution: dependent kernels
+
+Another way of viewing sub-shells is to make them appear as new kernels. The kernel client would
+still create a sub-shell through a control message request, but the kernel would then return the
+connection information for this "new kernel" in the reply. Only a new ZMQ socket for the shell
+channel has to be created, since clients could connect to the existing sockets for the IOPub,
+control and heartbeat channels.
+
+The advantage of this solution is that the sub-shell being viewed as just another kernel simplifies
+the changes required in the kernel, which just has to process messages on the new shell sockets,
+instead of demultiplexing sub-shell messages from the shell socket using the shell ID in a separate
+thread.
+
+The disadvantage of this solution is that the "new kernels" are not quite independent of the main
+kernel, even though they are advertised as such. For instance, if the main kernel is restarted,
+clients connected to the dependent kernels will see the kernel restarting too. This complexifies
+the life cycle management of the kernel. Also, this solution involves using one more socket per
+sub-shell.
