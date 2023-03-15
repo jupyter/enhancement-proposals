@@ -40,7 +40,7 @@ The following changes are made to the existing v4.5 schema:
  {
 -  "$schema": "http://json-schema.org/draft-04/schema#",
 -  "description": "Jupyter Notebook v4.5 JSON schema.",
-+  "$schema": "http://json-schema.org/draft-07/schema#",
++  "$schema": "https://json-schema.org/draft/2020-12/schema",
 +  "$id": "https://jupyter.org/schema/notebook/4.6/notebook-4.6.schema.json",
 +  "description": "Jupyter Notebook v4.6 JSON schema.",
    "type": "object",
@@ -80,7 +80,7 @@ The following changes are made to the existing v4.5 schema:
 
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://jupyter.org/schema/notebook/4.6/notebook-4.6.schema.json",
   "description": "Jupyter Notebook v4.6 JSON schema.",
   "type": "object",
