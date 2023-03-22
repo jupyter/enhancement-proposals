@@ -509,8 +509,6 @@ is orthogonal to this JEP, but rich text support is a must.
   states that may depend on non-reproducible user interaction are also preserved.
 - Opportunity for better stream-based loading.
 
-### Rationale
-
 ## Frequently Asked Questions
 
 > What's the rationale for the support of lossless serialization of any notebook, when serializing large data chunks
