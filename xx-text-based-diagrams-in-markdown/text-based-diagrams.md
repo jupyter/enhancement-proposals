@@ -113,6 +113,35 @@ At install/run time, aside from its own assets, it entails a net addition of `da
 and the full `d3` metapackage. Some advanced features use the `cytoscape` and `elkjs`
 _rendering engines_, but are only loaded when needed.
 
+## Unparseable Diagrams
+
+As a _fenced code block_, without broad syntax highlighting support, Jupyter clients
+that do not support _MermaidJS_ at all would fall back to the default typography and
+color chosen for code content by the client and/or user. As _text-based diagrams_ are
+usually written by hand, an unparseable diagram was _at least_ readable to the author at
+time of writing, and likely their audience will be able to glean _some_ meaning from the
+text itself.
+
+It is therefore recommended that unparseable diagrams be presented as plain code text,
+preserving the whitespace of the source document, with an option to see any parser
+errors. Ideally, the text would be syntax highlighted, but as noted elsewhere, this is
+somewhat non-trivial.
+
+## Misparsed Diagrams
+
+Today, only Jupyter clients that have been extended (by e.g. `jupyterlab-markup`) will
+render _MermaidJS_ diagrams with the _fenced code block_ syntax, using whatever version
+is currently included in the extension (e.g. `8.14`). Diagrams written for those version
+are _very likely_ to continue being parsed by _MermaidJS 10_, but there are certainly
+cases where the reverse is not true, as in the case of some of the experimental diagrams
+not listed above.
+
+## Alternative Implementations
+
+If a Jupyter client is unable to adopt MermaidJS, but can offer a best-effort,
+grammar-compatible implementation that will draw _something_, this is preferable to, but
+should not exclude, presenting the diagram as plain text.
+
 ## _JupyterLab_ PR #1402
 
 [jupyterlab/jupyterlab#1402](https://github.com/jupyterlab/jupyterlab/pull/14102)
