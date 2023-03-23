@@ -31,7 +31,7 @@ less re-learning of syntax and skills.
 # Guide-level explanation
 
 With the addition of [_MermaidJS_][mermaidjs] to _JupyterLab 4_, _Jupyter Notebook 7_,
-_Jupyter _, and _Jupyter NBViewer_, _Jupyter_ joins
+_Jupyter NBConvert_, and _Jupyter NBViewer_, _Jupyter_ joins
 [GitLab](https://gitlab.com/gitlab-org/gitlab-foss/-/issues/3711),
 [HackMD](https://github.com/hedgedoc/react-client/issues/257),
 [GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/) and
@@ -48,9 +48,6 @@ Markdown_ files:
 - _Entity Relationship Diagram_ taht show the relationships between data models
 - _Flowchart_ that show decision processes
 - _Gantt Charts_ that show the relationship between tasks over time
-- _Gitgraph (Git) Diagram_ that show the sometimes-bewildering history of complex
-  _distributed version control_ operations
-- _Mindmaps_ that show the relationship between different ideas
 - _Pie Charts_ that show the relative size of different values
 - _Requirement Diagrams_ that show the chain of relationships from _what a user needs_
   to _what we should build_
@@ -62,6 +59,21 @@ Markdown_ files:
 - _User Journey Diagrams_ that show the cycle of events over time
 
 ...and they should _mostly_ render the same way everywhere.
+
+_MermaidJS 10_ also includes a number of new diagrams, not available on earlier major
+versions. You can author these today, but they won't work on other platforms _for a
+while_:
+
+- _Gitgraph (Git) Diagram_ that show the sometimes-bewildering history of complex
+  _distributed version control_ operations
+- _Mindmaps_ that show the relationship between different ideas
+- _Timeline Diagrams_ that show events over time
+
+Finally, a number of **experimental** diagrams and layout engines are available, but may
+change significantly in the future:
+
+- _C4C Diagram (Context) Diagrams_ that show different facets of software architectures
+- _ElkJS_ that extends the _Flowchart_ syntax to expand
 
 ## How do I draw it?
 
@@ -211,25 +223,40 @@ proposal.
 ## nbconvert PR #1957
 
 [jupyter/nbconvert#1957](https://github.com/jupyter/nbconvert/pull/1957) follows the
-pattern of MathJax, downloading the _MermaidJS_ assets from a CDN, but making this value
-configurable. The `mistune` grammar's handling of \_venced
+pattern of MathJax, downloading the _MermaidJS_ assets from a CDN, and making this value
+configurable both in configuration and by downstream templates.
+
+The `mistune` grammar's handling of fenced code blocks requires similar extension as the
+`marked`-based one in _JupyterLab_.
 
 ### Implementation
 
-The implementation is not particularly complex.
+An initial implementation, using the _inline HTML_ approach, required very few lines of
+code beyond the stock MermaidJS. In working on this proposal, more _copy and paste
+reuse_ of the _JupyterLab_ pull request required somewhat more code.
 
 ### Security
 
-This implementation uses the _inline HTML_ integration with the mermaid API. This means
-it replaces `<div class="mermaid">` tags with a full `<svg>` tag.
+This initial implementation used the automatic _inline HTML_ integration approach for
+the _MermaidJS_ API. This means it replaced `<div class="mermaid">` tags with a full,
+in-tree `<svg>` tag, based on a well-known CSS selector. This technique required
+unconditionally loading the _MermaidJS_ core assets, even if no diagrams were present.
 
-This enables some more features, but might have further security considerations.
+To meet some of the needs of _unparseable diagram_ reporting, and reduce pre-proposal
+rework, the current implementation reuses the same `img` based technique as the
+_JupyterLab_ pull request. Like with the _JupyterLab_ implementation, the _MermaidJS_
+static assets are only loaded when needed.
 
 ### Way Forward
 
-This PR is still relatively early in the process, but is mostly complete. It does not
-yet handle the case of not loading the `mermaid` assets if and only if a mermaid `div`
-is found. This would need to be improved.
+While _copy and paste reuse_ avoids review complexity on the nbconvert PR, this
+commonality points to the opportunity for a lightweight, reusable module to be published
+on `npmjs.org`, which `nbconvert` could consume along with other static assets used in
+the `lab` template.
+
+This library could also provide the baseline for other browser-based clients to get
+consistent rendering of diagrams, in both the fully parsed and rendered state, as well
+as the _unparseable_ state.
 
 # Rationale and alternatives
 
