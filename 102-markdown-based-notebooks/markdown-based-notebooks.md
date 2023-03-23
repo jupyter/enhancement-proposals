@@ -52,13 +52,13 @@ and within the Jupyter ecosystem, notably with [Jupytext](https://jupytext.readt
 and [Jupyter Book](https://jupyterbook.org/). The wide adoption of such solutions highlights their suitability in many
 use cases.
 
-Though the existing text-based formats go a long way toward supporting the need of the community, they share a
+Though the existing text-based formats go a long way toward supporting the needs of the community, they share a
 significant pain-point: the inability to represent outputs and attachments.
 
 Other pain points are:
 
-- Jupytext needs to hack its way in the Jupyter(Lab) content manager to support opening and saving text notebooks
-  seamlessly; this also takes some configuration steps for the user;
+- Jupytext needs to hack its way in, in the Jupyter(Lab) content manager to support opening and saving text notebooks
+  seamlessly; this also requires some configuration steps from the user;
 - most other tools in the ecosystem (e.g. nbconvert, nbgrader) can't read or write text notebooks, forcing the users to
   convert their notebooks back and forth using `.ipynb` format;
 - there are many text notebook formats or implementations out there, each of which brings a combination of coupled
@@ -331,14 +331,14 @@ some_metadata_key: 'some-value'
 Explanations:
 
 - Cell metadata, if present, is represented as a top YAML block of the directive.
-- The MIME type keyed entries from the output's `data` attribute are represented as individual objects, consistent with
-  JSON lines format, each MIME type occupying a separate line and serialized without any newline formatting to improve
+- The MIME type keyed entries from the output's `data` attribute are represented as individual objects, each line being a valid parsable
+  JSON object, each MIME type occupying a separate line and serialized without any newline formatting to improve
   the behavior of text-based diffs.  
   Organization of the MIME type data into separate objects on single lines improves readability and ensures that each
   line is a valid self-contained JSON object. On parsing the directive, a **_merge_** operation should be performed to
   construct a single `data` object containing all `mimetype` keys.
 - Other cell attributes, like `output_type` or `execute_count` for `execute_result` cell outputs, are represented in the
-  info-string of the directive.
+  info-string of the directive as key/value pairs.
 
 #### Raw cells
 
@@ -380,7 +380,7 @@ in [MyST Markdown](https://myst-tools.org/docs/spec/blocks#block-breaks)):
     +++
     Another text cell
 
-Text cell metadata can be provided by mean of a YAML 1.2.2 block, shorthand notation, or a single line JSON
+Text cell metadata can be provided by mean of a YAML 1.2.2 block, shorthand notation, or a single line JSON object
 representation:
 
     +++ { "slide": true }
@@ -481,23 +481,16 @@ is orthogonal to this JEP, but rich text support is a must.
 
 - Users who author manuscripts, papers, and technical documents using Jupyter tend to produce notebooks that are
   predominantly text but contain outputs and code relevant to the document's content or publication.
-- Authors prefer to utilize notebooks as they allow results, figures, tables, and other computational outputs to be
-  reproduced as an integral part of the document.
-- Authors work interactively and collaboratively, moving a draft manuscript toward a final polished article in steps
-  including drafting, peer review, commenting, and revision.
-- Authors and their collaborators may be scientists or researchers in any scientific or technical field and typically
-  can have various technical abilities.
-- Although the iterative nature of document preparation lends itself to a versioning process, the use of a version
-  control system for sharing and collaboration may not be the norm, and collaboration typically occurs by sharing via
-  mechanisms like cloud storage, email, etc.
-- Code relevant to the subject of the document may be limited (e.g. to key algorithms), so most code cells will likely
-  be hidden in the final paper, and authors may work to minimize the amount of code directly included in the notebook.
-- Authoring scientific papers and technical manuscripts requires the use of rich document features such as rich text,
-  cross-referencing, citations, equations, and figures with captions and numbering. Where these are not directly
-  supported, authors may contrive to replicate them in the document manually.
-- Notebooks will be used as the content for a publication. This either involves the creation of a PDF that links to a
-  published version of the notebook via Digital Object Identifier on a service such as Zenodo or directly publishing the
-  notebook in HTML form.
+- Authors prefer notebooks as they allow results, figures, tables, and other computational outputs to be reproduced
+  as an integral part of the document.
+- Code relevant to the subject of the document may be limited (e.g. to key algorithms), so many code cells will likely
+  be hidden in the final paper, and authors may work to minimize the amount of code directly included in the notebook.  
+- Authors work interactively and collaboratively, to move a draft manuscript toward a final article through drafting,
+  peer review, commenting, and revision.
+- The iterative nature of document preparation lends itself to version control but collaboration more often that not 
+  occurs outside of any version control system (e.g. git) by sharing via cloud storage, Dropbox, email, etc.
+- Notebooks may be used as the medium for a publication directly, or linked to from other markdown documents where the
+  final production step would be the render HTML or a PDF.
 
 #### Frontend serialization scenario
 
@@ -538,7 +531,7 @@ Serialize to JSON and validate the JSON.
 
 > What happens if people insert text (or any whitespace) between a cell's input and output blocks(s)?
 
-The output block(s) will still be recognised provided only whitespace characters inserted between.
+The output block(s) will still be recognised provided only whitespace characters are inserted between.
 
 > How do we split a large body of Markdown into several Markdown cells (in other words, can we have cell breaks )?
 
