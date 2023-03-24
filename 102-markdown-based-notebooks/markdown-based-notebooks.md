@@ -201,9 +201,9 @@ as Myst Markdown):
     print('hi')
     ```
 
-Finally, metadata may also be represented by a single line JSON blob in the info-string:
+Finally, metadata may also be represented by a single line JSON object in the info-string:
 
-    ```{jupyter.code-cell metadata={json blob}}
+    ```{jupyter.code-cell metadata={json object}}
     :tags: [hide-output, show-input]
 
     print(Hello!")
@@ -515,7 +515,7 @@ the current behavior, we will lose the confidence of our userbase.
 
 > Why support several syntaxes for metadata?
 
-- The one-line JSON blob syntax is compact and unobtrusive.
+- The one-line JSON object syntax is compact and unobtrusive.
 - The YAML block syntax is human-readable and editable.
 - The shorthand colon syntax is human-readable, editable, and very compact at the price of not supporting nested
   metadata.
@@ -586,7 +586,7 @@ independently of the solution(s) that comes out of this JEP:
   upon saving, to support various use case. E.g.
     - specify that outputs and cell ids shall be discarded when readability and conciseness is the priority;
     - specify that outputs should be stored at the end;
-    - specify that metadata should be stored concisely as one-line json blobs.
+    - specify that metadata should be stored concisely as one-line JSON objects.
 - After some time and experimentation, define official notebook metadata specifying how these pieces of information
   should be handled upon saving.
 - Standardize ways to provide directory-wide/project-wide notebook metadata (typical use cases: specify that
