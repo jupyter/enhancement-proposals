@@ -394,11 +394,11 @@ representation:
     :foo: bar
     A third text cell
 
-Note that the leading thematic break does not introduce a leading empty text cell.
+Note that an empty leading thematic break does not introduce a leading empty text cell.
 
 #### Cell attachments
 
-Cell attachments are embeded as fenced code blocks in the Markdown of the cell:
+Cell attachments are embedded as fenced code blocks in the Markdown of the cell:
 
     Here is some text.
 
