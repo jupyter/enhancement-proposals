@@ -2,8 +2,8 @@
 title: Official support for Markdown-based notebooks
 authors: Nicolas M. Thiéry @nthiery, Steve Purves @stevejpurves, Andrey Lisin @avli
 contributors: Jason Grout @jasongrout, Sylvain Corlay @sylvain.corlay, Vladimir Lagunov @vladimirlagunov
-issue-number: xxx
-pr-number: 102
+issue-number: 102
+pr-number: 103
 date-started: 2023-03-01
 ---
 
