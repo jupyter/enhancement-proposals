@@ -164,7 +164,7 @@ the [Jupyter Notebook format](https://nbformat.readthedocs.io/en/latest/format_d
 #### Code cells
 
 Jupyter Markdown notebooks use fenced code blocks with backticks to represent code cells (like Pandoc, Jupytext
-Markdown, Myst Markdown):
+Markdown, MyST Markdown):
 
     ```{jupyter.code-cell}
     print('hi')
@@ -180,7 +180,7 @@ Cell parameters `execution_count` and `id` must be encoded as such when specifie
     ```
 
 Cell metadata, if present, can be represented by an optional YAML 1.2.2 block between `---` delimiters at the beginning
-of the code block (same as Myst Markdown):
+of the code block (same as MyST Markdown):
 
     ```{jupyter.code-cell execution_count=42 id=1234abcd}
     ---
@@ -193,7 +193,7 @@ of the code block (same as Myst Markdown):
 
 Alternatively, non-nested metadata may be represented using the [*short-hand option
 syntax*](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html#parameterizing-directives) (same
-as Myst Markdown):
+as MyST Markdown):
 
     ```{jupyter.code-cell}
     :tags: [hide-output, show-input]
@@ -209,7 +209,7 @@ Finally, metadata may also be represented by a single line JSON object in the in
     print(Hello!")
     ```
 
-For compatibility with the Jupytext and Myst notebook formats, parsers may accept `{code-cell}` instead
+For compatibility with the Jupytext and MyST notebook formats, parsers may accept `{code-cell}` instead
 of `{jupyter.code-cell}`.
 
 #### Code cell outputs
@@ -353,7 +353,7 @@ Raw cells are represented in a similar fashion:
 
 with the same syntax for parameters and metadata as for code-cells.
 
-For compatibility with the Jupytext and Myst notebook formats, parsers may accept `{raw-cell}` instead
+For compatibility with the Jupytext and MyST notebook formats, parsers may accept `{raw-cell}` instead
 of `{jupyter.raw-cell}`.
 
 #### Text cells
@@ -584,7 +584,7 @@ independently of the solution(s) that comes out of this JEP:
   a potential JEP.
 - Encourage tooling or configuration thereof to be opiniated about how certain pieces of information should be handled
   upon saving, to support various use case. E.g.
-    - specify that outputs and cell ids shall be discarded when readability and conciseness is the priority;
+    - specify that outputs and cell IDs shall be discarded when readability and conciseness is the priority;
     - specify that outputs should be stored at the end;
     - specify that metadata should be stored concisely as one-line JSON objects.
 - After some time and experimentation, define official notebook metadata specifying how these pieces of information
