@@ -206,7 +206,7 @@ Finally, metadata may also be represented by a single line JSON object in the in
     ```{jupyter.code-cell metadata={json object}}
     :tags: [hide-output, show-input]
 
-    print(Hello!")
+    print("Hello!")
     ```
 
 For compatibility with the Jupytext and MyST notebook formats, parsers may accept `{code-cell}` instead
@@ -436,7 +436,7 @@ For multiple attachments, use several fenced code blocks.
 - [R Markdown](https://bookdown.org/yihui/rmarkdown/)
 - [Quarto](https://quarto.org/)
 - [MyST Markdown notebooks](https://myst-nb.readthedocs.io/en/v0.9.0/use/markdown.html). An example of a notebook
-  converted to MyST Notebook cab be seen [here](https://gist.github.com/stevejpurves/8c6d129c7bb8b0dacb8460f0e42582c2)
+  converted to MyST Notebook can be seen [here](https://gist.github.com/stevejpurves/8c6d129c7bb8b0dacb8460f0e42582c2)
 - `org-mode` notebooks: look for a notebook in https://orgmode.org/features.html
   and [this discussion](https://news.ycombinator.com/item?id=16842786);
 - ReST: e.g. all the Sage documentation was written in ReST and could be converted to Sage notebooks. And later, in a
