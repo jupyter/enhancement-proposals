@@ -10,18 +10,15 @@ date-started: "2023-04-19"
 
 ## Problem
 
-The kernelspec configuration file is documented aside the kernel protocol documentation, but it is not
-*specified*. Besides, it might be unclear whether the kernelspec is part of the kernel protocol, or
-independent.
+The kernelspec configuration file is [documented](https://github.com/jupyter/jupyter_client/blob/main/docs/kernels.rst) aside the kernel protocol documentation, and an [implementation](https://github.com/jupyter/jupyter_client/blob/main/jupyter_client/kernelspec.py#L21) is available, but it is not *specified*. Besides, it might be unclear whether the kernelspec is part of the kernel protocol, or independent.
 
 ## Proposed Enhancement
 
-We propose to specify the kernelspec with the JSON schema joined in this PR. The specification is conform
-to [the current description of the kernelspec](https://jupyter-client.readthedocs.io/en/stable/kernels.html#kernel-specs),
-and adds an optional `protocol_version` field.
+We propose to specify the kernelspec with the JSON schema joined in this PR. The specification would reflect
+[the current description of the kernelspec](https://jupyter-client.readthedocs.io/en/stable/kernels.html#kernel-specs),
+and adds an optional `kernel_protocol_version` field.
 
-[A dedicated repo](https://github.com/jupyter-standards/kernelspec) for the specification and the documentation of
-the kernelspec has been created.
+The specification and the documentation of the kernelspec will be stored aside [those of the kernel protocol](https://github.com/jupyter-standards/kernel-protocol)
 
 ### Impact on existing implementations
 
