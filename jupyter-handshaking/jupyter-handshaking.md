@@ -15,7 +15,7 @@ We propose to implement a handshaking pattern: the client lets the kernel find f
 - The kernel starts, find free ports to bind the shell, control, stdin, heartbeat and iopub sockets. It then connect to the A socket and send the connection information to the client.
 - Upon reception of the connection information, the client connects to the kernel.
 
-The way the client passes its address and the port of the listening socket to the kernel should be similar to that of passing the ports of the kernel socket in the current implementation: a connection file that can be read by local kernels or sent over the network for distant kernels (although this requires an intermediate actor such as a gateway).
+The way the client passes its address and the port of the listening socket to the kernel should be similar to that of passing the ports of the kernel socket in the current implementation: a connection file that can be read by local kernels or sent over the network for remote kernels (although this requires a custom kernel provisioner or "nanny").
 
 The kernel specifies whether it supports the handshake pattern via the "kernel_protocol_version" field in the kernelspec:
 - if the field is missing, or if its value if less than 5.5, the kernel supports passing ports only.
@@ -26,9 +26,9 @@ The kernel specifies whether it supports the handshake pattern via the "kernel_p
 
 Although this enhancement requires changing all the existing kernels, the impact should be limited. Indeed, most of the kernels are based on the kernel wrapper approach, or on xeus.
 
-Most of the clients are based on `jupyter_client`. Therefore, the changes should be limited to this repository only.
+Most of the clients are based on `jupyter_client`. Therefore, the changes should only be limited to this repository or external kernel provisioners.
 
-A transition period where clients and kernels support both mechanisms should allow kernels to gradually migrate to the new version of the protocol. The support of the handshaking pattern should be indicated in the kernelspec.
+A transition period where clients and kernels support both mechanisms should allow kernels to gradually migrate to the new version of the protocol. Support for the handshaking pattern is indicated in the kernelspec via `kernel_protocol_version` as stated above.
 
 ## Relevant Resources (GitHub repositories, Issues, PRs)
 
