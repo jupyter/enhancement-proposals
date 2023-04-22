@@ -19,16 +19,13 @@ The way the client passes its address and the port of the listening socket to th
 
 The kernel specifies whether it supports the handshake pattern via the "kernel_protocol_version" field in the kernelspec:
 - if the field is missing, or if its value if less than 5.5, the kernel supports passing ports only.
-- if the field value is >=5.5 and <6, the kernel supports both mechanisms.
-- if the field value is >=6, the kernel supports the handshake pattern. Clients should not assume the kernel still supports the old mechanism.
+- if the field value is >=5.5, the kernel supports both mechanisms.
 
 ### Impact on existing implementations
 
 Although this enhancement requires changing all the existing kernels, the impact should be limited. Indeed, most of the kernels are based on the kernel wrapper approach, or on xeus.
 
 Most of the clients are based on `jupyter_client`. Therefore, the changes should only be limited to this repository or external kernel provisioners.
-
-A transition period where clients and kernels support both mechanisms should allow kernels to gradually migrate to the new version of the protocol. Support for the handshaking pattern is indicated in the kernelspec via `kernel_protocol_version` as stated above.
 
 ## Relevant Resources (GitHub repositories, Issues, PRs)
 
