@@ -15,7 +15,7 @@ We propose to implement a handshaking pattern: the client lets the kernel find f
 - The kernel starts, find free ports to bind the shell, control, stdin, heartbeat and iopub sockets. It then connect to the A socket and send the connection information to the client.
 - Upon reception of the connection information, the client connects to the kernel.
 
-The way the client passes its address and the port of the listening socket to the kernel should be similar to that of passing the ports of the kernel socket in the current implementation: a connection file that can be read by local kernels or sent over the network for remote kernels (although this requires a custom kernel provisioner or "nanny").
+The way the client passes its address and the port of the listening socket to the kernel should be similar to that of passing the ports of the kernel socket in the current implementation: a connection file that can be read by local kernels or sent over the network for remote kernels (although this requires a custom kernel provisioner or "nanny"). This connection file should also contain the signature scheme and the key.
 
 The kernel specifies whether it supports the handshake pattern via the "kernel_protocol_version" field in the kernelspec:
 - if the field is missing, or if its value if less than 5.5, the kernel supports passing ports only.
