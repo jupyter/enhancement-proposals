@@ -75,7 +75,8 @@ In order to transition out of the pre-proposal stage, the following checklist mu
    3. Why it should be a JEP
 
    4. 1. See the “JEP / Not-a-JEP Rubric” below.
-3. A *Shepherd* is identified to see the process through. Shepherds are assigned from a set of people actively involved in the project (Sotfware subprojects, SSC or EC, Standing committees and Working groups), based on the scope of the JEP. The Shepherd can be the author of the JEP.
+3. A *Shepherd* is identified to see the process through. Shepherds are assigned from a set of people actively involved in the project (Sotfware subprojects, SSC or EC, Standing committees and Working groups), based on the scope of the JEP. The Shepherd can be the author of the JEP. If the author of the JEP cannot
+identify a Shepherd, the SSC is responsible for designating one.
 4. A number is assigned to the JEP to track it through the rest of the process.
 
 Outcome:
