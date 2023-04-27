@@ -48,7 +48,7 @@ There are some rules required of all schemas, where each schema must:
     - conform to declared schema
 - declare a `$id` which must
     - be unique across the repository
-    - must start with `https://schemas.jupyter.org/`
+    - must start with `https://schema.jupyter.org/`
     - must be namespaced by the subproject name (if applicable)
     - must include a version
 
