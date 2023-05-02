@@ -1,381 +1,412 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Jupyter Dashboards Extension Incorporation &#8212; Jupyter Enhancement Proposals</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Jupyter Kernel Gateway Incorporation" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html" />
     <link rel="prev" title="Jupyter DeclarativeWidgets Extension Incorporation" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      
-      
-      <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs..." aria-label="Search the docs..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Jupyter Enhancement Proposals
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Information
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">
-   Jupyter Enhancement Proposals (JEP) Guidelines
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
-   JEP Template
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Accepted JEPs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">
-   Jupyter integration with the Language Server Protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">
-   Replace PUB socket with XPUB socket
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../79-notebook-v7/notebook-v7.html">
-   Build Jupyter Notebook v7 off of JupyterLab components
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Implemented JEPs
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">
-   Jupyter Enterprise Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">
-   Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">
-   Jupyter DeclarativeWidgets Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Jupyter Dashboards Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">
-   Jupyter Kernel Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../08-notebook-diff/notebook-diff.html">
-   Diffing and merging notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../62-cell-id/cell-id.html">
-   Cell ID Addition to Notebook Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
-   Jupyter debugger protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
-   Xeus Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
-   Voilà Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../29-jep-process/jep-process.html">
-   Jupyter Enhancement Proposal
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../28-jupyter-server/jupyter-server.html">
-   Standalone Jupyter server enhancement
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
 
-            <!-- Source interaction buttons -->
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem">
-   Problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#proposed-enhancement">
-   Proposed Enhancement
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#detailed-explanation">
-   Detailed Explanation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#current-and-potential-use-cases">
-     Current and Potential Use Cases
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#current-features">
-     Current Features
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#design-and-implementation">
-     Design and Implementation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#criteria-for-incorporation">
-     Criteria for Incorporation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
-       Have an active developer community that offers a sustainable model for future development.
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#have-an-active-user-community">
-       Have an active user community.
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
-       Use solid software engineering with documentation and tests hosted with appropriate technologies.
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#demonstrate-continued-growth-and-development">
-       Demonstrate continued growth and development.
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#integrate-well-with-other-official-subprojects">
-       Integrate well with other official Subprojects.
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model">
-       Be developed according to the Jupyter governance and contribution model.
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#have-a-well-defined-scope">
-       Have a well-defined scope.
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
-       Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pros-and-cons">
-   Pros and Cons
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interested-contributors">
-   Interested Contributors
-  </a>
- </li>
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Jupyter Enhancement Proposals</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Jupyter Enhancement Proposals
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Dashboards Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../62-cell-id/cell-id.html">Cell ID Addition to Notebook Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">Jupyter debugger protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
 </ul>
 
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter Dashboards Extension Incorporation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed Explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-and-potential-use-cases">Current and Potential Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-features">Current Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-implementation">Design and Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-incorporation">Criteria for Incorporation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">Have an active developer community that offers a sustainable model for future development.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-user-community">Have an active user community.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">Use solid software engineering with documentation and tests hosted with appropriate technologies.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-continued-growth-and-development">Demonstrate continued growth and development.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-well-with-other-official-subprojects">Integrate well with other official Subprojects.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model">Be developed according to the Jupyter governance and contribution model.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#have-a-well-defined-scope">Have a well-defined scope.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons">Pros and Cons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interested-contributors">Interested Contributors</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="jupyter-dashboards-extension-incorporation">
-<h1>Jupyter Dashboards Extension Incorporation<a class="headerlink" href="#jupyter-dashboards-extension-incorporation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="jupyter-dashboards-extension-incorporation">
+<h1>Jupyter Dashboards Extension Incorporation<a class="headerlink" href="#jupyter-dashboards-extension-incorporation" title="Permalink to this heading">#</a></h1>
+<section id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>“Data science enables the creation of data products.” – Mike Loukides in <a class="reference external" href="https://www.oreilly.com/ideas/what-is-data-science">What is data science?</a></p>
 </div></blockquote>
@@ -387,23 +418,23 @@
 <li><p>Push updates to the published web app when the notebook changes</p></li>
 <li><p>Secure the web app separate from the notebook authoring environment</p></li>
 </ul>
-</div>
-<div class="section" id="proposed-enhancement">
-<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this heading">#</a></h2>
 <p>The incubating <a class="reference external" href="https://github.com/jupyter-incubator/dashboards">dashboards layout extension for Jupyter Notebook</a> (hereafter, <em>dashboards extension</em>) is one of three incubation projects that, together, address the issues above. The community should consider incorporating the dashboards extension as an official Jupyter Subproject as a first step toward a robust dashboarding solution.</p>
-</div>
-<div class="section" id="detailed-explanation">
-<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="detailed-explanation">
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this heading">#</a></h2>
 <p>The full jupyter-incubator dashboards effort covers:</p>
 <ol class="arabic simple">
-<li><p>Arranging notebook outputs in a grid- or report-like layout (<a class="reference external" href="https://github.com/jupyter-incubator/dashboards">https://github.com/jupyter-incubator/dashboards</a>)</p></li>
-<li><p>Bundling notebooks and associated assets for deployment as dashboards <a class="reference external" href="https://github.com/jupyter-incubator/dashboards_bundlers">https://github.com/jupyter-incubator/dashboards_bundlers</a>)</p></li>
-<li><p>Serving notebook-defined dashboards as standalone web apps (<a class="reference external" href="https://github.com/jupyter-incubator/dashboards_serve">https://github.com/jupyter-incubator/dashboards_serve</a></p></li>
+<li><p>Arranging notebook outputs in a grid- or report-like layout (<a class="github reference external" href="https://github.com/jupyter-incubator/dashboards">jupyter-incubator/dashboards</a>)</p></li>
+<li><p>Bundling notebooks and associated assets for deployment as dashboards <a class="github reference external" href="https://github.com/jupyter-incubator/dashboards_bundlers">jupyter-incubator/dashboards_bundlers</a>)</p></li>
+<li><p>Serving notebook-defined dashboards as standalone web apps (<a class="github reference external" href="https://github.com/jupyter-incubator/dashboards_serve">jupyter-incubator/dashboards_serve</a></p></li>
 </ol>
-<p>The effort has close ties to <a class="reference external" href="https://github.com/jupyter-incubator/declarativewidgets">https://github.com/jupyter-incubator/declarativewidgets</a> which provides one way (but not the only way) of enabling rich interactivity in notebook-defined dashboards.</p>
+<p>The effort has close ties to <a class="github reference external" href="https://github.com/jupyter-incubator/declarativewidgets">jupyter-incubator/declarativewidgets</a> which provides one way (but not the only way) of enabling rich interactivity in notebook-defined dashboards.</p>
 <p><strong>N.B.</strong> - Per the discussion at the spring 2016 dev meeting and steps noted in the <a class="reference external" href="https://github.com/jupyter/roadmap#graduate-jupyterdashboards-from-incubator">jupyter/roadmap</a>, this document covers the graduation of the <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/dashboards</span></code> project alone. We will submit proposals for the other related projects in the near future.</p>
-<div class="section" id="current-and-potential-use-cases">
-<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Permalink to this headline">¶</a></h3>
+<section id="current-and-potential-use-cases">
+<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Permalink to this heading">#</a></h3>
 <p>The dashboards extension supports the following use cases:</p>
 <ul class="simple">
 <li><p>Dashboard layout mode for arranging notebook cell outputs in a grid- or report-like fashion</p></li>
@@ -421,23 +452,23 @@
 <p><img alt="End-to-end dashboards workflow" src="https://raw.githubusercontent.com/wiki/jupyter-incubator/dashboards/images/workflow.png" /></p>
 <p>For example,
 <a class="reference external" href="https://ibm.box.com/shared/static/t9zfbloipanirdm8u0vg3ggbmp5c1q8p.gif">here is an animation</a> of a user arrange portions of a notebook into a dashboard and deploying it to a dashboard server.</p>
-</div>
-<div class="section" id="current-features">
-<h3>Current Features<a class="headerlink" href="#current-features" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="current-features">
+<h3>Current Features<a class="headerlink" href="#current-features" title="Permalink to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://github.com/jupyter-incubator/dashboards#what-it-gives-you">“What It Gives You” section of the project README</a> details the currently implemented features. The <a class="reference external" href="https://github.com/jupyter-incubator/dashboards/tree/master/etc/notebooks">notebooks directory</a> in the project contains numerous examples.</p>
-</div>
-<div class="section" id="design-and-implementation">
-<h3>Design and Implementation<a class="headerlink" href="#design-and-implementation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="design-and-implementation">
+<h3>Design and Implementation<a class="headerlink" href="#design-and-implementation" title="Permalink to this heading">#</a></h3>
 <p>The dashboards extension is a pure JavaScript extension for the Jupyter Notebook frontend. It adds a toolbar and menu items for switching between three views: notebook, dashboard layout, and dashboard preview. It also adds a set of menu items for quickly adding/removing all cells to/from the dashboard layout. Help for creating dashboard layouts appears in situ in the layout mode.</p>
 <p>The extension currently supports two types of layout: grid and report. The user moves, resizes, and shows/hides notebook cell widgets/outputs in a responsive grid in the former. The user simply shows/hides cell widgets/outputs in top-down notebook order in the latter. The extension <a class="reference external" href="https://github.com/jupyter-incubator/dashboards/wiki/Dashboard-Metadata-and-Rendering">persists information about the layouts within the notebook document</a>.</p>
 <p>Both the notebook extension and the notebook document specification are extensible. They may grow support for additional kinds of layout in the future (e.g., fixed grids, paged wizards).</p>
 <p>The extension is compatible with notebook version 4.0 through 4.2. Users install it using pip and manage it via the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command line interface.</p>
-</div>
-<div class="section" id="criteria-for-incorporation">
-<h3>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="criteria-for-incorporation">
+<h3>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://github.com/jupyter/governance/blob/master/newsubprojects.md">Jupyter Governance - New Subproject Process</a> lists the criteria used to evaluate projects for incorporation in to the official Jupyter organization. We address each of these criteria below.</p>
-<div class="section" id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
-<h4>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Permalink to this headline">¶</a></h4>
+<section id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
+<h4>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Permalink to this heading">#</a></h4>
 <p>The project has contributions from 12 developers on GitHub and has been under active development over the past 10 months. We foresee future development of the extension taking the following primary forms:</p>
 <ol class="arabic simple">
 <li><p>Fixes for reported issues</p></li>
@@ -446,40 +477,40 @@
 <li><p>Enhancements to the metadata spec and layout authoring options to remain compatible with future dashboard features in Jupyter Lab</p></li>
 </ol>
 <p>The first two are straightforward and can be handled by current or future maintainers. The third, if and when it happens, can be integrated by current and future maintainers project as well. The fourth will be driven by future Jupyter Lab efforts to support dashboards.</p>
-</div>
-<div class="section" id="have-an-active-user-community">
-<h4>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="have-an-active-user-community">
+<h4>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/dashboards</span></code> repository has 151 stars and 30 watchers on GitHub. We have received questions, bug reports, and enhancement requests on GitHub, the Google Group, and Gitter.</p>
-</div>
-<div class="section" id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
-<h4>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
+<h4>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this heading">#</a></h4>
 <p>The extension has a small suite of frontend smoke tests that use Selenium to drive the UI additions to the Notebook server. The tests run on SauceLabs via Travis CI on every PR merge.</p>
-<p>User and developer documentation about the extension resides on ReadTheDocs at <a class="reference external" href="http://jupyter-dashboards-layout.readthedocs.io">http://jupyter-dashboards-layout.readthedocs.io</a>. We plan to migrate additional information to these docs from <a class="reference external" href="https://github.com/jupyter-incubator/dashboards/wiki">https://github.com/jupyter-incubator/dashboards/wiki</a>.</p>
-</div>
-<div class="section" id="demonstrate-continued-growth-and-development">
-<h4>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this headline">¶</a></h4>
+<p>User and developer documentation about the extension resides on ReadTheDocs at <a class="reference external" href="http://jupyter-dashboards-layout.readthedocs.io">http://jupyter-dashboards-layout.readthedocs.io</a>. We plan to migrate additional information to these docs from <a class="github reference external" href="https://github.com/jupyter-incubator/dashboards/wiki">jupyter-incubator/dashboards</a>.</p>
+</section>
+<section id="demonstrate-continued-growth-and-development">
+<h4>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this heading">#</a></h4>
 <p>See “Have an active developer community that offers a sustainable model for future development.”</p>
-</div>
-<div class="section" id="integrate-well-with-other-official-subprojects">
-<h4>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="integrate-well-with-other-official-subprojects">
+<h4>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this heading">#</a></h4>
 <p>The dashboards extension is a <a class="reference external" href="http://jupyter-notebook.readthedocs.io/en/latest/examples/Notebook/Distributing%20Jupyter%20Extensions%20as%20Python%20Packages.html">properly packaged Jupyter Notebook extension</a> with <a class="reference external" href="https://github.com/jupyter-incubator/dashboards/wiki/Dashboard-Metadata-and-Rendering">documentation about its extensible, versioned metadata</a> so that other Jupyter tools may render its dashboard layouts (e.g., <a class="reference external" href="https://github.com/jupyter-incubator/dashboards_server">dashboards server</a> now, Jupyter Lab in the future).</p>
-</div>
-<div class="section" id="be-developed-according-to-the-jupyter-governance-and-contribution-model">
-<h4>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="be-developed-according-to-the-jupyter-governance-and-contribution-model">
+<h4>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Permalink to this heading">#</a></h4>
 <p>The dashboards extension is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.</p>
-</div>
-<div class="section" id="have-a-well-defined-scope">
-<h4>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="have-a-well-defined-scope">
+<h4>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this heading">#</a></h4>
 <p>The purpose of the dashboards extension is to provide a user interface for arranging notebook cells into interactive dashboard layouts. We have separated features beyond this scope into other projects (e.g., serving dashboards as standalone web applications → jupyter-incubator/dashboards_server project) and have recommended similar actions for community requests (e.g., support for dashboard layouts when converting to PDF → add support for dashboard metadata to nbconvert).</p>
-</div>
-<div class="section" id="be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
-<h4>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
+<h4>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Permalink to this heading">#</a></h4>
 <p>The dashboards extension is packaged using setuptools, released on PyPI, and installable using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Users manage the extension after <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> via the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> CLI.</p>
-</div>
-</div>
-</div>
-<div class="section" id="pros-and-cons">
-<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="pros-and-cons">
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Pro: Gives Jupyter users an avenue for creating dashboard layouts in Jupyter notebooks today.</p></li>
 <li><p>Pro: Works with the other incubating projects to enable deployment of dashboard-notebooks as standalone web applications.</p></li>
@@ -487,54 +518,133 @@
 <li><p>Pro: Serves as a test bed and reference implementation for future dashboard efforts in Jupyter Lab.</p></li>
 <li><p>Con: There is currently <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/15">no consensus on a light proposal</a> for where to store layout metadata in notebooks, let alone a single layout metadata spec to be shared across all tools (including those beyond the dashboards use case).</p></li>
 </ul>
-</div>
-<div class="section" id="interested-contributors">
-<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="interested-contributors">
+<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this heading">#</a></h2>
 <p>&#64;parente</p>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Jupyter DeclarativeWidgets Extension Incorporation</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Jupyter DeclarativeWidgets Extension Incorporation</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Jupyter Kernel Gateway Incorporation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Project Jupyter<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed Explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-and-potential-use-cases">Current and Potential Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-features">Current Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-and-implementation">Design and Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-incorporation">Criteria for Incorporation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">Have an active developer community that offers a sustainable model for future development.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-user-community">Have an active user community.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">Use solid software engineering with documentation and tests hosted with appropriate technologies.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-continued-growth-and-development">Demonstrate continued growth and development.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-well-with-other-official-subprojects">Integrate well with other official Subprojects.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model">Be developed according to the Jupyter governance and contribution model.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#have-a-well-defined-scope">Have a well-defined scope.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons">Pros and Cons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interested-contributors">Interested Contributors</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Project Jupyter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

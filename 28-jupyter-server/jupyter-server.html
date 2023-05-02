@@ -1,382 +1,413 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Standalone Jupyter server enhancement &#8212; Jupyter Enhancement Proposals</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '28-jupyter-server/jupyter-server';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/28-jupyter-server/jupyter-server.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Jupyter Enhancement Proposal" href="../29-jep-process/jep-process.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      
-      
-      <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs..." aria-label="Search the docs..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Jupyter Enhancement Proposals
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Information
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">
-   Jupyter Enhancement Proposals (JEP) Guidelines
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
-   JEP Template
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Accepted JEPs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">
-   Jupyter integration with the Language Server Protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">
-   Replace PUB socket with XPUB socket
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../79-notebook-v7/notebook-v7.html">
-   Build Jupyter Notebook v7 off of JupyterLab components
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Implemented JEPs
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">
-   Jupyter Enterprise Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">
-   Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">
-   Jupyter DeclarativeWidgets Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">
-   Jupyter Dashboards Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">
-   Jupyter Kernel Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../08-notebook-diff/notebook-diff.html">
-   Diffing and merging notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../62-cell-id/cell-id.html">
-   Cell ID Addition to Notebook Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
-   Jupyter debugger protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
-   Xeus Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
-   Voilà Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../29-jep-process/jep-process.html">
-   Jupyter Enhancement Proposal
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Standalone Jupyter server enhancement
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/28-jupyter-server/jupyter-server.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
 
-            <!-- Source interaction buttons -->
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F28-jupyter-server/jupyter-server.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/28-jupyter-server/jupyter-server.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem">
-   Problem
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#proposed-enhancement">
-   Proposed Enhancement
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#detailed-explanation">
-   Detailed Explanation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#separate-jupyter-server-repository">
-     Separate
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       jupyter_server
-      </span>
-     </code>
-     repository
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clearly-define-the-smallest-unit-that-is-a-jupyter-server">
-     Clearly define the smallest unit that is a “Jupyter Server”
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extensions-as-applications">
-     Extensions as Applications
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#new-server-extensions-mechanism">
-     New server extensions mechanism.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-namespacing-to-static-endpoints-and-rest-api-urls">
-     Add namespacing to
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       static
-      </span>
-     </code>
-     endpoints and REST API urls.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#configuration-system">
-     Configuration System
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#migration-application">
-     Migration application
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-this-effects-other-projects">
-     How this effects other projects
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pros-and-cons">
-   Pros and Cons
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#relevent-issues-prs-and-discussion">
-   Relevent Issues, PRs, and discussion
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interested">
-   Interested
-  </a>
- </li>
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Jupyter Enhancement Proposals</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Jupyter Enhancement Proposals
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../62-cell-id/cell-id.html">Cell ID Addition to Notebook Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">Jupyter debugger protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Standalone Jupyter server enhancement</a></li>
 </ul>
 
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/28-jupyter-server/jupyter-server.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F28-jupyter-server/jupyter-server.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/28-jupyter-server/jupyter-server.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Standalone Jupyter server enhancement</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed Explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-jupyter-server-repository">Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clearly-define-the-smallest-unit-that-is-a-jupyter-server">Clearly define the smallest unit that is a “Jupyter Server”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions-as-applications">Extensions as Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-server-extensions-mechanism">New server extensions mechanism.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-namespacing-to-static-endpoints-and-rest-api-urls">Add namespacing to <code class="docutils literal notranslate"><span class="pre">static</span></code> endpoints and REST API urls.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-system">Configuration System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-application">Migration application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-effects-other-projects">How this effects other projects</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons">Pros and Cons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relevent-issues-prs-and-discussion">Relevent Issues, PRs, and discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interested">Interested</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="standalone-jupyter-server-enhancement">
-<h1>Standalone Jupyter server enhancement<a class="headerlink" href="#standalone-jupyter-server-enhancement" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="standalone-jupyter-server-enhancement">
+<h1>Standalone Jupyter server enhancement<a class="headerlink" href="#standalone-jupyter-server-enhancement" title="Permalink to this heading">#</a></h1>
+<section id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
 <p>There are now multiple frontends that talk to the backend services provided by the notebook server: the classic Notebook, the dashboards, nteract, JupyterLab, standalone widgets and more. The configuration of classic notebook and the backend server are tightly coupled. As a consequence, the other applications are forced to load the legacy notebook to use the backend server.</p>
-</div>
-<div class="section" id="proposed-enhancement">
-<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this heading">#</a></h2>
 <p>Decouple the backend server (and its configuration) from the classic notebook frontend. This will require the following steps:</p>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="#separate-jupyter_server-repository">Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository</a></p>
+<li><p><a class="reference internal" href="#separate-jupyter_server-repository"><span class="xref myst">Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository</span></a></p>
 <ul class="simple">
 <li><p>A fork of the <code class="docutils literal notranslate"><span class="pre">notebook</span></code> repository.</p></li>
 <li><p>Pure Python package with notebook backend services.</p></li>
@@ -384,40 +415,40 @@
 <li><p>Deprecated notebook server APIs do not move to <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code>.</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="#clearly-define-the-smallest-unit-that-is-a-jupyter-server">Clearly define the smallest unit that is a “Jupyter Server”</a></p>
+<li><p><a class="reference internal" href="#clearly-define-the-smallest-unit-that-is-a-jupyter-server"><span class="xref myst">Clearly define the smallest unit that is a “Jupyter Server”</span></a></p>
 <ul class="simple">
 <li><p>Kernel, KernelSpecs, and Session (?) become the only core services</p></li>
 <li><p>Everything else becomes a server extension?</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="#extensions-as-applications">Extensions as Applications</a></p>
+<li><p><a class="reference internal" href="#extensions-as-applications"><span class="xref myst">Extensions as Applications</span></a></p>
 <ul class="simple">
 <li><p>server extensions move to <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code>.</p></li>
 <li><p>New <code class="docutils literal notranslate"><span class="pre">ExtensionApp</span></code> class</p></li>
 <li><p>Notebook, jupyterlab, etc. become ExtensionApps.</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="#new-server-extensions-mechanism">New server extensions mechanism.</a></p>
+<li><p><a class="reference internal" href="#new-server-extensions-mechanism"><span class="xref myst">New server extensions mechanism.</span></a></p>
 <ul class="simple">
 <li><p>new base classes to create applications from server extensions.</p></li>
 <li><p>nbextensions stay in <code class="docutils literal notranslate"><span class="pre">notebook</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">jupyter_notebook_config.d</span></code> folder becomes <code class="docutils literal notranslate"><span class="pre">jupyter_server_config.d</span></code></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="#add-namespacing-to-static-endpoints-and-rest-api-urls">Namespacing static files and REST API urls.</a></p>
+<li><p><a class="reference internal" href="#add-namespacing-to-static-endpoints-and-rest-api-urls"><span class="xref myst">Namespacing static files and REST API urls.</span></a></p>
 <ul class="simple">
 <li><p>Each extension serves static files at the <code class="docutils literal notranslate"><span class="pre">/static/&lt;extension&gt;</span></code> url.</p></li>
 <li><p>New <code class="docutils literal notranslate"><span class="pre">ExtensionHandlerApp</span></code> class</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="#configuration-system">Configuration System</a></p></li>
-<li><p><a class="reference external" href="#migration-application">Migrate application.</a></p></li>
+<li><p><a class="reference internal" href="#configuration-system"><span class="xref myst">Configuration System</span></a></p></li>
+<li><p><a class="reference internal" href="#migration-application"><span class="xref myst">Migrate application.</span></a></p></li>
 </ol>
-</div>
-<div class="section" id="detailed-explanation">
-<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="separate-jupyter-server-repository">
-<h3>Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository<a class="headerlink" href="#separate-jupyter-server-repository" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="detailed-explanation">
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this heading">#</a></h2>
+<section id="separate-jupyter-server-repository">
+<h3>Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository<a class="headerlink" href="#separate-jupyter-server-repository" title="Permalink to this heading">#</a></h3>
 <p>The first thing to do is fork <code class="docutils literal notranslate"><span class="pre">notebook</span></code>. A new <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repo will keep the server specific logic and remove:</p>
 <ol class="arabic simple">
 <li><p>the notebook frontend code,</p></li>
@@ -444,15 +475,15 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">auth</span></code> module</p></li>
 </ul>
 <p>Preliminary work resides in <a class="reference external" href="https://github.com/jupyter/jupyter_server">jupyter_server</a>.</p>
-</div>
-<div class="section" id="clearly-define-the-smallest-unit-that-is-a-jupyter-server">
-<h3>Clearly define the smallest unit that is a “Jupyter Server”<a class="headerlink" href="#clearly-define-the-smallest-unit-that-is-a-jupyter-server" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="clearly-define-the-smallest-unit-that-is-a-jupyter-server">
+<h3>Clearly define the smallest unit that is a “Jupyter Server”<a class="headerlink" href="#clearly-define-the-smallest-unit-that-is-a-jupyter-server" title="Permalink to this heading">#</a></h3>
 <p><em>(This section needs a lot more discussion.)</em></p>
 <p>The server-notebook split is an opportunity to clearly define Jupyter’s core services. The old notebook server was comprised of many services, and it could be extended by separate “server extensions”. However, it isn’t clear what should be a core service versus a server extension. Some extensions were “grand-fathered” in as core services to make the notebook application more full-featured (e.g. nbconvert, terminals, contents, …). Now that we are separating the server from the classic notebook, we need to reevaluate what services are core to the Jupyter Server.</p>
 <p>Jupyter server aims to be a core building block for other applications (like nteract, lab, dashboards, standalone widgets, etc.). To achieve this, we need to define the simplest “unit” that defines a Jupyter Server: <code class="docutils literal notranslate"><span class="pre">kernels</span></code>, <code class="docutils literal notranslate"><span class="pre">kernelspec</span></code>, and <code class="docutils literal notranslate"><span class="pre">sessions</span></code>. Other services become extensions to the core server (using the <code class="docutils literal notranslate"><span class="pre">load_jupyter_server_extension</span></code> mechanism defined below).</p>
-</div>
-<div class="section" id="extensions-as-applications">
-<h3>Extensions as Applications<a class="headerlink" href="#extensions-as-applications" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="extensions-as-applications">
+<h3>Extensions as Applications<a class="headerlink" href="#extensions-as-applications" title="Permalink to this heading">#</a></h3>
 <p>A new <code class="docutils literal notranslate"><span class="pre">ExtensionApp</span></code> class will be available in <code class="docutils literal notranslate"><span class="pre">jupyter_server.extensions.extensionapp</span></code>. It enables developers to make server extensions behave like standalone Jupyter applications. Jupyterlab is an example of this kind of server extension. It can be configured, initialized, and launched from the command line. When Lab is launched, it first initializes and configures a jupyter (notebook) server, then loads the configured jupyterlab extension and redirects the use to the Lab landing page.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ExtensionApp</span></code> handles the boilerplate code to make Jupyter applications that configure and launch server extensions directly. It inherits <code class="docutils literal notranslate"><span class="pre">jupyter_core.JupyterApp</span></code> and exposes a command line entry point: <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">&lt;extension-name&gt;</span></code>. When an extension is launched, it first configures and starts a jupyter_server (<code class="docutils literal notranslate"><span class="pre">ServerApp</span></code>); then, it loads the configured extension and redirects users to the extension’s landing page. Extension developers simply inherit the <code class="docutils literal notranslate"><span class="pre">ExtensionApp</span></code> and add the extension’s <code class="docutils literal notranslate"><span class="pre">load_jupyter_server_extension</span></code> as a <code class="docutils literal notranslate"><span class="pre">staticmethod</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jupyter_server.extensionapp</span> <span class="kn">import</span> <span class="n">ExtensionApp</span>
@@ -475,9 +506,9 @@
 </pre></div>
 </div>
 <p>Users can also launch the notebook application using the (usual)<code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> command line interface.</p>
-</div>
-<div class="section" id="new-server-extensions-mechanism">
-<h3>New server extensions mechanism.<a class="headerlink" href="#new-server-extensions-mechanism" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="new-server-extensions-mechanism">
+<h3>New server extensions mechanism.<a class="headerlink" href="#new-server-extensions-mechanism" title="Permalink to this heading">#</a></h3>
 <p>The new extension mechanism in the <em>jupyter server</em> will differ from notebook’s server extensions.</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">--sys-prefix</span></code> installation would become the default. (Users are confused when enabling an extension requires more permissions than the installation of the package). Installation in system-wide directories would be done with the <code class="docutils literal notranslate"><span class="pre">--system</span></code> option.</p></li>
@@ -492,16 +523,16 @@ This would be done via two <code class="docutils literal notranslate"><span clas
 </li>
 </ul>
 <p>(Possibly) when an extension is enabled at a given precedence level, it may only look for the version of the extension installed at the same or lower precedence level. For example, if an extension <code class="docutils literal notranslate"><span class="pre">foobar</span></code> is installed and enabled system wide, but a user installs a version with <code class="docutils literal notranslate"><span class="pre">--user</span></code>, this version will only be picked up if the user also enables it with <code class="docutils literal notranslate"><span class="pre">--user</span></code>.</p>
-</div>
-<div class="section" id="add-namespacing-to-static-endpoints-and-rest-api-urls">
-<h3>Add namespacing to <code class="docutils literal notranslate"><span class="pre">static</span></code> endpoints and REST API urls.<a class="headerlink" href="#add-namespacing-to-static-endpoints-and-rest-api-urls" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="add-namespacing-to-static-endpoints-and-rest-api-urls">
+<h3>Add namespacing to <code class="docutils literal notranslate"><span class="pre">static</span></code> endpoints and REST API urls.<a class="headerlink" href="#add-namespacing-to-static-endpoints-and-rest-api-urls" title="Permalink to this heading">#</a></h3>
 <p>Currently, the notebook tornado application serves all static files underneath the <code class="docutils literal notranslate"><span class="pre">/static/</span></code> prefix. Jupyter server will add namespacing under the static url and extension REST API urls. Each extension will serve their static files under the <code class="docutils literal notranslate"><span class="pre">/static/&lt;extension-name&gt;</span></code> prefix and their API handlers behind a <code class="docutils literal notranslate"><span class="pre">/extension/api/&lt;extension-name&gt;</span></code> prefix.</p>
 <p>For example, the classic notebook server extension will add static handlers that reroute requests to the <code class="docutils literal notranslate"><span class="pre">/static/notebook/</span></code> endpoints.</p>
 <p>A new <code class="docutils literal notranslate"><span class="pre">ExtensionHandler</span></code> class will be available in <code class="docutils literal notranslate"><span class="pre">jupyter_server.extensions.handlers</span></code>. This class inherits <code class="docutils literal notranslate"><span class="pre">JupyterHandler</span></code>. It handles the boilerplate code to reroute requests extension’s namespaced static and REST API endpoints.</p>
 <p>Preliminary experimental work resides in the <a class="reference external" href="https://github.com/Zsailer/jupyter_server_extension"><code class="docutils literal notranslate"><span class="pre">jupyter_server_extension</span></code></a> repository.</p>
-</div>
-<div class="section" id="configuration-system">
-<h3>Configuration System<a class="headerlink" href="#configuration-system" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="configuration-system">
+<h3>Configuration System<a class="headerlink" href="#configuration-system" title="Permalink to this heading">#</a></h3>
 <p>Splitting the server-specific pieces from the classic notebook affects Jupyter’s configuration system. This is a non-trivial problem. Changing Jupyter’s configuration system affects everyone. We need to consider how to make this transition as painless as possible. At the end of this section, we list some steps that make reduce the friction.</p>
 <p>Here is a list of things the changes on the configuration system:</p>
 <ul class="simple">
@@ -536,13 +567,13 @@ This would be done via two <code class="docutils literal notranslate"><span clas
 <li><p>Document like crazy!</p></li>
 </ul>
 <p>For an thorough overview of the configuration system and a side-by-side diff between the (current) notebook and (future) server config layout, take a look at <a class="reference external" href="https://github.com/Zsailer/jupyter_config_overview">Zsailer/jupyter_config_overview</a>.</p>
-</div>
-<div class="section" id="migration-application">
-<h3>Migration application<a class="headerlink" href="#migration-application" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="migration-application">
+<h3>Migration application<a class="headerlink" href="#migration-application" title="Permalink to this heading">#</a></h3>
 <p>To make migration easier on users, a <code class="docutils literal notranslate"><span class="pre">migrate</span></code> application will be available to split notebook and server configurations into their appropriate locations (listed above).</p>
-</div>
-<div class="section" id="how-this-effects-other-projects">
-<h3>How this effects other projects<a class="headerlink" href="#how-this-effects-other-projects" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="how-this-effects-other-projects">
+<h3>How this effects other projects<a class="headerlink" href="#how-this-effects-other-projects" title="Permalink to this heading">#</a></h3>
 <p><strong>Classic notebook</strong>
 In short, the classic notebook will become a server extension application. The rest of this proposal describes the details behind what will change in the notebook repo.</p>
 <p><code class="docutils literal notranslate"><span class="pre">JupyterServerExtensionApp</span></code></p>
@@ -551,10 +582,10 @@ Jupyter lab will also become a server extension application. The new classes des
 <p><strong>Kernel Gateway</strong>
 Kernel Gateway can use the new Jupyter Server to server kernels as a service. The new Jupyter server will remove the unwanted services that Kernel Gateway currently removes by using a custom server application. KG will also be able to swap out the kernels and kernelspec manager in the Jupyter Server with its custom classes.</p>
 <p><strong>Kernel Nanny</strong></p>
-</div>
-</div>
-<div class="section" id="pros-and-cons">
-<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="pros-and-cons">
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this heading">#</a></h2>
 <p><strong>Pros</strong> associated with this implementation include</p>
 <ul class="simple">
 <li><p>Allow various frontends to use the backend services of the jupyter server.</p></li>
@@ -568,9 +599,9 @@ Kernel Gateway can use the new Jupyter Server to server kernels as a service. Th
 <li><p>Affects many projects. The transition may be painful?</p></li>
 <li><p>Adding a dependency injection system adds new complexity.</p></li>
 </ul>
-</div>
-<div class="section" id="relevent-issues-prs-and-discussion">
-<h2>Relevent Issues, PRs, and discussion<a class="headerlink" href="#relevent-issues-prs-and-discussion" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="relevent-issues-prs-and-discussion">
+<h2>Relevent Issues, PRs, and discussion<a class="headerlink" href="#relevent-issues-prs-and-discussion" title="Permalink to this heading">#</a></h2>
 <p>Jupyter’s configuration system.</p>
 <ul class="simple">
 <li><p>PR <a class="reference external" href="https://github.com/jupyter/notebook/pull/3116">3116</a>, <code class="docutils literal notranslate"><span class="pre">jupyter/notebook</span></code>: extension config in <code class="docutils literal notranslate"><span class="pre">config.d</span></code> directory.</p></li>
@@ -587,47 +618,119 @@ Kernel Gateway can use the new Jupyter Server to server kernels as a service. Th
 <ul class="simple">
 <li><p>PR <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/pull/21#issuecomment-248647152">21</a><code class="docutils literal notranslate"><span class="pre">jupyter/enhancement-proposals</span></code>: mention namespacing.</p></li>
 </ul>
-</div>
-<div class="section" id="interested">
-<h2>Interested<a class="headerlink" href="#interested" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="interested">
+<h2>Interested<a class="headerlink" href="#interested" title="Permalink to this heading">#</a></h2>
 <p>&#64;Zsailer, &#64;SylvainCorlay, &#64;ellisonbg, &#64;blink1073, &#64;kevin-bates</p>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../29-jep-process/jep-process.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Jupyter Enhancement Proposal</p>
-        </div>
-    </a>
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Project Jupyter<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
 
-
-      </div>
-    </div>
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../29-jep-process/jep-process.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Jupyter Enhancement Proposal</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed Explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-jupyter-server-repository">Separate <code class="docutils literal notranslate"><span class="pre">jupyter_server</span></code> repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clearly-define-the-smallest-unit-that-is-a-jupyter-server">Clearly define the smallest unit that is a “Jupyter Server”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions-as-applications">Extensions as Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-server-extensions-mechanism">New server extensions mechanism.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-namespacing-to-static-endpoints-and-rest-api-urls">Add namespacing to <code class="docutils literal notranslate"><span class="pre">static</span></code> endpoints and REST API urls.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-system">Configuration System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#migration-application">Migration application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-effects-other-projects">How this effects other projects</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons">Pros and Cons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relevent-issues-prs-and-discussion">Relevent Issues, PRs, and discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interested">Interested</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Project Jupyter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

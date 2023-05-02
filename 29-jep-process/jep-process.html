@@ -1,353 +1,408 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Jupyter Enhancement Proposal &#8212; Jupyter Enhancement Proposals</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '29-jep-process/jep-process';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/29-jep-process/jep-process.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Standalone Jupyter server enhancement" href="../28-jupyter-server/jupyter-server.html" />
     <link rel="prev" title="Voilà Incorporation" href="../42-voila-incorporation/voila-incorporation.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      
-      
-      <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs..." aria-label="Search the docs..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Jupyter Enhancement Proposals
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Information
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">
-   Jupyter Enhancement Proposals (JEP) Guidelines
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
-   JEP Template
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Accepted JEPs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">
-   Jupyter integration with the Language Server Protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">
-   Replace PUB socket with XPUB socket
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../79-notebook-v7/notebook-v7.html">
-   Build Jupyter Notebook v7 off of JupyterLab components
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Implemented JEPs
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">
-   Jupyter Enterprise Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">
-   Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">
-   Jupyter DeclarativeWidgets Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">
-   Jupyter Dashboards Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">
-   Jupyter Kernel Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../08-notebook-diff/notebook-diff.html">
-   Diffing and merging notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../62-cell-id/cell-id.html">
-   Cell ID Addition to Notebook Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
-   Jupyter debugger protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
-   Xeus Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
-   Voilà Incorporation
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Jupyter Enhancement Proposal
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../28-jupyter-server/jupyter-server.html">
-   Standalone Jupyter server enhancement
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/29-jep-process/jep-process.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
 
-            <!-- Source interaction buttons -->
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F29-jep-process/jep-process.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/29-jep-process/jep-process.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#background">
-   Background
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-and-tenets">
-   Goals and Tenets
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jep-submission-workflow">
-   JEP Submission Workflow
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#phase-1-pre-proposal">
-     Phase 1: Pre-proposal
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#phase-2-rfc-for-the-jep">
-     Phase 2: RFC for the JEP
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#phase-3-work-commences">
-     Phase 3: Work Commences
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#paths-of-the-status-of-jeps">
-     Paths of the status of JEPs
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-qualifies-as-a-jep">
-   What qualifies as a JEP?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distribution">
-   Distribution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-jep-public-archive-website">
-     The JEP public archive website
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#glossary">
-   Glossary
-  </a>
- </li>
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Jupyter Enhancement Proposals</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Jupyter Enhancement Proposals
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../62-cell-id/cell-id.html">Cell ID Addition to Notebook Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">Jupyter debugger protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
 </ul>
 
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/29-jep-process/jep-process.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F29-jep-process/jep-process.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/29-jep-process/jep-process.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter Enhancement Proposal</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-tenets">Goals and Tenets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jep-submission-workflow">JEP Submission Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-pre-proposal">Phase 1: Pre-proposal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-rfc-for-the-jep">Phase 2: RFC for the JEP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-work-commences">Phase 3: Work Commences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-of-the-status-of-jeps">Paths of the status of JEPs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-qualifies-as-a-jep">What qualifies as a JEP?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jep-public-archive-website">The JEP public archive website</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">Glossary</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="jupyter-enhancement-proposal">
-<h1>Jupyter Enhancement Proposal<a class="headerlink" href="#jupyter-enhancement-proposal" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="jupyter-enhancement-proposal">
+<h1>Jupyter Enhancement Proposal<a class="headerlink" href="#jupyter-enhancement-proposal" title="Permalink to this heading">#</a></h1>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
 <p>Project Jupyter has an existing repository and process for “Jupyter Enhancement Proposals” or JEP for short. The repository is here:</p>
-<p><a class="reference external" href="https://github.com/jupyter/enhancement-proposals">https://github.com/jupyter/enhancement-proposals</a></p>
+<p><a class="github reference external" href="https://github.com/jupyter/enhancement-proposals">jupyter/enhancement-proposals</a></p>
 <p>This format was originally used by <a class="reference external" href="https://github.com/ipython/ipython/wiki/IPEPs:-IPython-Enhancement-Proposals">IPython (IPEP)</a> and continues to be used by the <a class="reference external" href="https://www.python.org/dev/peps/">Python Core language (PEP)</a>. As currently envisioned, JEPs are written documents, in the form of a Pull Request to this repo, which describes significant proposed units of work on the projects. The README of the repo summarizes this as:</p>
 <p>“Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem OR changes to a single key component.”</p>
 <p>Since the JEP process was created, Jupyter has grown in the number of users, diversity of usage cases, number of contributors, and number of repos/org. For a variety of reasons, the JEP process has not scaled with this growth. The current situation is characterized by:</p>
@@ -358,9 +413,9 @@
 <li><p>This is leading to fragmentation and slow progress in project wide concerns, such as the core protocols and standards of Jupyter.</p></li>
 </ol>
 <p>As a result, there is a need to revitalize and reorganize an efficient and robust centralized proposal and decision making process for major work units across the project.</p>
-</div>
-<div class="section" id="goals-and-tenets">
-<h2>Goals and Tenets<a class="headerlink" href="#goals-and-tenets" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="goals-and-tenets">
+<h2>Goals and Tenets<a class="headerlink" href="#goals-and-tenets" title="Permalink to this heading">#</a></h2>
 <p>Project Jupyter has adopted the Jupyter Enhancement Proposal process (JEP) to address distributed collaboration and experimentation as the project scales in the dimensions of contributors, components, and lines of code.  At a high level, the primary guiding principle of the JEP process is to encourage collaboration and discussion as early as possible in the lifecycle of a major proposed change in Jupyter, with the goal of preventing costly rework, competing ideas, and unnecessary forking or fragmentation of ideas.</p>
 <p>Several sub-goals exist for this process:</p>
 <ul class="simple">
@@ -388,11 +443,11 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="jep-submission-workflow">
-<h2>JEP Submission Workflow<a class="headerlink" href="#jep-submission-workflow" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="phase-1-pre-proposal">
-<h3>Phase 1: Pre-proposal<a class="headerlink" href="#phase-1-pre-proposal" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="jep-submission-workflow">
+<h2>JEP Submission Workflow<a class="headerlink" href="#jep-submission-workflow" title="Permalink to this heading">#</a></h2>
+<section id="phase-1-pre-proposal">
+<h3>Phase 1: Pre-proposal<a class="headerlink" href="#phase-1-pre-proposal" title="Permalink to this heading">#</a></h3>
 <p>This is the least formal stage of any jupyter enhancement proposals. During this phase, discussions on the mailing list, in-person, on github issues are all fine to gauge community interest, feasibility, consequences, and to scope out technical impact and implementation details.</p>
 <p>In order to transition out of the pre-proposal stage, the following checklist must be complete:</p>
 <ol class="arabic simple">
@@ -416,15 +471,15 @@
 <li><p><em>It’s a JEP!</em> Please create a new PR with the JEP contents using template X.  On that basis, you can resolve this issue unless you have further questions.*</p></li>
 <li><p><em>It’s not a JEP</em>. (Provide reasons and close the issue.)</p></li>
 </ul>
-</div>
-<div class="section" id="phase-2-rfc-for-the-jep">
-<h3>Phase 2: RFC for the JEP<a class="headerlink" href="#phase-2-rfc-for-the-jep" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="phase-2-rfc-for-the-jep">
+<h3>Phase 2: RFC for the JEP<a class="headerlink" href="#phase-2-rfc-for-the-jep" title="Permalink to this heading">#</a></h3>
 <p>Submission: The author submits an initial draft of the JEP as a PR to the JEP repository starting from the relevant template decided in the pre-proposal stage. The Shepherd assigns a number (the GitHub PR number? A sequential number? Perhaps the number isn’t assigned until the JEP is merged?). The Shepherd assigns a Review Team.</p>
 <p>Request For Comment (RFC) phase: The proposal is iterated on with feedback from the Review Team and the community at large. The Shepherd helps engage the Review Team. After the Review Team members have signed off on the JEP, with the criteria that there are no major objections, and at least some of the Review Team are in favor, the Shepherd initiates the Final Comment Period.</p>
 <p>Final Comment Period (FCP): The community at large has 10 calendar days in which to provide any final comments on the JEP. A JEP may revert back to RFC if objections are supported by the Review Team. If not reverted to the RFC phase, the JEP is approved at the end of the FCP.</p>
-</div>
-<div class="section" id="phase-3-work-commences">
-<h3>Phase 3: Work Commences<a class="headerlink" href="#phase-3-work-commences" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="phase-3-work-commences">
+<h3>Phase 3: Work Commences<a class="headerlink" href="#phase-3-work-commences" title="Permalink to this heading">#</a></h3>
 <p>Once a JEP has been merged into the jupyter/enhancement-proposal repository, development work can commence on the JEP. As the implementer(s) is submitting a pull request or pull requests in relation to the JEP, they should provide a reference to the JEP so that reviewer has background context on the JEP.</p>
 <p>As the JEP is being implemented, the implementer(s) are submitting pull requests for the JEP, they should update the JEP with addendums to denote the progress of the implementation using the following stages.</p>
 <ol class="arabic simple">
@@ -433,14 +488,14 @@
 </ol>
 <p>If in the course of implementation, it is discovered that the implementation needs to be radically different from what was defined in the original JEP, then a pull request needs to be submitted to modify the original JEP with the new necessary implementation and a note citing the need for a modification to the JEP. This pull request should be re-approved by the original review team.</p>
 <p>If in the course of the implementation, the implementer(s) can choose to withdraw from the original JEP if they are no longer interested in implementing the JEP or see infeasibilities in the JEP.</p>
-</div>
-<div class="section" id="paths-of-the-status-of-jeps">
-<h3>Paths of the status of JEPs<a class="headerlink" href="#paths-of-the-status-of-jeps" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="paths-of-the-status-of-jeps">
+<h3>Paths of the status of JEPs<a class="headerlink" href="#paths-of-the-status-of-jeps" title="Permalink to this heading">#</a></h3>
 <p><img alt="img" src="https://docs.google.com/a/safia.rocks/drawings/d/s9fsfcbWM0mamBZBDJpK0sA/image?w=583&amp;h=255&amp;rev=154&amp;ac=1&amp;parent=16xa1DSH0lN6lY-EzyyGOzaZlcQc1ZT8HEeDc3uyrwcI" /></p>
-</div>
-</div>
-<div class="section" id="what-qualifies-as-a-jep">
-<h2>What qualifies as a JEP?<a class="headerlink" href="#what-qualifies-as-a-jep" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="what-qualifies-as-a-jep">
+<h2>What qualifies as a JEP?<a class="headerlink" href="#what-qualifies-as-a-jep" title="Permalink to this heading">#</a></h2>
 <p>This section contains a set of principles to help determine when something is a JEP. The principles will be used to determine when something becomes a PR during the JEP pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.</p>
 <p><strong>Principles to follow</strong></p>
 <p>Below are a few example guidelines to follow when deciding if an idea should include
@@ -469,14 +524,14 @@ a JEP (If yes, it requires a JEP). Under each question is a relevant example pro
 </li>
 <li><p>Does the proposal involve creating a new repository or subproject?</p></li>
 </ul>
-</div>
-<div class="section" id="distribution">
-<h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="distribution">
+<h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this heading">#</a></h2>
 <p>This section describes how information about the JEP process (e.g., new JEPs, updates to
 current JEPs, etc) is communicated to the community.</p>
 <p>Note: This JEP repo is the <strong>canonical “source of truth”</strong> for individual JEPs, the JEP process, and activity on JEPs.</p>
-<div class="section" id="the-jep-public-archive-website">
-<h3>The JEP public archive website<a class="headerlink" href="#the-jep-public-archive-website" title="Permalink to this headline">¶</a></h3>
+<section id="the-jep-public-archive-website">
+<h3>The JEP public archive website<a class="headerlink" href="#the-jep-public-archive-website" title="Permalink to this heading">#</a></h3>
 <p>A public website contains a readable archive of all JEP proposals.
 It contains list of all JEPs that have entered a “final” state
 (e.g., “Completed”, “Withdrawn”, “Rejected”). The content of each JEP will
@@ -484,10 +539,10 @@ be displayed in a readable fashion. When a JEP enters into a final state, it
 is added to this website.</p>
 <p>Note that the JEPs themselves contain the content, while the website is just a
 quick way to display them in a reading-friendly format.</p>
-</div>
-</div>
-<div class="section" id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Jupyter Enhancement Proposal (JEP)</strong>: A written document that describes a proposed unit of significant work on Jupyter.</p></li>
 <li><p><strong>Contributor</strong>: The person (or persons) who is submitting the JEP. The implementation of a JEP may be done by others if so approved.</p></li>
@@ -508,50 +563,123 @@ quick way to display them in a reading-friendly format.</p>
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../42-voila-incorporation/voila-incorporation.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Voilà Incorporation</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../42-voila-incorporation/voila-incorporation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Voilà Incorporation</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../28-jupyter-server/jupyter-server.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../28-jupyter-server/jupyter-server.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Standalone Jupyter server enhancement</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Project Jupyter<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals-and-tenets">Goals and Tenets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jep-submission-workflow">JEP Submission Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-pre-proposal">Phase 1: Pre-proposal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-rfc-for-the-jep">Phase 2: RFC for the JEP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-3-work-commences">Phase 3: Work Commences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paths-of-the-status-of-jeps">Paths of the status of JEPs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-qualifies-as-a-jep">What qualifies as a JEP?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution">Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jep-public-archive-website">The JEP public archive website</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">Glossary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Project Jupyter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

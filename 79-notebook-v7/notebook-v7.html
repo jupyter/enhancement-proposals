@@ -1,354 +1,413 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Build Jupyter Notebook v7 off of JupyterLab components &#8212; Jupyter Enhancement Proposals</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '79-notebook-v7/notebook-v7';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/79-notebook-v7/notebook-v7.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Jupyter Enterprise Gateway Incorporation" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" />
     <link rel="prev" title="Replace PUB socket with XPUB socket" href="../65-jupyter-xpub/jupyter-xpub.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      
-      
-      <h1 class="site-logo" id="site-title">Jupyter Enhancement Proposals</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs..." aria-label="Search the docs..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../README.html">
-   Jupyter Enhancement Proposals
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Information
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">
-   Jupyter Enhancement Proposals (JEP) Guidelines
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">
-   JEP Template
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Accepted JEPs
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">
-   Jupyter integration with the Language Server Protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">
-   Replace PUB socket with XPUB socket
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Build Jupyter Notebook v7 off of JupyterLab components
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Implemented JEPs
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">
-   Jupyter Enterprise Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">
-   Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">
-   Jupyter DeclarativeWidgets Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">
-   Jupyter Dashboards Extension Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">
-   Jupyter Kernel Gateway Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../08-notebook-diff/notebook-diff.html">
-   Diffing and merging notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../62-cell-id/cell-id.html">
-   Cell ID Addition to Notebook Format
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">
-   Jupyter debugger protocol
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">
-   Xeus Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">
-   Voilà Incorporation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../29-jep-process/jep-process.html">
-   Jupyter Enhancement Proposal
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../28-jupyter-server/jupyter-server.html">
-   Standalone Jupyter server enhancement
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/79-notebook-v7/notebook-v7.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
 
-            <!-- Source interaction buttons -->
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jupyter/enhancement-proposals"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F79-notebook-v7/notebook-v7.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/jupyter/enhancement-proposals/edit/master/79-notebook-v7/notebook-v7.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extensions">
-   Extensions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#critical-extensions-needed-for-notebook-v7">
-     Critical extensions needed for Notebook v7
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extensions-whose-functionality-will-be-built-into-notebook-v7">
-     Extensions whose functionality will be built into Notebook v7
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#major-new-features-in-notebook-v7">
-   Major new features in Notebook v7
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#technical-details">
-   Technical details
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#timeline">
-   Timeline
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#user-stories">
-   User Stories
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decision-making-principles">
-   Decision making principles
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#links-and-resources">
-   Links and resources
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   Questions
-  </a>
- </li>
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Jupyter Enhancement Proposals</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Jupyter Enhancement Proposals
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../62-cell-id/cell-id.html">Cell ID Addition to Notebook Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">Jupyter debugger protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
 </ul>
 
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/79-notebook-v7/notebook-v7.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F79-notebook-v7/notebook-v7.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/79-notebook-v7/notebook-v7.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Build Jupyter Notebook v7 off of JupyterLab components</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">Extensions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-extensions-needed-for-notebook-v7">Critical extensions needed for Notebook v7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions-whose-functionality-will-be-built-into-notebook-v7">Extensions whose functionality will be built into Notebook v7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#major-new-features-in-notebook-v7">Major new features in Notebook v7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details">Technical details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-stories">User Stories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-principles">Decision making principles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#links-and-resources">Links and resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="build-jupyter-notebook-v7-off-of-jupyterlab-components">
-<h1>Build Jupyter Notebook v7 off of JupyterLab components<a class="headerlink" href="#build-jupyter-notebook-v7-off-of-jupyterlab-components" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="build-jupyter-notebook-v7-off-of-jupyterlab-components">
+<h1>Build Jupyter Notebook v7 off of JupyterLab components<a class="headerlink" href="#build-jupyter-notebook-v7-off-of-jupyterlab-components" title="Permalink to this heading">#</a></h1>
 <p>This JEP presents a path forward for the evolution of the Jupyter Notebook application in a way that is technically consistent with the rest of our tools and thus more sustainable, while meeting the needs of our users.</p>
 <p>This document proposes that the next major release of the <a class="reference external" href="https://jupyter-notebook.readthedocs.io">Jupyter Notebook</a> application, version 7, will be based on the JupyterLab codebase, but will provide an equivalent user experience to the current (version 6) application.  Jupyter Notebook version 7 (“Notebook v7” henceforth) will achieve this by using the current version of <a class="reference external" href="https://github.com/jupyterlab/retrolab">RetroLab</a>. The following three key ideas are central to this planned transition:</p>
 <p><strong>The Notebook as a document-centric user experience:</strong> The Jupyter Notebook application offers a <em>document-centric user experience</em>. That is, in the Notebook application, the landing page that contains a file manager, running tools tab, and a few optional extras, is a launching point into opening standalone, individual documents. This document-centric experience is important for many users, and that is the first key point this proposal aims to preserve. Notebook v7 will be based on a different JavaScript implementation than v6, but <em>it will preserve the document-centric experience, where each individual notebook opens in a separate browser tab and the visible tools and menus are focused on the open document</em>.</p>
 <p><strong>Extensions critical to the Notebook user community:</strong> Furthermore, for many users, certain widely used extensions are critical to their workflow. While we can not port every Notebook v6 extension ourselves (a list of widely-used community extensions is <a class="reference external" href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">here</a>), we will identify some critical extensions (listed below) which, on day 1 of the Notebook v7 release, should work with similar functionality that users currently enjoy. We will engage with the developers of those extensions to identify a concrete technical plan and resources to implement this transition. We will also engage with the broader extension-authoring community to provide resources to ease the transition of other extensions.</p>
 <p><strong>The body of existing content relying on the Notebook application experience:</strong> Finally, the Notebook v6 community depends on widely-used educational content using the core Notebook application (such as tutorials, textbooks, videos), and these <em>will not be invalidated</em> by the transition. Educators who have such materials online will not need to update their content. While we can not expect a pixel-perfect match between versions 6 and 7 of the Notebook, we will make every effort to ensure that the gap between the visual and operational experience (menu items, available tools and actions, etc.) is small enough that any user can reasonably bridge it without assistance.</p>
 <p>These three concerns will drive our transition; their specific implications are detailed below in the form of concrete user stories.</p>
-<div class="section" id="extensions">
-<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h2>
+<section id="extensions">
+<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this heading">#</a></h2>
 <p>The Notebook ecosystem for extensions is rich and varied, and some of those are critical to major deployments, especially in educational and institutional contexts. Since the internal APIs of JupyterLab are entirely different from those of Notebook v6, existing extensions written for v6 will not work on v7 out of the box. Here we detail the plan for how to minimize the disruption caused by this transition and how to support the community in the process.</p>
 <p>There is a <a class="reference external" href="https://jupyter-contrib-nbextensions.readthedocs.io">community repository of unofficial Notebook extensions</a>, along with <a class="reference external" href="https://jupyterlab-contrib.github.io/migrate_from_classical.html">corresponding documentation</a> indicating which of these extensions have analogs or ports in JupyterLab. Some of the functionalities provided by these unofficial Notebook extensions are now built-in features in JupyterLab: code folding, collapsible headings, the keyboard shortcuts editor, the table of contents, and many others.</p>
-<div class="section" id="critical-extensions-needed-for-notebook-v7">
-<h3>Critical extensions needed for Notebook v7<a class="headerlink" href="#critical-extensions-needed-for-notebook-v7" title="Permalink to this headline">¶</a></h3>
+<section id="critical-extensions-needed-for-notebook-v7">
+<h3>Critical extensions needed for Notebook v7<a class="headerlink" href="#critical-extensions-needed-for-notebook-v7" title="Permalink to this heading">#</a></h3>
 <p>The following Notebook v6 extensions have been flagged by the community as critical to several major deployments and widely-used workflows. We will work with the extension developers to help port these (or help make new equivalent extensions) for Notebook v7:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/jupyter/nbgrader">nbgrader</a></p></li>
@@ -356,18 +415,18 @@
 <li><p><a class="reference external" href="https://github.com/mwouts/jupytext/issues/271">Jupytext</a></p></li>
 <li><p>IPython Parallel (filebrowser tab)</p></li>
 </ul>
-</div>
-<div class="section" id="extensions-whose-functionality-will-be-built-into-notebook-v7">
-<h3>Extensions whose functionality will be built into Notebook v7<a class="headerlink" href="#extensions-whose-functionality-will-be-built-into-notebook-v7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="extensions-whose-functionality-will-be-built-into-notebook-v7">
+<h3>Extensions whose functionality will be built into Notebook v7<a class="headerlink" href="#extensions-whose-functionality-will-be-built-into-notebook-v7" title="Permalink to this heading">#</a></h3>
 <p>The following extensions will have largely equivalent experiences shipping in core Notebook v7 and JupyterLab. We will need to track whether there are any remaining differences in their functionality that are either regressions, or potentially disrupting or confusing to existing users.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/toc2">Table of Contents</a></p></li>
 <li><p><a class="reference external" href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/collapsible_headings">Collapsible headings</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="major-new-features-in-notebook-v7">
-<h2>Major new features in Notebook v7<a class="headerlink" href="#major-new-features-in-notebook-v7" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="major-new-features-in-notebook-v7">
+<h2>Major new features in Notebook v7<a class="headerlink" href="#major-new-features-in-notebook-v7" title="Permalink to this heading">#</a></h2>
 <p>In addition to having parity with the Notebook v6 user experience and widely-used extensions, Notebook v7 will inherit major new features that have been developed in the JupyterLab project, thus providing automatically a number of improvements to Notebook users as they transition to v7:</p>
 <ul class="simple">
 <li><p>Debugger</p></li>
@@ -377,24 +436,24 @@
 <li><p>Improved Web Content Accessibility Guidelines (WCAG) compliance</p></li>
 <li><p>Support for many JupyterLab extensions, including Jupyter LSP (Language Server Protocol) for enhanced code completions</p></li>
 </ul>
-</div>
-<div class="section" id="technical-details">
-<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/jupyterlab/retrolab">RetroLab</a> running on <a class="reference external" href="https://github.com/jupyter-server/jupyter_server">Jupyter Server</a> will be the basis for Notebook v7.</p></li>
 <li><p>The current <a class="reference external" href="https://github.com/jupyterlab/retrolab">RetroLab</a> commit history will be grafted into the <a class="reference external" href="https://github.com/jupyter/notebook">Jupyter Notebook repository</a> in a pull request. When pre-releases of Notebook v7 are published, the <code class="docutils literal notranslate"><span class="pre">retrolab</span></code> package can be deprecated in preparation for archival after Notebook v7 final is released.</p></li>
 <li><p>Notebook v7 will continue to be released as the <code class="docutils literal notranslate"><span class="pre">notebook</span></code> Python package.</p></li>
 <li><p>Issues and PRs in the <a class="reference external" href="https://github.com/jupyter/notebook">Notebook repository</a> will be triaged in this transition.</p></li>
 </ul>
-</div>
-<div class="section" id="timeline">
-<h2>Timeline<a class="headerlink" href="#timeline" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="timeline">
+<h2>Timeline<a class="headerlink" href="#timeline" title="Permalink to this heading">#</a></h2>
 <p>We anticipate that Notebook v7 will be released in 2022.</p>
 <p>Jupyter Notebook v6 will be maintained with critical security fixes for two years following the release of Jupyter Notebook v7.</p>
 <p>The <a class="reference external" href="https://github.com/jupyterlab/nbclassic"><code class="docutils literal notranslate"><span class="pre">nbclassic</span></code></a> Python package (which provides Jupyter Notebook version 6 on top of Jupyter Server) will also be maintained with critical security fixes for two years following the release of Notebook v7.</p>
-</div>
-<div class="section" id="user-stories">
-<h2>User Stories<a class="headerlink" href="#user-stories" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="user-stories">
+<h2>User Stories<a class="headerlink" href="#user-stories" title="Permalink to this heading">#</a></h2>
 <p>These user stories are guiding principles for the experience of using Notebook v7. They are not specific deliverables if the JEP is approved.</p>
 <ul class="simple">
 <li><p>As a user, when I install JupyterLab or Jupyter Notebook, I get both experiences, so I can choose between them as I work.</p></li>
@@ -427,9 +486,9 @@
 </li>
 <li><p>As a JupyterLab extension author, I want my extension to work with both Notebook 7 and JupyterLab 4, without maintaining two code bases or releasing two packages.</p></li>
 </ul>
-</div>
-<div class="section" id="decision-making-principles">
-<h2>Decision making principles<a class="headerlink" href="#decision-making-principles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="decision-making-principles">
+<h2>Decision making principles<a class="headerlink" href="#decision-making-principles" title="Permalink to this heading">#</a></h2>
 <p>As we move forward with this plan and begin to make decisions about how to handle the visual design, functionality, and UX of Notebook V7 (how elements are styled, how do they behave, etc.) there will be tension between two paths:</p>
 <ul class="simple">
 <li><p><strong>Option A</strong>: Making Notebook V7 work and look exactly like Notebook v6</p></li>
@@ -445,67 +504,137 @@
 <li><p>What is best for future Jupyter users who have never used either any version of Notebook or JupyterLab?</p></li>
 <li><p>Have we done everything possible to minimize the experience gap for users of Notebook v6 (while recognizing, given other constraints, that we can’t always eliminate it completely)?</p></li>
 </ul>
-</div>
-<div class="section" id="links-and-resources">
-<h2>Links and resources<a class="headerlink" href="#links-and-resources" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="links-and-resources">
+<h2>Links and resources<a class="headerlink" href="#links-and-resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>This JEP was originally posted by &#64;fperez <a class="reference external" href="https://github.com/jupyter/notebook/issues/6210#issuecomment-957169113">as a comment in the original discussion opened by &#64;zsailer</a>.</p></li>
 <li><p>The blockers for transitioning Berkeley’s Data 8 course to RetroLab are tracked <a class="reference external" href="https://github.com/berkeley-dsep-infra/datahub/issues/2422">here</a>.</p></li>
 <li><p>The <a class="reference external" href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">community-contributed Notebook extensions have their own repository</a>.</p></li>
 </ul>
-</div>
-<div class="section" id="questions">
-<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="questions">
+<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this heading">#</a></h2>
 <p><strong>Q:</strong> What implications does this transition have for the notebook <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> format?
 <strong>A:</strong> <em>None</em>. The file format remains unchanged. This JEP is about the Jupyter Notebook application, not the Jupyter notebook <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file format.</p>
 <p><strong>Q:</strong> I wrote a Notebook extension that I’d like to update. Where can I find resources and/or support for that?
 <strong>A:</strong> We will strive to assist the community throughout the transition to the new extension system. There will be a central location with information on how to port extensions for others to do so in the future. We will also host office hours to assist extension developers.</p>
 <p><strong>Q:</strong> What will I need to do to get my JupyterLab extension working with Notebook v7?
 <strong>A:</strong> Both JupyterLab and Notebook v7 will use the same extension system and it is our intention to enable extension authors to create extensions that work in both JupyterLab and Notebook v7. We are still working out the technical details of that and will update our documentation with links as more information is available.</p>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../65-jupyter-xpub/jupyter-xpub.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Replace PUB socket with XPUB socket</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../65-jupyter-xpub/jupyter-xpub.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Replace PUB socket with XPUB socket</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Jupyter Enterprise Gateway Incorporation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Project Jupyter<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">Extensions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-extensions-needed-for-notebook-v7">Critical extensions needed for Notebook v7</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions-whose-functionality-will-be-built-into-notebook-v7">Extensions whose functionality will be built into Notebook v7</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#major-new-features-in-notebook-v7">Major new features in Notebook v7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details">Technical details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeline">Timeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-stories">User Stories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-principles">Decision making principles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#links-and-resources">Links and resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Project Jupyter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
