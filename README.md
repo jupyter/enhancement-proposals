@@ -5,6 +5,8 @@ This repository contains enhancement proposals for the Jupyter ecosystem, known 
 See [the Enhancement Proposal Guidelines](jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md)
 for more information.
 
+Nicely rendered version of the JEPs: <https://jupyter.org/enhancement-proposals>
+
 ## Index of JEPs
 
 Below is a list of JEPs that have been Submitted in the past.
