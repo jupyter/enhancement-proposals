@@ -115,6 +115,20 @@ There will always be tradeoffs between these two options. To help us make these 
 - The blockers for transitioning Berkeley's Data 8 course to RetroLab are tracked [here](https://github.com/berkeley-dsep-infra/datahub/issues/2422).
 - The [community-contributed Notebook extensions have their own repository](https://github.com/ipython-contrib/jupyter_contrib_nbextensions).
 
+
+## User facing messaging for Jupyter Notebook and Jupyter Lab
+
+### Main message
+The Jupyter Notebook application offers a _document-centric user experience_.  The Jupyter Lab application offers a _development-centric user experience_. With the Jupyter Lab 4 release and the Notebook v7 release these two experiences will be provided on top of the same Jupyter Lab codebase.  The most popular Notebook extensions of nbgrader, rise, and JUPYext will work at the release date.  We will work with maintainers to port over other extensions over the coming months.
+
+### When should I use the notebook vs jupyterlab
+with notebook v7, this become largely a matter of personal preference
+
+### When should I not move to v7
+if you depend on an unsupported extension
+
+
+
 ## Questions
 
 **Q:** What implications does this transition have for the notebook `.ipynb` format?
@@ -125,3 +139,6 @@ There will always be tradeoffs between these two options. To help us make these 
 
 **Q:** What will I need to do to get my JupyterLab extension working with Notebook v7?
 **A:** Both JupyterLab and Notebook v7 will use the same extension system and it is our intention to enable extension authors to create extensions that work in both JupyterLab and Notebook v7. We are still working out the technical details of that and will update our documentation with links as more information is available.
+
+**Q:** Is there still ever a reason to write an NBExtension?
+**A:** ???
