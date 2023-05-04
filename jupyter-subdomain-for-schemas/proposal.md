@@ -35,7 +35,7 @@ There has been a surge of proposals aimed at backing these specifications with J
 
 Jupyter now hosts a subdomain for publishing schemas for humans and computers, schema.jupyter.org, where all core Jupyter JSON Schemas and related tools will be hosted.
 
-This site is built from a new repository, https://github.com/jupyter-standards/schemas, which collects and organizes these these schema from across the Jupyter ecosystem.
+This site is built from a new repository, https://github.com/jupyter-standards/schemas, which collects and organizes these schema from across the Jupyter ecosystem.
 
 Any schemas currently hosted in core Jupyter subprojects can find a new home in this repository, updated with the new subdomain, and published under the new URL.
 
