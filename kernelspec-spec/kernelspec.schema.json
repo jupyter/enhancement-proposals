@@ -6,7 +6,7 @@
     "type": "object",
 
     "definitions": {
-        "argv": {
+        "kernel_arguments": {
             "type": "object",
             "required": ["argv"],
             "properties": {
