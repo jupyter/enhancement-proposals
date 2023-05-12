@@ -10,16 +10,25 @@ A workaround has been implemented for the latter case, but it does not solve the
 
 We propose to implement a handshaking pattern: the client lets the kernel find free ports and communicate them back via a dedicated socket. It then connects to the kernel. More formely:
 
-- When the client starts, it opens a dedicated socket A for receiving connection information from kernels (channel ports).
-- When launching a new kernel, the client passes its address and the port of this socket to the kernel.
-- The kernel starts, find free ports to bind the shell, control, stdin, heartbeat and iopub sockets. It then connect to the A socket and send the connection information to the client.
+- The kernel launcher is responsible for opening a dedicated socket for receiving connection information from kernels (channel ports). This socket will be refered as the registration socket.
+- When starting a new kernel, the launcher passes the connection information for this socket to the kernel.
+- The kernel starts, find free ports to bind the shell, control, stdin, heartbeat and iopub sockets. It then connect to the registration socket and send the connection information to the client.
 - Upon reception of the connection information, the client connects to the kernel.
 
-The way the client passes its address and the port of the listening socket to the kernel should be similar to that of passing the ports of the kernel socket in the current implementation: a connection file that can be read by local kernels or sent over the network for remote kernels (although this requires a custom kernel provisioner or "nanny"). This connection file should also contain the signature scheme and the key.
+The way the launcher passes the connection information for the registration socket to the kernel should be similar to that of passing the ports of the kernel socket in the current connection pattern: a connection file that can be read by local kernels or sent over the network for remote kernels (although this requires a custom kernel provisioner or "nanny"). This connection file should also contain the signature scheme and the key.
+
+The kernel should not expect the registration socket to exist after it has sent its registration (i.e. it can be closed). Therefore, the kernel should disconnect from the registration socket right after it has sent its connection information.
 
 The kernel specifies whether it supports the handshake pattern via the "kernel_protocol_version" field in the kernelspec:
 - if the field is missing, or if its value if less than 5.5, the kernel supports passing ports only.
 - if the field value is >=5.5, the kernel supports both mechanisms.
+
+### Remarks
+
+This pattern is **NOT** a replacement for the current connection pattern. It is an additional one and kernels will have to implement both of them to be conformant to the Juyter Kernel Protocol specification. Which pattern should be used for the connection if decided by the kernel launcher, depending on the information passed in the initial connection file.
+
+
+A recommended implementation for a multi-kernel client (i.e. jupyter-server) is to have a single long-lived registration socket.
 
 ### Impact on existing implementations
 
