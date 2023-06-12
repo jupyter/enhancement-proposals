@@ -2,7 +2,7 @@
 title: Jupyter Optional Features
 authors: Johan Mabille (@JohanMabille)
 issue-number: xxx
-pr-number: xxx
+pr-number: 92
 date-started: 2023-01-16
 ---
 
@@ -29,7 +29,7 @@ a new feature that may be complicated to implement and not mandatory for them.
 
 # Proposed Enhancement
 
-We propose to add a new `supportedFeatures` field to the `kernel_info_reply` message.
+We propose to add a new `supported_features` field to the `kernel_info_reply` message.
 This field is a list of optional features that the kernel supports. The boolean field
 `debugger` should be deprecated, as it would duplicate a possible value of the list.
 
