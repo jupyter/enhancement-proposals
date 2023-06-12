@@ -46,10 +46,14 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'jupyter-subdomain-for-schemas/proposal';</script>
-    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/jupyter-subdomain-for-schemas/proposal.html" />
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas';</script>
+    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Enterprise Gateway Incorporation" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" />
+    <link rel="prev" title="Build Jupyter Notebook v7 off of JupyterLab components" href="../79-notebook-v7/notebook-v7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -140,10 +144,11 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">jupyter.org subdomain and repository for publishing schemas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
 <ul class="nav bd-sidenav">
@@ -230,7 +235,7 @@
       
       
       
-      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-subdomain-for-schemas/proposal.md" target="_blank"
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -247,7 +252,7 @@
       
       
       
-      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-subdomain-for-schemas/proposal.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +282,7 @@
       
       
       
-      <li><a href="../_sources/jupyter-subdomain-for-schemas/proposal.md" target="_blank"
+      <li><a href="../_sources/108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,32 +374,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">jupyter.org subdomain and repository for publishing schemas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notional-workflow">Notional Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notional-workflow">Notional Workflow</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-specifications">Higher-order Specifications</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packaging">Packaging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-at-rest">Schema-at-rest</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typings">Typings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validators">Validators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-specifications">Higher-order Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#packaging">Packaging</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-at-rest">Schema-at-rest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#typings">Typings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validators">Validators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -407,13 +410,12 @@ document.write(`
                   
   <section id="jupyter-org-subdomain-and-repository-for-publishing-schemas">
 <h1><a class="reference external" href="http://jupyter.org">jupyter.org</a> subdomain and repository for publishing schemas<a class="headerlink" href="#jupyter-org-subdomain-and-repository-for-publishing-schemas" title="Permalink to this heading">#</a></h1>
-</section>
 <section id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Create a subdomain under <a class="reference external" href="http://jupyter.org">jupyter.org</a> and a repository for publishing machine- and human-readable JSON Schemas provided by the core Jupyter ecosystem.</p>
 </section>
 <section id="motivation">
-<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h1>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
 <p>Jupyter defines various specifications for interactive computing that are widely used in our world today. Examples include:</p>
 <ul class="simple">
 <li><p>the notebook format</p></li>
@@ -430,7 +432,7 @@ document.write(`
 <p><strong>The URIs for a JSON schema should be static and “always” available.</strong> This JEP aims to provide a single subdomain where all core “Jupyter-verified” schemas can be reliably hosted.</p>
 </section>
 <section id="guide-level-explanation">
-<h1>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this heading">#</a></h1>
+<h2>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this heading">#</a></h2>
 <p>Jupyter now hosts a subdomain for publishing schemas for humans and computers, <a class="reference external" href="http://schema.jupyter.org">schema.jupyter.org</a>, where all core Jupyter JSON Schemas and related tools will be hosted.</p>
 <p>This site is built from a new repository, <a class="github reference external" href="https://github.com/jupyter-standards/schemas">jupyter-standards/schemas</a>, which collects and organizes these schema from across the Jupyter ecosystem.</p>
 <p>Any schemas currently hosted in core Jupyter subprojects can find a new home in this repository, updated with the new subdomain, and published under the new URL.</p>
@@ -462,7 +464,7 @@ document.write(`
 </div>
 </section>
 <section id="reference-level-explanation">
-<h1>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this heading">#</a></h1>
+<h2>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">&#64;jupyter-standards/schemas</span></code> repository must provide, at a minimum:</p>
 <ul class="simple">
 <li><p>a humane experience for authoring and reviewing schema-as-authored</p></li>
@@ -473,9 +475,10 @@ document.write(`
 <p>For the most part, validation can be captured in an internal, not-neccessarily-published JSON Schema, with the exception of the <code class="docutils literal notranslate"><span class="pre">$id</span></code> uniqueness rule. This would be easily achieved with an existing testing framework, such as <code class="docutils literal notranslate"><span class="pre">pytest</span></code>, and executed either locally, on <a class="reference external" href="http://mybinder.org">mybinder.org</a> or in continuous integration, such as GitHub actions.</p>
 <p>The documentation site should likely be based on <code class="docutils literal notranslate"><span class="pre">sphinx</span></code>, which includes in its broad ecosystem good support for JSON Schema-based specifications such as <a class="reference external" href="https://pypi.org/project/sphinx-jsonschema/"><code class="docutils literal notranslate"><span class="pre">sphinx-jsonschema</span></code></a>, <a class="reference external" href="https://github.com/sphinx-contrib/openapi"><code class="docutils literal notranslate"><span class="pre">sphinxcontrib-openapi</span></code></a>, <a class="reference external" href="https://asyncapi-sphinx-ext.readthedocs.io"><code class="docutils literal notranslate"><span class="pre">asyncapi-sphinx-ext</span></code></a>. These would further provide the ability for downstream documentation sites to unambiguously link to constructs in the schema website, via the well-known <code class="docutils literal notranslate"><span class="pre">objects.inv</span></code> file. ReadTheDocs would be an ideal candidate for review, providing many desirable features such as versioned releases, and per-PR review sites, while really any static host (such as GitLab Pages) would be suitable for the canonical URL.</p>
 <section id="notional-workflow">
-<h2>Notional Workflow<a class="headerlink" href="#notional-workflow" title="Permalink to this heading">#</a></h2>
+<h3>Notional Workflow<a class="headerlink" href="#notional-workflow" title="Permalink to this heading">#</a></h3>
 <p>Below, we describe a notional workflow for maturing a new pull request, driven by a Jupyter Extension Proposal, to publishing a new version of the documentation website and schemas.</p>
-<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>flowchart LR
+<div class="mermaid">
+            flowchart LR
     classDef external stroke-dasharray:4px
     JEP:::external --&gt; authoring &amp; examples
     subgraph &quot;a pull request&quot;
@@ -517,58 +520,56 @@ document.write(`
     subgraph website
         version --&gt; latest &amp; stable
     end
-</pre></div>
-</div>
-</section>
+        </div></section>
 </section>
 <section id="rationale-and-alternatives">
-<h1>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this heading">#</a></h1>
+<h2>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this heading">#</a></h2>
 <p>Adopting standards-based representations of key Jupyter interfaces encourages broader adoption of, and adherance to, these protocols, improving the portability of Jupyter documents and interoperability of first- and third-party implementations.</p>
 <p>Especially in the <a class="reference internal" href="#packaging"><span class="xref myst">packaging</span></a> case described below, having a single-source-of-truth which can be consumed by both sides of a protocol would increase the Jupyter community’s ability to innovate in a way that does not negatively impact the user community.</p>
 <p>The primary alternatives is to <em>do nothing</em>, keeping interface definitions tightly-bound to their reference implementations. This would preserve, and likely compound, the challenges observed today, where it is unclear <em>where</em> changes need to occur.</p>
 </section>
 <section id="prior-art">
-<h1>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this heading">#</a></h1>
+<h2>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://github.com/microsoft/debug-adapter-protocol">Debug Adapter Protocol</a> (DAP) stores its source of truth in a canonical <a class="reference external" href="https://github.com/microsoft/debug-adapter-protocol/blob/main/debugAdapterProtocol.json">JSON Schema</a>, and from this, generates markdown-based documentation.</p>
 <p>In contrast to other protocols managed by the same parent organization, which rely on bespoke documentation and specification language, this approach made it relatively easy for Jupyter to previously integrate with DAP.</p>
 </section>
 <section id="unresolved-questions">
-<h1>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this heading">#</a></h1>
+<h2>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="future-possibilities">
-<h1>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this heading">#</a></h1>
+<h2>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this heading">#</a></h2>
 <p>Once the schema repository and subdomain exists, a number of powerful features can be further enabled.</p>
 <section id="higher-order-specifications">
-<h2>Higher-order Specifications<a class="headerlink" href="#higher-order-specifications" title="Permalink to this heading">#</a></h2>
+<h3>Higher-order Specifications<a class="headerlink" href="#higher-order-specifications" title="Permalink to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://openapis.org">OpenAPI</a> and <a class="reference external" href="https://asyncapi.com">AsyncAPI</a> specification formats provide tool-independent ways to document both REST-like systems as well as RPC-style systems. These augment JSON Schema with the understanding of how <em>inputs</em> and <em>outputs</em> are tied together logically, with concepts like URL paths and operations signatures, which can also be validated.</p>
 <p>While a number of Jupyter tools have started using OpenAPI, these are generally static, and are used to drive documentation, but may not be used to drive validation or testing.</p>
 <p>Either in the proposed schema repository, or in future siblings, these specifications could be used to document, test, and potentially partially implement, the correct functioning of the Jupyter ecosystem.</p>
 </section>
 <section id="packaging">
-<h2>Packaging<a class="headerlink" href="#packaging" title="Permalink to this heading">#</a></h2>
+<h3>Packaging<a class="headerlink" href="#packaging" title="Permalink to this heading">#</a></h3>
 <p>As a widely-implemented standard, JSON Schema can be used to build packages, at various levels of specificity, that could be consumed by both Jupyter downstreams.</p>
 <p>By centralizing the definition, documentation, and testing of these packages, they can be delivered to Jupyter tools and others harmoniously and efficiently.</p>
 <section id="schema-at-rest">
-<h3>Schema-at-rest<a class="headerlink" href="#schema-at-rest" title="Permalink to this heading">#</a></h3>
+<h4>Schema-at-rest<a class="headerlink" href="#schema-at-rest" title="Permalink to this heading">#</a></h4>
 <p>Leveraging the Jupyter <em>well-known paths</em> for declarative Jupyter configuration and asset discovery, all schema could be delivered via a canonical <code class="docutils literal notranslate"><span class="pre">jupyter-schemas</span></code> package, populating the <code class="docutils literal notranslate"><span class="pre">{sys.prefix}/share/jupyter/schemas</span></code> with a file tree identical to the published site.</p>
 </section>
 <section id="typings">
-<h3>Typings<a class="headerlink" href="#typings" title="Permalink to this heading">#</a></h3>
+<h4>Typings<a class="headerlink" href="#typings" title="Permalink to this heading">#</a></h4>
 <p>A number of languages provide means for declaring the <em>type system</em> embodied in a JSON Schema. Automating the creation, testing, publishing, and documentation of such type-only packages for a language, starting with the core Jupyter tool-authoring languages (Python and TypeScript), would allow for light-weight, static-analysis-friendly ways to keep first- and third-party tools in a conforming state, without incurring any additional runtime dependencies.</p>
 <p>Typings would <em>not</em> be able to validate some properties of schema, such as string formats and regular expressions, but <em>would</em> provide the general “shape” of the specification well enough to help a downstream decide if a new version of a particular schema will break their users’ software.</p>
 </section>
 <section id="validators">
-<h3>Validators<a class="headerlink" href="#validators" title="Permalink to this heading">#</a></h3>
+<h4>Validators<a class="headerlink" href="#validators" title="Permalink to this heading">#</a></h4>
 <p>In many languages, there are a small number of <em>de facto</em> JSON Schema validator implementations, such as Python’s <code class="docutils literal notranslate"><span class="pre">jsonschema</span></code> and TypeScript’s <code class="docutils literal notranslate"><span class="pre">ajv</span></code>. With a slightly different template than the <em>typing</em> approach, these could be provided with reasonable dependency constraints, for downstream tools to apply full validation, still leveraging the <em>typings</em> above.</p>
 </section>
 <section id="models">
-<h3>Models<a class="headerlink" href="#models" title="Permalink to this heading">#</a></h3>
+<h4>Models<a class="headerlink" href="#models" title="Permalink to this heading">#</a></h4>
 <p>A number of other validating, model-based systems can also be derived from schema in a way which would still conform to the <em>typings</em> described above, but offer additional user and developer experience benefits.</p>
 <p>For example, in Python such generated packages could include <code class="docutils literal notranslate"><span class="pre">jupyter-schema-pydantic</span></code>, <code class="docutils literal notranslate"><span class="pre">jupyter-schema-attrs</span></code>, types compiled with <code class="docutils literal notranslate"><span class="pre">jupyter-schema-mypyc</span></code>, etc. as well as Jupyter’s in-house <code class="docutils literal notranslate"><span class="pre">jupyter-schema-traitlets</span></code> or <code class="docutils literal notranslate"><span class="pre">jupyter-schema-widgets</span></code>.</p>
 </section>
 </section>
 <section id="composition">
-<h2>Composition<a class="headerlink" href="#composition" title="Permalink to this heading">#</a></h2>
+<h3>Composition<a class="headerlink" href="#composition" title="Permalink to this heading">#</a></h3>
 <p>A top-level schema describing the entire Jupyter <em>vocabulary</em>, compatible with more recent JSON Schema drafts, can be derived from the schema-as-built.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
   ...
@@ -582,10 +583,11 @@ document.write(`
 </section>
 </section>
 <section id="references">
-<h1>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h1>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://json-schema.org/">JSON schema documentation</a></p></li>
 </ul>
+</section>
 </section>
 
 
@@ -600,6 +602,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../79-notebook-v7/notebook-v7.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Build Jupyter Notebook v7 off of JupyterLab components</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Jupyter Enterprise Gateway Incorporation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -618,32 +638,30 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">jupyter.org subdomain and repository for publishing schemas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notional-workflow">Notional Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notional-workflow">Notional Workflow</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-specifications">Higher-order Specifications</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packaging">Packaging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-at-rest">Schema-at-rest</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typings">Typings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validators">Validators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-specifications">Higher-order Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#packaging">Packaging</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#schema-at-rest">Schema-at-rest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#typings">Typings</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#validators">Validators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
