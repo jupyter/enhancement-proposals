@@ -12,6 +12,7 @@ parts:
   - file: 72-language-server-protocol/language-server-protocol.md
   - file: 65-jupyter-xpub/jupyter-xpub
   - file: 79-notebook-v7/notebook-v7
+  - file: 108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas
 
 - caption: Implemented JEPs
   chapters:
