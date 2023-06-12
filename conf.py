@@ -7,6 +7,7 @@ extensions = [
     "sphinx_external_toc",
     "sphinx.ext.intersphinx",
     "sphinx_book_theme",
+    "sphinxcontrib.mermaid",
 ]
 html_baseurl = "https://jupyter.org/enhancement-proposals"
 html_favicon = ""
@@ -29,4 +30,3 @@ myst_enable_extensions = [
     "linkify",
 ]
 pygments_style = "sphinx"
-

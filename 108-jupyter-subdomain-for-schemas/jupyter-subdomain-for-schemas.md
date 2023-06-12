@@ -2,18 +2,18 @@
 title: subdomain and repository for publishing schemas under jupyter.org
 authors: Zach Sailer, Nick Bollweg, Tony Fast
 issue-number: "[#107](https://github.com/jupyter/enhancement-proposals/issues/107)"
-pr-number: #
+pr-number: 108
 date-started: 2023-04-24
 ---
 
 # jupyter.org subdomain and repository for publishing schemas
 
 
-# Summary
+## Summary
 
 Create a subdomain under jupyter.org and a repository for publishing machine- and human-readable JSON Schemas provided by the core Jupyter ecosystem.
 
-# Motivation
+## Motivation
 
 Jupyter defines various specifications for interactive computing that are widely used in our world today. Examples include:
 * the notebook format
@@ -31,7 +31,7 @@ There has been a surge of proposals aimed at backing these specifications with J
 
 **The URIs for a JSON schema should be static and "always" available.** This JEP aims to provide a single subdomain where all core "Jupyter-verified" schemas can be reliably hosted.
 
-# Guide-level explanation
+## Guide-level explanation
 
 Jupyter now hosts a subdomain for publishing schemas for humans and computers, schema.jupyter.org, where all core Jupyter JSON Schemas and related tools will be hosted.
 
@@ -61,7 +61,7 @@ For example, to create an "event" schema for Jupyter Server, the `$id` field mig
 }
 ```
 
-# Reference-level explanation
+## Reference-level explanation
 
 The `@jupyter-standards/schemas` repository must provide, at a minimum:
 
@@ -75,11 +75,11 @@ For the most part, validation can be captured in an internal, not-neccessarily-p
 
 The documentation site should likely be based on `sphinx`, which includes in its broad ecosystem good support for JSON Schema-based specifications such as [`sphinx-jsonschema`](https://pypi.org/project/sphinx-jsonschema/), [`sphinxcontrib-openapi`](https://github.com/sphinx-contrib/openapi), [`asyncapi-sphinx-ext`](https://asyncapi-sphinx-ext.readthedocs.io). These would further provide the ability for downstream documentation sites to unambiguously link to constructs in the schema website, via the well-known `objects.inv` file. ReadTheDocs would be an ideal candidate for review, providing many desirable features such as versioned releases, and per-PR review sites, while really any static host (such as GitLab Pages) would be suitable for the canonical URL.
 
-## Notional Workflow
+### Notional Workflow
 
 Below, we describe a notional workflow for maturing a new pull request, driven by a Jupyter Extension Proposal, to publishing a new version of the documentation website and schemas.
 
-```mermaid
+```{mermaid}
 flowchart LR
     classDef external stroke-dasharray:4px
     JEP:::external --> authoring & examples
@@ -125,7 +125,7 @@ flowchart LR
 ```
 
 
-# Rationale and alternatives
+## Rationale and alternatives
 
 Adopting standards-based representations of key Jupyter interfaces encourages broader adoption of, and adherance to, these protocols, improving the portability of Jupyter documents and interoperability of first- and third-party implementations.
 
@@ -134,19 +134,19 @@ Especially in the [packaging](#packaging) case described below, having a single-
 The primary alternatives is to _do nothing_, keeping interface definitions tightly-bound to their reference implementations. This would preserve, and likely compound, the challenges observed today, where it is unclear _where_ changes need to occur.
 
 
-# Prior art
+## Prior art
 
 The [Debug Adapter Protocol](https://github.com/microsoft/debug-adapter-protocol) (DAP) stores its source of truth in a canonical [JSON Schema](https://github.com/microsoft/debug-adapter-protocol/blob/main/debugAdapterProtocol.json), and from this, generates markdown-based documentation.
 
 In contrast to other protocols managed by the same parent organization, which rely on bespoke documentation and specification language, this approach made it relatively easy for Jupyter to previously integrate with DAP.
 
-# Unresolved questions
+## Unresolved questions
 
-# Future possibilities
+## Future possibilities
 
 Once the schema repository and subdomain exists, a number of powerful features can be further enabled.
 
-## Higher-order Specifications
+### Higher-order Specifications
 
 The [OpenAPI](https://openapis.org) and [AsyncAPI](https://asyncapi.com) specification formats provide tool-independent ways to document both REST-like systems as well as RPC-style systems. These augment JSON Schema with the understanding of how _inputs_ and _outputs_ are tied together logically, with concepts like URL paths and operations signatures, which can also be validated.
 
@@ -154,33 +154,33 @@ While a number of Jupyter tools have started using OpenAPI, these are generally 
 
 Either in the proposed schema repository, or in future siblings, these specifications could be used to document, test, and potentially partially implement, the correct functioning of the Jupyter ecosystem.
 
-## Packaging
+### Packaging
 
 As a widely-implemented standard, JSON Schema can be used to build packages, at various levels of specificity, that could be consumed by both Jupyter downstreams.
 
 By centralizing the definition, documentation, and testing of these packages, they can be delivered to Jupyter tools and others harmoniously and efficiently.
 
-### Schema-at-rest
+#### Schema-at-rest
 
 Leveraging the Jupyter _well-known paths_ for declarative Jupyter configuration and asset discovery, all schema could be delivered via a canonical `jupyter-schemas` package, populating the `{sys.prefix}/share/jupyter/schemas` with a file tree identical to the published site.
 
-### Typings
+#### Typings
 
 A number of languages provide means for declaring the _type system_ embodied in a JSON Schema. Automating the creation, testing, publishing, and documentation of such type-only packages for a language, starting with the core Jupyter tool-authoring languages (Python and TypeScript), would allow for light-weight, static-analysis-friendly ways to keep first- and third-party tools in a conforming state, without incurring any additional runtime dependencies.
 
 Typings would _not_ be able to validate some properties of schema, such as string formats and regular expressions, but _would_ provide the general "shape" of the specification well enough to help a downstream decide if a new version of a particular schema will break their users' software.
 
-### Validators
+#### Validators
 
 In many languages, there are a small number of _de facto_ JSON Schema validator implementations, such as Python's `jsonschema` and TypeScript's `ajv`. With a slightly different template than the _typing_ approach, these could be provided with reasonable dependency constraints, for downstream tools to apply full validation, still leveraging the _typings_ above.
 
-### Models
+#### Models
 
 A number of other validating, model-based systems can also be derived from schema in a way which would still conform to the _typings_ described above, but offer additional user and developer experience benefits.
 
 For example, in Python such generated packages could include `jupyter-schema-pydantic`, `jupyter-schema-attrs`, types compiled with `jupyter-schema-mypyc`, etc. as well as Jupyter's in-house `jupyter-schema-traitlets` or `jupyter-schema-widgets`.
 
-## Composition
+### Composition
 
 A top-level schema describing the entire Jupyter _vocabulary_, compatible with more recent JSON Schema drafts, can be derived from the schema-as-built.
 
@@ -194,6 +194,6 @@ A top-level schema describing the entire Jupyter _vocabulary_, compatible with m
 }
 ```
 
-# References
+## References
 
 - [JSON schema documentation](https://json-schema.org/)
