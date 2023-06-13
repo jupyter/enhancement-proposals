@@ -19,7 +19,7 @@ Today, `nbformat` and `nbformat_minor` specify the JSON schema a notebook should
 The new required `$schema` top-level property refers to a JSON Schema that validates the current notebook. During a deprecation period, `$schema` takes precedence over the existing `"nbformat"` and `"nbformat_minor"` properties that specify the notebook format. There will be a one-to-one mapping between `$schema` and the `(nbformat, nbformat_minor)` pair, which should follow a URI template, e.g.:
 ```json
 {
-  "$schema": "https://jupyter.org/schema/notebook/notebook-{nbformat}.{nbformat_minor}.schema.json",
+  "$schema": "https://schema.jupyter.org/notebook/v{nbformat}.{nbformat_minor}/notebook.json",
   "nbformat": 4,
   "nbformat_minor": 6
 }
@@ -41,7 +41,7 @@ The following changes are made to the existing v4.5 schema:
 -  "$schema": "http://json-schema.org/draft-04/schema#",
 -  "description": "Jupyter Notebook v4.5 JSON schema.",
 +  "$schema": "https://json-schema.org/draft/2020-12/schema",
-+  "$id": "https://jupyter.org/schema/notebook/4.6/notebook-4.6.schema.json",
++  "$id": "https://schema.jupyter.org/notebook/v{nbformat}.{nbformat_minor}/notebook.json",
 +  "description": "Jupyter Notebook v4.6 JSON schema.",
    "type": "object",
    "additionalProperties": false,
@@ -81,7 +81,7 @@ The following changes are made to the existing v4.5 schema:
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://jupyter.org/schema/notebook/4.6/notebook-4.6.schema.json",
+  "$id": "https://schema.jupyter.org/notebook/v{nbformat}.{nbformat_minor}/notebook.json",
   "description": "Jupyter Notebook v4.6 JSON schema.",
   "type": "object",
   "additionalProperties": false,
@@ -563,7 +563,7 @@ Valid `$schema` URI:
 
 ```json
 {
-    "$schema": "https://jupyter.org/schema/notebook/4.6/notebook-4.6.schema.json"
+    "$schema": "https://schema.jupyter.org/notebook/v{nbformat}.{nbformat_minor}/notebook.json"
     ...
 }
 ```
@@ -572,7 +572,7 @@ Invalid `$schema` URI:
 
 ```json
 {
-    "$schema": "https://jupyter.org/schema/../schema/notebook/4.6/notebook-4.6.schema.json"
+    "$schema": "https://schema.jupyter.org/notebook/../notebook/v{nbformat}.{nbformat_minor}/notebook.json"
     ...
 }
 ```
