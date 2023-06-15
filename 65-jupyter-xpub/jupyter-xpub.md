@@ -1,3 +1,11 @@
+---
+title: Replace PUB socket with XPUB socket
+authors: Johan Mabille (@JohanMabille)
+issue-number:
+pr-number: 65
+date-started: 2021-01-05
+---
+
 # Replace PUB socket with XPUB socket
 
 ## Problem
