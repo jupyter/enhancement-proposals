@@ -25,7 +25,10 @@ We propose to implement a handshaking pattern: the client lets the kernel find f
 
 The way the launcher passes the connection information for the registration socket to the kernel should be similar to that of passing the ports of the kernel socket in the current connection pattern: a connection file that can be read by local kernels or sent over the network for remote kernels (although this requires a custom kernel provisioner or "nanny"). This connection file should also contain the signature scheme and the key.
 
-The kernel should not expect the registration socket to exist after it has received the acknowledge receipt (i.e. it can be closed). Therefore, the kernel should disconnect from the registration socket right after it has received the acknowledge receipt. A kernel should shutdown itself if it does not receive an acknowledge receipt after some time (the value of the time limit is let to the implementation).
+Reagarding the registration socket lifetime:
+
+- The kernel launcher MAY close the registration socket after completing a kernel's registration. Therefore, the kernel should disconnect from the registration socket right after it has received the acknowledge receipt. A kernel should shutdown itself if it does not receive an acknowledge receipt after some time (the value of the time limit is let to the implementation).
+- To restart a kernel will require the registration socket again, so the kernel launcher SHOULD keep the registration socket open if it expects restarts to be possible, or open a new socket and pass the new registration socket URL to the new process.
 
 The kernel should write its connection information in a connection file so that other clients can connect to it.
 
