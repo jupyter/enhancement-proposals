@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Kernel Handshaking pattern &#8212; Jupyter Enhancement Proposals</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'jupyter-handshaking/jupyter-handshaking';</script>
+    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/jupyter-handshaking/jupyter-handshaking.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Jupyter Enhancement Proposals</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Jupyter Enhancement Proposals
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../62-cell-id/cell-id.html">Cell ID Addition to Notebook Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">Jupyter debugger protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/jupyter-handshaking/jupyter-handshaking.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2Fjupyter-handshaking/jupyter-handshaking.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/jupyter-handshaking/jupyter-handshaking.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Kernel Handshaking pattern</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks">Remarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-existing-implementations">Impact on existing implementations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-resources-github-repositories-issues-prs">Relevant Resources (GitHub repositories, Issues, PRs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repositories">GitHub repositories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-issues">GitHub Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-pull-requests">GitHub Pull Requests</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="kernel-handshaking-pattern">
+<h1>Kernel Handshaking pattern<a class="headerlink" href="#kernel-handshaking-pattern" title="Permalink to this heading">#</a></h1>
+<section id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
+<p>The current implementation of Jupyter client makes it responsible for finding available ports and pass them to a new starting kernel. The issue is that a new process can start using one of these ports before the kernel has started, resulting in a ZMQError when the kernel starts. This is even more problematic when spawning a lot of kernels in a short laps of time, because the client may find available ports that have already been assigned to another kernel.</p>
+<p>A workaround has been implemented for the latter case, but it does not solve the former one.</p>
+</section>
+<section id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this heading">#</a></h2>
+<p>We propose to implement a handshaking pattern: the client lets the kernel find free ports and communicate them back via a dedicated socket. It then connects to the kernel. More formally:</p>
+<ul class="simple">
+<li><p>The kernel launcher is responsible for opening a dedicated socket for receiving connection information from kernels (channel ports). This socket will be referred as the <strong>registration socket</strong>.</p></li>
+<li><p>When starting a new kernel, the launcher passes the connection information for this socket to the kernel.</p></li>
+<li><p>The kernel starts, finds free ports to bind the shell, control, stdin, heartbeat and iopub sockets. It then connects to the registration socket and sends the connection information to the registration socket.</p></li>
+<li><p>Upon reception of the connection information, the launcher sends an acknowledge receipt to the kernel, and the client connects to the kernel.</p></li>
+</ul>
+<p>The way the launcher passes the connection information for the registration socket to the kernel should be similar to that of passing the ports of the kernel socket in the current connection pattern: a connection file that can be read by local kernels or sent over the network for remote kernels (although this requires a custom kernel provisioner or “nanny”). This connection file should also contain the signature scheme and the key.</p>
+<p>Reagarding the registration socket lifetime:</p>
+<ul class="simple">
+<li><p>The kernel launcher MAY close the registration socket after completing a kernel’s registration. Therefore, the kernel should disconnect from the registration socket right after it has received the acknowledge receipt. A kernel should shutdown itself if it does not receive an acknowledge receipt after some time (the value of the time limit is let to the implementation).</p></li>
+<li><p>To restart a kernel will require the registration socket again, so the kernel launcher SHOULD keep the registration socket open if it expects restarts to be possible, or open a new socket and pass the new registration socket URL to the new process.</p></li>
+</ul>
+<p>The kernel should write its connection information in a connection file so that other clients can connect to it.</p>
+<p>The kernel specifies whether it supports the handshake pattern via the “kernel_protocol_version” field in the kernelspec:</p>
+<ul class="simple">
+<li><p>if the field is missing, or if its value if less than 5.5, the kernel supports passing ports only.</p></li>
+<li><p>if the field value is &gt;=5.5, the kernel supports both mechanisms.</p></li>
+</ul>
+<section id="remarks">
+<h3>Remarks<a class="headerlink" href="#remarks" title="Permalink to this heading">#</a></h3>
+<p>This pattern is <strong>NOT</strong> a replacement for the current connection pattern. It is an additional one and kernels will have to implement both of them to be conformant to the Jupyter Kernel Protocol specification. Which pattern should be used for the connection is decided by the kernel launcher, depending on the information passed in the initial connection file.</p>
+<p>A recommended implementation for a multi-kernel client (i.e. jupyter-server) is to have a single long-lived registration socket.</p>
+</section>
+<section id="impact-on-existing-implementations">
+<h3>Impact on existing implementations<a class="headerlink" href="#impact-on-existing-implementations" title="Permalink to this heading">#</a></h3>
+<p>Although this enhancement requires changing all the existing kernels, the impact should be limited. Indeed, most of the kernels are based on the kernel wrapper approach, or on xeus.</p>
+<p>Most of the clients are based on <code class="docutils literal notranslate"><span class="pre">jupyter_client</span></code>. Therefore, the changes should only be limited to this repository or external kernel provisioners.</p>
+</section>
+</section>
+<section id="relevant-resources-github-repositories-issues-prs">
+<h2>Relevant Resources (GitHub repositories, Issues, PRs)<a class="headerlink" href="#relevant-resources-github-repositories-issues-prs" title="Permalink to this heading">#</a></h2>
+<section id="github-repositories">
+<h3>GitHub repositories<a class="headerlink" href="#github-repositories" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Jupyter Client: <a class="github reference external" href="https://github.com/jupyter/jupyter_client">jupyter/jupyter_client</a>
+The Jupyter protocol client APIs</p></li>
+<li><p>Voilà: <a class="github reference external" href="https://github.com/voila-dashboards/voila">voila-dashboards/voila</a>
+Voilà turns Jupyter notebooks into standalone web applications</p></li>
+<li><p>IPyKernel: <a class="github reference external" href="https://github.com/ipython/ipykernel">ipython/ipykernel</a>
+IPython kernel for Jupyter</p></li>
+<li><p>Xeus: <a class="github reference external" href="https://github.com/jupyter-xeus/xeus">jupyter-xeus/xeus</a>
+The C++ implementation of the Jupyter kernel protocol</p></li>
+</ul>
+</section>
+<section id="github-issues">
+<h3>GitHub Issues<a class="headerlink" href="#github-issues" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Spawning many kernels may result in ZMQError (<a class="github reference external" href="https://github.com/jupyter/jupyter_client/issues/487">jupyter/jupyter_client#487</a>)</p></li>
+<li><p>Spawning ~20 requests at a time results in a ZMQError  (<a class="github reference external" href="https://github.com/voila-dashboards/voila/issues/408#issuecomment-539968325">voila-dashboards/voila#408</a>)</p></li>
+</ul>
+</section>
+<section id="github-pull-requests">
+<h3>GitHub Pull Requests<a class="headerlink" href="#github-pull-requests" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Prevent two kernels to have the same ports (<a class="github reference external" href="https://github.com/jupyter/jupyter_client/pull/490">jupyter/jupyter_client#490</a>)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks">Remarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-on-existing-implementations">Impact on existing implementations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relevant-resources-github-repositories-issues-prs">Relevant Resources (GitHub repositories, Issues, PRs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repositories">GitHub repositories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-issues">GitHub Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-pull-requests">GitHub Pull Requests</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Project Jupyter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
