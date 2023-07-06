@@ -4,22 +4,19 @@
 
 When connecting a new websocket to an existing kernel via the Jupyter server, if the kernel execution is
 stopped on a breakpoint, the messages sent over the websocket get no reply. This is because when
-establibshing a new websocket connection, the Jupyter server will send `kernel_info` requests to the kernel
+establishing a new websocket connection, the Jupyter server will send `kernel_info` requests to the kernel
 and will prevent sending any other request until it receives a `kernel_info` reply. Since the `kernel_info`
-request is sent on the shell channel and the kernel executino is stopped, it cannot reply to that request.
+request is sent on the shell channel and the kernel execution is stopped, it cannot reply to that request.
 
 ## Proposed enhancement
 
-We propose to state in the Jupyter Messaging Protocol that the `kernel_info` request muter st be sent on the
-control channel exclusively.
+We propose to state in the Jupyter Messaging Protocol that the `kernel_info` request can be sent on both the shell and the control channels. Although both channels supports the `kernel_info` message, clients are encouraged to send it on the control channel as it will always be able to handle it, while the shell channel may be stopped.
 
 ### Impact on existing implementations
 
-There should not be any impact on the existing kernels, since the current specification states that any message
-that can be sent on the shell channel could be sent on the control channel.
+This JEP impacts kernels since it requires them to support receiving 'kernel\_info\_request' on the dontrol channel in addition to receiving them on the shell channel.
 
-The only impact of this change (beyond the protocol itself) is on the Jupyter Server, which must be updated
-accordingly.
+It also has an impact on  the Jupyter Server, which must be updated accordingly.
 
 ## Relevant Resources (GitHub repositories, Issues, PRs)
 
