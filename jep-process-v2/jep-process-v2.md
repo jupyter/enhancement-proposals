@@ -48,7 +48,7 @@ With that in mind, the JEP process operates under the following tenets:
 
   - GitHub issue and PR templates, for example, across the entire Jupyter project, should have references to the JEP process as a possible outcome of a given PR.
 
-- **There is one JEP repository, all Jupyter-governed projects must use it.**  To faciliate the easiest possible adoption and high visibility of ideas, a single JEP repository will be used.  Even if a JEP only applies to a single organization.
+- **There is one JEP repository, all Jupyter-governed projects must use it.**  To facilitate the easiest possible adoption and high visibility of ideas, a single JEP repository will be used.  Even if a JEP only applies to a single organization.
 
 - The JEP process **has multiple valid use cases**.  Each use case might have a slightly different expected workflow or base JEP template.  Some expected use cases include:
 
@@ -70,12 +70,12 @@ In order to transition out of the pre-proposal stage, the following checklist mu
 1. A github issue on the Jupyter Enhancement Proposals repo is created that
 2. 1. Briefly outlines the proposal
 
-   2. Suggests reviewiers (optional) in addition to the SSC members.
+2. Suggests reviewers (optional) in addition to the SSC members.
 
    3. Why it should be a JEP
 
    4. 1. See the “JEP / Not-a-JEP Rubric” below.
-3. A *Shepherd* is identified to see the process through. Shepherds are assigned from a set of people actively involved in the project (Sotfware subprojects, SSC or EC, Standing committees and Working groups), based on the scope of the JEP. The Shepherd can be the author of the JEP. If the author of the JEP cannot
+3. A *Shepherd* is identified to see the process through. Shepherds are assigned from a set of people actively involved in the project (Software subprojects, SSC or EC, Standing committees and Working groups), based on the scope of the JEP. The Shepherd can be the author of the JEP. If the author of the JEP cannot
 identify a Shepherd, the SSC is responsible for designating one.
 4. A number is assigned to the JEP to track it through the rest of the process.
 
@@ -88,7 +88,7 @@ The Shepherd decides if the JEP criteria have been met.
 
 ### Phase 2: RFC for the JEP
 
-Submission: The author submits an initial draft of the JEP as a PR to the JEP repository starting from the relevant template decided in the pre-proposal stage. The number assigned to the PR by Github is the JEP number. The Shepherd optionally assigns reviewers in addition to the SSC. Reviewers and the SSC are refered as the Review Team in the following.
+Submission: The author submits an initial draft of the JEP as a PR to the JEP repository starting from the relevant template decided in the pre-proposal stage. The number assigned to the PR by Github is the JEP number. The Shepherd optionally assigns reviewers in addition to the SSC. Reviewers and the SSC are referred as the Review Team in the following.
 
 Request For Comment (RFC) phase: The proposal is iterated on with feedback from the Review Team and the community at large. The Shepherd helps engage the Review Team. When the proposal matures, if there are no major objections, the Shepherd calls to a vote from the SSC members.
 
@@ -118,9 +118,9 @@ If in the course of the implementation, the implementer(s) can choose to withdra
 - Waiting for answer: authors have been pinged and we will wait 2 weeks before revising the status
 - Waiting for decision: final decision to approve or not to be sanctioned by SSC
 - FCP: Final Comment Period, 10 days period for any final comment before approval
-- In progress: JEP has been approve, implementation is on progress
+- In progress: JEP has been approved, implementation is in progress
 - Completed: Implementation has completed
-- Withdraw: at any stage the author cn decide to withdraw the JEP
+- Withdraw: at any stage the author can decide to withdraw the JEP
 - Deferred: Inactive draft that may be taken up again at a later time
 - Rejected: The JEP has been rejected and will not be implemented
 
