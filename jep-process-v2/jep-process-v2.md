@@ -120,7 +120,7 @@ If in the course of the implementation, the implementer(s) can choose to withdra
 - FCP: Final Comment Period, 10 days period for any final comment before approval
 - In progress: JEP has been approved, implementation is in progress
 - Completed: Implementation has completed
-- Withdraw: at any stage the author can decide to withdraw the JEP
+- Withdrawn: at any stage the author can decide to withdraw the JEP
 - Deferred: Inactive draft that may be taken up again at a later time
 - Rejected: The JEP has been rejected and will not be implemented
 
