@@ -25,11 +25,11 @@ believe to be the mental model of users when they click "restart".
 # Guide-level explanation
 
 The [protocol](https://jupyter-client.readthedocs.io/en/latest/messaging.html#kernel-shutdown) would describe
-restart as restarting only the kernel process and its subprocess *not* any parent process.
+restart as optimally preserving as many resources outside the kernel as possible (e.g. restarting only the kernel process and its subprocess *not* any parent process).
 
 When the kernel is a toplevel process (e.g. local kernels), there is no change.
 
-When the kernel is not a toplevel process (e.g. when used in Enterprise Gateway), restart means only the kernel restarts. To restart the whole progress group, the stop and start messages must be used. It's up to UIs
+When the kernel is not a toplevel process (e.g. when used in Enterprise Gateway), restart often means only the kernel restarts. To restart the whole progress group, the stop and start messages could be used. It's up to UIs
 for how to display this difference (if any).
 
 # Reference-level explanation
@@ -43,6 +43,8 @@ A new message could be added, as proposed in the pre-JEP. In the [Jupyter Server
 we concluded that is is likely most users want restart to only restart the kernel and not potentially reschedule resources. Therefore, a new message was not the best option.
 For the vast majority of kernels (local subprocesses), this change is a no-op because restart-in-place
 is the same as a hard restart since it is the toplevel kernel process.
+
+For users that want a hard restart, a stop followed by a start continues to be available. While this may be less convenient, a UI can trivially hide this two call process from the user.
 
 # Prior art
 
