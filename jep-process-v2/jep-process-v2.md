@@ -5,6 +5,7 @@ authors: |
 issue-number: 27
 pr-number: 29
 date-started: "2019-02-23"
+last-update: "2023-10-10"
 type: P - Process
 ---
 
@@ -88,7 +89,7 @@ The Shepherd decides if the JEP criteria have been met.
 
 ### Phase 2: RFC for the JEP
 
-Submission: The author submits an initial draft of the JEP as a PR to the JEP repository starting from the relevant template decided in the pre-proposal stage. The number assigned to the PR by Github is the JEP number. The Shepherd optionally assigns reviewers in addition to the SSC. Reviewers and the SSC are referred as the Review Team in the following.
+Submission: The author submits an initial draft of the JEP as a PR to the JEP repository starting from the relevant template decided in the pre-proposal stage. The number assigned to the PR by GitHub is the JEP number. The Shepherd optionally assigns reviewers in addition to the SSC. Reviewers and the SSC are referred as the Review Team in the following.
 
 Request For Comment (RFC) phase: The proposal is iterated on with feedback from the Review Team and the community at large. The Shepherd helps engage the Review Team. When the proposal matures, if there are no major objections, the Shepherd calls to a vote from the SSC members.
 
@@ -98,7 +99,7 @@ Final Comment Period (FCP): The community at large has 10 calendar days in which
 
 ### Phase 3: Work Commences
 
-Once a JEP has been merged into the jupyter/enhancement-proposal repository, development work can commence on the JEP. As the implementer(s) is submitting a pull request or pull requests in relation to the JEP, they should provide a reference to the JEP so that reviewer has background context on the JEP.
+Once a JEP has been merged into the jupyter/enhancement-proposal repository, it becomes active and development work can commence on the JEP. As the implementer(s) is submitting a pull request or pull requests in relation to the JEP, they should provide a reference to the JEP so that reviewer has background context on the JEP.
 
 As the JEP is being implemented, the implementer(s) are submitting pull requests for the JEP, they should update the JEP with addendums to denote the progress of the implementation using the following stages.
 
@@ -108,6 +109,10 @@ As the JEP is being implemented, the implementer(s) are submitting pull requests
 If in the course of implementation, it is discovered that the implementation needs to be radically different from what was defined in the original JEP, then a pull request needs to be submitted to modify the original JEP with the new necessary implementation and a note citing the need for a modification to the JEP. This pull request should be re-approved by the original review team.
 
 If in the course of the implementation, the implementer(s) can choose to withdraw from the original JEP if they are no longer interested in implementing the JEP or see infeasibilities in the JEP.
+
+### Updating an accepted JEP
+
+When one needs to amend a JEP that was merged, they need to open a new JEP. If the new JEP gets accepted and merged, the old JEP loses its "Active" status; a note should be added to the old JEP with a link to the one it is replaced with.
 
 ### Paths of the status of JEPs
 
