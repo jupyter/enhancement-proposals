@@ -57,7 +57,7 @@ With that in mind, the JEP process operates under the following tenets:
   - Non-trivial features or improvements that span multiple projects.
   - Any proposed changes to published APIs or core specifications (e.g., nbformat)
   - Changes to the JEP process itself.
-  - Creating a new GitHub repo in one of the official Jupyter orgs
+  - Creating a new official GitHub organization.
 
 
 ## JEP Submission Workflow
@@ -143,12 +143,13 @@ a JEP (If yes, it requires a JEP). Under each question is a relevant example pro
   - Defining a unique cell identifier
 - Does the proposal/implementation PR impact multiple orgs, or have widespread community impact?
   - Updating nbformat
-- Does the proposal/implementation change an invariant in one or more orgs?
+- Does the proposal/implementation impact the interoperability of software components developed in separate Jupyter Subprojects?
   - Defining a unique cell identifier
   - Deferred kernel startup
 - Does the proposal/implementation create a new concept that will impact multiple repositories?
   - Sandboxed cell outputs
-- Does the proposal involve creating a new repository or subproject?
+- Does the proposal involve creating a new GitHub organization or subproject?
+  - jupyter-xeus
 
 ## Distribution
 
