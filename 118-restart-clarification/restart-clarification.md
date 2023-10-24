@@ -56,5 +56,5 @@ Only the exact wording changes as proposed in [jupyter_client](https://github.co
 
 # Future possibilities
 
-We would make a service that implements a "hard restart" as discussed in the juptyer-server meeting.
+We would make a service that implements a "hard restart" as discussed in the jupyter-server meeting.
 No one on the meeting had an immediate use case for it.
