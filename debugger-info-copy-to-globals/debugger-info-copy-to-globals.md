@@ -23,3 +23,47 @@ UI if this is supported by the kernel before displaying the corresponding menu e
 
 We propose to add a new `copyToGlobals` boolean field to the `debugger_info`
 response which will inform the UI that this request is supported.
+
+## Reference-level explanation
+
+This boolean flag should be included in the `debugger_info` response from the kernel
+which supports the feature. It is optional, assuming that its absence is understood
+as `false` from the client perspective.
+
+If the feature is supported, the kernel must provide a function for copying a variable
+from a local scope to the global scope.
+The communication between the UI and the kernel (request - response) will have the
+structures described at
+https://jupyter-client.readthedocs.io/en/latest/messaging.html#copytoglobals.
+
+- Request (from UI to kernel)
+
+  ```json
+  {
+    'type': 'request',
+    'command': 'copyToGlobals',
+    'arguments': {
+      # the variable to copy from the frame corresponding to `srcFrameId`
+      'srcVariableName': str,
+      'srcFrameId': int,
+      # the copied variable name in the global scope
+      'dstVariableName': str
+    }
+  }
+  ```
+
+- Response (from kernel to UI)
+
+  ```json
+  {
+    'type': 'response',
+    'success': bool,
+    'command': 'setExpression',
+    'body': {
+      # string representation of the copied variable
+      'value': str,
+      # type of the copied variable
+      'type': str,
+      'variablesReference': int
+    }
+  }
