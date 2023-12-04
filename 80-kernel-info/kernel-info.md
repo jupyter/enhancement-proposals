@@ -1,4 +1,4 @@
-# Send kernel\_info request on the control channel
+# Support kernel\_info request on the control channel
 
 ## Problem
 
