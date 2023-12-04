@@ -3,7 +3,7 @@
 ## Problem
 
 When connecting a new websocket to an existing kernel via the Jupyter server, if the kernel execution is
-stopped on a breakpoint, the messages sent over the websocket get no reply. This is because when
+busy (e.g. long running cell) or stopped (e.g. on a breakpoint), the messages sent over the websocket get no reply. This is because when
 establishing a new websocket connection, the Jupyter server will send `kernel_info` requests to the kernel
 and will prevent sending any other request until it receives a `kernel_info` reply. Since the `kernel_info`
 request is sent on the shell channel and the kernel execution is stopped, it cannot reply to that request.
