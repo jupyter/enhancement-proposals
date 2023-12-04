@@ -16,7 +16,7 @@ We propose to state in the Jupyter Messaging Protocol that the `kernel_info` req
 
 This JEP impacts kernels since it requires them to support receiving 'kernel\_info\_request' on the control channel in addition to receiving them on the shell channel.
 
-It also has an impact on  the Jupyter Server, which must be updated accordingly.
+It also has an impact on the Jupyter Server. For example, the reference implementation of Jupyter Server will attempt to send a a `kernel_info` request on both channels and listen for a response from _either_ channel. Any response informs the UI that the kernel is connected. 
 
 ## Relevant Resources (GitHub repositories, Issues, PRs)
 
