@@ -54,7 +54,7 @@ https://jupyter-client.readthedocs.io/en/latest/messaging.html#copytoglobals.
 
 - Response (from kernel to UI)
 
-  ```json
+  ```python
   {
     'type': 'response',
     'success': bool,
