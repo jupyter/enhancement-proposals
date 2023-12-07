@@ -38,7 +38,7 @@ https://jupyter-client.readthedocs.io/en/latest/messaging.html#copytoglobals.
 
 - Request (from UI to kernel)
 
-  ```json
+  ```python
   {
     'type': 'request',
     'command': 'copyToGlobals',
