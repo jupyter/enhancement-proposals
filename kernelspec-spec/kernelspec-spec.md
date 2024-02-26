@@ -18,7 +18,7 @@ We propose to specify the kernelspec with the JSON schema joined in this PR. The
 [the current description of the kernelspec](https://jupyter-client.readthedocs.io/en/stable/kernels.html#kernel-specs),
 and adds an optional `kernel_protocol_version` field.
 
-The documentation of the kernelspec will be stored aside [that of the kernel protocol](https://github.com/jupyter-standards/kernel-protocol). The schema will be stored in a dedicated repo for all Jupyter schemas.
+The documentation of the kernelspec will be stored aside [that of the kernel protocol](https://github.com/jupyter-standards/kernel-protocol). The schema will be stored in the [dedicated repo for all Jupyter schemas](https://github.com/jupyter/schema).
 
 ### Impact on existing implementations
 
