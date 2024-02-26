@@ -18,7 +18,7 @@ We propose to specify the connection file with the JSON schema joined in this PR
 [the current description of the connection file](https://jupyter-client.readthedocs.io/en/stable/kernels.html#connection-files),
 and adds an optional `kernel_protocol_version` field.
 
-The specification and the documentation of the connectio filewill be stored aside [those of the kernel protocol](https://github.com/jupyter-standards/kernel-protocol)
+The specification and the documentation of the connection file will be stored along side [those of the kernel protocol](https://github.com/jupyter-standards/kernel-protocol)
 
 ### Impact on existing implementations
 
