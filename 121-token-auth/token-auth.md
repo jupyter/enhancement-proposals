@@ -45,7 +45,7 @@ Websockets can, however, set the `Sec-Websocket-Protocol` header to a _list_ of 
 
 This proposal adds a scheme for sending auth tokens in the `Sec-Websocket-Protocol` header.
 
-In general, this should be considered equivalent to sending tokens in the Authorization header which we do for all non-websocket API requests, but specifying the mechanism by which the token is transmitted when the for websocket requests when the Authorization header is unavailable.
+In general, this should be considered equivalent to sending tokens in the Authorization header which we do for all non-websocket API requests, but specifying the mechanism by which the token is transmitted for websocket requests when the Authorization header is unavailable.
 
 Adopting this scheme allows the removal of tokens from URLs, which is flagged by some security policies.
 
@@ -80,7 +80,7 @@ Sec-WebSocket-Protocol: v1.token.websocket.jupyter.org
 ```
 
 The reason for the double subprotocol is that if _any_ subprotocol is requested, the response _must_ include one of the requested subprotocols for the connection to be accepted by all browsers.
-Not all browser require this, but Chrome does. The `v1.token.websocket.jupyter.org` serves no purpose if there is already a subprotocol defined and required, and should be optional in that case.
+Not all browsers require this, but Chrome does. The `v1.token.websocket.jupyter.org` serves no purpose if there is already a subprotocol defined and required, and should be optional in that case.
 
 #### Backward compatibility
 
@@ -106,7 +106,7 @@ Affected projects:
 - jupyter-server
 - jupyverse
 
-Before accepting a connection, a server should check the Sec-Websocket-Protocol header.
+Before accepting a connection, a server should check the `Sec-Websocket-Protocol` header.
 If one of the protocols listed matches `v1.token.websocket.jupyter.org.{token}`, the token should be checked.
 The token should be url-decoded (e.g. `token = urllib.parse.unquote(token)`).
 Handling of the token should be identical to an `Authorization: Bearer {token}`.
@@ -131,7 +131,7 @@ Websocket clients SHALL transmit API tokens in the `Sec-Websocket-Protocol` head
 - Token MUST be in the form `v1.token.websocket.jupyter.org.{token}`
 - Token MUST be url-encoded, e.g. via `encodeURIComponent(token)`
 - Subprotocol MUST include at least one OTHER subprotocol that is REQUIRED.
-  If no exiting subprotocol is REQUIRED, the subprotocol `v1.token.websocket.jupyter.org` MUST be included.
+  If no existing subprotocol is REQUIRED, the subprotocol `v1.token.websocket.jupyter.org` MUST be included.
 - Token-encoded subprotocol field SHALL be after the first REQUIRED subprotocol
 
 In general, this will look like:
@@ -184,11 +184,11 @@ A draft implementation is submitted [to jupyter-server](https://github.com/jupyt
 
 ## Rationale and alternatives
 
-### Following kubernetes example
+### Following Kubernetes example
 
 This JEP follows a scheme [devised by Kubernetes](https://github.com/kubernetes/kubernetes/commit/714f97d7baf4975ad3aa47735a868a81a984d1f0).
 
-Our scheme differs from kubernetes only in that we do not serialize the token via base64 in the header.
+Our scheme differs from Kubernetes only in that we do not serialize the token via base64 in the header.
 
 Pro base64-encoding:
 
