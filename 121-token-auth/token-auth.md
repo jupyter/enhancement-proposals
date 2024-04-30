@@ -126,13 +126,13 @@ Specifying how/whether to do that is out of scope for this JEP.
 
 ### Clients
 
-Websocket clients SHALL transmit API tokens in the `Sec-Websocket-Protocol` header.
+Websocket clients SHOULD transmit API tokens in the `Sec-Websocket-Protocol` header.
 
 - Token MUST be in the form `v1.token.websocket.jupyter.org.{token}`
 - Token MUST be url-encoded, e.g. via `encodeURIComponent(token)`
 - Subprotocol MUST include at least one OTHER subprotocol that is REQUIRED.
   If no existing subprotocol is REQUIRED, the subprotocol `v1.token.websocket.jupyter.org` MUST be included.
-- Token-encoded subprotocol field SHALL be after the first REQUIRED subprotocol
+- Token-encoded subprotocol field SHOULD be after the first REQUIRED subprotocol
 
 In general, this will look like:
 
@@ -151,8 +151,8 @@ If a websocket connection with the subprotocol scheme fails, clients MAY retry c
 
 ### Servers
 
-Servers SHALL accept API tokens in the `Sec-Websocket-Protocol` header for websocket requests.
-The header SHALL have the form:
+Servers SHOULD accept API tokens in the `Sec-Websocket-Protocol` header for websocket requests.
+The header MUST have the form:
 
 ```
 Sec-WebSocket-Protocol: v1.token.websocket.jupyter.org, v1.token.websocket.jupyter.org.{url_token}
@@ -162,8 +162,8 @@ where `{url_token}` is the url-encoded API token (note: in ~all cases in practic
 
 If a subprotocol matching `v1.token.websocket.jupyter.org.{url_token}` is found:
 
-- `url_token` SHALL be extracted and url-decoded (e.g. `token = unquote('{url_token}')`)
-- `token` SHALL be handled identically to if it were sent via `Authorization: Bearer {token}`
+- `url_token` SHOULD be extracted and url-decoded (e.g. `token = unquote('{url_token}')`)
+- `token` SHOULD be handled identically to if it were sent via `Authorization: Bearer {token}`
 - If `token` is invalid or rejected, connection request MUST fail with status 403.
 - If `token` is accepted, response MUST include first supported subprotocol in `Sec-WebSocket-Protocol` header.
 - If this scheme is supported, `v1.token.websocket.jupyter.org` MUST be a supported subprotocol UNLESS another subprotocol is REQUIRED.
@@ -171,8 +171,8 @@ If a subprotocol matching `v1.token.websocket.jupyter.org.{url_token}` is found:
 
 For backward-compatibility, servers:
 
-- SHALL continue to accept tokens in URL parameters and Authorization header,
-- SHALL accept empty subprotocols
+- SHOULD continue to accept tokens in URL parameters and Authorization header,
+- SHOULD accept empty subprotocols
 
 For enhanced security without backward-compatibility, servers:
 
