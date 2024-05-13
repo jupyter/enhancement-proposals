@@ -16,7 +16,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "minItems": 3
+                    "minItems": 1
                 }
             }
         },
