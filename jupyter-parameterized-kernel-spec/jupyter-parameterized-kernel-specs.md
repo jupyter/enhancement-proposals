@@ -30,7 +30,7 @@ Some of the chosen parameter values can be saved in e.g. the notebook metadata s
 
 ## Detailed Explanation
 
-As described in previous sections, we propose to parameterize the kernel specs file. In the example shown below, we can see the kernel specs file from the kernel xeus-cling. We suggest changing the last parameter of the execution command `-std=c++11` to have a variable `-std=${parameters.cpp_version}` and adding a new object `parameters` to the metadata of the kernel specs.
+As described in previous sections, we propose to parameterize the kernel specs file. In the example shown below, we can see the kernel specs file from the kernel xeus-cling. We suggest changing the last parameter of the execution command `-std=c++11` to have a variable `-std=${cpp_version}` and adding a new object `parameters` to the metadata of the kernel specs.
  
 ```=json
 {
@@ -54,25 +54,27 @@ As described in previous sections, we propose to parameterize the kernel specs f
       "/home/user/micromamba/envs/kernel_spec/bin/xcpp",
       "-f",
       "{connection_file}",
-      "-std={parameters.cpp_version}"
+      "-std={cpp_version}"
   ],
   env: [
-    "XEUS_LOGLEVEL={parameters.xeus_log_level}"
+    "XEUS_LOGLEVEL={xeus_log_level}"
   ],
   "language": "C++"
   "metadata": {
     "parameters": {
-      "cpp_version": {
-        "type": "string",
-        "default": "C++14",
-        "enum": ["C++11", "C++14", "C++17"],
-        "save": true
-      },
-      "xeus_log_level": {
-        "type": "string",
-        "default": "ERROR",
-        "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"],
-        "save": true
+      "properties": {
+        "cpp_version": {
+          "type": "string",
+          "default": "C++14",
+          "enum": ["C++11", "C++14", "C++17"],
+          "save": true
+        },
+        "xeus_log_level": {
+          "type": "string",
+          "default": "ERROR",
+          "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"],
+          "save": true
+        }
       }
     }
   },
