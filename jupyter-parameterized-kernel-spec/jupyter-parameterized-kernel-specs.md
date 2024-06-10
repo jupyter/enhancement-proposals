@@ -1,3 +1,11 @@
+---
+title: Jupyter Parameterized Kernel Specs
+authors: Carlos Herrero
+pr-number: 87
+date-started: 2022-02-10
+shepherd: Johan Mabille
+---
+
 # Jupyter Parameterized Kernel Specs
 
 ## Problem
