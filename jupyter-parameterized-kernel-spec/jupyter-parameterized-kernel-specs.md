@@ -1,6 +1,6 @@
 ---
 title: Jupyter Parameterized Kernel Specs
-authors: Carlos Herrero
+authors: Carlos Herrero, Anastasiia Sliusar
 pr-number: 87
 date-started: 2022-02-10
 shepherd: Johan Mabille
