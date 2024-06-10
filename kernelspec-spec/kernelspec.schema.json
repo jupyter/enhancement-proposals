@@ -1,0 +1,98 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.jupyter.org/kernelspec-v1.0.schema.json",
+    "title": "Jupyter Kernelspec",
+    "description": "A description of the data required to start and manage a Jupyter Kernel",
+    "type": "object",
+
+    "definitions": {
+        "kernel_arguments": {
+            "type": "object",
+            "required": ["argv"],
+            "properties": {
+                "argv": {
+                    "description": "A list of command line arguments used to start the kernel. The text {connection_file} in any argument will be replaced with the path to the connection file.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1
+                }
+            }
+        },
+        "display_name": {
+            "type": "object",
+            "required": ["display_name"],
+            "properties": {
+                "display_name": {
+                    "description": "The kernel’s name as it should be displayed in the UI. Unlike the kernel name used in the API, this can contain arbitrary unicode characters.",
+                    "type": "string"
+                }
+            }
+        },
+        "language": {
+            "type": "object",
+            "required": ["language"],
+            "properties": {
+                "language": {
+                    "description": "The name of the language of the kernel. When loading notebooks, if no matching kernelspec key (may differ across machines) is found, a kernel with a matching language will be used. This allows a notebook written on any Python or Julia kernel to be properly associated with the user’s Python or Julia kernel, even if they aren’t listed under the same name as the author’s.",
+                    "type": "string"
+                }
+            }
+        },
+        "kernel_protocol_version": {
+            "type": "object",
+            "required": ["kernel_protocol_version"],
+            "properties": {
+                "kernel_protocol_version": {
+                    "description": "The version of protocol this kernel implements. If not specified, the client will assume the version is <5.5 until it can get it via the kernel_info request. The kernel protocol uses semantic versioning (SemVer).",
+                    "type": "string",
+                    "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+                    }
+            }
+        },
+        "interrupt_mode": {
+            "type": "object",
+            "required": ["interrupt_mode"],
+            "properties": {
+                "interrupt_mode": {
+                    "description": "May be either signal or message and specifies how a client is supposed to interrupt cell execution on this kernel, either by sending an interrupt signal via the operating system’s signalling facilities (e.g. SIGINT on POSIX systems), or by sending an interrupt_request message on the control channel (see Kernel interrupt). If this is not specified the client will default to signal mode.",
+                    "type": "string",
+                    "enum": ["signal", "message"]
+                }
+            }
+        },
+        "env": {
+            "type": "object",
+            "required": ["env"],
+            "properties": {
+                "env": {
+                    "description": "A dictionary of environment variables to set for the kernel. These will be added to the current environment variables before the kernel is started. Existing environment variables can be referenced using ${<ENV_VAR>} and will be substituted with the corresponding value. Administrators should note that use of ${<ENV_VAR>} can expose sensitive variables and should use only in controlled circumstances.",
+                    "type": "object",
+                    "additionalProperties": {"type": "string" }
+                }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "required": ["metadata"],
+            "properties": {
+                "metadata": {
+                    "description": "A dictionary of additional attributes about this kernel; used by clients to aid in kernel selection. Metadata added here should be namespaced for the tool reading and writing that metadata.",
+                    "type": "object",
+                    "additionalProperties": {"type": "object"}
+                }
+            }
+        }
+    },
+    "anyOf": [
+        { "$ref": "#/definitions/argv" },
+        { "$ref": "#/definitions/display_name" },
+        { "$ref": "#/definitions/language" },
+        { "$ref": "#/definitions/kernel_protocol_version" },
+        { "$ref": "#/definitions/interrupt_mode" },
+        { "$ref": "#/definitions/env" },
+        { "$ref": "#/definitions/metadata" }
+    ],
+    "required": ["argv", "display_name", "language"]
+}
