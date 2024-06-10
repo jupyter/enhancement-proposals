@@ -1,0 +1,64 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://schema.jupyter.org/connectionfile-v1.0.schema.json",
+    "title": "Jupyter Connection File",
+    "description": "A description of the data required to connect and send messages to a Jupyter Kernel",
+    "type": "object",
+
+    "definitions": {
+        "signature": {
+            "type": "object",
+            "required": ["signature_scheme", "key"],
+            "properties": {
+                "signature_scheme": {
+                    "enum": ["hmac-md5","hmac-sha256","hmac-sha512"],
+                    "description": "scheme used to sign the messages"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "key used to sign the messages"
+                }
+            }
+        },
+        "kernel_network": {
+            "type": "object",
+            "required": ["transport", "ip", "shell_port", "control_port", "stdin_port", "hb_port", "iopub_port"],
+            "properties": {
+                "transport": {
+                    "type": "string",
+                    "description": "transport protocol",
+                    "enum": ["tcp", "ipc", "inproc"]
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "ip of the machine where the kernel runs"
+                },
+                "shell_port": {
+                    "type": ["integer","string"],
+                    "description": "port used by the shell channel"
+                },
+                "control_port": {
+                    "type": ["integer","string"],
+                    "description": "port used by the control channel"
+                },
+                "stdin_port": {
+                    "type": ["integer","string"],
+                    "description": "port used by the stdin channel"
+                },
+                "hb_port": {
+                    "type": ["integer","string"],
+                    "description": "port used by the heartbeat channel"
+                },
+                "iopub_port": {
+                    "type": ["ingerer","string"],
+                    "description": "port used by the iopub channel"
+                }
+            }
+        }
+    },
+    "allOf": [
+        { "$ref": "#/definitions/kernel_network" },
+        { "$ref": "#/definitions/signature" }
+    ]
+}
+
