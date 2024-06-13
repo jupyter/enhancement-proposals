@@ -157,17 +157,8 @@ This field is not in the corresponding reply message as it will be in the parent
 
 ### IOPub messages
 
-All IOPub messages will support an optional `subshell_id` field:
-
-```py
-content = {
-    'subshell_id': str | None,
-}
-```
-
-The addition of `subshell_id` in kernel status IOPub messages means that clients will be able to
-identify the status of each subshell individually. For an overall kernel-level status these
-individual statuses can be combined by the client.
+IOPub messages do not need an extra optional `subshell_id` field as this information is available
+in the parent header.
 
 ## Behavior
 
