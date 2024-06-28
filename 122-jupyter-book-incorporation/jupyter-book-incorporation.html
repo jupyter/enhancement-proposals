@@ -1,0 +1,1070 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Incorporate Jupyter Book as a Jupyter Sub-project &#8212; Jupyter Enhancement Proposals</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '122-jupyter-book-incorporation/jupyter-book-incorporation';</script>
+    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/122-jupyter-book-incorporation/jupyter-book-incorporation.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Jupyter Enhancement Proposals</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Jupyter Enhancement Proposals
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../62-cell-id/cell-id.html">Cell ID Addition to Notebook Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">Jupyter debugger protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/122-jupyter-book-incorporation/jupyter-book-incorporation.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F122-jupyter-book-incorporation/jupyter-book-incorporation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/122-jupyter-book-incorporation/jupyter-book-incorporation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Incorporate Jupyter Book as a Jupyter Sub-project</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-jupyter">Why Jupyter?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-split-the-executablebooks-repositories-into-two-homes">Why split the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories into two homes?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-other-options-do-we-have">What other options do we have?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-frequently-asked-questions-faqs">Appendix: Frequently Asked Questions (FAQs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-considerations">Security considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility-considerations">Accessibility considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-list-of-executablebooks-repositories-to-incorporate-under-jupyter-book">Appendix: List of <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories to incorporate under <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="incorporate-jupyter-book-as-a-jupyter-sub-project">
+<h1>Incorporate Jupyter Book as a Jupyter Sub-project<a class="headerlink" href="#incorporate-jupyter-book-as-a-jupyter-sub-project" title="Permalink to this heading">#</a></h1>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p><em>One paragraph explanation of the proposal.</em></p>
+<p>We propose the incorporation of a new Jupyter community sub-project: Jupyter Book (hereafter, <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code>). This sub-project is dedicated to building tools and standards that facilitate authoring, reading, and publishing workflows for computational narratives. The new sub-project would act as the steward of several successful technology and standards projects currently stewarded by the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> project, most notably <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Book</span></code> and the <code class="docutils literal notranslate"><span class="pre">MyST</span></code> documentation engine, document standard, and markdown syntax. This will allow these tools to further enhance interoperability with the broader Jupyter stack of tools and to enable extensions that improve the state of authoring, reading, and publishing across the Jupyter ecosystem.</p>
+</section>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<p><em>Why are we doing this? What use cases does it support? What is the expected outcome?</em></p>
+<p>The Jupyter Book project is a heavily-used user-facing tool for combining multiple computational narratives into an interactive book-like format. It was first created as a Jupyter repository (based on Jekyll), and was then moved into the <a class="reference external" href="https://github.com/executablebooks"><code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> organization</a> when the Jupyter Book project received funding from the Sloan Foundation. The Jupyter Book stack was originally based on Sphinx, which was largely driven by development in the first half of the grant’s timeline. It now seeks to <a class="reference external" href="https://executablebooks.org/en/latest/blog/2024/2024-05-20-jupyter-book-myst/">migrate to a JavaScript-based document engine with MyST</a>.</p>
+<p>In the past two years, Jupyter Book has shifted its technical strategy to focus on a modern, future-proof foundation for authoring and reading computational narratives. It has invested project resources into developing a TypeScript-based documentation engine that can serve as the backbone of Jupyter Book. This documentation engine, called <a class="reference external" href="https://mystmd.org">MyST</a> (for Markedly Structured Text, the same name as its flavor of markdown syntax), is designed to be web-native, and to more naturally interact with the web-based tools in the Jupyter ecosystem and beyond.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> GitHub organization is an artifact of the Sloan Foundation grant that originally funded its operations. This grant is winding down, and we are seeking a longer-lasting and organizationally-neutral home for the vision, strategy, tools, and standards of this modern version of the Jupyter Book toolchain.</p>
+<p>The Jupyter project has a technical strategy that often discusses computational narratives. For example, many use Jupyter Notebooks to share data narratives and workflows around them (and in fact, this is one of the original driving use-cases for Jupyter Book). While Jupyter tends to focus on the computational and interactive aspects of the data science workflow first, we believe that <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> would serve as a good “narrative-first” counterpart. By focusing on the content authoring, reading, and sharing aspects of the Jupyter ecosystem, <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> could meet a unique set of use-cases that are relevant to the project. For example, improving Jupyter’s functionality for blogs, scholarship, data science education, software documentation, and community knowledge bases.</p>
+<p>For these reasons, we believe that the Jupyter Project would be a natural home for the parts of the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> ecosystem that intersect Jupyter’s mission around technology and standards for interactive computing. Below we provide more context for what this could look like.</p>
+</section>
+<section id="guide-level-explanation">
+<h2>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this heading">#</a></h2>
+<p><em>Explain the proposal as if it was already implemented and you were explaining it to another community member.</em></p>
+<p>At a strategic level: the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> sub-project focuses on <strong>web-native workflows for authoring, reading, and publishing narratives with computation</strong>, as well as integrating with existing Jupyter sub-projects. The sub-project assumes responsibility for defining the strategy that guides future development of <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> and its related projects, getting the resources necessary to carry out this strategy, and stewarding an open community.</p>
+<p>At a team capacity level: the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> sub-project is currently maintained with the following team: A three-person Steering Council: Chris Holdgraf (<a class="reference external" href="https://github.com/choldgraf">&#64;choldgraf</a>), Greg Caporaso (<a class="reference external" href="https://github.com/gregcaporaso">&#64;gcaporaso</a>), Rowan Cockett (<a class="reference external" href="https://github.com/rowanc1">&#64;rowanc1</a>), as well as an additional three engineering team members: Angus Hollands (<a class="reference external" href="https://github.com/agoose77">&#64;agoose77</a>), Franklin Koch (<a class="reference external" href="https://github.com/fwkoch">&#64;fwkoch</a>), Steve Purves (<a class="reference external" href="https://github.com/stevejpurves">&#64;stevejpurves</a>). There have been over <a class="reference external" href="https://github.com/executablebooks/mystmd/graphs/contributors">30 additional contributors to the project</a> as well, and we intend on growing the accessibility of the project to new contributors moving forward.</p>
+<p>At a functionality level: Jupyter Book allows users to build beautiful, publication-quality books and documents from computational content. The authoring experience works <a class="reference external" href="https://github.com/executablebooks/jupyterlab-myst">directly in the JupyterLab interface</a> to enhance narrative content with cross-references and specialized markups (like exercises, proofs, theorems, etc.). A Jupyter Book can either be a static-renderer or integrate to computation from existing Jupyter projects that are local, collaborative (JupyterHub), ephemeral (Binder), or browser-based (JupyterLite). A Jupyter Book can be exported to many existing PDF templates used in scientific publishing. The underlying components work with existing Jupyter standards for notebooks and provide ways to write structured content in Markdown that can be accessed by scientific publishing workflows and documentation tool-chains.</p>
+<p>We’ve identified a subset of the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories that fit within this strategic focus, and that we propose transferring to a newly-created Jupyter sub-project called <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code>. <a class="reference internal" href="#appendix-repositories">See the appendix below for a list of projects and their proposed homes.</a></p>
+<p>We’ve selected repositories based on the likelihood that they integrate and interoperate cleanly with other major projects in the Jupyter ecosystem, and that they follow Jupyter’s strategy for standards and protocols. For example, repositories that are largely based on web technologies (in order to integrate with tools like JupyterLab/Lite, Voila, etc), that integrate with Jupyter’s underlying server and computation infrastructure (like Jupyter server and Binder), and that define and re-use standards for third-party communities to build on top of (like the MyST Markdown syntax or the notebook format).</p>
+<p>The remaining repositories that are <em>not</em> transferred into the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> organization will remain under the governing structures of the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> project. The steering council of that project will continue to steward those repositories or identify alternative homes for them, but the Jupyter project will not have any responsibility or oversight over this process.</p>
+</section>
+<section id="reference-level-explanation">
+<h2>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this heading">#</a></h2>
+<p>We wish to:</p>
+<ul class="simple">
+<li><p>Create a GitHub organization called <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code>.</p></li>
+<li><p>Transfer over ownership of these repositories to this new organization (see <a class="reference internal" href="#appendix-repositories"><span class="std std-ref">Appendix: List of executablebooks/ repositories to incorporate under jupyter-book</span></a>).</p></li>
+<li><p>List this organization as being the home of a “Jupyter sub-project” called <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code>.</p></li>
+<li><p>Define a steering council of the following people (in alphabetical order):</p>
+<ul>
+<li><p>Chris Holdgraf</p></li>
+<li><p>Greg Caporaso</p></li>
+<li><p>Rowan Cockett</p></li>
+</ul>
+</li>
+<li><p>Define the necessary representatives for <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> in the SSC.</p></li>
+<li><p>Define a team-compass for Jupyter Book at <code class="docutils literal notranslate"><span class="pre">jupyter-book/team-compass</span></code>.</p></li>
+<li><p>Begin operations as a Jupyter sub-project.</p></li>
+</ul>
+<p>This proposal does <em>not</em> include any ideas around changes to technology or standards, both within <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> and in its relation to the broader Jupyter community.</p>
+</section>
+<section id="rationale-and-alternatives">
+<h2>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this heading">#</a></h2>
+<section id="why-jupyter">
+<h3>Why Jupyter?<a class="headerlink" href="#why-jupyter" title="Permalink to this heading">#</a></h3>
+<p>Jupyter is a natural home for the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> project for several key reasons described below:</p>
+<ol class="arabic simple">
+<li><p>The strategy of <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> aligns heavily with the broader goals of the Jupyter ecosystem. While Jupyter builds technology and standards for interactive computing workflows, Jupyter Book focuses on the “authoring, reading, and publishing” aspects of interactive computing, with an emphasis on traditional publishing workflows like “books”, “articles”, “knowledge bases”, etc.</p></li>
+<li><p>The technical direction for <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> aligns heavily with Jupyter’s broader technical direction and standards, and being a sub-project will create more opportunities for integrations, re-using components and standards, and generally connecting with the Jupyter stack in a way that is greater than the sum of its parts.</p></li>
+<li><p>The proposed Steering Council of the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> project each have extensive experience in the open source ecosystem and understand how to build healthy open source communities aligned with Jupyter’s principles.</p></li>
+<li><p>Some members of the Steering Council (Chris Holdgraf) have extensive experience with other Jupyter sub-projects. For example, Chris was part of the inaugural Distinguished Contributor cohort and has served on the JupyterHub and Binder steering council for more than 5 years.</p></li>
+<li><p>Jupyter Book (the technology project) began within the <code class="docutils literal notranslate"><span class="pre">jupyter/</span></code> organization, and was originally framed as “a way to publish collections of <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files as a web-based book”.</p></li>
+<li><p>MyST Markdown (the markdown syntax) was initially brainstormed within the Jupyter community, with several then-Steering Council members serving as key catalysts in the creation of MyST.</p></li>
+</ol>
+</section>
+<section id="why-split-the-executablebooks-repositories-into-two-homes">
+<h3>Why split the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories into two homes?<a class="headerlink" href="#why-split-the-executablebooks-repositories-into-two-homes" title="Permalink to this heading">#</a></h3>
+<p>We believe that the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories naturally fall into two technical directions: one based on <code class="docutils literal notranslate"><span class="pre">docutils</span></code> and <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> (with heavy overlap with the broader developer documentation community), and one based on Javascript (with heavy overlap with scientific computing and authoring workflows).</p>
+<p>The technical direction and user-focus of each is distinct enough that it is natural to split them into two projects. This will allow each organization to define their own set of target users and strategies to serve them.</p>
+<p>Note that, initially, the Steering Council of <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> and that of the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> organization will be the same. This will allow us to coordinate the direction of projects in each organization for the immediate future, and minimize the friction associated with having two organizational homes. Over time, we intend for the strategy and governance of each organization to begin to evolve independent of one another.</p>
+</section>
+<section id="what-other-options-do-we-have">
+<h3>What other options do we have?<a class="headerlink" href="#what-other-options-do-we-have" title="Permalink to this heading">#</a></h3>
+<p>The most natural alternative is to define <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> as its own standalone open source community, and request incorporation under a fiscal sponsor like NumFocus. We believe that this is a perfectly reasonable direction, but also believe that there is a unique opportunity to empower the workflows and users we care about by building a deeper relationship with the Jupyter community.</p>
+<p>Alternatively, we could decide to take no action, and retain <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code>’s current status as a project-focused GitHub organization with a governing body defined in its team compass, but with no formal organizational status. We believe that this would hinder the project’s ability to grow its community, to define an organizationally-neutral place to host its tools and strategy, and to raise funds needed to sustain and grow the community’s operations.</p>
+</section>
+</section>
+<section id="prior-art">
+<h2>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this heading">#</a></h2>
+<p>This proposal is similar to other JEP proposals to incorporate new Jupyter sub-projects from pre-existing technology.</p>
+<p>In each case, a team independently defined the strategy, direction, and early development to bring technology projects to a more “stable” state. They then proposed incorporation as a sub-project once the key ideas that drove these projects solidified, and when it became clear that there was a natural overlap at a technical and strategic level with the Jupyter ecosystem. In these cases, the leaders of the project were also leaders within the Jupyter project, which facilitated the flow of information and collaboration across Jupyter and the new sub-project.</p>
+<p>We believe that the <code class="docutils literal notranslate"><span class="pre">jupyter-book/</span></code> project follows the same pattern described here. For examples of previous JEPs similar to the one proposed here, see <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/tree/master/42-voila-incorporation">Voila incorporation JEP</a>, and the <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/tree/master/44-xeus-incorporation">Xeus incorporation JEP</a>.</p>
+</section>
+<section id="unresolved-questions">
+<h2>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this heading">#</a></h2>
+<p>This JEP does not propose any new ideas for the technical future of the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> project or any other part of the Jupyter ecosystem. There may be many new directions to consider if <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> is incorporated as a subproject, but this can be discussed and iterated on in the future. This proposal is only about defining the organizational structure of the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> subproject and its initial set of repositories.</p>
+</section>
+<section id="future-possibilities">
+<h2>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this heading">#</a></h2>
+<p>There are many ways that the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code> project could connect and integrate with the broader Jupyter community. For example:</p>
+<ul class="simple">
+<li><p>By further-developing JupyterLab-MyST, which brings the functionality of MyST Markdown into the JupyterLab interface. For example, we could leverage JupyterLab’s user interface to facilitate multi-document authoring and references, or to provide real-time previews of rendered MyST documents that leverage computation and notebooks.</p></li>
+<li><p>By integrating the interactive aspects of MyST and Jupyter Book with computational machinery provided by other Jupyter technology, such as JupyterHub and BinderHub (via a tool like <code class="docutils literal notranslate"><span class="pre">thebe/</span></code>).</p></li>
+<li><p>By integrating the MyST documentation engine into Jupyter services such as <code class="docutils literal notranslate"><span class="pre">nbviewer</span></code> or <code class="docutils literal notranslate"><span class="pre">Binder</span></code>.</p></li>
+<li><p>By improving the kernel execution frameworks within Jupyter that power Jupyter Book’s functionality around executing content as part of the book building process.</p></li>
+<li><p>By better-integrating the interactive interfaces and outputs in the Jupyter ecosystem (ipywidgets, voila, RISE, etc) into Jupyter Book and MyST.</p></li>
+<li><p>By improving the <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> specification and format in order to promote re-usability and composability in Jupyter Book and MyST.</p></li>
+</ul>
+</section>
+<section id="appendix-frequently-asked-questions-faqs">
+<h2>Appendix: Frequently Asked Questions (FAQs)<a class="headerlink" href="#appendix-frequently-asked-questions-faqs" title="Permalink to this heading">#</a></h2>
+<p><strong>Why is the Jupyter Book CLI being moved, given that it depends on the Sphinx stack?</strong></p>
+<p>Our intention is to gradually swap the back-end of Jupyter Book to use the mystmd backend instead of Sphinx. For this reason, it will be aligned at a technical strategy level with the rest of the web-native stack. This will likely take several months or more, as we slowly bring the MyST document engine up to feature parity with the Jupyter Book stack, and we plan on coordinating with the Executable Books community throughout this process (and note that initially the leadership of this sub-project, and Executable Books, will be the same in order to make this easier).</p>
+<p><strong>Does that mean the Sphinx stack is being abandoned?</strong></p>
+<p>No! The Sphinx-focused repositories will remain inside the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> organization and governance. Those projects will continue to be useful to the Sphinx community, as they’ve been designed to work independently of Jupyter Book and have a large user base without it (from the developer community in Sphinx). This will continue to grow/evolve as an independent GitHub organization with its own developer community. We think that it’s better to have a Sphinx-focused stack in its own space, so that the Jupyter project can reduce its extra maintenance burden, and focus on the web-native nature of its technology stack.</p>
+<p><strong>Does this involve other JS-based repositories like Papyri?</strong></p>
+<p>Not right now. We think Papyri is awesome and would love to find ways to integrate more with it and potentially include it in this organization. Right now we’d like to keep the decision relatively simple and tightly scoped to Executable Books repositories.</p>
+<p><strong>What about reading-focused Jupyter services like NBConvert?</strong></p>
+<p>Same idea as above. We’re open to talking about how Jupyter Book could support, integrate and/or help steward services like these, but want to focus this decision on bringing “Jupyter Book” into existence as a sub-project just with our current list of repositories.</p>
+</section>
+<section id="security-considerations">
+<h2>Security considerations<a class="headerlink" href="#security-considerations" title="Permalink to this heading">#</a></h2>
+<p>The main content for Jupyter Book is text-based and images, and can also include interactive Jupyter outputs that can potentially be untrusted vectors for abuse. Currently, the Jupyter Book and MyST Markdown tools are primarily intended and used for stand-alone sites that do not have authentication. There is the possibility to include user-generated content through Jupyter and other untrusted output that could provide a problem in an authenticated environment. The project uses React for rendering HTML, which provides some assurances around not rendering untrusted or arbitrary HTML, all content is stored as JSON data, and transformed on the fly to HTML. The Jupyter outputs are using the same components as the JupyterLab project. Currently deployed projects can be connected to a remote Jupyter kernel in a JupyterHub or BinderHub (using Thebe), these have the same security concerns as those tools, which is mitigated by having containerized environments. It is possible, when running locally, to connect to arbitrary user environments in Jupyter, this is always initiated through a user action through the terminal (<a class="reference external" href="https://mystmd.org/guide/execute-notebooks">documentation</a>).</p>
+</section>
+<section id="accessibility-considerations">
+<h2>Accessibility considerations<a class="headerlink" href="#accessibility-considerations" title="Permalink to this heading">#</a></h2>
+<p>The Jupyter Book team is committed to making its interfaces accessible, and believes that building on modern web frameworks is a good foundation to begin with. It does not have accessibility expertise itself, although we have sponsored some of our team members to attend web-accessibility courses. The Jupyter Book team will need guidance and resourcing (at the least in a consulting/assessment capacity) from the Jupyter community in order to identify and implement accessibility improvements.</p>
+<p>From a technology standpoint, we are adopting tools that have a good accessibility track record (e.g. RadixUI, see <a class="reference external" href="https://www.radix-ui.com/primitives/docs/overview/accessibility">accessibility docs for Radix</a>). This allows us to implement rather than reinvent accessibility best-practices. The interactive Jupyter components are inherited directly from the JupyterLab ecosystem, so improvements to accessibility there will directly improve MyST Markdown and Jupyter Book. We discuss some of the accessibility considerations in the <a class="reference external" href="https://mystmd.org/guide/accessibility-and-performance">MyST Markdown project here</a>.</p>
+</section>
+<section id="appendix-list-of-executablebooks-repositories-to-incorporate-under-jupyter-book">
+<span id="appendix-repositories"></span><h2>Appendix: List of <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories to incorporate under <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code><a class="headerlink" href="#appendix-list-of-executablebooks-repositories-to-incorporate-under-jupyter-book" title="Permalink to this heading">#</a></h2>
+<p>(note the “last updated” field is out of date, and reflects when this draft first started in early March 2024)</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p>Repository</p></td>
+<td><p>Description</p></td>
+<td><p>Last Updated</p></td>
+<td><p>New Home</p></td>
+</tr>
+<tr class="row-even"><td><p>myst-templates</p></td>
+<td><p>A GitHub organization with templates for MyST renderers. Will remain a github org but move governance under the jupyter-book org.</p></td>
+<td><p>2/28/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>mystmd</p></td>
+<td><p>Command line tools for working with MyST Markdown.</p></td>
+<td><p>2/9/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>myst-theme</p></td>
+<td><p>Packages for creating MyST websites themes using React and Remix</p></td>
+<td><p>2/8/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>jupyter-book</p></td>
+<td><p>Create beautiful, publication-quality books and documents from computational content.</p></td>
+<td><p>2/8/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>jupyterlab-myst</p></td>
+<td><p>Use MyST Markdown directly in Jupyter Lab</p></td>
+<td><p>2/6/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>jupyter-cache</p></td>
+<td><p>A defined interface for working with a cache of executed jupyter notebooks</p></td>
+<td><p>1/29/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>jupyter-cache-upgrader</p></td>
+<td></td>
+<td><p>1/25/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-spec</p></td>
+<td><p>MyST is designed to create publication-quality, computational documents written entirely in Markdown.</p></td>
+<td><p>1/24/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>thebe</p></td>
+<td><p>Turn static HTML pages into live documents with Jupyter kernels.</p></td>
+<td><p>1/20/2024</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>cookiecutter-jupyter-book</p></td>
+<td><p>Cookiecutter template for a simple jupyter book</p></td>
+<td><p>11/29/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>github-activity</p></td>
+<td><p>Simple markdown changelogs for GitHub repositories</p></td>
+<td><p>11/22/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-enhancement-proposals</p></td>
+<td><p>MyST Enhancement Proposals (MEPs)</p></td>
+<td><p>10/9/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://mystmd.org">mystmd.org</a></p></td>
+<td><p>A splash page for the MyST Markdown ecosystem</p></td>
+<td><p>8/2/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>jupyterlab-myst-quickstart</p></td>
+<td><p>Quickstart examples for working with MyST in Jupyter</p></td>
+<td><p>7/5/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>github-action-demo</p></td>
+<td><p>A demonstration repository to build and host a book with GitHub Actions</p></td>
+<td><p>6/21/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-theme-patches</p></td>
+<td><p>A minimal repository containing essential patches for myst-theme deveopment</p></td>
+<td><p>6/14/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>thebe-binder-base</p></td>
+<td><p>A minimal binder setup for thebe demos</p></td>
+<td><p>4/27/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-vs-code</p></td>
+<td><p>A syntax highlighter for the MyST Markdown format</p></td>
+<td><p>3/6/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>mystmd-quickstart</p></td>
+<td><p>Repository to be used in the mystjs quickstart guide</p></td>
+<td><p>1/25/2023</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>thebe-core</p></td>
+<td><p>Typescript based Jupyter connectivity and code execution layer for thebe</p></td>
+<td><p>8/22/2022</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>myst-demo</p></td>
+<td><p>A web-component for interactive myst demos in documentation.</p></td>
+<td><p>6/20/2022</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-odd"><td><p>unified-myst</p></td>
+<td><p>A repository of packages for working with MyST in the <a class="reference external" href="https://unifiedjs.com/">https://unifiedjs.com/</a> ecosystem</p></td>
+<td><p>4/30/2022</p></td>
+<td><p>jupyter-book</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-book-theme</p></td>
+<td><p>A clean book theme for scientific explanations and documentation with Sphinx</p></td>
+<td><p>2/9/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>meta</p></td>
+<td><p>A community dedicated to supporting tools for technical and scientific communication and interactive computing</p></td>
+<td><p>2/8/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-thebe</p></td>
+<td><p>A Sphinx extension to convert static code into interactive code cells with Jupyter, Thebe, and Binder.</p></td>
+<td><p>2/7/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdformat-tables</p></td>
+<td><p>An mdformat plugin for rendering tables</p></td>
+<td><p>2/7/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>mdformat</p></td>
+<td><p>CommonMark compliant Markdown formatter</p></td>
+<td><p>2/6/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdit-py-plugins</p></td>
+<td><p>Collection of core plugins for markdown-it-py</p></td>
+<td><p>2/5/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-external-toc</p></td>
+<td><p>A sphinx extension that allows the site-map to be defined in a single YAML file</p></td>
+<td><p>2/5/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>markdown-it-py</p></td>
+<td><p>Markdown parser, done right. 100% CommonMark support, extensions, syntax plugins &amp; high speed. Now in Python!</p></td>
+<td><p>2/5/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>MyST-NB</p></td>
+<td><p>Parse and execute ipynb files in Sphinx</p></td>
+<td><p>2/5/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>MyST-Parser</p></td>
+<td><p>An extended commonmark compliant parser, with bridges to docutils/sphinx</p></td>
+<td><p>2/5/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-design</p></td>
+<td><p>A sphinx extension for designing beautiful, screen-size responsive web components.</p></td>
+<td><p>1/29/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>sphinx-copybutton</p></td>
+<td><p>Add a “copy” button to code blocks in Sphinx</p></td>
+<td><p>1/29/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>rst-to-myst</p></td>
+<td><p>Convert ReStructuredText to MyST Markdown</p></td>
+<td><p>1/29/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>sphinx-tabs</p></td>
+<td><p>Tabbed views for Sphinx</p></td>
+<td><p>1/29/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>web-compile</p></td>
+<td><p>A CLI to compile/minify SCSS &amp; JS, and associated pre-commit hook.</p></td>
+<td><p>1/29/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdurl</p></td>
+<td><p>URL utilities for markdown-it (a Python port)</p></td>
+<td><p>1/29/2024</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-togglebutton</p></td>
+<td><p>Show and hide content with a button in Sphinx</p></td>
+<td><p>12/22/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>sphinx-panels</p></td>
+<td><p>A sphinx extension for creating panels in a grid layout</p></td>
+<td><p>12/18/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-jupyterbook-latex</p></td>
+<td><p>Supporting LaTeX infrastructure for Jupyter Book</p></td>
+<td><p>12/11/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>grant-admin</p></td>
+<td></td>
+<td><p>12/6/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>.github</p></td>
+<td><p>Community health files: Contributing guidelines, Code of Conduct, …</p></td>
+<td><p>12/4/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>team-compass</p></td>
+<td><p>Organizational policy and internal documentation for the executablebooks community</p></td>
+<td><p>11/28/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>grant-application</p></td>
+<td><p>Web publishing tool funding application</p></td>
+<td><p>11/21/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdformat-plugin</p></td>
+<td><p>A template for creating an mdformat parser extension plugin</p></td>
+<td><p>11/3/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-remove-toctrees</p></td>
+<td><p>Speed up Sphinx builds by selectively removing toctrees from some pages</p></td>
+<td><p>11/3/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>markdown-it-myst-extras</p></td>
+<td><p>Additional plugins required for the MyST specification</p></td>
+<td><p>9/26/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>markdown-it-dollarmath</p></td>
+<td><p>A markdown-it plugin for $-delimited math</p></td>
+<td><p>9/26/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>markdown-it-amsmath</p></td>
+<td><p>A markdown-it plugin for amsmath LaTeX environments.</p></td>
+<td><p>9/26/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-proof</p></td>
+<td><p>A Sphinx extension for producing proof, theorem, lemma, definition, remark, conjecture, corollary and algorithm directives.</p></td>
+<td><p>9/18/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>mdformat-myst</p></td>
+<td><p>Mdformat plugin for MyST compatibility</p></td>
+<td><p>8/26/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>mdformat-deflist</p></td>
+<td><p>mdformat plugin for deflist</p></td>
+<td><p>8/26/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>staged-recipes</p></td>
+<td><p>A place to submit conda recipes before they become fully fledged conda-forge feedstocks</p></td>
+<td><p>8/1/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-comments</p></td>
+<td><p><a class="reference external" href="http://hypothes.is">hypothes.is</a> interaction layer with Sphinx</p></td>
+<td><p>5/3/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-article-theme</p></td>
+<td><p>A light-weight theme for rendering scientific articles and associated notebooks</p></td>
+<td><p>4/26/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>myst-book-theme</p></td>
+<td><p>A lightweight MyST theme designed to mimic the look-and-feel of an interactive book.</p></td>
+<td><p>4/26/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>markdown-it-docutils</p></td>
+<td><p>A markdown-it plugin for implementing docutils style roles/directives.</p></td>
+<td><p>3/6/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>jupyterlab-mystjs</p></td>
+<td><p>TO ARCHIVE: Jupyterlab extension using the MySTjs parser</p></td>
+<td><p>2/10/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>sphinx-exercise</p></td>
+<td><p>A Sphinx extension for producing exercise and solution directives.</p></td>
+<td><p>1/23/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>markdown-it-plugin-template</p></td>
+<td><p>A template for creating a markdown-it plugin.</p></td>
+<td><p>1/9/2023</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>sphinx-examples</p></td>
+<td><p>A Sphinx extension to create examples of source markdown and the result of rendering it.</p></td>
+<td><p>5/3/2022</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>mdformat-footnote</p></td>
+<td><p>Footnote format addition for mdformat</p></td>
+<td><p>2/16/2022</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>quantecon-mini-example</p></td>
+<td><p>A short example showing how to write a lecture series using Jupyter Book 2.0.</p></td>
+<td><p>11/13/2021</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-multitoc-numbering</p></td>
+<td><p>A Sphinx extension to support continuous numbering of sections across multiple tocs in HTML output.</p></td>
+<td><p>7/6/2021</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-react</p></td>
+<td><p>TO ARCHIVE: A web-based UI for rendering MyST Markdown</p></td>
+<td><p>5/28/2021</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-tomyst</p></td>
+<td><p>A sphinx translator for producing myst syntax files</p></td>
+<td><p>5/26/2021</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-standard</p></td>
+<td><p>TO ARCHIVE: A meta-repository to discuss and plan for the MyST standard</p></td>
+<td><p>5/20/2021</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-yaml-config</p></td>
+<td></td>
+<td><p>5/8/2021</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>jupytext</p></td>
+<td><p>Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts</p></td>
+<td><p>4/25/2021</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>quantecon-example</p></td>
+<td><p>A demonstration of Jupyter Book functionality using QuantEcon Python programming source material.</p></td>
+<td><p>10/30/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>sphinx-conditional-asset</p></td>
+<td><p>A small extension for developers of Sphinx to conditionally add assets to a page.</p></td>
+<td><p>10/25/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>mistletoe-ebp</p></td>
+<td><p>The EPB fork of mistletoe: A fast, extensible and spec-compliant Markdown parser in pure Python.</p></td>
+<td><p>8/6/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>mappings</p></td>
+<td><p>Work on Mappings between IPYNB-RST and IPYNB-MD++</p></td>
+<td><p>7/29/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>rst2myst</p></td>
+<td><p>Tools for converting RST files to MyST-NB files</p></td>
+<td><p>6/23/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>python-pkg-cookiecutter</p></td>
+<td><p>A cookiecutter for python packages, with docs and GitHub Actions CI</p></td>
+<td><p>6/3/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-ext-autodoc</p></td>
+<td><p>Auto-documentation for sphinx extension components</p></td>
+<td><p>6/3/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-nb.example-project</p></td>
+<td><p>An example project for working with myst-nb and developing myst syntax</p></td>
+<td><p>6/3/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>tcs_to_jb</p></td>
+<td><p>For conversion of TCS to Jupyter Book format</p></td>
+<td><p>5/26/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>cli</p></td>
+<td><p>馃洃馃洃DEPRECATED, see <a class="reference external" href="https://github.com/ExecutableBookProject/jupyter-book%E9%A6%83%E6%B4%83%E9%A6%83%E6%B4%83">https://github.com/ExecutableBookProject/jupyter-book馃洃馃洃</a></p></td>
+<td><p>5/15/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>multi-book-demo</p></td>
+<td></td>
+<td><p>5/1/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst-parser.example-project</p></td>
+<td><p>An self contained example project for testing and development of myst syntax using myst-parser</p></td>
+<td><p>4/11/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>sphinx-jupyter-book-theme</p></td>
+<td><p>An experimental Sphinx theme for Jupyter Book</p></td>
+<td><p>3/5/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>sphinx-globaltoc</p></td>
+<td></td>
+<td><p>2/29/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>write_ups</p></td>
+<td><p>Write ups and publications that document the project</p></td>
+<td><p>2/25/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>markup_test_cases</p></td>
+<td><p>Markup test cases for source files</p></td>
+<td><p>2/14/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-even"><td><p>profile-sphinx-site</p></td>
+<td><p>A tiny repository to profile a Sphinx site</p></td>
+<td><p>1/23/2020</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+<tr class="row-odd"><td><p>myst</p></td>
+<td><p>TO ARCHIVE: Myst - Markedly Structured Text</p></td>
+<td><p>11/17/2019</p></td>
+<td><p>executablebooks</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-jupyter">Why Jupyter?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-split-the-executablebooks-repositories-into-two-homes">Why split the <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories into two homes?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-other-options-do-we-have">What other options do we have?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-frequently-asked-questions-faqs">Appendix: Frequently Asked Questions (FAQs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-considerations">Security considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessibility-considerations">Accessibility considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-list-of-executablebooks-repositories-to-incorporate-under-jupyter-book">Appendix: List of <code class="docutils literal notranslate"><span class="pre">executablebooks/</span></code> repositories to incorporate under <code class="docutils literal notranslate"><span class="pre">jupyter-book</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Project Jupyter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
