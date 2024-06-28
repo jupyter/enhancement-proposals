@@ -1,0 +1,89 @@
+Repository,Description,Last Updated,New Home
+myst-templates,A GitHub organization with templates for MyST renderers. Will remain a github org but move governance under the jupyter-book org.,2/28/2024,jupyter-book
+mystmd,Command line tools for working with MyST Markdown.,2/9/2024,jupyter-book
+myst-theme,Packages for creating MyST websites themes using React and Remix,2/8/2024,jupyter-book
+jupyter-book,"Create beautiful, publication-quality books and documents from computational content.",2/8/2024,jupyter-book
+jupyterlab-myst,Use MyST Markdown directly in Jupyter Lab,2/6/2024,jupyter-book
+jupyter-cache,A defined interface for working with a cache of executed jupyter notebooks,1/29/2024,jupyter-book
+jupyter-cache-upgrader,,1/25/2024,jupyter-book
+myst-spec,"MyST is designed to create publication-quality, computational documents written entirely in Markdown.",1/24/2024,jupyter-book
+thebe,Turn static HTML pages into live documents with Jupyter kernels.,1/20/2024,jupyter-book
+cookiecutter-jupyter-book,Cookiecutter template for a simple jupyter book,11/29/2023,jupyter-book
+github-activity,Simple markdown changelogs for GitHub repositories,11/22/2023,jupyter-book
+myst-enhancement-proposals,MyST Enhancement Proposals (MEPs),10/9/2023,jupyter-book
+mystmd.org,A splash page for the MyST Markdown ecosystem,8/2/2023,jupyter-book
+jupyterlab-myst-quickstart,Quickstart examples for working with MyST in Jupyter,7/5/2023,jupyter-book
+github-action-demo,A demonstration repository to build and host a book with GitHub Actions,6/21/2023,jupyter-book
+myst-theme-patches,A minimal repository containing essential patches for myst-theme deveopment,6/14/2023,jupyter-book
+thebe-binder-base,A minimal binder setup for thebe demos,4/27/2023,jupyter-book
+myst-vs-code,A syntax highlighter for the MyST Markdown format,3/6/2023,jupyter-book
+mystmd-quickstart,Repository to be used in the mystjs quickstart guide,1/25/2023,jupyter-book
+thebe-core,Typescript based Jupyter connectivity and code execution layer for thebe,8/22/2022,jupyter-book
+myst-demo,A web-component for interactive myst demos in documentation.,6/20/2022,jupyter-book
+unified-myst,A repository of packages for working with MyST in the https://unifiedjs.com/ ecosystem,4/30/2022,jupyter-book
+sphinx-book-theme,A clean book theme for scientific explanations and documentation with Sphinx,2/9/2024,executablebooks
+meta,A community dedicated to supporting tools for technical and scientific communication and interactive computing,2/8/2024,executablebooks
+sphinx-thebe,"A Sphinx extension to convert static code into interactive code cells with Jupyter, Thebe, and Binder.",2/7/2024,executablebooks
+mdformat-tables,An mdformat plugin for rendering tables,2/7/2024,executablebooks
+mdformat,CommonMark compliant Markdown formatter,2/6/2024,executablebooks
+mdit-py-plugins,Collection of core plugins for markdown-it-py,2/5/2024,executablebooks
+sphinx-external-toc,A sphinx extension that allows the site-map to be defined in a single YAML file,2/5/2024,executablebooks
+markdown-it-py,"Markdown parser, done right. 100% CommonMark support, extensions, syntax plugins & high speed. Now in Python!",2/5/2024,executablebooks
+MyST-NB,Parse and execute ipynb files in Sphinx,2/5/2024,executablebooks
+MyST-Parser,"An extended commonmark compliant parser, with bridges to docutils/sphinx",2/5/2024,executablebooks
+sphinx-design,"A sphinx extension for designing beautiful, screen-size responsive web components.",1/29/2024,executablebooks
+sphinx-copybutton,"Add a ""copy"" button to code blocks in Sphinx",1/29/2024,executablebooks
+rst-to-myst,Convert ReStructuredText to MyST Markdown,1/29/2024,executablebooks
+sphinx-tabs,Tabbed views for Sphinx,1/29/2024,executablebooks
+web-compile,"A CLI to compile/minify SCSS & JS, and associated pre-commit hook.",1/29/2024,executablebooks
+mdurl,URL utilities for markdown-it (a Python port),1/29/2024,executablebooks
+sphinx-togglebutton,Show and hide content with a button in Sphinx,12/22/2023,executablebooks
+sphinx-panels,A sphinx extension for creating panels in a grid layout,12/18/2023,executablebooks
+sphinx-jupyterbook-latex,Supporting LaTeX infrastructure for Jupyter Book,12/11/2023,executablebooks
+grant-admin,,12/6/2023,executablebooks
+.github,"Community health files: Contributing guidelines, Code of Conduct, ...",12/4/2023,executablebooks
+team-compass,Organizational policy and internal documentation for the executablebooks community,11/28/2023,executablebooks
+grant-application,Web publishing tool funding application,11/21/2023,executablebooks
+mdformat-plugin,A template for creating an mdformat parser extension plugin,11/3/2023,executablebooks
+sphinx-remove-toctrees,Speed up Sphinx builds by selectively removing toctrees from some pages,11/3/2023,executablebooks
+markdown-it-myst-extras,Additional plugins required for the MyST specification,9/26/2023,executablebooks
+markdown-it-dollarmath,A markdown-it plugin for $-delimited math,9/26/2023,executablebooks
+markdown-it-amsmath,A markdown-it plugin for amsmath LaTeX environments.,9/26/2023,executablebooks
+sphinx-proof,"A Sphinx extension for producing proof, theorem, lemma, definition, remark, conjecture, corollary and algorithm directives.",9/18/2023,executablebooks
+mdformat-myst,Mdformat plugin for MyST compatibility,8/26/2023,executablebooks
+mdformat-deflist,mdformat plugin for deflist,8/26/2023,executablebooks
+staged-recipes,A place to submit conda recipes before they become fully fledged conda-forge feedstocks,8/1/2023,executablebooks
+sphinx-comments,hypothes.is interaction layer with Sphinx,5/3/2023,executablebooks
+myst-article-theme,A light-weight theme for rendering scientific articles and associated notebooks,4/26/2023,executablebooks
+myst-book-theme,A lightweight MyST theme designed to mimic the look-and-feel of an interactive book.,4/26/2023,executablebooks
+markdown-it-docutils,A markdown-it plugin for implementing docutils style roles/directives.,3/6/2023,executablebooks
+jupyterlab-mystjs,TO ARCHIVE: Jupyterlab extension using the MySTjs parser,2/10/2023,executablebooks
+sphinx-exercise,A Sphinx extension for producing exercise and solution directives.,1/23/2023,executablebooks
+markdown-it-plugin-template,A template for creating a markdown-it plugin.,1/9/2023,executablebooks
+sphinx-examples,A Sphinx extension to create examples of source markdown and the result of rendering it.,5/3/2022,executablebooks
+mdformat-footnote,Footnote format addition for mdformat,2/16/2022,executablebooks
+quantecon-mini-example,A short example showing how to write a lecture series using Jupyter Book 2.0.,11/13/2021,executablebooks
+sphinx-multitoc-numbering,A Sphinx extension to support continuous numbering of sections across multiple tocs in HTML output.,7/6/2021,executablebooks
+myst-react,TO ARCHIVE: A web-based UI for rendering MyST Markdown,5/28/2021,executablebooks
+sphinx-tomyst,A sphinx translator for producing myst syntax files,5/26/2021,executablebooks
+myst-standard,TO ARCHIVE: A meta-repository to discuss and plan for the MyST standard,5/20/2021,executablebooks
+sphinx-yaml-config,,5/8/2021,executablebooks
+jupytext,"Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts",4/25/2021,executablebooks
+quantecon-example,A demonstration of Jupyter Book functionality using QuantEcon Python programming source material.,10/30/2020,executablebooks
+sphinx-conditional-asset,A small extension for developers of Sphinx to conditionally add assets to a page.,10/25/2020,executablebooks
+mistletoe-ebp,"The EPB fork of mistletoe: A fast, extensible and spec-compliant Markdown parser in pure Python.",8/6/2020,executablebooks
+mappings,Work on Mappings between IPYNB-RST and IPYNB-MD++,7/29/2020,executablebooks
+rst2myst,Tools for converting RST files to MyST-NB files,6/23/2020,executablebooks
+python-pkg-cookiecutter,"A cookiecutter for python packages, with docs and GitHub Actions CI",6/3/2020,executablebooks
+sphinx-ext-autodoc,Auto-documentation for sphinx extension components,6/3/2020,executablebooks
+myst-nb.example-project,An example project for working with myst-nb and developing myst syntax,6/3/2020,executablebooks
+tcs_to_jb,For conversion of TCS to Jupyter Book format,5/26/2020,executablebooks
+cli,"馃洃馃洃DEPRECATED, see https://github.com/ExecutableBookProject/jupyter-book馃洃馃洃",5/15/2020,executablebooks
+multi-book-demo,,5/1/2020,executablebooks
+myst-parser.example-project,An self contained example project for testing and development of myst syntax using myst-parser,4/11/2020,executablebooks
+sphinx-jupyter-book-theme,An experimental Sphinx theme for Jupyter Book,3/5/2020,executablebooks
+sphinx-globaltoc,,2/29/2020,executablebooks
+write_ups,Write ups and publications that document the project,2/25/2020,executablebooks
+markup_test_cases,Markup test cases for source files,2/14/2020,executablebooks
+profile-sphinx-site,A tiny repository to profile a Sphinx site,1/23/2020,executablebooks
+myst,TO ARCHIVE: Myst - Markedly Structured Text,11/17/2019,executablebooks
