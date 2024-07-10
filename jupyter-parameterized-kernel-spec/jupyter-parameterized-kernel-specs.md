@@ -26,7 +26,7 @@ The solution we are proposing consists of adding parameters to the kernel specs 
 
 Upon starting a new kernel instance, a front-end form generated from the JSON schema is prompted to the user to fill the parameter values. Many tools are available to generate such forms, such as react-jsonschema-form.
 
-Some of the chosen parameter values can be saved in e.g. the notebook metadata so that they don't have to be specified every time one opens the notebook.
+These kernel parameters will be not saved into the notebook due to security reason. The app will have "allow_insecure_kernelspec_params" witch will detect whether we have to accept all kernel spec files as safe or not
 
 ## Detailed Explanation
 
@@ -66,22 +66,18 @@ As described in previous sections, we propose to parameterize the kernel specs f
         "cpp_version": {
           "type": "string",
           "default": "C++14",
-          "enum": ["C++11", "C++14", "C++17"],
-          "save": true
+          "enum": ["C++11", "C++14", "C++17"]
         },
         "xeus_log_level": {
           "type": "string",
           "default": "ERROR",
-          "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"],
-          "save": true
+          "enum": ["TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
         }
       }
     }
   },
 }
 ```
-
-The JSON schema specification is augmented with a new `save` attribute used to specify whether the parameter is to be saved in e.g. the notebook metadata for future runs.
 
 Note: Using the JSON Schema, we can automate how front-end forms are created directly from the parameters allowing kernels' authors to decide which parameters are necessary and how to validate them. (Note that JupyterLab already makes use of react-jsonschema-form in other parts of its UI).
 
@@ -107,3 +103,23 @@ Cons:
 
  - Changes are required in multiple components of the stack, from the protocol specification to the front-end.
  - Unless we require default values for all parameters, this would be a backward-incompatible change.
+
+## Decisions
+
+- Kernel custom parameters won't be saved into a notebook metadata due to security reason
+- The application can be run with `allowed_insecure_kernelspec_params` parameter which allows a user to see a dialog where they can setup custom kernel parameters
+
+
+## Checking secure kernelspecs
+
+Upon starting, a kernel client checks whether available kernel spec files are secure:
+
+  - if a kernel spec does not have a `metadata.parameters` field, it is considered as secure. The kernel can be started directly.
+
+  - if all parameters in a kernel spec `metadata.parameters` have constraining types (i.e. the user cannot enter abritrary input), the kernel spec is secure. Starting a kernel will show a form where the user can choose the parameters.
+
+ If a kernel spec file is not secure and the flag `allowed_insecure_kernelspec_params` is passed when starting the app then a user will be able to fill a form.
+
+ If a kernel parameter has a non constraining type but provides a default value, this latter will be used and the user won't be able to fill this parameter in the form.
+
+ If a kernel parameter has a non constraining type, and does not provide a default value, then the kernel spec is considered as unsecure. In that case, unless the `allowed_insecure_kernelspec_params` has been passed when starting, the kernelspec is discarded and the user won't be able to start the kernel.
