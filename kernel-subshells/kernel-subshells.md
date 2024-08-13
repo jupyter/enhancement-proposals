@@ -98,8 +98,7 @@ content = {
     # 'ok' if the request succeeded or 'error', with error information as in all other replies.
     'status': 'ok',
 
-    # The ID of the subshell, same as in the request if specified by the client, given by the
-    # kernel otherwise.
+    # The ID of the subshell.
     'subshell_id': str,
 }
 ```
