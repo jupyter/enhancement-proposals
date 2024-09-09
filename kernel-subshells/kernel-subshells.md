@@ -37,7 +37,7 @@ The proposal is to support extra threads within a kernel as a JEP 92
 [optional feature](https://github.com/jupyter/enhancement-proposals/blob/master/92-jupyter-optional-features/jupyter-optional-features.md) so that whilst the main thread is performing a long blocking task it
 will be possible for other threads to do something useful within the same process namespace.
 
-When a kernel that support subshells is started it will have a single subshell and this is referred
+When a kernel that supports subshells is started it will have a single subshell and this is referred
 to as the parent subshell to distinguish it from the other optional subshells which are referred to
 as child subshells.
 
