@@ -22,7 +22,7 @@ Sometimes when installing multiple kernels, the JupyterLab launcher panel is cro
 
 ## Proposed Enhancement
 
-The solution we are proposing consists of adding parameters to the kernel specs file in the form of a JSON Schema that would be added to the specs metadata. These parameters are then used to populate the `argv` and `env` lists (respectively the command-line arguments and environment variables).
+The solution we are proposing consists of adding parameters to the kernel specs file in the form of a JSON Schema that would be added to the specs metadata. These parameters are then used to populate the `argv` list and `env` dict (respectively the command-line arguments and environment variables).
 
 Upon starting a new kernel instance, a front-end form generated from the JSON schema is prompted to the user to fill the parameter values. Many tools are available to generate such forms, such as react-jsonschema-form.
 
@@ -41,9 +41,9 @@ As described in previous sections, we propose to parameterize the kernel specs f
       "{connection_file}",
       "-std=c++11"
   ],
-  env: [
-    "XEUS_LOGLEVEL=ERROR"
-  ],
+  env: {
+    "XEUS_LOGLEVEL": "ERROR"
+  },
   "language": "C++11"
 }
 ```
