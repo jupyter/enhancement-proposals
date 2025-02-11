@@ -201,9 +201,9 @@ This proposal lays the groundwork for seamless AI integration in Jupyter, empowe
 
 # Unresolved questions
 
-- Should we support both or one of async/sync `_repr_ai_`
-- What are good reccomended kwargs to pass
-- How should this related to `repr_*`, if at all.
+- Should we support both or one of async/sync `_ai_repr_()`?
+- What are good recommended `kwargs` to pass in `ai_repr_request`?
+- How should this relate to `repr_*`, if at all?
 - What is the right default for objects without reprs/formatters defined? `str(obj)`, `None`, or `_repr_`?
-- Should thread-saftey be required so that this can be called via a comm
+- Should thread-safety be required so that this can be called via a comm?
 - Can `ai_repr_request` be canceled?
