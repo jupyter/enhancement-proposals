@@ -130,6 +130,7 @@ The kernel returns a response containing the representation of the requested obj
         }
     }
 }
+```
 - **`data`**: A dictionary of MIME-typed representations for the object.
 - **`metadata`**: A dictionary of metadata associated with the data, including global metadata and MIME-type-specific sub-dictionaries.
 - **`transient`**: A dictionary of transient metadata, not intended to be persisted, such as a `display_id` for session-specific tracking.
