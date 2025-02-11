@@ -2,7 +2,7 @@
 title: AI Representation Protocol for Jupyter
 authors: Marc Udoff, Govinda Totla
 issue-number: 128
-pr-number:
+pr-number: 129
 date-started: 2025-02-07
 ---
 
