@@ -50,7 +50,7 @@ For specific extensions, they can define new mime-types that give the required d
 In practice, the kwargs should guides the `_ai_repr_` determine what to include in the mime bundle. For a text-only
 model, we should not waste time generating the image.
 
-Now I can talk with my an mutli-modal LLM. For example, I may say (assuming my plugin substitutes @ for the value form `_ai_repr_`):
+Now I can talk with my mutli-modal LLM. For example, I may say (assuming my plugin substitutes @ for the value form `_ai_repr_`):
 > Please generate a caption for @my_chart.
 
 It should be assumed that callers may choose to inject type infromation about these objects as well, making it
