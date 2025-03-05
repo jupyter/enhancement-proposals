@@ -11,8 +11,10 @@ parts:
   chapters:
   - file: 72-language-server-protocol/language-server-protocol.md
   - file: 65-jupyter-xpub/jupyter-xpub
-  - file: 79-notebook-v7/notebook-v7
+  - file: 92-jupyter-optional-features/jupyter-optional-features.md
+  - file: 97-add-schema/add-schema-to-notebook-format.md
   - file: 108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas
+  - file: 118-restart-clarification/restart-clarification.md
 
 - caption: Implemented JEPs
   chapters:
@@ -28,3 +30,5 @@ parts:
   - file: 42-voila-incorporation/voila-incorporation
   - file: 29-jep-process/jep-process
   - file: 28-jupyter-server/jupyter-server
+  - file: 79-notebook-v7/notebook-v7
+  - file: 80-kernel-info/kernel-info.md
