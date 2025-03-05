@@ -41,6 +41,7 @@ encouraged to commence on the topic.
 | 0066 | **Accepted** | Kernel Handshaking pattern[](66-jupyter-handshaking/jupyter-handshaking.md) | [#66](https://github.com/jupyter/enhancement-proposals/pull/66) |
 | 0072 | **Accepted** | [Language server protocol (LSP)](72-language-server-protocol/language-server-protocol.md) | [#72](https://github.com/jupyter/enhancement-proposals/pull/72) |
 | 0079 | Implemented | [Build Jupyter Notebook v7 off of JupyterLab components](79-notebook-v7/notebook-v7.md) | [#79](https://github.com/jupyter/enhancement-proposals/pull/79) |
+| 0091 | **Accepted** | [Jupyter kernel subshells](91-kernel-subshells) | [#91](https://github.com/jupyter/enhancement-proposals/pull/91) |
 | 0108 | **Accepted** | [Subdomain and repository for publishing schemas under jupyter.org](108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.md) | [#108](https://github.com/jupyter/enhancement-proposals/pull/108) |
 | 0122 | **Accepted** | [Incorporate Jupyter Book as a subproject](./122-jupyter-book-incorporation/jupyter-book-incorporation.md) | [#123](https://github.com/jupyter/enhancement-proposals/pull/123) |
 
