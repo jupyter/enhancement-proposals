@@ -6,12 +6,14 @@ pr-number: 93
 date-started: 2023-02-20
 ---
 
-# Summary
+# Debugger support to `copyToGlobals`
+
+## Summary
 
 This JEP introduces a new field to the kernel debugger_info response. This new
 field will inform the UI that the debugger supports the `copyToGlobals` request.
 
-# Motivation
+## Motivation
 
 The `copyToGlobals` request has been introduced in
 [ipykernel](https://github.com/ipython/ipykernel/pull/1055) and in
@@ -19,12 +21,12 @@ The `copyToGlobals` request has been introduced in
 variable to the global scope during a breakpoint. It would be useful to inform the
 UI if this is supported by the kernel before displaying the corresponding menu entry.
 
-# Proposed Enhancement
+## Proposed Enhancement
 
 We propose to add a new `copyToGlobals` boolean field to the `debugger_info`
 response which will inform the UI that this request is supported.
 
-## Reference-level explanation
+### Reference-level explanation
 
 This boolean flag should be included in the `debugger_info` response from the kernel
 which supports the feature. It is optional, assuming that its absence is understood

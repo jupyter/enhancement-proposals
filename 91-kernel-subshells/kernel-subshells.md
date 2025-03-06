@@ -6,11 +6,13 @@ pr-number: 91
 date-started: 2022-12-15
 ---
 
-# Summary
+# Jupyter kernel subshells
+
+## Summary
 
 This JEP introduces kernel subshells to allow for concurrent shell requests.
 
-# Motivation
+## Motivation
 
 Users have been asking for ways to interact with a kernel while it is busy executing CPU-bound code,
 for the following reasons:
@@ -31,7 +33,7 @@ purposes, and the processing of those messages should be almost immediate.
 
 The goal of this JEP is to offer a way to process shell requests concurrently.
 
-# Proposed enhancement: kernel subshells
+## Proposed enhancement: kernel subshells
 
 The proposal is to support extra threads within a kernel as a JEP 92
 [optional feature](https://github.com/jupyter/enhancement-proposals/blob/master/92-jupyter-optional-features/jupyter-optional-features.md) so that whilst the main thread is performing a long blocking task it
@@ -62,9 +64,9 @@ request and receive stdin independently of other subshells.
 
 Each subshell will store its own execution count and history.
 
-## Modifications to existing messages
+### Modifications to existing messages
 
-### Identify optional feature
+#### Identify optional feature
 
 Clients identify if a kernel supports subshells via the
 [optional feature API](https://github.com/jupyter/enhancement-proposals/blob/master/92-jupyter-optional-features/jupyter-optional-features.md):
@@ -85,9 +87,9 @@ The full API for optional features is still to be determined, so the details her
 In particular, there is probably the need for a version specifier here to allow future changes to
 the kernel subshells specification.
 
-## New control channel messages
+### New control channel messages
 
-### Create subshell
+#### Create subshell
 
 Message type: `create_subshell_request`: no content.
 
@@ -103,7 +105,7 @@ content = {
 }
 ```
 
-### Delete subshell
+#### Delete subshell
 
 Message type: `delete_subshell_request`:
 
@@ -123,7 +125,7 @@ content = {
 }
 ```
 
-### List subshells
+#### List subshells
 
 Message type: `list_subshell_request`: no content.
 
@@ -138,9 +140,9 @@ content = {
 
 Note that the parent subshell (`subshell_id = None`) is not included in the returned list.
 
-## New fields on existing messages
+### New fields on existing messages
 
-### Shell and stdin requests
+#### Shell and stdin requests
 
 All shell and stdin messages will allow the optional `subshell_id` field in the request to identify
 which subshell should process that message:
@@ -154,14 +156,14 @@ content = {
 
 This field is not in the corresponding reply message as it will be in the parent header.
 
-### IOPub messages
+#### IOPub messages
 
 IOPub messages do not need an extra optional `subshell_id` field as this information is available
 in the parent header.
 
-## Behavior
+### Behavior
 
-### Kernels supporting subshells
+#### Kernels supporting subshells
 
 A subshell request may be processed concurrently with other subshells. Within a an individual
 subshell, requests are processed sequentially.
@@ -172,7 +174,7 @@ messages are handled at the kernel (process) rather than subshell (thread) level
 include a `subshell_id` field. A child subshell can be individually shut down using a
 `delete_subshell_request` message.
 
-### Kernels not supporting subshells
+#### Kernels not supporting subshells
 
 These will not claim support for kernel subshells via the optional features API. Unrecognised shell
 request messages, such as the subshell request messages listed above, will be ignored as normal.
@@ -180,7 +182,7 @@ Any use of a `subshell_id` field in a message will be ignored. Hence existing ke
 support kernel subshells will continue to work as they currently do and will not require any
 changes.
 
-## Implications for other projects
+### Implications for other projects
 
 Kernel writers who wish to support subshells will need to write extra threading and socket
 management code. `ipykernel` will contain a reference implementation.
