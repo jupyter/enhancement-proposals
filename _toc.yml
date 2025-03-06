@@ -11,6 +11,7 @@ parts:
   chapters:
   - file: 72-language-server-protocol/language-server-protocol.md
   - file: 65-jupyter-xpub/jupyter-xpub
+  - file: 91-kernel-subshells/kernel-subshells.md
   - file: 92-jupyter-optional-features/jupyter-optional-features.md
   - file: 97-add-schema/add-schema-to-notebook-format.md
   - file: 108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas
