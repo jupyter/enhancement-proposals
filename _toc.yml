@@ -9,13 +9,17 @@ parts:
 
 - caption: Accepted JEPs
   chapters:
-  - file: 72-language-server-protocol/language-server-protocol.md
+  - file: 72-language-server-protocol/language-server-protocol
   - file: 65-jupyter-xpub/jupyter-xpub
-  - file: 91-kernel-subshells/kernel-subshells.md
-  - file: 92-jupyter-optional-features/jupyter-optional-features.md
-  - file: 97-add-schema/add-schema-to-notebook-format.md
+  - file: 91-kernel-subshells/kernel-subshells
+  - file: 92-jupyter-optional-features/jupyter-optional-features
+  - file: 93-debugger-info-copy-to-globals/debugger-info-copy-to-globals
+  - file: 97-add-schema/add-schema-to-notebook-format
+  - file: 104-jep-process-v2/jep-process-v2
+  - file: 105-kernelspec-spec/kernelspec-spec
+  - file: 106-connectionfile-spec/connectionfile-spec
   - file: 108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas
-  - file: 118-restart-clarification/restart-clarification.md
+  - file: 118-restart-clarification/restart-clarification
 
 - caption: Implemented JEPs
   chapters:
@@ -26,10 +30,10 @@ parts:
   - file: 12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation
   - file: 08-notebook-diff/notebook-diff
   - file: 62-cell-id/cell-id
-  - file: 47-jupyter-debugger-protocol/jupyter-debugger-protocol.md
+  - file: 47-jupyter-debugger-protocol/jupyter-debugger-protocol
   - file: 44-xeus-incorporation/xeus-incorporation
   - file: 42-voila-incorporation/voila-incorporation
   - file: 29-jep-process/jep-process
   - file: 28-jupyter-server/jupyter-server
   - file: 79-notebook-v7/notebook-v7
-  - file: 80-kernel-info/kernel-info.md
+  - file: 80-kernel-info/kernel-info

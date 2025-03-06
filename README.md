@@ -44,7 +44,11 @@ encouraged to commence on the topic.
 | 0080 | **Accepted** | [Support `kernel_info` request on the control channel](80-kernel-info/kernel-info.md) | [#80](https://github.com/jupyter/enhancement-proposals/pull/80) |
 | 0091 | **Accepted** | [Jupyter kernel subshells](91-kernel-subshells/kernel-subshells.md) | [#91](https://github.com/jupyter/enhancement-proposals/pull/91) |
 | 0092 | **Accepted** | [Jupyter Optional Features](92-jupyter-optional-features/jupyter-optional-features.md) | [#92](https://github.com/jupyter/enhancement-proposals/pull/92) |
+| 0093 | **Accepted** | [Debugger support to `copyToGlobals`](93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.md) | [#93](https://github.com/jupyter/enhancement-proposals/pull/93) |
 | 0097 | **Accepted** | [Add `$schema` to notebook format](97-add-schema/add-schema-to-notebook-format.md) | [#97](https://github.com/jupyter/enhancement-proposals/pull/97) |
+| 0104 | **Accepted** | [Jupyter Enhancement Proposal v2](104-jep-process-v2/jep-process-v2.md) | [#104](https://github.com/jupyter/enhancement-proposals/pull/104) |
+| 0105 | **Accepted** | [kernelspec specification](105-kernelspec-spec/kernelspec-spec.md) | [#105](https://github.com/jupyter/enhancement-proposals/pull/105) |
+| 0106 | **Accepted** | [Connection file specification](106-connectionfile-spec/connectionfile-spec.md) | [#106](https://github.com/jupyter/enhancement-proposals/pull/106) |
 | 0108 | **Accepted** | [Subdomain and repository for publishing schemas under jupyter.org](108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.md) | [#108](https://github.com/jupyter/enhancement-proposals/pull/108) |
 | 0118 | **Accepted** | [Restart Clarification](118-restart-clarification/restart-clarification.md) | [#118](https://github.com/jupyter/enhancement-proposals/pull/118) |
 | 0122 | **Accepted** | [Incorporate Jupyter Book as a subproject](./122-jupyter-book-incorporation/jupyter-book-incorporation.md) | [#123](https://github.com/jupyter/enhancement-proposals/pull/123) |

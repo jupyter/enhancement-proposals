@@ -1,8 +1,8 @@
 ---
-title: Debugger support to copyToGlobals
+title: Debugger support to `copyToGlobals`
 authors: Nicolas Brichet (@brichet)
 issue-number: xxx
-pr-number: xxx
+pr-number: 93
 date-started: 2023-02-20
 ---
 
