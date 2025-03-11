@@ -2,7 +2,7 @@
 title: kernelspec specification
 authors: Johan Mabille
 issue-number: XX
-pr-number: [#105](https://github.com/jupyter/enhancement-proposals/pull/105)
+pr-number: 105
 date-started: "2023-04-19"
 ---
 
