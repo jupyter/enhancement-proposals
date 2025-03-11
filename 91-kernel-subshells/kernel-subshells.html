@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Jupyter kernel subshells &#8212; Jupyter Enhancement Proposals</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '91-kernel-subshells/kernel-subshells';</script>
+    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/91-kernel-subshells/kernel-subshells.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Optional Features" href="../92-jupyter-optional-features/jupyter-optional-features.html" />
+    <link rel="prev" title="Replace PUB socket with XPUB socket" href="../65-jupyter-xpub/jupyter-xpub.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs..."
+         aria-label="Search the docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Jupyter Enhancement Proposals</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Jupyter Enhancement Proposals
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.html">Jupyter Enhancement Proposals (JEP) Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter kernel subshells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../92-jupyter-optional-features/jupyter-optional-features.html">Jupyter Optional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html">Debugger support to <code class="docutils literal notranslate"><span class="pre">copyToGlobals</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../97-add-schema/add-schema-to-notebook-format.html">Add <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to notebook format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../104-jep-process-v2/jep-process-v2.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../105-kernelspec-spec/kernelspec-spec.html">Specification of the kernelspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../106-connectionfile-spec/connectionfile-spec.html">Specification of the connection file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../118-restart-clarification/restart-clarification.html">Restart Clarification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-notebook-diff/notebook-diff.html">Diffing and merging notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../62-cell-id/cell-id.html">Cell ID Addition to Notebook Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../47-jupyter-debugger-protocol/jupyter-debugger-protocol.html">Jupyter debugger protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../44-xeus-incorporation/xeus-incorporation.html">Xeus Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../80-kernel-info/kernel-info.html">Support <code class="docutils literal notranslate"><span class="pre">kernel_info</span></code> request on the control channel</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/91-kernel-subshells/kernel-subshells.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F91-kernel-subshells/kernel-subshells.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/91-kernel-subshells/kernel-subshells.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter kernel subshells</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement-kernel-subshells">Proposed enhancement: kernel subshells</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modifications-to-existing-messages">Modifications to existing messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-optional-feature">Identify optional feature</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-control-channel-messages">New control channel messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-subshell">Create subshell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-subshell">Delete subshell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-subshells">List subshells</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-fields-on-existing-messages">New fields on existing messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-and-stdin-requests">Shell and stdin requests</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iopub-messages">IOPub messages</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior">Behavior</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels-supporting-subshells">Kernels supporting subshells</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels-not-supporting-subshells">Kernels not supporting subshells</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-for-other-projects">Implications for other projects</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="jupyter-kernel-subshells">
+<h1>Jupyter kernel subshells<a class="headerlink" href="#jupyter-kernel-subshells" title="Link to this heading">#</a></h1>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This JEP introduces kernel subshells to allow for concurrent shell requests.</p>
+</section>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<p>Users have been asking for ways to interact with a kernel while it is busy executing CPU-bound code,
+for the following reasons:</p>
+<ul class="simple">
+<li><p>inspect the kernel’s state to check the progress or debug a long-running computation (e.g.
+through a variable explorer).</p></li>
+<li><p>visualize intermediary results before the final result is computed.</p></li>
+<li><p>request <a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html#completion">completion</a> or
+<a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html#introspection">introspection</a>.</p></li>
+<li><p>process
+<a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html#custom-messages">Comm messages</a>
+immediately (e.g. for widgets).</p></li>
+<li><p>execute arbitrary code in parallel.</p></li>
+</ul>
+<p>It is currently not possible to do so because the kernel processes shell requests sequentially.
+Since the control channel has had its own thread it has been possible to use the control channel
+for such interactions, but this is considered bad practice as it should only be used for control
+purposes, and the processing of those messages should be almost immediate.</p>
+<p>The goal of this JEP is to offer a way to process shell requests concurrently.</p>
+</section>
+<section id="proposed-enhancement-kernel-subshells">
+<h2>Proposed enhancement: kernel subshells<a class="headerlink" href="#proposed-enhancement-kernel-subshells" title="Link to this heading">#</a></h2>
+<p>The proposal is to support extra threads within a kernel as a JEP 92
+<a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/92-jupyter-optional-features/jupyter-optional-features.md">optional feature</a> so that whilst the main thread is performing a long blocking task it
+will be possible for other threads to do something useful within the same process namespace.</p>
+<p>When a kernel that supports subshells is started it will have a single subshell and this is referred
+to as the parent subshell to distinguish it from the other optional subshells which are referred to
+as child subshells.</p>
+<p>A new child subshell thread is started using a new <code class="docutils literal notranslate"><span class="pre">create_subshell_request</span></code> control message rather
+than via the REST API. Each subshell has a <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> which is a unique identifier within that
+kernel. The <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> of a child subshell is generated when the subshell is created and
+returned in the <code class="docutils literal notranslate"><span class="pre">create_subshell_reply</span></code> message. The parent subshell has a <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> of <code class="docutils literal notranslate"><span class="pre">None</span></code>.
+<a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html#messages-on-the-shell-router-dealer-channel">Shell messages</a>
+include the <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> as an optional field in the message header to indicate which subshell the
+message should be sent to; if this is not specified or is <code class="docutils literal notranslate"><span class="pre">None</span></code> then the parent
+subshell is targeted. Use of a <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> that is not recognised will raise an error.
+Subshells are thus multiplexed on the shell channel through the <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code>, and it is the
+responsibility of the kernel to route the messages to the target subshell according to the
+<code class="docutils literal notranslate"><span class="pre">subshell_id</span></code>.</p>
+<p>Note a kernel that does not support <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> will just ignore the field if it is present and
+run in the main thread.</p>
+<p><a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html#messages-on-the-stdin-router-dealer-channel">Stdin messages</a>
+will also include the extra optional <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> field so that it is possible for a subshell to
+request and receive stdin independently of other subshells.</p>
+<p>Each subshell will store its own execution count and history.</p>
+<section id="modifications-to-existing-messages">
+<h3>Modifications to existing messages<a class="headerlink" href="#modifications-to-existing-messages" title="Link to this heading">#</a></h3>
+<section id="identify-optional-feature">
+<h4>Identify optional feature<a class="headerlink" href="#identify-optional-feature" title="Link to this heading">#</a></h4>
+<p>Clients identify if a kernel supports subshells via the
+<a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/92-jupyter-optional-features/jupyter-optional-features.md">optional feature API</a>:</p>
+<p>Message type: <code class="docutils literal notranslate"><span class="pre">kernel_info_reply</span></code>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;supported_features&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;kernel subshells&#39;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The full API for optional features is still to be determined, so the details here may change.
+In particular, there is probably the need for a version specifier here to allow future changes to
+the kernel subshells specification.</p>
+</section>
+</section>
+<section id="new-control-channel-messages">
+<h3>New control channel messages<a class="headerlink" href="#new-control-channel-messages" title="Link to this heading">#</a></h3>
+<section id="create-subshell">
+<h4>Create subshell<a class="headerlink" href="#create-subshell" title="Link to this heading">#</a></h4>
+<p>Message type: <code class="docutils literal notranslate"><span class="pre">create_subshell_request</span></code>: no content.</p>
+<p>Message type: <code class="docutils literal notranslate"><span class="pre">create_subshell_reply</span></code>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># &#39;ok&#39; if the request succeeded or &#39;error&#39;, with error information as in all other replies.</span>
+    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span>
+
+    <span class="c1"># The ID of the subshell.</span>
+    <span class="s1">&#39;subshell_id&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="delete-subshell">
+<h4>Delete subshell<a class="headerlink" href="#delete-subshell" title="Link to this heading">#</a></h4>
+<p>Message type: <code class="docutils literal notranslate"><span class="pre">delete_subshell_request</span></code>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># The ID of the subshell.</span>
+    <span class="s1">&#39;subshell_id&#39;</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Message type: <code class="docutils literal notranslate"><span class="pre">delete_subshell_reply</span></code>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># &#39;ok&#39; if the request succeeded or &#39;error&#39;, with error information as in all other replies.</span>
+    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="list-subshells">
+<h4>List subshells<a class="headerlink" href="#list-subshells" title="Link to this heading">#</a></h4>
+<p>Message type: <code class="docutils literal notranslate"><span class="pre">list_subshell_request</span></code>: no content.</p>
+<p>Message type: <code class="docutils literal notranslate"><span class="pre">list_subshell_reply</span></code>:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># A list of subshell IDs.</span>
+    <span class="s1">&#39;subshell_id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the parent subshell (<code class="docutils literal notranslate"><span class="pre">subshell_id</span> <span class="pre">=</span> <span class="pre">None</span></code>) is not included in the returned list.</p>
+</section>
+</section>
+<section id="new-fields-on-existing-messages">
+<h3>New fields on existing messages<a class="headerlink" href="#new-fields-on-existing-messages" title="Link to this heading">#</a></h3>
+<section id="shell-and-stdin-requests">
+<h4>Shell and stdin requests<a class="headerlink" href="#shell-and-stdin-requests" title="Link to this heading">#</a></h4>
+<p>All shell and stdin messages will allow the optional <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> field in the request to identify
+which subshell should process that message:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Optional subshell to process request.</span>
+    <span class="s1">&#39;subshell_id&#39;</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This field is not in the corresponding reply message as it will be in the parent header.</p>
+</section>
+<section id="iopub-messages">
+<h4>IOPub messages<a class="headerlink" href="#iopub-messages" title="Link to this heading">#</a></h4>
+<p>IOPub messages do not need an extra optional <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> field as this information is available
+in the parent header.</p>
+</section>
+</section>
+<section id="behavior">
+<h3>Behavior<a class="headerlink" href="#behavior" title="Link to this heading">#</a></h3>
+<section id="kernels-supporting-subshells">
+<h4>Kernels supporting subshells<a class="headerlink" href="#kernels-supporting-subshells" title="Link to this heading">#</a></h4>
+<p>A subshell request may be processed concurrently with other subshells. Within a an individual
+subshell, requests are processed sequentially.</p>
+<p><a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html#kernel-shutdown">Kernel shutdown</a>
+and <a class="reference external" href="https://jupyter-client.readthedocs.io/en/stable/messaging.html#kernel-interrupt">kernel interrupt</a>
+messages are handled at the kernel (process) rather than subshell (thread) level, and they do not
+include a <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> field. A child subshell can be individually shut down using a
+<code class="docutils literal notranslate"><span class="pre">delete_subshell_request</span></code> message.</p>
+</section>
+<section id="kernels-not-supporting-subshells">
+<h4>Kernels not supporting subshells<a class="headerlink" href="#kernels-not-supporting-subshells" title="Link to this heading">#</a></h4>
+<p>These will not claim support for kernel subshells via the optional features API. Unrecognised shell
+request messages, such as the subshell request messages listed above, will be ignored as normal.
+Any use of a <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> field in a message will be ignored. Hence existing kernels that do not
+support kernel subshells will continue to work as they currently do and will not require any
+changes.</p>
+</section>
+</section>
+<section id="implications-for-other-projects">
+<h3>Implications for other projects<a class="headerlink" href="#implications-for-other-projects" title="Link to this heading">#</a></h3>
+<p>Kernel writers who wish to support subshells will need to write extra threading and socket
+management code. <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> will contain a reference implementation.</p>
+<p>Any client that wishes to create a subshell will have to issue a <code class="docutils literal notranslate"><span class="pre">create_subshell_request</span></code> control
+message, and pass the <code class="docutils literal notranslate"><span class="pre">subshell_id</span></code> in all relevant shell and stdin messages.</p>
+<p>There will need to be some sort of visual indicator for subshells in, for example, the JupyterLab
+UI, but this is not strictly speaking part of the JEP.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../65-jupyter-xpub/jupyter-xpub.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Replace PUB socket with XPUB socket</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../92-jupyter-optional-features/jupyter-optional-features.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Jupyter Optional Features</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement-kernel-subshells">Proposed enhancement: kernel subshells</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modifications-to-existing-messages">Modifications to existing messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-optional-feature">Identify optional feature</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-control-channel-messages">New control channel messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-subshell">Create subshell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-subshell">Delete subshell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-subshells">List subshells</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-fields-on-existing-messages">New fields on existing messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-and-stdin-requests">Shell and stdin requests</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iopub-messages">IOPub messages</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior">Behavior</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels-supporting-subshells">Kernels supporting subshells</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kernels-not-supporting-subshells">Kernels not supporting subshells</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implications-for-other-projects">Implications for other projects</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Project Jupyter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

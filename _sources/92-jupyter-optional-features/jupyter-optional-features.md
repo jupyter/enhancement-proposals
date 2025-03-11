@@ -6,13 +6,15 @@ pr-number: 92
 date-started: 2023-01-16
 ---
 
-# Summary
+# Jupyter Optional Features
+
+## Summary
 
 This JEP introduces Jupyter optional features, which ease the way
 a kernel advertises which features it supports, without coupling it
 to the version of the protocol that it implements.
 
-# Motivation
+## Motivation
 
 Some of the features that were added (the debugger) or proposed (the subshells)
 may require a lot of work from kernel authors to implement. Besides, the
@@ -27,7 +29,7 @@ and to have an explicit list of such features. This way, we do not prevent kerne
 authors from upgrading to a more recent version of the protocol when we introduce
 a new feature that may be complicated to implement and not mandatory for them.
 
-# Proposed Enhancement
+## Proposed Enhancement
 
 We propose to add a new `supported_features` field to the `kernel_info_reply` message.
 This field is a list of optional features that the kernel supports. The boolean field

@@ -1,55 +1,54 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Summary &#8212; Jupyter Enhancement Proposals</title>
+    <title>Add $schema to notebook format &#8212; Jupyter Enhancement Proposals</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '97-add-schema/add-schema-to-notebook-format';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/97-add-schema/add-schema-to-notebook-format.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Enhancement Proposal" href="../104-jep-process-v2/jep-process-v2.html" />
+    <link rel="prev" title="Debugger support to copyToGlobals" href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -59,19 +58,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -93,12 +96,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -113,6 +124,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -121,10 +135,22 @@
   
   
   
+  
     <p class="title logo__title">Jupyter Enhancement Proposals</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -140,11 +166,18 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../91-kernel-subshells/kernel-subshells.html">Jupyter kernel subshells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../92-jupyter-optional-features/jupyter-optional-features.html">Jupyter Optional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html">Debugger support to <code class="docutils literal notranslate"><span class="pre">copyToGlobals</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Add <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to notebook format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../104-jep-process-v2/jep-process-v2.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../105-kernelspec-spec/kernelspec-spec.html">Specification of the kernelspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../106-connectionfile-spec/connectionfile-spec.html">Specification of the connection file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../118-restart-clarification/restart-clarification.html">Restart Clarification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
 <ul class="nav bd-sidenav">
@@ -160,6 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../80-kernel-info/kernel-info.html">Support <code class="docutils literal notranslate"><span class="pre">kernel_info</span></code> request on the control channel</a></li>
 </ul>
 
     </div>
@@ -175,7 +210,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -184,14 +219,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -330,26 +365,28 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -360,7 +397,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Summary</h1>
+    <h1>Add $schema to notebook format</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -370,16 +407,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Summary</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -388,18 +424,20 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
+  <section id="add-schema-to-notebook-format">
+<h1>Add <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to notebook format<a class="headerlink" href="#add-schema-to-notebook-format" title="Link to this heading">#</a></h1>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>We propose to add a new top-level required property, <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to the notebook JSON, as such updating the notebook JSON schema. This new property deprecates <code class="docutils literal notranslate"><span class="pre">nbformat</span></code> and <code class="docutils literal notranslate"><span class="pre">nbformat_minor</span></code>.</p>
 </section>
 <section id="motivation">
-<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h1>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>Today, <code class="docutils literal notranslate"><span class="pre">nbformat</span></code> and <code class="docutils literal notranslate"><span class="pre">nbformat_minor</span></code> specify the JSON schema a notebook should adhere to (for example <a class="reference external" href="https://github.com/jupyter/nbformat/blob/main/nbformat/v4/nbformat.v4.5.schema.json">4.5</a>). Since this approach was adopted in the Jupyter ecosystem, the JSON schema standard has evolved and Jupyter’s approach is no longer in line with it. Other than following standards being the right thing to do, bringing the notebook format back in line with the current JSON Schema spec opens it up to the rich tooling that exists around JSON schema validation today.</p>
 </section>
 <section id="guide-level-explanation">
-<h1>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Permalink to this heading">#</a></h1>
+<h2>Guide-level explanation<a class="headerlink" href="#guide-level-explanation" title="Link to this heading">#</a></h2>
 <p>The new required <code class="docutils literal notranslate"><span class="pre">$schema</span></code> top-level property refers to a JSON Schema that validates the current notebook. During a deprecation period, <code class="docutils literal notranslate"><span class="pre">$schema</span></code> takes precedence over the existing <code class="docutils literal notranslate"><span class="pre">&quot;nbformat&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;nbformat_minor&quot;</span></code> properties that specify the notebook format. There will be a one-to-one mapping between <code class="docutils literal notranslate"><span class="pre">$schema</span></code> and the <code class="docutils literal notranslate"><span class="pre">(nbformat,</span> <span class="pre">nbformat_minor)</span></code> pair, which should follow a URI template, e.g.:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.jupyter.org/notebook/v{nbformat}.{nbformat_minor}/notebook.json&quot;</span><span class="p">,</span>
@@ -412,7 +450,7 @@ document.write(`
 <p>The addition of the <code class="docutils literal notranslate"><span class="pre">$schema</span></code> property removes a level of indirection between the notebook and the schema against which it is invalidated. It also guarantees that the schema against which it is validated is invariant with respect to time; the schema URI should refer to an immutable document.</p>
 </section>
 <section id="reference-level-explanation">
-<h1>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Permalink to this heading">#</a></h1>
+<h2>Reference-level explanation<a class="headerlink" href="#reference-level-explanation" title="Link to this heading">#</a></h2>
 <p>The following changes are made to the existing v4.5 schema:</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gd">--- /tmp/a.txt	2023-03-14 16:30:37.217298279 +0000</span>
 <span class="gi">+++ /tmp/b.txt	2023-03-14 16:30:31.705287720 +0000</span>
@@ -934,31 +972,31 @@ document.write(`
 </details>
 <p>It is REQUIRED that the top-level <code class="docutils literal notranslate"><span class="pre">$schema</span></code> be a canonical URI that refers to the Jupyter Notebook formats, i.e. <code class="docutils literal notranslate"><span class="pre">$schema</span></code> cannot be an arbitrary URI to a valid notebook schema, but instead must be useable as a token that uniquely identifies that schema, e.g.:</p>
 <p>Valid <code class="docutils literal notranslate"><span class="pre">$schema</span></code> URI:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
-    &quot;$schema&quot;: &quot;https://schema.jupyter.org/notebook/v{nbformat}.{nbformat_minor}/notebook.json&quot;
-    ...
-}
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.jupyter.org/notebook/v{nbformat}.{nbformat_minor}/notebook.json&quot;</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Invalid <code class="docutils literal notranslate"><span class="pre">$schema</span></code> URI:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
-    &quot;$schema&quot;: &quot;https://schema.jupyter.org/notebook/../notebook/v{nbformat}.{nbformat_minor}/notebook.json&quot;
-    ...
-}
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://schema.jupyter.org/notebook/../notebook/v{nbformat}.{nbformat_minor}/notebook.json&quot;</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The schema identified by <code class="docutils literal notranslate"><span class="pre">$schema</span></code> MUST require that the <code class="docutils literal notranslate"><span class="pre">nbformat</span></code> and <code class="docutils literal notranslate"><span class="pre">nbformat_minor</span></code> properties are <code class="docutils literal notranslate"><span class="pre">const</span></code>. This ensures that there is a one-to-one mapping between schemas and nbformat versions published up-to the final nbformat version of the deprecation period.</p>
 </section>
 <section id="rationale-and-alternatives">
-<h1>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Permalink to this heading">#</a></h1>
+<h2>Rationale and alternatives<a class="headerlink" href="#rationale-and-alternatives" title="Link to this heading">#</a></h2>
 <p>Not doing this will leave the Jupyter notebook format in a non-standard state.</p>
 </section>
 <section id="prior-art">
-<h1>Prior art<a class="headerlink" href="#prior-art" title="Permalink to this heading">#</a></h1>
+<h2>Prior art<a class="headerlink" href="#prior-art" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://json-schema.org/">JSON Schema</a> is a widely adopted declarative language that annotates and validates documents, so it’s the obvious candidate to adhere to.</p>
 </section>
 <section id="unresolved-questions">
-<h1>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Permalink to this heading">#</a></h1>
+<h2>Unresolved questions<a class="headerlink" href="#unresolved-questions" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Code to upgrade from and downgrade to 4.5 still needs to be written.
 Some exploration has been done by Nick Bollweg in <a class="reference external" href="https://gist.github.com/bollwyvl/a6e1ae13125f01ff04edf121e30a462a">this gist</a>.</p></li>
@@ -966,8 +1004,9 @@ Some exploration has been done by Nick Bollweg in <a class="reference external" 
 </ul>
 </section>
 <section id="future-possibilities">
-<h1>Future possibilities<a class="headerlink" href="#future-possibilities" title="Permalink to this heading">#</a></h1>
+<h2>Future possibilities<a class="headerlink" href="#future-possibilities" title="Link to this heading">#</a></h2>
 <p>This work paves the way for <a class="reference external" href="https://hackmd.io/9QZ8YibfQHm9l1B6JPSQsg?both"><code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">`extraSchemas`</span> <span class="pre">to</span> <span class="pre">notebook</span> <span class="pre">format</span></code> JEP</a>, which will be submitted as a separate JEP soon.</p>
+</section>
 </section>
 
 
@@ -976,16 +1015,30 @@ Some exploration has been done by Nick Bollweg in <a class="reference external" 
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
+    <a class="left-prev"
+       href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Debugger support to <code class="docutils literal notranslate"><span class="pre">copyToGlobals</span></code></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../104-jep-process-v2/jep-process-v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Jupyter Enhancement Proposal</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-
                 </footer>
               
             </div>
@@ -994,22 +1047,22 @@ Some exploration has been done by Nick Bollweg in <a class="reference external" 
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Summary</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guide-level-explanation">Guide-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-level-explanation">Reference-level explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-and-alternatives">Rationale and alternatives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-art">Prior art</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unresolved-questions">Unresolved questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-possibilities">Future possibilities</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -1030,6 +1083,7 @@ By Project Jupyter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021.
@@ -1056,8 +1110,8 @@ By Project Jupyter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

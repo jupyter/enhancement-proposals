@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Build Jupyter Notebook v7 off of JupyterLab components &#8212; Jupyter Enhancement Proposals</title>
   
@@ -15,43 +14,41 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '79-notebook-v7/notebook-v7';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/79-notebook-v7/notebook-v7.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="jupyter.org subdomain and repository for publishing schemas" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html" />
-    <link rel="prev" title="Replace PUB socket with XPUB socket" href="../65-jupyter-xpub/jupyter-xpub.html" />
+    <link rel="next" title="Support kernel_info request on the control channel" href="../80-kernel-info/kernel-info.html" />
+    <link rel="prev" title="Standalone Jupyter server enhancement" href="../28-jupyter-server/jupyter-server.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -61,19 +58,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -95,12 +96,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -115,6 +124,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -123,10 +135,22 @@
   
   
   
+  
     <p class="title logo__title">Jupyter Enhancement Proposals</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -142,14 +166,21 @@
 <li class="toctree-l1"><a class="reference external" href="https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md">JEP Template</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Accepted JEPs</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../91-kernel-subshells/kernel-subshells.html">Jupyter kernel subshells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../92-jupyter-optional-features/jupyter-optional-features.html">Jupyter Optional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html">Debugger support to <code class="docutils literal notranslate"><span class="pre">copyToGlobals</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../97-add-schema/add-schema-to-notebook-format.html">Add <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to notebook format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../104-jep-process-v2/jep-process-v2.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../105-kernelspec-spec/kernelspec-spec.html">Specification of the kernelspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../106-connectionfile-spec/connectionfile-spec.html">Specification of the connection file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../118-restart-clarification/restart-clarification.html">Restart Clarification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
@@ -162,6 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../80-kernel-info/kernel-info.html">Support <code class="docutils literal notranslate"><span class="pre">kernel_info</span></code> request on the control channel</a></li>
 </ul>
 
     </div>
@@ -177,7 +210,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -186,14 +219,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -332,26 +365,28 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -393,10 +428,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="build-jupyter-notebook-v7-off-of-jupyterlab-components">
-<h1>Build Jupyter Notebook v7 off of JupyterLab components<a class="headerlink" href="#build-jupyter-notebook-v7-off-of-jupyterlab-components" title="Permalink to this heading">#</a></h1>
+<h1>Build Jupyter Notebook v7 off of JupyterLab components<a class="headerlink" href="#build-jupyter-notebook-v7-off-of-jupyterlab-components" title="Link to this heading">#</a></h1>
 <p>This JEP presents a path forward for the evolution of the Jupyter Notebook application in a way that is technically consistent with the rest of our tools and thus more sustainable, while meeting the needs of our users.</p>
 <p>This document proposes that the next major release of the <a class="reference external" href="https://jupyter-notebook.readthedocs.io">Jupyter Notebook</a> application, version 7, will be based on the JupyterLab codebase, but will provide an equivalent user experience to the current (version 6) application.  Jupyter Notebook version 7 (“Notebook v7” henceforth) will achieve this by using the current version of <a class="reference external" href="https://github.com/jupyterlab/retrolab">RetroLab</a>. The following three key ideas are central to this planned transition:</p>
 <p><strong>The Notebook as a document-centric user experience:</strong> The Jupyter Notebook application offers a <em>document-centric user experience</em>. That is, in the Notebook application, the landing page that contains a file manager, running tools tab, and a few optional extras, is a launching point into opening standalone, individual documents. This document-centric experience is important for many users, and that is the first key point this proposal aims to preserve. Notebook v7 will be based on a different JavaScript implementation than v6, but <em>it will preserve the document-centric experience, where each individual notebook opens in a separate browser tab and the visible tools and menus are focused on the open document</em>.</p>
@@ -404,11 +439,11 @@ document.write(`
 <p><strong>The body of existing content relying on the Notebook application experience:</strong> Finally, the Notebook v6 community depends on widely-used educational content using the core Notebook application (such as tutorials, textbooks, videos), and these <em>will not be invalidated</em> by the transition. Educators who have such materials online will not need to update their content. While we can not expect a pixel-perfect match between versions 6 and 7 of the Notebook, we will make every effort to ensure that the gap between the visual and operational experience (menu items, available tools and actions, etc.) is small enough that any user can reasonably bridge it without assistance.</p>
 <p>These three concerns will drive our transition; their specific implications are detailed below in the form of concrete user stories.</p>
 <section id="extensions">
-<h2>Extensions<a class="headerlink" href="#extensions" title="Permalink to this heading">#</a></h2>
+<h2>Extensions<a class="headerlink" href="#extensions" title="Link to this heading">#</a></h2>
 <p>The Notebook ecosystem for extensions is rich and varied, and some of those are critical to major deployments, especially in educational and institutional contexts. Since the internal APIs of JupyterLab are entirely different from those of Notebook v6, existing extensions written for v6 will not work on v7 out of the box. Here we detail the plan for how to minimize the disruption caused by this transition and how to support the community in the process.</p>
 <p>There is a <a class="reference external" href="https://jupyter-contrib-nbextensions.readthedocs.io">community repository of unofficial Notebook extensions</a>, along with <a class="reference external" href="https://jupyterlab-contrib.github.io/migrate_from_classical.html">corresponding documentation</a> indicating which of these extensions have analogs or ports in JupyterLab. Some of the functionalities provided by these unofficial Notebook extensions are now built-in features in JupyterLab: code folding, collapsible headings, the keyboard shortcuts editor, the table of contents, and many others.</p>
 <section id="critical-extensions-needed-for-notebook-v7">
-<h3>Critical extensions needed for Notebook v7<a class="headerlink" href="#critical-extensions-needed-for-notebook-v7" title="Permalink to this heading">#</a></h3>
+<h3>Critical extensions needed for Notebook v7<a class="headerlink" href="#critical-extensions-needed-for-notebook-v7" title="Link to this heading">#</a></h3>
 <p>The following Notebook v6 extensions have been flagged by the community as critical to several major deployments and widely-used workflows. We will work with the extension developers to help port these (or help make new equivalent extensions) for Notebook v7:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/jupyter/nbgrader">nbgrader</a></p></li>
@@ -418,7 +453,7 @@ document.write(`
 </ul>
 </section>
 <section id="extensions-whose-functionality-will-be-built-into-notebook-v7">
-<h3>Extensions whose functionality will be built into Notebook v7<a class="headerlink" href="#extensions-whose-functionality-will-be-built-into-notebook-v7" title="Permalink to this heading">#</a></h3>
+<h3>Extensions whose functionality will be built into Notebook v7<a class="headerlink" href="#extensions-whose-functionality-will-be-built-into-notebook-v7" title="Link to this heading">#</a></h3>
 <p>The following extensions will have largely equivalent experiences shipping in core Notebook v7 and JupyterLab. We will need to track whether there are any remaining differences in their functionality that are either regressions, or potentially disrupting or confusing to existing users.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/toc2">Table of Contents</a></p></li>
@@ -427,7 +462,7 @@ document.write(`
 </section>
 </section>
 <section id="major-new-features-in-notebook-v7">
-<h2>Major new features in Notebook v7<a class="headerlink" href="#major-new-features-in-notebook-v7" title="Permalink to this heading">#</a></h2>
+<h2>Major new features in Notebook v7<a class="headerlink" href="#major-new-features-in-notebook-v7" title="Link to this heading">#</a></h2>
 <p>In addition to having parity with the Notebook v6 user experience and widely-used extensions, Notebook v7 will inherit major new features that have been developed in the JupyterLab project, thus providing automatically a number of improvements to Notebook users as they transition to v7:</p>
 <ul class="simple">
 <li><p>Debugger</p></li>
@@ -439,7 +474,7 @@ document.write(`
 </ul>
 </section>
 <section id="technical-details">
-<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this heading">#</a></h2>
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/jupyterlab/retrolab">RetroLab</a> running on <a class="reference external" href="https://github.com/jupyter-server/jupyter_server">Jupyter Server</a> will be the basis for Notebook v7.</p></li>
 <li><p>The current <a class="reference external" href="https://github.com/jupyterlab/retrolab">RetroLab</a> commit history will be grafted into the <a class="reference external" href="https://github.com/jupyter/notebook">Jupyter Notebook repository</a> in a pull request. When pre-releases of Notebook v7 are published, the <code class="docutils literal notranslate"><span class="pre">retrolab</span></code> package can be deprecated in preparation for archival after Notebook v7 final is released.</p></li>
@@ -448,13 +483,13 @@ document.write(`
 </ul>
 </section>
 <section id="timeline">
-<h2>Timeline<a class="headerlink" href="#timeline" title="Permalink to this heading">#</a></h2>
+<h2>Timeline<a class="headerlink" href="#timeline" title="Link to this heading">#</a></h2>
 <p>We anticipate that Notebook v7 will be released in 2022.</p>
 <p>Jupyter Notebook v6 will be maintained with critical security fixes for two years following the release of Jupyter Notebook v7.</p>
 <p>The <a class="reference external" href="https://github.com/jupyterlab/nbclassic"><code class="docutils literal notranslate"><span class="pre">nbclassic</span></code></a> Python package (which provides Jupyter Notebook version 6 on top of Jupyter Server) will also be maintained with critical security fixes for two years following the release of Notebook v7.</p>
 </section>
 <section id="user-stories">
-<h2>User Stories<a class="headerlink" href="#user-stories" title="Permalink to this heading">#</a></h2>
+<h2>User Stories<a class="headerlink" href="#user-stories" title="Link to this heading">#</a></h2>
 <p>These user stories are guiding principles for the experience of using Notebook v7. They are not specific deliverables if the JEP is approved.</p>
 <ul class="simple">
 <li><p>As a user, when I install JupyterLab or Jupyter Notebook, I get both experiences, so I can choose between them as I work.</p></li>
@@ -489,7 +524,7 @@ document.write(`
 </ul>
 </section>
 <section id="decision-making-principles">
-<h2>Decision making principles<a class="headerlink" href="#decision-making-principles" title="Permalink to this heading">#</a></h2>
+<h2>Decision making principles<a class="headerlink" href="#decision-making-principles" title="Link to this heading">#</a></h2>
 <p>As we move forward with this plan and begin to make decisions about how to handle the visual design, functionality, and UX of Notebook V7 (how elements are styled, how do they behave, etc.) there will be tension between two paths:</p>
 <ul class="simple">
 <li><p><strong>Option A</strong>: Making Notebook V7 work and look exactly like Notebook v6</p></li>
@@ -507,7 +542,7 @@ document.write(`
 </ul>
 </section>
 <section id="links-and-resources">
-<h2>Links and resources<a class="headerlink" href="#links-and-resources" title="Permalink to this heading">#</a></h2>
+<h2>Links and resources<a class="headerlink" href="#links-and-resources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>This JEP was originally posted by &#64;fperez <a class="reference external" href="https://github.com/jupyter/notebook/issues/6210#issuecomment-957169113">as a comment in the original discussion opened by &#64;zsailer</a>.</p></li>
 <li><p>The blockers for transitioning Berkeley’s Data 8 course to RetroLab are tracked <a class="reference external" href="https://github.com/berkeley-dsep-infra/datahub/issues/2422">here</a>.</p></li>
@@ -515,7 +550,7 @@ document.write(`
 </ul>
 </section>
 <section id="questions">
-<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this heading">#</a></h2>
+<h2>Questions<a class="headerlink" href="#questions" title="Link to this heading">#</a></h2>
 <p><strong>Q:</strong> What implications does this transition have for the notebook <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> format?
 <strong>A:</strong> <em>None</em>. The file format remains unchanged. This JEP is about the Jupyter Notebook application, not the Jupyter notebook <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file format.</p>
 <p><strong>Q:</strong> I wrote a Notebook extension that I’d like to update. Where can I find resources and/or support for that?
@@ -531,34 +566,30 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../65-jupyter-xpub/jupyter-xpub.html"
+       href="../28-jupyter-server/jupyter-server.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Replace PUB socket with XPUB socket</p>
+        <p class="prev-next-title">Standalone Jupyter server enhancement</p>
       </div>
     </a>
     <a class="right-next"
-       href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html"
+       href="../80-kernel-info/kernel-info.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">jupyter.org subdomain and repository for publishing schemas</p>
+        <p class="prev-next-title">Support <code class="docutils literal notranslate"><span class="pre">kernel_info</span></code> request on the control channel</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -566,6 +597,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -606,6 +638,7 @@ By Project Jupyter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021.
@@ -632,8 +665,8 @@ By Project Jupyter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

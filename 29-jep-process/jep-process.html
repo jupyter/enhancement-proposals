@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Jupyter Enhancement Proposal &#8212; Jupyter Enhancement Proposals</title>
   
@@ -15,37 +14,35 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '29-jep-process/jep-process';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/29-jep-process/jep-process.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -61,19 +58,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -95,12 +96,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -115,6 +124,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -123,10 +135,22 @@
   
   
   
+  
     <p class="title logo__title">Jupyter Enhancement Proposals</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -145,8 +169,15 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../91-kernel-subshells/kernel-subshells.html">Jupyter kernel subshells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../92-jupyter-optional-features/jupyter-optional-features.html">Jupyter Optional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html">Debugger support to <code class="docutils literal notranslate"><span class="pre">copyToGlobals</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../97-add-schema/add-schema-to-notebook-format.html">Add <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to notebook format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../104-jep-process-v2/jep-process-v2.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../105-kernelspec-spec/kernelspec-spec.html">Specification of the kernelspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../106-connectionfile-spec/connectionfile-spec.html">Specification of the connection file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../118-restart-clarification/restart-clarification.html">Restart Clarification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
 <ul class="current nav bd-sidenav">
@@ -162,6 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Enhancement Proposal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../80-kernel-info/kernel-info.html">Support <code class="docutils literal notranslate"><span class="pre">kernel_info</span></code> request on the control channel</a></li>
 </ul>
 
     </div>
@@ -177,7 +210,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -186,14 +219,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -332,26 +365,28 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -396,12 +431,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="jupyter-enhancement-proposal">
-<h1>Jupyter Enhancement Proposal<a class="headerlink" href="#jupyter-enhancement-proposal" title="Permalink to this heading">#</a></h1>
+<h1>Jupyter Enhancement Proposal<a class="headerlink" href="#jupyter-enhancement-proposal" title="Link to this heading">#</a></h1>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
 <p>Project Jupyter has an existing repository and process for “Jupyter Enhancement Proposals” or JEP for short. The repository is here:</p>
 <p><a class="github reference external" href="https://github.com/jupyter/enhancement-proposals">jupyter/enhancement-proposals</a></p>
 <p>This format was originally used by <a class="reference external" href="https://github.com/ipython/ipython/wiki/IPEPs:-IPython-Enhancement-Proposals">IPython (IPEP)</a> and continues to be used by the <a class="reference external" href="https://www.python.org/dev/peps/">Python Core language (PEP)</a>. As currently envisioned, JEPs are written documents, in the form of a Pull Request to this repo, which describes significant proposed units of work on the projects. The README of the repo summarizes this as:</p>
@@ -416,7 +451,7 @@ document.write(`
 <p>As a result, there is a need to revitalize and reorganize an efficient and robust centralized proposal and decision making process for major work units across the project.</p>
 </section>
 <section id="goals-and-tenets">
-<h2>Goals and Tenets<a class="headerlink" href="#goals-and-tenets" title="Permalink to this heading">#</a></h2>
+<h2>Goals and Tenets<a class="headerlink" href="#goals-and-tenets" title="Link to this heading">#</a></h2>
 <p>Project Jupyter has adopted the Jupyter Enhancement Proposal process (JEP) to address distributed collaboration and experimentation as the project scales in the dimensions of contributors, components, and lines of code.  At a high level, the primary guiding principle of the JEP process is to encourage collaboration and discussion as early as possible in the lifecycle of a major proposed change in Jupyter, with the goal of preventing costly rework, competing ideas, and unnecessary forking or fragmentation of ideas.</p>
 <p>Several sub-goals exist for this process:</p>
 <ul class="simple">
@@ -446,9 +481,9 @@ document.write(`
 </ul>
 </section>
 <section id="jep-submission-workflow">
-<h2>JEP Submission Workflow<a class="headerlink" href="#jep-submission-workflow" title="Permalink to this heading">#</a></h2>
+<h2>JEP Submission Workflow<a class="headerlink" href="#jep-submission-workflow" title="Link to this heading">#</a></h2>
 <section id="phase-1-pre-proposal">
-<h3>Phase 1: Pre-proposal<a class="headerlink" href="#phase-1-pre-proposal" title="Permalink to this heading">#</a></h3>
+<h3>Phase 1: Pre-proposal<a class="headerlink" href="#phase-1-pre-proposal" title="Link to this heading">#</a></h3>
 <p>This is the least formal stage of any jupyter enhancement proposals. During this phase, discussions on the mailing list, in-person, on github issues are all fine to gauge community interest, feasibility, consequences, and to scope out technical impact and implementation details.</p>
 <p>In order to transition out of the pre-proposal stage, the following checklist must be complete:</p>
 <ol class="arabic simple">
@@ -474,13 +509,13 @@ document.write(`
 </ul>
 </section>
 <section id="phase-2-rfc-for-the-jep">
-<h3>Phase 2: RFC for the JEP<a class="headerlink" href="#phase-2-rfc-for-the-jep" title="Permalink to this heading">#</a></h3>
+<h3>Phase 2: RFC for the JEP<a class="headerlink" href="#phase-2-rfc-for-the-jep" title="Link to this heading">#</a></h3>
 <p>Submission: The author submits an initial draft of the JEP as a PR to the JEP repository starting from the relevant template decided in the pre-proposal stage. The Shepherd assigns a number (the GitHub PR number? A sequential number? Perhaps the number isn’t assigned until the JEP is merged?). The Shepherd assigns a Review Team.</p>
 <p>Request For Comment (RFC) phase: The proposal is iterated on with feedback from the Review Team and the community at large. The Shepherd helps engage the Review Team. After the Review Team members have signed off on the JEP, with the criteria that there are no major objections, and at least some of the Review Team are in favor, the Shepherd initiates the Final Comment Period.</p>
 <p>Final Comment Period (FCP): The community at large has 10 calendar days in which to provide any final comments on the JEP. A JEP may revert back to RFC if objections are supported by the Review Team. If not reverted to the RFC phase, the JEP is approved at the end of the FCP.</p>
 </section>
 <section id="phase-3-work-commences">
-<h3>Phase 3: Work Commences<a class="headerlink" href="#phase-3-work-commences" title="Permalink to this heading">#</a></h3>
+<h3>Phase 3: Work Commences<a class="headerlink" href="#phase-3-work-commences" title="Link to this heading">#</a></h3>
 <p>Once a JEP has been merged into the jupyter/enhancement-proposal repository, development work can commence on the JEP. As the implementer(s) is submitting a pull request or pull requests in relation to the JEP, they should provide a reference to the JEP so that reviewer has background context on the JEP.</p>
 <p>As the JEP is being implemented, the implementer(s) are submitting pull requests for the JEP, they should update the JEP with addendums to denote the progress of the implementation using the following stages.</p>
 <ol class="arabic simple">
@@ -491,12 +526,12 @@ document.write(`
 <p>If in the course of the implementation, the implementer(s) can choose to withdraw from the original JEP if they are no longer interested in implementing the JEP or see infeasibilities in the JEP.</p>
 </section>
 <section id="paths-of-the-status-of-jeps">
-<h3>Paths of the status of JEPs<a class="headerlink" href="#paths-of-the-status-of-jeps" title="Permalink to this heading">#</a></h3>
+<h3>Paths of the status of JEPs<a class="headerlink" href="#paths-of-the-status-of-jeps" title="Link to this heading">#</a></h3>
 <p><img alt="img" src="https://docs.google.com/a/safia.rocks/drawings/d/s9fsfcbWM0mamBZBDJpK0sA/image?w=583&amp;h=255&amp;rev=154&amp;ac=1&amp;parent=16xa1DSH0lN6lY-EzyyGOzaZlcQc1ZT8HEeDc3uyrwcI" /></p>
 </section>
 </section>
 <section id="what-qualifies-as-a-jep">
-<h2>What qualifies as a JEP?<a class="headerlink" href="#what-qualifies-as-a-jep" title="Permalink to this heading">#</a></h2>
+<h2>What qualifies as a JEP?<a class="headerlink" href="#what-qualifies-as-a-jep" title="Link to this heading">#</a></h2>
 <p>This section contains a set of principles to help determine when something is a JEP. The principles will be used to determine when something becomes a PR during the JEP pre-proposal stage, as well as to determine when a PR becomes a JEP at an individual repo level.</p>
 <p><strong>Principles to follow</strong></p>
 <p>Below are a few example guidelines to follow when deciding if an idea should include
@@ -527,12 +562,12 @@ a JEP (If yes, it requires a JEP). Under each question is a relevant example pro
 </ul>
 </section>
 <section id="distribution">
-<h2>Distribution<a class="headerlink" href="#distribution" title="Permalink to this heading">#</a></h2>
+<h2>Distribution<a class="headerlink" href="#distribution" title="Link to this heading">#</a></h2>
 <p>This section describes how information about the JEP process (e.g., new JEPs, updates to
 current JEPs, etc) is communicated to the community.</p>
 <p>Note: This JEP repo is the <strong>canonical “source of truth”</strong> for individual JEPs, the JEP process, and activity on JEPs.</p>
 <section id="the-jep-public-archive-website">
-<h3>The JEP public archive website<a class="headerlink" href="#the-jep-public-archive-website" title="Permalink to this heading">#</a></h3>
+<h3>The JEP public archive website<a class="headerlink" href="#the-jep-public-archive-website" title="Link to this heading">#</a></h3>
 <p>A public website contains a readable archive of all JEP proposals.
 It contains list of all JEPs that have entered a “final” state
 (e.g., “Completed”, “Withdrawn”, “Rejected”). The content of each JEP will
@@ -543,7 +578,7 @@ quick way to display them in a reading-friendly format.</p>
 </section>
 </section>
 <section id="glossary">
-<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2>Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Jupyter Enhancement Proposal (JEP)</strong>: A written document that describes a proposed unit of significant work on Jupyter.</p></li>
 <li><p><strong>Contributor</strong>: The person (or persons) who is submitting the JEP. The implementation of a JEP may be done by others if so approved.</p></li>
@@ -573,11 +608,10 @@ quick way to display them in a reading-friendly format.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../42-voila-incorporation/voila-incorporation.html"
@@ -597,10 +631,7 @@ quick way to display them in a reading-friendly format.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -608,6 +639,7 @@ quick way to display them in a reading-friendly format.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -651,6 +683,7 @@ By Project Jupyter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021.
@@ -677,8 +710,8 @@ By Project Jupyter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

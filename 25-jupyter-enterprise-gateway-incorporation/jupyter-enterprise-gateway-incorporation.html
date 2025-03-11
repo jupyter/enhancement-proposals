@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Jupyter Enterprise Gateway Incorporation &#8212; Jupyter Enhancement Proposals</title>
   
@@ -15,43 +14,41 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Move the Jupyter Dashboards Deployment Projects from Incubator to Attic" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html" />
-    <link rel="prev" title="jupyter.org subdomain and repository for publishing schemas" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html" />
+    <link rel="prev" title="Restart Clarification" href="../118-restart-clarification/restart-clarification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -61,19 +58,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -95,12 +96,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -115,6 +124,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -123,10 +135,22 @@
   
   
   
+  
     <p class="title logo__title">Jupyter Enhancement Proposals</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -145,8 +169,15 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../91-kernel-subshells/kernel-subshells.html">Jupyter kernel subshells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../92-jupyter-optional-features/jupyter-optional-features.html">Jupyter Optional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html">Debugger support to <code class="docutils literal notranslate"><span class="pre">copyToGlobals</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../97-add-schema/add-schema-to-notebook-format.html">Add <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to notebook format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../104-jep-process-v2/jep-process-v2.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../105-kernelspec-spec/kernelspec-spec.html">Specification of the kernelspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../106-connectionfile-spec/connectionfile-spec.html">Specification of the connection file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../118-restart-clarification/restart-clarification.html">Restart Clarification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
 <ul class="current nav bd-sidenav">
@@ -162,6 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../80-kernel-info/kernel-info.html">Support <code class="docutils literal notranslate"><span class="pre">kernel_info</span></code> request on the control channel</a></li>
 </ul>
 
     </div>
@@ -177,7 +210,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -186,14 +219,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -332,26 +365,28 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -405,12 +440,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="jupyter-enterprise-gateway-incorporation">
-<h1>Jupyter Enterprise Gateway Incorporation<a class="headerlink" href="#jupyter-enterprise-gateway-incorporation" title="Permalink to this heading">#</a></h1>
+<h1>Jupyter Enterprise Gateway Incorporation<a class="headerlink" href="#jupyter-enterprise-gateway-incorporation" title="Link to this heading">#</a></h1>
 <section id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
+<h2>Problem<a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
 <p>Founded in academia, the Jupyter projects provide a rich and highly popular set of applications for
 interacting with and iterating on large and complex applications.  It has been truly ground-breaking.
 However, when we first attempted to build a Notebook service that could enable a large number of data
@@ -425,23 +460,23 @@ including Apache Spark managed by YARN, IBM Spectrum Conductor or Kubernetes. Ne
 extensibility layer that would handle specific capabilities of the underlying cluster manager.</p>
 </section>
 <section id="proposed-enhancement">
-<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this heading">#</a></h2>
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Link to this heading">#</a></h2>
 <p>The incubating <a class="reference external" href="https://github.com/jupyter-incubator/enterprise_gateway">Jupyter Enterprise Gateway project</a> has
 matured to the point where it addresses the issues noted above, and others. It should be considered for incorporation
 into the main Jupyter organization as an official Subproject.</p>
 </section>
 <section id="detailed-explanation">
-<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this heading">#</a></h2>
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Link to this heading">#</a></h2>
 <p>Please see below detailed project information.</p>
 <section id="current-and-potential-use-cases">
-<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Permalink to this heading">#</a></h3>
+<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Provision and manage kernels in a remote cluster.</p></li>
 <li><p>Support kernels to be launched as a given user enabling multi-tenancy.</p></li>
 </ul>
 </section>
 <section id="current-features">
-<h3>Current Features<a class="headerlink" href="#current-features" title="Permalink to this heading">#</a></h3>
+<h3>Current Features<a class="headerlink" href="#current-features" title="Link to this heading">#</a></h3>
 <p>Jupyter Enterprise Gateway is a web server that provides headless access to Jupyter kernels within
 an enterprise.  Built directly upon Jupyter Kernel Gateway, Jupyter Enterprise Gateway leverages all
 of the Kernel Gateway functionality in addition to the following:</p>
@@ -463,7 +498,7 @@ Others can be configured via Enterprise Gateway’s extensible framework.</p></l
 </ul>
 <p>Below are some more details on the supported cluster platforms and specific capabilities:</p>
 <section id="distributed-kernels-in-apache-spark">
-<h4>Distributed Kernels in Apache Spark<a class="headerlink" href="#distributed-kernels-in-apache-spark" title="Permalink to this heading">#</a></h4>
+<h4>Distributed Kernels in Apache Spark<a class="headerlink" href="#distributed-kernels-in-apache-spark" title="Link to this heading">#</a></h4>
 <p>Jupyter Enterprise Gateway enables Jupyter Notebook to launch and manage remote kernels in a distributed cluster. It
 leverages different resource managers to enable distributed kernels in Apache Spark clusters. One example shown below
 describes kernels being launched in YARN cluster mode across all nodes of a cluster.</p>
@@ -472,20 +507,20 @@ describes kernels being launched in YARN cluster mode across all nodes of a clus
 <p><img alt="Jupyter Enterprise Gateway provides Enhanced Security and Multiuser support with user Impersonation" src="../_images/jupyter_enterprise_gateway_on_yarn.png" /></p>
 </section>
 <section id="distributed-kernels-in-kubernetes">
-<h4>Distributed Kernels in Kubernetes<a class="headerlink" href="#distributed-kernels-in-kubernetes" title="Permalink to this heading">#</a></h4>
+<h4>Distributed Kernels in Kubernetes<a class="headerlink" href="#distributed-kernels-in-kubernetes" title="Link to this heading">#</a></h4>
 <p>Jupyter Enterprise Gateway support for Kubernetes enables decoupling the Jupyter Notebook Server and its kernels into multiple pods. This enables running Notebook server pods with minimally necessary resources based on the workload being processed.</p>
 <p><img alt="Jupyter Enterprise Gateway enable remote kernels on Kubernetes cluster" src="../_images/jupyter_enterprise_gateway_on_kubernetes.png" /></p>
 </section>
 </section>
 </section>
 <section id="criteria-for-incorporation">
-<h2>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this heading">#</a></h2>
+<h2>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Link to this heading">#</a></h2>
 <section id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
-<h3>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Permalink to this heading">#</a></h3>
+<h3>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Link to this heading">#</a></h3>
 <p>The enterprise gateway reuses and extends classes from the Jupyter <code class="docutils literal notranslate"><span class="pre">kernel_gateway</span></code> and <code class="docutils literal notranslate"><span class="pre">notebook</span></code> Python package. By virtue of this implementation, it is largely sustained by development of the <code class="docutils literal notranslate"><span class="pre">jupyter/notebook</span></code> project. Minimal maintenance is required to ensure the enterprise gateway codebase continues to interoperate with future releases of the <code class="docutils literal notranslate"><span class="pre">notebook</span></code> package.</p>
 </section>
 <section id="have-an-active-user-community">
-<h3>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this heading">#</a></h3>
+<h3>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Link to this heading">#</a></h3>
 <p>Enterprise gateway is a fundamental component in multiple IBM Cloud offerings, and has also been adopted in a few large companies that are providing Analytical and/or AI platform for it’s internal/external customers.</p>
 <p>Other then that, below are some stats that have been collected from the Jupyter Enterprise Gateway GitHub repository from October 14th 2017 - current:</p>
 <ul class="simple">
@@ -499,7 +534,7 @@ describes kernels being launched in YARN cluster mode across all nodes of a clus
 </ul>
 </section>
 <section id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
-<h3>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this heading">#</a></h3>
+<h3>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Link to this heading">#</a></h3>
 <p>The Enterprise Gateway has a suite of unit and integration tests that are run automatically on Travis on every PR and any commits to master.</p>
 <p>The Jupyter Enterprise Gateway community provides multiple resources that both users and contributors can use:</p>
 <ul class="simple">
@@ -512,36 +547,36 @@ describes kernels being launched in YARN cluster mode across all nodes of a clus
 </ul>
 </section>
 <section id="demonstrate-continued-growth-and-development">
-<h3>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this heading">#</a></h3>
+<h3>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Link to this heading">#</a></h3>
 <p>Since entering incubation, the Jupyter Enterprise Gateway have added several new code contributors, performed 7 releases, and added support for two new resource managers - including support for Kubernetes. The community has also seen a recent increase on issues/questions submitted to the project, which implies more users are interested in, and deploying, Enterprise Gateway.</p>
 <p>In addition, we believe that by building upon the existing Jupyter stack, a majority of the necessary changes on Enterprise Gateway will be in the area of adding/maintaining support for resource managers (i.e., process proxy implementations).  As a result Enterprise Gateway should continue to maintain compatibility/interoperability with new versions of Notebook components with little or no effort.</p>
 </section>
 <section id="integrate-well-with-other-official-subprojects">
-<h3>Integrate well with other official subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this heading">#</a></h3>
+<h3>Integrate well with other official subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Link to this heading">#</a></h3>
 <p>The Enterprise Gateway is a <code class="docutils literal notranslate"><span class="pre">jupyter/jupyter_core#Application</span></code> that uses programmatic APIs from <code class="docutils literal notranslate"><span class="pre">jupyter/notebook</span></code>, <code class="docutils literal notranslate"><span class="pre">jupyter/jupyter_client</span></code> and <code class="docutils literal notranslate"><span class="pre">jupyter/kernel_gateway</span></code> to enable communication with Jupyter kernels like <code class="docutils literal notranslate"><span class="pre">ipython/ipykernel</span></code>. By definition, it integrates with other official Subprojects.</p>
 <p>We are also looking for investigating deep integration with <code class="docutils literal notranslate"><span class="pre">JupyterHub</span></code> to decouple the kernel instances into specific pods in a kubernetes environment.</p>
 </section>
 <section id="be-developed-according-to-the-jupyter-governance-and-contribution-model">
-<h3>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Permalink to this heading">#</a></h3>
+<h3>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Link to this heading">#</a></h3>
 <p>The Enterprise Gateway is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.</p>
 </section>
 <section id="have-a-well-defined-scope">
-<h3>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this heading">#</a></h3>
+<h3>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Link to this heading">#</a></h3>
 <p>Jupyter Enterprise Gateway enables Jupyter Notebook to launch remote kernels in a distributed cluster, including Apache Spark managed by YARN, IBM Spectrum Conductor or Kubernetes.</p>
 </section>
 <section id="be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
-<h3>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Permalink to this heading">#</a></h3>
+<h3>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Link to this heading">#</a></h3>
 <p>The Enterprise Gateway is packaged using setup tools, released in both source and wheel format on PyPI, and installable using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.  It is also available in conda forge.</p>
 </section>
 </section>
 <section id="pros-and-cons">
-<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this heading">#</a></h2>
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Link to this heading">#</a></h2>
 <p>Pro: Extend Jupyter Stack to support distributed/remote Kernels</p>
 <p>Pro: The runtime can easily be extensible to support new cluster resource managers</p>
 <p>Con: Still requires couple extensions (e.g. NB2KG) to connect to the gateway</p>
 </section>
 <section id="interested-contributors">
-<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this heading">#</a></h2>
+<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Link to this heading">#</a></h2>
 <p>&#64;parente, &#64;rgbkrk</p>
 </section>
 </section>
@@ -552,19 +587,18 @@ describes kernels being launched in YARN cluster mode across all nodes of a clus
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html"
+       href="../118-restart-clarification/restart-clarification.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">jupyter.org subdomain and repository for publishing schemas</p>
+        <p class="prev-next-title">Restart Clarification</p>
       </div>
     </a>
     <a class="right-next"
@@ -576,10 +610,7 @@ describes kernels being launched in YARN cluster mode across all nodes of a clus
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -587,6 +618,7 @@ describes kernels being launched in YARN cluster mode across all nodes of a clus
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -639,6 +671,7 @@ By Project Jupyter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021.
@@ -665,8 +698,8 @@ By Project Jupyter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

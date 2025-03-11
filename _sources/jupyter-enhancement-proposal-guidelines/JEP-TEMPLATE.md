@@ -6,15 +6,17 @@ pr-number: <proposal-pull-request-number>
 date-started: <yyyy-mm-dd>
 ---
 
-# Summary
+# Title
+
+## Summary
 
 One paragraph explanation of the proposal.
 
-# Motivation
+## Motivation
 
 Why are we doing this? What use cases does it support? What is the expected outcome?
 
-# Guide-level explanation
+## Guide-level explanation
 
 Explain the proposal as if it was already implemented and you were
 explaining it to another community member. That generally means:
@@ -28,7 +30,7 @@ explaining it to another community member. That generally means:
 For implementation-oriented JEPs, this section should focus on how other Jupyter
 developers should think about the change, and give examples of its concrete impact. For policy JEPs, this section should provide an example-driven introduction to the policy, and explain its impact in concrete terms.
 
-# Reference-level explanation
+## Reference-level explanation
 
 This is the technical portion of the JEP. Explain the design in
 sufficient detail that:
@@ -39,13 +41,13 @@ sufficient detail that:
 
 The section should return to the examples given in the previous section, and explain more fully how the detailed proposal makes those examples work.
 
-# Rationale and alternatives
+## Rationale and alternatives
 
 - Why is this choice the best in the space of possible designs?
 - What other designs have been considered and what is the rationale for not choosing them?
 - What is the impact of not doing this?
 
-# Prior art
+## Prior art
 
 Discuss prior art, both the good and the bad, in relation to this proposal.
 A few examples of what this can include are:
@@ -59,12 +61,12 @@ This section is intended to encourage you as an author to think about the lesson
 If there is no prior art, that is fine - your ideas are interesting to us whether they are brand new or if it is an adaptation from other languages.
 
 
-# Unresolved questions
+## Unresolved questions
 
 - What parts of the design do you expect to resolve through the JEP process before this gets merged?
 - What related issues do you consider out of scope for this JEP that could be addressed in the future independently of the solution that comes out of this JEP?
 
-# Future possibilities
+## Future possibilities
 
 Think about what the natural extension and evolution of your proposal would
 be and how it would affect the Jupyter community at-large. Try to use this section as a tool to more fully consider all possible

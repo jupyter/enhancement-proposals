@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Jupyter DeclarativeWidgets Extension Incorporation &#8212; Jupyter Enhancement Proposals</title>
   
@@ -15,37 +14,35 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation';</script>
     <link rel="canonical" href="https://jupyter.org/enhancement-proposals/18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -61,19 +58,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -95,12 +96,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -115,6 +124,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../README.html">
@@ -123,10 +135,22 @@
   
   
   
+  
     <p class="title logo__title">Jupyter Enhancement Proposals</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -145,8 +169,15 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../72-language-server-protocol/language-server-protocol.html">Jupyter integration with the Language Server Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../65-jupyter-xpub/jupyter-xpub.html">Replace PUB socket with XPUB socket</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../91-kernel-subshells/kernel-subshells.html">Jupyter kernel subshells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../92-jupyter-optional-features/jupyter-optional-features.html">Jupyter Optional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.html">Debugger support to <code class="docutils literal notranslate"><span class="pre">copyToGlobals</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../97-add-schema/add-schema-to-notebook-format.html">Add <code class="docutils literal notranslate"><span class="pre">$schema</span></code> to notebook format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../104-jep-process-v2/jep-process-v2.html">Jupyter Enhancement Proposal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../105-kernelspec-spec/kernelspec-spec.html">Specification of the kernelspec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../106-connectionfile-spec/connectionfile-spec.html">Specification of the connection file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas.html">jupyter.org subdomain and repository for publishing schemas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../118-restart-clarification/restart-clarification.html">Restart Clarification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
 <ul class="current nav bd-sidenav">
@@ -162,6 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../42-voila-incorporation/voila-incorporation.html">Voilà Incorporation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../29-jep-process/jep-process.html">Jupyter Enhancement Proposal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../28-jupyter-server/jupyter-server.html">Standalone Jupyter server enhancement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../79-notebook-v7/notebook-v7.html">Build Jupyter Notebook v7 off of JupyterLab components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../80-kernel-info/kernel-info.html">Support <code class="docutils literal notranslate"><span class="pre">kernel_info</span></code> request on the control channel</a></li>
 </ul>
 
     </div>
@@ -177,7 +210,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -186,14 +219,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -332,26 +365,28 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -412,12 +447,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="jupyter-declarativewidgets-extension-incorporation">
-<h1>Jupyter DeclarativeWidgets Extension Incorporation<a class="headerlink" href="#jupyter-declarativewidgets-extension-incorporation" title="Permalink to this heading">#</a></h1>
+<h1>Jupyter DeclarativeWidgets Extension Incorporation<a class="headerlink" href="#jupyter-declarativewidgets-extension-incorporation" title="Link to this heading">#</a></h1>
 <section id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
+<h2>Problem<a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>“Data science enables the creation of data products.” – Mike Loukides in <a class="reference external" href="https://www.oreilly.com/ideas/what-is-data-science">What is data science?</a></p>
 </div></blockquote>
@@ -442,15 +477,15 @@ document.write(`
 </ul>
 </section>
 <section id="proposed-enhancement">
-<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Permalink to this heading">#</a></h2>
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Link to this heading">#</a></h2>
 <p>The incubating <a class="reference external" href="https://github.com/jupyter-incubator/declarativewidgets">declarative widgets extension for Jupyter Notebook</a> (hereafter, <em>declarativewidgets extension</em>) is the incubation projects that addresses the issues above. The community should consider incorporating the declarativewidgets extension as an official Jupyter Subproject that provides another option for building rich interactive Notebooks.</p>
 </section>
 <section id="detailed-explanation">
-<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Permalink to this heading">#</a></h2>
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Link to this heading">#</a></h2>
 <p>The declarativewidets extension focuses on enabling the user to create UI areas of the Notebook that can connect and interact with the code and data in the kernel.</p>
 <p>In conjunction with the (dashboard extension)(<a class="github reference external" href="https://github.com/jupyter-incubator/dashboards">jupyter-incubator/dashboards</a>) and related sub-projects, it is possible to turn Notebooks into full-featured dashboards and applications.</p>
 <section id="current-and-potential-use-cases">
-<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Permalink to this heading">#</a></h3>
+<h3>Current and Potential Use Cases<a class="headerlink" href="#current-and-potential-use-cases" title="Link to this heading">#</a></h3>
 <p>The declarativewidgets extension supports the following use cases:</p>
 <ul class="simple">
 <li><p>Invoking a function defined on the Kernel and getting the return value (if available)</p></li>
@@ -470,7 +505,7 @@ document.write(`
 <p><img alt="taxi_declarative" src="https://cloud.githubusercontent.com/assets/2474841/15164018/a4e871fe-16d1-11e6-9f03-66c96b745cc4.gif" /></p>
 </section>
 <section id="current-features">
-<h3>Current Features<a class="headerlink" href="#current-features" title="Permalink to this heading">#</a></h3>
+<h3>Current Features<a class="headerlink" href="#current-features" title="Link to this heading">#</a></h3>
 <p>The following are the most relevant features:</p>
 <ol class="arabic simple">
 <li><p>A set of declarative elements and corresponding kernel side code that enables connecting and interacting with functions, DataFrames and arbitrary data on the Kernel.</p></li>
@@ -482,7 +517,7 @@ document.write(`
 <p>More details and information can be found in the <a class="reference external" href="https://jupyter-incubator.github.io/declarativewidgets/docs.html">documentation</a>. The project also contains many example and demo notebooks.</p>
 </section>
 <section id="design-and-implementation">
-<h3>Design and Implementation<a class="headerlink" href="#design-and-implementation" title="Permalink to this heading">#</a></h3>
+<h3>Design and Implementation<a class="headerlink" href="#design-and-implementation" title="Link to this heading">#</a></h3>
 <p>The declarativewidgets extensions is a combination of:</p>
 <ul class="simple">
 <li><p>A set of <a class="reference external" href="http://webcomponents.org/">web component</a> elements and extensions built using <a class="reference external" href="https://www.polymer-project.org/1.0/">Polymer</a></p></li>
@@ -491,9 +526,9 @@ document.write(`
 <li><p>Kernel side implementations for Python, R<a class="reference internal" href="#1"><span class="xref myst">[1]</span></a>, and Scala<a class="reference internal" href="#2"><span class="xref myst">[2]</span></a></p></li>
 </ul>
 <section id="elements">
-<h4>Elements<a class="headerlink" href="#elements" title="Permalink to this heading">#</a></h4>
+<h4>Elements<a class="headerlink" href="#elements" title="Link to this heading">#</a></h4>
 <section id="core-elements">
-<h5>Core elements<a class="headerlink" href="#core-elements" title="Permalink to this heading">#</a></h5>
+<h5>Core elements<a class="headerlink" href="#core-elements" title="Link to this heading">#</a></h5>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;urth-core-function&gt;</span></code> - Enable binding to functions defined in the kernel</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;urth-core-dataframe&gt;</span></code> - Access to read and query DataFrames</p></li>
@@ -504,22 +539,22 @@ document.write(`
 <p>Some of the <code class="docutils literal notranslate"><span class="pre">core</span></code> elements are a combination of browser and kernel component. On the browser side, these elements are built on top of the <code class="docutils literal notranslate"><span class="pre">jupyter-js-widgets</span></code> foundation. They communicate with the kernel through the Comm channel<a class="reference internal" href="#3"><span class="xref myst">[3]</span></a>.</p>
 </section>
 <section id="viz-elements">
-<h5>Viz elements<a class="headerlink" href="#viz-elements" title="Permalink to this heading">#</a></h5>
+<h5>Viz elements<a class="headerlink" href="#viz-elements" title="Link to this heading">#</a></h5>
 <p>There is a collection of <code class="docutils literal notranslate"><span class="pre">&lt;urth-viz-*&gt;</span></code> element that are pure client side and are use to display data. These elements include a table view and a variety of plots.</p>
 <p>More details about the architecture can be found <a class="reference external" href="https://github.com/jupyter-incubator/declarativewidgets/wiki">here</a>. Additionally, see the <a class="reference external" href="https://jupyter-incubator.github.io/declarativewidgets/docs.html">documentation</a>.</p>
 </section>
 </section>
 <section id="notebook-server-extension">
-<h4>Notebook Server Extension<a class="headerlink" href="#notebook-server-extension" title="Permalink to this heading">#</a></h4>
+<h4>Notebook Server Extension<a class="headerlink" href="#notebook-server-extension" title="Link to this heading">#</a></h4>
 <p>The extension to the notebook server creates a new route for requesting the installation of new web component. The implementation uses Bower to download the packages for the web component and servers the content from a virtual path. Bower is used because that is what Polymer <a class="reference external" href="https://www.polymer-project.org/1.0/docs/tools/reusable-elements">recommends</a> and uses for installing components.</p>
 </section>
 <section id="kernel-side-code">
-<h4>Kernel side code<a class="headerlink" href="#kernel-side-code" title="Permalink to this heading">#</a></h4>
+<h4>Kernel side code<a class="headerlink" href="#kernel-side-code" title="Link to this heading">#</a></h4>
 <p>The declarativewidgets extension contains code to enable support in Python, R<a class="reference internal" href="#1"><span class="xref myst">[1]</span></a>, and Scala<a class="reference internal" href="#2"><span class="xref myst">[2]</span></a>.</p>
 <p>In Python, the code is built on to of the <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> foundation. In the other languages, where only the code necessary exists to enable declarativewidgets, they are built directly on top of the Comm channel support.</p>
 </section>
 <section id="installation">
-<h4>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h4>
+<h4>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h4>
 <p>The extension has maintained compatibility with:</p>
 <ul class="simple">
 <li><p>Notebook versions 4.0 through 4.2</p></li>
@@ -530,10 +565,10 @@ document.write(`
 </section>
 </section>
 <section id="criteria-for-incorporation">
-<h3>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Permalink to this heading">#</a></h3>
+<h3>Criteria for Incorporation<a class="headerlink" href="#criteria-for-incorporation" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://github.com/jupyter/governance/blob/master/newsubprojects.md">Jupyter Governance - New Subproject Process</a> lists the criteria used to evaluate projects for incorporation in to the official Jupyter organization. We address each of these criteria below.</p>
 <section id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
-<h4>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Permalink to this heading">#</a></h4>
+<h4>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Link to this heading">#</a></h4>
 <p>The project has contributions from 13 developers on GitHub and has been under active development over the past 10 months. We foresee future development of the extension taking the following primary forms:</p>
 <ol class="arabic simple">
 <li><p>Fixes for reported issues</p></li>
@@ -545,40 +580,40 @@ document.write(`
 <p>All items can be handled by current or future maintainers.</p>
 </section>
 <section id="have-an-active-user-community">
-<h4>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Permalink to this heading">#</a></h4>
+<h4>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Link to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">jupyter-incubator/declarativewidgets</span></code> repository has 55 stars and 18 watchers on GitHub. We have received questions, bug reports, and enhancement requests on GitHub and the Google Group.</p>
 </section>
 <section id="use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies">
-<h4>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Permalink to this heading">#</a></h4>
+<h4>Use solid software engineering with documentation and tests hosted with appropriate technologies.<a class="headerlink" href="#use-solid-software-engineering-with-documentation-and-tests-hosted-with-appropriate-technologies" title="Link to this heading">#</a></h4>
 <p>The extension has comprehensive suite of unit tests. These include unit tests for all supported languages, plus a unit tests for the web code. It also has a suite of system tests that use Selenium to drive the Notebook UI validate key features. These tests are run on a matrix that includes different versions of Python, Jupyter, ipywidgets and kernel languages.</p>
 <p>The project used Travis CI. All PRs are validated against a single browser vendor. On a PR merge, all tests are ran using SauceLabs on a variety of browser vendors.</p>
 <p>Deployment of releases to Pypi is automated using Git tags and Travis CI.</p>
 <p>Installation documentation is available in the README. Usage and API documentation is available off the <a class="reference external" href="https://jupyter-incubator.github.io/declarativewidgets/">project site</a> or embedded in the Notebook using the <code class="docutils literal notranslate"><span class="pre">urth-help</span></code> element. Architectural details are available in the <a class="reference external" href="https://github.com/jupyter-incubator/declarativewidgets/wiki">project’s wiki</a>.</p>
 </section>
 <section id="demonstrate-continued-growth-and-development">
-<h4>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Permalink to this heading">#</a></h4>
+<h4>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Link to this heading">#</a></h4>
 <p>See “Have an active developer community that offers a sustainable model for future development.”</p>
 </section>
 <section id="integrate-well-with-other-official-subprojects">
-<h4>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Permalink to this heading">#</a></h4>
+<h4>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Link to this heading">#</a></h4>
 <p>The declarative extensions have several examples of interoperation with <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code>. It also includes a dedicate element (<code class="docutils literal notranslate"><span class="pre">urth-core-ipywidget</span></code>) that can embed an ipywidget within a declarative template.</p>
 </section>
 <section id="be-developed-according-to-the-jupyter-governance-and-contribution-model">
-<h4>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Permalink to this heading">#</a></h4>
+<h4>Be developed according to the Jupyter governance and contribution model.<a class="headerlink" href="#be-developed-according-to-the-jupyter-governance-and-contribution-model" title="Link to this heading">#</a></h4>
 <p>The declarativewidgets extension is in the Jupyter Incubator, and under the Jupyter governance and contribution model since its inception.</p>
 </section>
 <section id="have-a-well-defined-scope">
-<h4>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Permalink to this heading">#</a></h4>
+<h4>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Link to this heading">#</a></h4>
 <p>The purpose of the declarativewidgets extension is to provide a language neutral approach to creating interactive notebooks. It is not the intention of this project to become a widget suite, but rather, to enable incorporating any web-component into a notebook and connecting it to the code and data in the kernel.</p>
 </section>
 <section id="be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc">
-<h4>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Permalink to this heading">#</a></h4>
+<h4>Be packaged using appropriate technologies such as pip, conda, npm, bower, docker, etc.<a class="headerlink" href="#be-packaged-using-appropriate-technologies-such-as-pip-conda-npm-bower-docker-etc" title="Link to this heading">#</a></h4>
 <p>The declarativewidgets extension is packaged using setuptools, released on PyPI, and installable using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. Users manage the extension after <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> via the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> CLI.</p>
 </section>
 </section>
 </section>
 <section id="pros-and-cons">
-<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permalink to this heading">#</a></h2>
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Pro: Enable a language neutral approach to defining the interactive areas of the notebook.</p></li>
 <li><p>Pro: Supports a variety of kernel language and in doing so, demonstrated the relative ease of enabling more languages.</p></li>
@@ -588,7 +623,7 @@ document.write(`
 </ul>
 </section>
 <section id="interested-contributors">
-<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Permalink to this heading">#</a></h2>
+<h2>Interested Contributors<a class="headerlink" href="#interested-contributors" title="Link to this heading">#</a></h2>
 <p>&#64;lbustelo</p>
 <hr class="docutils" />
 <p><a name="1"></a> [1] R support though <a class="reference external" href="https://github.com/IRkernel/IRkernel">IRkernel</a></p>
@@ -603,11 +638,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html"
@@ -627,10 +661,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -638,6 +669,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -697,6 +729,7 @@ By Project Jupyter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021.
@@ -723,8 +756,8 @@ By Project Jupyter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

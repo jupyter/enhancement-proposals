@@ -6,15 +6,17 @@ pr-number: 97
 date-started: 2023-03-01
 ---
 
-# Summary
-    
+# Add `$schema` to notebook format
+
+## Summary
+
 We propose to add a new top-level required property, `$schema` to the notebook JSON, as such updating the notebook JSON schema. This new property deprecates `nbformat` and `nbformat_minor`.
 
-# Motivation
+## Motivation
 
 Today, `nbformat` and `nbformat_minor` specify the JSON schema a notebook should adhere to (for example [4.5](https://github.com/jupyter/nbformat/blob/main/nbformat/v4/nbformat.v4.5.schema.json)). Since this approach was adopted in the Jupyter ecosystem, the JSON schema standard has evolved and Jupyter's approach is no longer in line with it. Other than following standards being the right thing to do, bringing the notebook format back in line with the current JSON Schema spec opens it up to the rich tooling that exists around JSON schema validation today.
 
-# Guide-level explanation
+## Guide-level explanation
 
 The new required `$schema` top-level property refers to a JSON Schema that validates the current notebook. During a deprecation period, `$schema` takes precedence over the existing `"nbformat"` and `"nbformat_minor"` properties that specify the notebook format. There will be a one-to-one mapping between `$schema` and the `(nbformat, nbformat_minor)` pair, which should follow a URI template, e.g.:
 ```json
@@ -30,7 +32,7 @@ After the deprecation period expires, a future JEP will remove these `nbformat` 
 The addition of the `$schema` property removes a level of indirection between the notebook and the schema against which it is invalidated. It also guarantees that the schema against which it is validated is invariant with respect to time; the schema URI should refer to an immutable document.
 
 
-# Reference-level explanation
+## Reference-level explanation
 
 The following changes are made to the existing v4.5 schema:
 ```diff
@@ -580,20 +582,20 @@ Invalid `$schema` URI:
 The schema identified by `$schema` MUST require that the `nbformat` and `nbformat_minor` properties are `const`. This ensures that there is a one-to-one mapping between schemas and nbformat versions published up-to the final nbformat version of the deprecation period.
 
 
-# Rationale and alternatives
+## Rationale and alternatives
 
 Not doing this will leave the Jupyter notebook format in a non-standard state.
 
-# Prior art
+## Prior art
 
 [JSON Schema](https://json-schema.org/) is a widely adopted declarative language that annotates and validates documents, so it's the obvious candidate to adhere to.
 
-# Unresolved questions
+## Unresolved questions
 
 - Code to upgrade from and downgrade to 4.5 still needs to be written.
 Some exploration has been done by Nick Bollweg in [this gist](https://gist.github.com/bollwyvl/a6e1ae13125f01ff04edf121e30a462a).
 - We want to deprecate `nbformat` and `nbformat_minor` in favor of `$schema` but we also need to ensure old clients can still work with notebooks in this new schema, so `nbformat` and `nbformat_minor` are still required. What's the path here? Major version update?
 
-# Future possibilities
+## Future possibilities
 
 This work paves the way for [``Add `extraSchemas` to notebook format`` JEP](https://hackmd.io/9QZ8YibfQHm9l1B6JPSQsg?both), which will be submitted as a separate JEP soon.
