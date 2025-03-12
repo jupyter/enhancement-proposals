@@ -153,9 +153,9 @@ msg = {
 This allows for front end plugins enable the variable reference features (`@myvar`) noted above. Because it can pass kwargs,
 it has fine-grained control over passsing relevant information to reprs.
 
-### Reference-Level Explanation
+## Reference-Level Explanation
 
-#### Design Details
+### Design Details
 
 - **Method Signature**: `_ai_repr_(**kwargs) -> Dict[str, Any]`
 
