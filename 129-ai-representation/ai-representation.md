@@ -69,7 +69,7 @@ class CustomChart:
         return _ai_repr_(**kwargs)
 ```
 
-#### Using Registries for Unsupported Objects
+### Using Registries for Unsupported Objects
 
 To support objects that do not implement `_ai_repr_`, users can define custom representations in a registry:
 
