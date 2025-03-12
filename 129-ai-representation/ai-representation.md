@@ -6,7 +6,9 @@ pr-number: 129
 date-started: 2025-02-07
 ---
 
-### Summary
+# AI Representation Protocol for Jupyter
+
+## Summary
 
 This proposal introduces a standardized method, `_ai_repr_(self, **kwargs) -> Dict[str, Any]`, for objects in Jupyter environments to provide context-sensitive representations optimized for AI interactions. The protocol allows flexibility for multimodal or text-only representations and supports user-defined registries for objects lacking native implementations. Additionally, we propose a new messaging protocol for retrieving these representations, facilitating seamless integration into Jupyter AI tools.
 
