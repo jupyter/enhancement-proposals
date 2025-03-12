@@ -26,9 +26,9 @@ While this JEP focuses on Jupyter, it's understood that others may choose to reu
 process. While that would be a good outcome for the community, it is not the goal of this repr to set standards in
 Python in general.
 
-### Guide-Level Explanation
+## Guide-Level Explanation
 
-#### Introducing the `_ai_repr_` Protocol
+### Introducing the `_ai_repr_` Protocol
 
 The `_ai_repr_` method allows objects to define representations tailored for AI interactions. This method returns a dictionary (`Dict[str, Any]`), where keys are MIME types (e.g., `text/plain`, `image/png`) and values are the corresponding representations.
 
