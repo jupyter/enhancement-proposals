@@ -201,7 +201,7 @@ it has fine-grained control over passsing relevant information to reprs.
 
 This proposal lays the groundwork for seamless AI integration in Jupyter, empowering users to derive greater insights and efficiencies from their notebooks.
 
-# Unresolved questions
+## Unresolved questions
 
 - Should we support both or one of async/sync `_ai_repr_()`?
 - What are good recommended `kwargs` to pass in `ai_repr_request`?
