@@ -94,7 +94,7 @@ The registry should be free of any dependency to minimize conflicts.
 
 Both the registry and repr on objects are intended to be fully backwards compatible.
 
-#### Messaging Protocol
+### Messaging Protocol
 
 A new message type, `ai_repr_request`, allows the frontend to retrieve representations dynamically. The content of a `ai_repr_request` message includes the following:
 
