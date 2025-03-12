@@ -2,7 +2,7 @@
 title: connection file specification
 authors: Johan Mabille
 issue-number: XX
-pr-number: XX
+pr-number: 106
 date-started: "2023-04-19"
 ---
 
