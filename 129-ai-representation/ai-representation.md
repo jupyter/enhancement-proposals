@@ -171,31 +171,31 @@ it has fine-grained control over passsing relevant information to reprs.
   - Define `ai_repr_request` as a new message type.
   - Ensure it supports asynchronous processing for slow operations (e.g., rendering images).
 
-#### Interactions with Existing Features
+### Interactions with Existing Features
 
 - Builds on Jupyter’s existing `_repr_*` ecosystem but focuses on AI-specific needs.
 - Compatible with existing kernel and frontend architectures.
 
-### Rationale and Alternatives
+## Rationale and Alternatives
 
-#### Rationale
+### Rationale
 
 - Standardization ensures consistent, predictable behavior across libraries.
 - Flexible MIME bundles cater to diverse AI model requirements.
 - Registries accelerate adoption without waiting for upstream changes.
 
-#### Alternatives
+### Alternatives
 
 - **Extend `_repr_*` methods**: Lacks flexibility for passing model specific features (e.g., multimodal) and context-specific needs (e.g., using more/less of a context window).
 - **Functional API only**: A single top-level function could work but limits extensibility and modularity.
 - **Ignore standardization**: Risks fragmented, incompatible implementations.
 
-### Prior Art
+## Prior Art
 
 - **IPython’s `_repr_*` methods**: Provides the foundation but lacks AI-specific extensions.
 - **Multimodal frameworks**: Other ecosystems (e.g., Hugging Face) emphasize context-aware representations.
 
-### Future Possibilities
+## Future Possibilities
 
 - Develop AI-specific registries for popular libraries (e.g., pandas, matplotlib) or make PRs to add this natively.
 
