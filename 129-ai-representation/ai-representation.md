@@ -138,7 +138,7 @@ The kernel returns a response containing the representation of the requested obj
 - **`transient`**: A dictionary of transient metadata, not intended to be persisted, such as a `display_id` for session-specific tracking.
 
 
-##### Example
+#### Example
 
 ```python
 msg = {
