@@ -2,7 +2,7 @@
 title: Adding optional field `execution_state` to `kernel_info_reply` representing shell execution status
 authors: Boyuan Deng (@dby-tmwctw), Jason Grout (@jasongrout)
 issue-number: 132
-pr-number: In Progress
+pr-number: 134
 date-started: 2025-09-24
 ---
 
