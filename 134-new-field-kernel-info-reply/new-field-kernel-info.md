@@ -23,7 +23,7 @@ In addition, when the IOPub channel gets overloaded (for example, when there are
 A new optional field called `execution_state` will be added to the `kernel_info_reply` message. `execution_state` will represent the status of main shell channel, which is responsible for command execution. The field is optional to keep `kernel_info_reply` backward compatible.
 
 Values of the optional field `execution_state` should be the [kernel status](https://jupyter-client.readthedocs.io/en/latest/messaging.html#kernel-status) specified in Jupyter protocol, i.e. `execution_state : ('busy', 'idle', 'starting')`. It represents source-of-truth for kernel status would be updated:
-- Whenever main shell channel publishes any status to IOPub channel
+- Right before main shell channel publishes any status to IOPub channel
 - To `idle` whenever kernel stopped handling current command execution request. In some cases, `dispatch_shell` returns without publishing any status as it's either not possible (e.g. session is `None`), or not secure (e.g. deserialization step fails). In this case, we still want to update `execution_state` as kernel is ready for next execution request.
 
 This enables Jupyter client to actively poll for execution status on main shell channel, in addition to passively waiting for status update on IOPub channel. Developers hence have the option to directly reach out to kernel for status, in cases where message publishing mechanism met problem (e.g. when High Water Mark is hit and messages are randomly dropped), or when a new client connect to an already running kernel. The proposal is a strict augmentation to current kernel status communication mechanism and does not modify current mechanism. The intention is to provide an alternative when current mechanism fails.
@@ -44,78 +44,90 @@ Some of the users are sending a large amount (or some large size) display messag
 
 If we have the new field `execution_state` in place, the Jupyter client can potentially send `kernel_info_request` to Control channel (enabled by [Support kernel_info request on the control channel](https://jupyter.org/enhancement-proposals/80-kernel-info/kernel-info.html#support-kernel-info-request-on-the-control-channel)) to get the kernel execution status.
 
-Explain the proposal as if it was already implemented and you were
-explaining it to another community member. That generally means:
+[//]: # (Explain the proposal as if it was already implemented and you were)
+[//]: # (explaining it to another community member. That generally means:)
+[//]: # (- Introducing new named concepts.)
+[//]: # (- Adding examples for how this proposal affects people's experience)
+[//]: # (- Explaining how others should *think* about the feature, and how it should impact the experience using Jupyter tools. It should explain the impact as concretely as possible.)
+[//]: # (- If applicable, provide sample error messages, deprecation warnings, or migration guidance.)
+[//]: # (- If applicable, describe the differences between teaching this to existing Jupyter members and new Jupyter members.)
 
-- Introducing new named concepts.
-- Adding examples for how this proposal affects people's experience.
-- Explaining how others should *think* about the feature, and how it should impact the experience using Jupyter tools. It should explain the impact as concretely as possible.
-- If applicable, provide sample error messages, deprecation warnings, or migration guidance.
-- If applicable, describe the differences between teaching this to existing Jupyter members and new Jupyter members.
-
-For implementation-oriented JEPs, this section should focus on how other Jupyter
-developers should think about the change, and give examples of its concrete impact. For policy JEPs, this section should provide an example-driven introduction to the policy, and explain its impact in concrete terms.
+[//]: # (For implementation-oriented JEPs, this section should focus on how other Jupyter)
+[//]: # (developers should think about the change, and give examples of its concrete impact. For policy JEPs, this section should provide an example-driven introduction to the policy, and explain its impact in concrete terms.)
 
 ## Reference-level explanation
 
-Internally, `execution_state` would be a new class variable to the `Kernel` class in `kernelbase.py`. It will be initialized to `None`, and updated whenever main shell publish status update to IOPub channel (to be specific, whenever `_publish_status` is called on `shell` channel). It will be updated to the kernel status published (i.e. first argument of `_publish_status`). In cases where `dispatch_shell` returns without publishing any status (when it's impossible or insecure), we assume the kernel is ready for next execution request and update `execution_state` to `idle`.
+Internally, `execution_state` would be a new class variable for the `Kernel` class in `kernelbase.py`. It will be initialized to `None`, and updated whenever the main shell publish status update to the IOPub channel (to be specific, whenever `_publish_status` is called on `shell` channel). It will be updated to the kernel status published (i.e. first argument of `_publish_status`). In cases where `dispatch_shell` returns without publishing any status (when it's impossible or insecure), we assume the kernel is ready for next execution request and update `execution_state` to `idle`.
+
+To illustrate, let's consider how the class variable `execution_state` will be set in the 2 examples above:
+- **Example 1**: When `deserialization` fails in `dispatch_shell`, before we silently return [here](https://github.com/ipython/ipykernel/blob/41443c9c5d76856ca815c0e02c45dfa858e755bc/ipykernel/kernelbase.py#L418), we will set `self.execution_state = "idle"`. When the Jupyter client send in `kernel_info_request`, it will be able to see the `idle` status in `kernel_info_reply`.
+- **Example 2**: We will transition `self.execution_state = "idle"` right before we publish `idle` message to IOPub channel [here](https://github.com/ipython/ipykernel/blob/41443c9c5d76856ca815c0e02c45dfa858e755bc/ipykernel/kernelbase.py#L487). Even though the message in IOPub can be dropped, the `idle` status will be present in `execution_state` field in `kernel_info_reply`, and Jupyter clients can then act accordingly.
 
 The `kernel_info` property of `Kernel` class will then be updated with a new key-value pair `"execution_state": self.execution_state`. When processing `kernel_info_request`, `execution_state` will be packed alongside other `kernel_info` and send back as part of `kernel_info_reply`.
 
-This is the technical portion of the JEP. Explain the design in
-sufficient detail that:
+Jupyter clients sending `kernel_info_request` to the Control channel can then be expected to receive an additional field `execution_state`, with values being one of the [kernel status values](https://jupyter-client.readthedocs.io/en/latest/messaging.html#kernel-status). The clients can then use this information to determine kernel status when status message on IOPub channel is not available or missed.
 
-- Its interaction with other features is clear.
-- It is reasonably clear how the feature would be implemented.
-- Corner cases are dissected by example.
-
-The section should return to the examples given in the previous section, and explain more fully how the detailed proposal makes those examples work.
+[//]: # (This is the technical portion of the JEP. Explain the design in)
+[//]: # (sufficient detail that:)
+[//]: #
+[//]: # (- Its interaction with other features is clear.)
+[//]: # (- It is reasonably clear how the feature would be implemented.)
+[//]: # (- Corner cases are dissected by example.)
+[//]: #
+[//]: # (The section should return to the examples given in the previous section, and explain more fully how the detailed proposal makes those examples work.)
 
 ## Rationale and alternatives
 
-- Why is this choice the best in the space of possible designs?
-- What other designs have been considered and what is the rationale for not choosing them?
-- What is the impact of not doing this?
+### Alternatives
+- We could choose to stipulate that before [dispatch_shell](https://github.com/ipython/ipykernel/blob/3c96ba25cb3f9a83e49ad7d769905e9fa770e369/ipykernel/kernelbase.py#L352) returns, it MUST send a status update to IOPub channel. However, this requires us to parse out headers of the message and, in the situation of deserialization issue (which could indicate message tampering), could compromise ipykernel's security posture. Also, this does not solve the problem of overloaded IOPub channels.
+- We could choose to implement a kernel-tending process that tracks the status of the kernel. The downside is that this introduces questions like how do we handle multiple threads of execution, whether adding a new process will add kernel overhead, etc.
+
+[//]: # (- Why is this choice the best in the space of possible designs?)
+[//]: # (- What other designs have been considered and what is the rationale for not choosing them?)
+[//]: # (- What is the impact of not doing this?)
 
 ## Prior art
 
 Poll-based status update is a widely-used and well-known client-server communication pattern in software engineering known for its reliability in client's perspective. In this case, Jupyter kernel is the server for command execution. When the pub-sub communication pattern for kernel status update fails, it would be good to have a poll-based communicatioin mechanism in place for higher reliability.
 
-Discuss prior art, both the good and the bad, in relation to this proposal.
-A few examples of what this can include are:
-
-- Does this feature exist in other tools or ecosystems, and what experience have their community had?
-- For community proposals: Is this done by some other community and what were their experiences with it?
-- For other teams: What lessons can we learn from what other communities have done here?
-- Papers: Are there any published papers or great posts that discuss this? If you have some relevant papers to refer to, this can serve as a more detailed theoretical background.
-
-This section is intended to encourage you as an author to think about the lessons from other languages, provide readers of your JEP with a fuller picture.
-If there is no prior art, that is fine - your ideas are interesting to us whether they are brand new or if it is an adaptation from other languages.
+[//]: # (Discuss prior art, both the good and the bad, in relation to this proposal.)
+[//]: # (A few examples of what this can include are:)
+[//]: #
+[//]: # (- Does this feature exist in other tools or ecosystems, and what experience have their community had?)
+[//]: # (- For community proposals: Is this done by some other community and what were their experiences with it?)
+[//]: # (- For other teams: What lessons can we learn from what other communities have done here?)
+[//]: # (- Papers: Are there any published papers or great posts that discuss this? If you have some relevant papers to refer to, this can serve as a more detailed theoretical background.)
+[//]: #
+[//]: # (This section is intended to encourage you as an author to think about the lessons from other languages, provide readers of your JEP with a fuller picture.)
+[//]: # (If there is no prior art, that is fine - your ideas are interesting to us whether they are brand new or if it is an adaptation from other languages.)
 
 
 ## Unresolved questions
 
-- The kernel goes to `starting` state after kernel start-up, and no `idle` message is published after that. Do we treat `starting` synonymous with `idle` with respect to command execution? Or, we should publish an `idle` message after the kernel has fully started? Or, should we abolish `starting` entirely as currently it's published right at the end of kernel's `start` method? Or, should we publish `starting` at the start of kernel's `start` method, and publish `idle` at the end of kernel's `start` method? Expecially in the case of a slow-starting kernel, the distinction between `starting` and `idle` might be significant in the way that the kernel might not be able to accept execution request in `starting` state.
+- The kernel goes to `starting` state after kernel start-up, and no `idle` message is published after that. Do we treat `starting` synonymous with `idle` with respect to command execution? Or, we should publish an `idle` message after the kernel has fully started? Or, should we abolish `starting` entirely as currently it's published right at the end of kernel's `start` method? Or, should we publish `starting` at the start of kernel's `start` method, and publish `idle` at the end of kernel's `start` method? Expecially in the case of a slow-starting kernel, the distinction between `starting` and `idle` might be significant in the way that the kernel might not be able to accept execution request in `starting` state. (Thanks @Zsailer for discussion on this matter)
 - When information from `kernel_info_reply` conflicts with the kernel status published in IOPub (for example, in cases where channels are congested and slow), which one takes priority over the other?
 
-- What parts of the design do you expect to resolve through the JEP process before this gets merged?
-- What related issues do you consider out of scope for this JEP that could be addressed in the future independently of the solution that comes out of this JEP?
+[//]: # (- What parts of the design do you expect to resolve through the JEP process before this gets merged?)
+[//]: # (- What related issues do you consider out of scope for this JEP that could be addressed in the future independently of the solution that comes out of this JEP?)
 
 ## Future possibilities
 
-Think about what the natural extension and evolution of your proposal would
-be and how it would affect the Jupyter community at-large. Try to use this section as a tool to more fully consider all possible
-interactions with the project and language in your proposal.
-Also consider how the this all fits into the roadmap for the project
-and of the relevant sub-team.
+- Currently, the `execution_state` field only have status from the main shell channel. In the future, we could consider expanding it to a map to include all the execution status from all [subshells](https://jupyter.org/enhancement-proposals/91-kernel-subshells/kernel-subshells.html). The subshells can be keyed by their `subshell_id`.
+- This proposal describes the implementation for ipykernel. However, the idea should not be limited at the Python language and could be extended to other languages as well like Almond kernel for Scala and iRkernel for R.
 
-This is also a good place to "dump ideas", if they are out of scope for the
-JEP you are writing but otherwise related.
-
-If you have tried and cannot think of any future possibilities,
-you may simply state that you cannot think of anything.
-
-Note that having something written down in the future-possibilities section
-is not a reason to accept the current or a future JEP; such notes should be
-in the section on motivation or rationale in this or subsequent JEPs.
-The section merely provides additional information.
+[//]: # (Think about what the natural extension and evolution of your proposal would)
+[//]: # (be and how it would affect the Jupyter community at-large. Try to use this section as a tool to more fully consider all possible)
+[//]: # (interactions with the project and language in your proposal.)
+[//]: # (Also consider how the this all fits into the roadmap for the project)
+[//]: # (and of the relevant sub-team.)
+[//]: #
+[//]: # (This is also a good place to "dump ideas", if they are out of scope for the)
+[//]: # (JEP you are writing but otherwise related.)
+[//]: #
+[//]: # (If you have tried and cannot think of any future possibilities,)
+[//]: # (you may simply state that you cannot think of anything.)
+[//]: #
+[//]: # (Note that having something written down in the future-possibilities section)
+[//]: # (is not a reason to accept the current or a future JEP; such notes should be)
+[//]: # (in the section on motivation or rationale in this or subsequent JEPs.)
+[//]: # (The section merely provides additional information.)
