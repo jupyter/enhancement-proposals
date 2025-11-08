@@ -1,0 +1,96 @@
+name: Monthly PR Report
+
+on:
+  schedule:
+    # Run on the first day of every month at 9:00 UTC
+    - cron: '0 9 1 * *'
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  issues: write
+  pull-requests: read
+
+jobs:
+  report-prs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate PR Report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = 999; // TODO: Update this with the actual issue number
+            
+            // Fetch all open pull requests
+            const { data: allPRs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+            
+            // Filter out PRs with SSC_propose_deferred label
+            const prs = allPRs.filter(pr => 
+              !pr.labels.some(label => label.name === 'SSC_propose_deferred')
+            );
+            
+            // Group PRs by label
+            const prsByLabel = new Map();
+            const nolabel = [];
+            
+            for (const pr of prs) {
+              if (pr.labels.length === 0) {
+                nolabel.push(pr);
+              } else {
+                for (const label of pr.labels) {
+                  // Skip the excluded label if it somehow wasn't filtered
+                  if (label.name === 'SSC_propose_deferred') continue;
+                  
+                  if (!prsByLabel.has(label.name)) {
+                    prsByLabel.set(label.name, []);
+                  }
+                  prsByLabel.get(label.name).push(pr);
+                }
+              }
+            }
+            
+            // Sort labels alphabetically
+            const sortedLabels = Array.from(prsByLabel.keys()).sort();
+            
+            // Build the report
+            let report = `Dear SSC members, here are the JEPs that require your attention this month:\n\n`;
+            report += `## Monthly PR Report\n\n`;
+            report += `Report generated on: ${new Date().toUTCString()}\n\n`;
+            report += `**Total open PRs (excluding SSC_propose_deferred): ${prs.length}**\n\n`;
+            report += `---\n\n`;
+            
+            // Add PRs grouped by label
+            for (const label of sortedLabels) {
+              const labelPRs = prsByLabel.get(label);
+              report += `### 🏷️ ${label} (${labelPRs.length})\n\n`;
+              
+              for (const pr of labelPRs) {
+                const age = Math.floor((Date.now() - new Date(pr.created_at)) / (1000 * 60 * 60 * 24));
+                report += `- #${pr.number} - ${pr.title} (@${pr.user.login}, ${age} days old)\n`;
+              }
+              report += `\n`;
+            }
+            
+            // Add PRs without labels
+            if (nolabel.length > 0) {
+              report += `### 🔖 No Label (${nolabel.length})\n\n`;
+              for (const pr of nolabel) {
+                const age = Math.floor((Date.now() - new Date(pr.created_at)) / (1000 * 60 * 60 * 24));
+                report += `- #${pr.number} - ${pr.title} (@${pr.user.login}, ${age} days old)\n`;
+              }
+              report += `\n`;
+            }
+            
+            // Post the report as a comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: report
+            });
+            
+            core.info(`Report posted to issue #${issueNumber}`);
