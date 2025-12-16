@@ -26,11 +26,11 @@ The solution we are proposing consists of adding parameters to the kernel specs 
 
 Upon starting a new kernel instance, a front-end form generated from the JSON schema is prompted to the user to fill the parameter values. Many tools are available to generate such forms, such as react-jsonschema-form.
 
-These kernel parameters will be not saved into the notebook due to security reason. The app will have "allow_insecure_kernelspec_params" witch will detect whether we have to accept all kernel spec files as safe or not
+These kernel parameters will be not saved into the notebook due to security reason. The app will have "allow_insecure_kernelspec_params" witch will detect whether we have to accept all kernel spec files as safe or not.
 
 ## Detailed Explanation
 
-As described in previous sections, we propose to parameterize the kernel specs file. In the example shown below, we can see the kernel specs file from the kernel xeus-cling. We suggest changing the last parameter of the execution command `-std=c++11` to have a variable `-std=${cpp_version}` and adding a new object `parameters` to the metadata of the kernel specs.
+As described in previous sections, we propose to parameterize the kernel specs file. In the example shown below, we can see the kernel specs file from the kernel xeus-cling. We suggest changing the last parameter of the execution command `-std=c++11` to have a variable `-std={cpp_version}` and adding a new object `parameters` to the metadata of the kernel specs.
  
 ```=json
 {
@@ -57,7 +57,7 @@ As described in previous sections, we propose to parameterize the kernel specs f
       "-std={cpp_version}"
   ],
   env: [
-    "XEUS_LOGLEVEL={xeus_log_level}"
+    "XEUS_LOGLEVEL: {xeus_log_level}"
   ],
   "language": "C++"
   "metadata": {
