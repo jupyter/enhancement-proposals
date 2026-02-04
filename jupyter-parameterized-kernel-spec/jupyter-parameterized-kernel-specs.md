@@ -106,7 +106,7 @@ Cons:
 
 ## Decisions
 
-- Kernel custom parameters won't be saved into a notebook metadata due to security reason
+- Kernel custom parameters won't be saved into a notebook metadata due to security reasons
 - The application can be run with `allowed_insecure_kernelspec_params` parameter which allows a user to see a dialog where they can set up custom kernel parameters
 
 
