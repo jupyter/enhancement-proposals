@@ -56,9 +56,9 @@ As described in previous sections, we propose to parameterize the kernel specs f
       "{connection_file}",
       "-std={cpp_version}"
   ],
-  env: [
+  env: {
     "XEUS_LOGLEVEL: {xeus_log_level}"
-  ],
+  },
   "language": "C++"
   "metadata": {
     "parameters": {
