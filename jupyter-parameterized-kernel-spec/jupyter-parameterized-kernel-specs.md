@@ -116,7 +116,7 @@ Upon starting, a kernel client checks whether available kernel spec files are se
 
   - if a kernel spec does not have a `metadata.parameters` field, it is considered as secure. The kernel can be started directly.
 
-  - if all parameters in a kernel spec `metadata.parameters` have constraining types (i.e. the user cannot enter abritrary input), the kernel spec is secure. Starting a kernel will show a form where the user can choose the parameters.
+  - if all parameters in a kernel spec `metadata.parameters` have constraining types (i.e. the user cannot enter arbitrary input), the kernel spec is secure. Starting a kernel will show a form where the user can choose the parameters.
 
  If a kernel spec file is not secure and the flag `allowed_insecure_kernelspec_params` is passed when starting the app then a user will be able to fill a form.
 
