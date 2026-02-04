@@ -122,4 +122,4 @@ Upon starting, a kernel client checks whether available kernel spec files are se
 
 If a kernel parameter has a non-constraining type but provides a default value, this latter will be used, and the user won't be able to fill this parameter in the form.
 
- If a kernel parameter has a non constraining type, and does not provide a default value, then the kernel spec is considered as unsecure. In that case, unless the `allowed_insecure_kernelspec_params` has been passed when starting, the kernelspec is discarded and the user won't be able to start the kernel.
+If a kernel parameter has a non-constraining type, and does not provide a default value, then the kernel spec is considered as unsecure. In that case, unless the `allowed_insecure_kernelspec_params` has been passed when starting, the kernelspec is discarded and the user won't be able to start the kernel.
