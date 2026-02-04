@@ -59,7 +59,7 @@ As described in previous sections, we propose to parameterize the kernel specs f
   env: {
     "XEUS_LOGLEVEL: {xeus_log_level}"
   },
-  "language": "C++"
+  "language": "C++",
   "metadata": {
     "parameters": {
       "properties": {
