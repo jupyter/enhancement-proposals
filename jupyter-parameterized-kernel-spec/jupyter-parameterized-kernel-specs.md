@@ -26,7 +26,7 @@ The solution we are proposing consists of adding parameters to the kernel specs 
 
 Upon starting a new kernel instance, a front-end form generated from the JSON schema is prompted to the user to fill the parameter values. Many tools are available to generate such forms, such as react-jsonschema-form.
 
-These kernel parameters will be not saved into the notebook due to security reason. The app will have `allow_insecure_kernelspec_params` flag which will detect whether we have to accept all kernel spec files as safe or not.
+These kernel parameters will be not saved into the notebook due to security reason. The app will have `allowed_insecure_kernelspec_params` flag which will detect whether we have to accept all kernel spec files as safe or not.
 
 ## Detailed Explanation
 
