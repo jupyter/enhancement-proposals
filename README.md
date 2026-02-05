@@ -42,6 +42,7 @@ encouraged to commence on the topic.
 | 0072 | **Accepted** | [Language server protocol (LSP)](72-language-server-protocol/language-server-protocol.md) | [#72](https://github.com/jupyter/enhancement-proposals/pull/72) |
 | 0079 | Implemented | [Build Jupyter Notebook v7 off of JupyterLab components](79-notebook-v7/notebook-v7.md) | [#79](https://github.com/jupyter/enhancement-proposals/pull/79) |
 | 0080 | **Accepted** | [Support `kernel_info` request on the control channel](80-kernel-info/kernel-info.md) | [#80](https://github.com/jupyter/enhancement-proposals/pull/80) |
+| 0087 | **Accepted** | [Jupyter Parameterized Kernel Specs](87-jupyter-parametrized-kerel-spec/jupyter-parametrized-kerel-spec) | [#87](https://github.com/jupyter/enhancement-proposals/pull/87) |
 | 0091 | **Accepted** | [Jupyter kernel subshells](91-kernel-subshells/kernel-subshells.md) | [#91](https://github.com/jupyter/enhancement-proposals/pull/91) |
 | 0092 | **Accepted** | [Jupyter Optional Features](92-jupyter-optional-features/jupyter-optional-features.md) | [#92](https://github.com/jupyter/enhancement-proposals/pull/92) |
 | 0093 | **Accepted** | [Debugger support to `copyToGlobals`](93-debugger-info-copy-to-globals/debugger-info-copy-to-globals.md) | [#93](https://github.com/jupyter/enhancement-proposals/pull/93) |
