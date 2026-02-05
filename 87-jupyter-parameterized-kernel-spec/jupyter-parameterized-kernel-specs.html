@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Move the Jupyter Dashboards Deployment Projects from Incubator to Attic &#8212; Jupyter Enhancement Proposals</title>
+    <title>Jupyter Parameterized Kernel Specs &#8212; Jupyter Enhancement Proposals</title>
   
   
   
@@ -43,12 +43,10 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic';</script>
-    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '87-jupyter-parameterized-kernel-spec/jupyter-parameterized-kernel-specs';</script>
+    <link rel="canonical" href="https://jupyter.org/enhancement-proposals/87-jupyter-parameterized-kernel-spec/jupyter-parameterized-kernel-specs.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Jupyter DeclarativeWidgets Extension Incorporation" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html" />
-    <link rel="prev" title="Jupyter Enterprise Gateway Incorporation" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -110,6 +108,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -180,9 +180,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../118-restart-clarification/restart-clarification.html">Restart Clarification</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Implemented JEPs</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html">Jupyter Enterprise Gateway Incorporation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html">Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html">Jupyter DeclarativeWidgets Extension Incorporation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../17-jupyter-dashboards-extension-incorporation/jupyter-dashboards-extension-incorporation.html">Jupyter Dashboards Extension Incorporation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../12-jupyter-kernel-gateway-incorporation/jupyter-kernel-gateway-incorporation.html">Jupyter Kernel Gateway Incorporation</a></li>
@@ -266,7 +266,7 @@
       
       
       
-      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.md" target="_blank"
+      <li><a href="https://github.com/jupyter/enhancement-proposals/edit/master/87-jupyter-parameterized-kernel-spec/jupyter-parameterized-kernel-specs.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -283,7 +283,7 @@
       
       
       
-      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jupyter/enhancement-proposals/issues/new?title=Issue%20on%20page%20%2F87-jupyter-parameterized-kernel-spec/jupyter-parameterized-kernel-specs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -313,7 +313,7 @@
       
       
       
-      <li><a href="../_sources/22-jupyter-dashboards-deployment-attic/jupyter-dashboards-deployment-attic.md" target="_blank"
+      <li><a href="../_sources/87-jupyter-parameterized-kernel-spec/jupyter-parameterized-kernel-specs.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -397,7 +397,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Move the Jupyter Dashboards Deployment Projects from Incubator to Attic</h1>
+    <h1>Jupyter Parameterized Kernel Specs</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -408,17 +408,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposal">Proposal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-attic">Why the attic?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">Have an active developer community that offers a sustainable model for future development.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-user-community">Have an active user community.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-continued-growth-and-development">Demonstrate continued growth and development.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-well-with-other-official-subprojects">Integrate well with other official Subprojects.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#have-a-well-defined-scope">Have a well-defined scope.</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What did we learn?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-might-we-do-next">What might we do next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed Explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons">Pros and Cons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-secure-kernelspecs">Checking secure kernelspecs</a></li>
 </ul>
             </nav>
         </div>
@@ -430,71 +424,117 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="move-the-jupyter-dashboards-deployment-projects-from-incubator-to-attic">
-<h1>Move the Jupyter Dashboards Deployment Projects from Incubator to Attic<a class="headerlink" href="#move-the-jupyter-dashboards-deployment-projects-from-incubator-to-attic" title="Link to this heading">#</a></h1>
+  <section id="jupyter-parameterized-kernel-specs">
+<h1>Jupyter Parameterized Kernel Specs<a class="headerlink" href="#jupyter-parameterized-kernel-specs" title="Link to this heading">#</a></h1>
 <section id="problem">
 <h2>Problem<a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
-<p>Jupyter users want to publish their work outside of their notebook authoring environment in a variety of formats. One such format is that of a standalone, interactive dashboard. We started the dashboards bundler and dashboards server projects to address this desire. The projects, collectively referred to as <em>dashboard deployment</em> hereafter, underwent significant development effort from late-2015 to mid-2016. Development has since stagnated.</p>
+<p>When creating a new kernel, we need to define a different “specs” file for each possible parameter combination used by the executable. For example, the xeus-cling kernel supports three different versions of the <code class="docutils literal notranslate"><span class="pre">C++</span></code> language, <code class="docutils literal notranslate"><span class="pre">C++11</span></code>, <code class="docutils literal notranslate"><span class="pre">C++14</span></code>, and <code class="docutils literal notranslate"><span class="pre">C++17</span></code>, which is specified by the <code class="docutils literal notranslate"><span class="pre">--std</span></code> command-line option.</p>
+<p>When installing xeus-cling, we install three almost identical kernel specs. The only difference is the last parameter of the execution command <code class="docutils literal notranslate"><span class="pre">--std=c++X</span></code>.</p>
+<p>When more than one parameter is available, the number of possible combinations grows in a combinatorics fashion.</p>
+<p>Besides, some kernels would benefit from being configurable when launching them. For example, the connection information to the database could be specified through kernel parameters rather than kernel magics.</p>
+<p>Sometimes when installing multiple kernels, the JupyterLab launcher panel is crowded with too many options to create a notebook or console with a specific kernel. The kernels that users see in the launcher are just multiple kernel specs for one kernel. We could avoid having that many kernels displayed, adding parameters to the kernel specs, showing only one option per kernel, and offering a modal dialog with the different options the user can choose from when selecting a specific kernel.</p>
 </section>
-<section id="proposal">
-<h2>Proposal<a class="headerlink" href="#proposal" title="Link to this heading">#</a></h2>
-<p>We should clearly signal to the broader community that work on the dashboard deployment incubator projects has effectively ceased by moving the following repositories to the <a class="reference external" href="https://github.com/jupyter-attic">jupyter-attic organization on GitHub</a>:</p>
+<section id="proposed-enhancement">
+<h2>Proposed Enhancement<a class="headerlink" href="#proposed-enhancement" title="Link to this heading">#</a></h2>
+<p>The solution we are proposing consists of adding parameters to the kernel specs file in the form of a JSON Schema that would be added to the specs metadata. These parameters are then used to populate the <code class="docutils literal notranslate"><span class="pre">argv</span></code> list and <code class="docutils literal notranslate"><span class="pre">env</span></code> dict (respectively the command-line arguments and environment variables).</p>
+<p>Upon starting a new kernel instance, a front-end form generated from the JSON schema is prompted to the user to fill the parameter values. Many tools are available to generate such forms, such as react-jsonschema-form.</p>
+<p>These kernel parameters will be not saved into the notebook due to security reason. The app will have <code class="docutils literal notranslate"><span class="pre">allowed_insecure_kernelspec_params</span></code> flag which will detect whether we have to accept all kernel spec files as safe or not.</p>
+</section>
+<section id="detailed-explanation">
+<h2>Detailed Explanation<a class="headerlink" href="#detailed-explanation" title="Link to this heading">#</a></h2>
+<p>As described in previous sections, we propose to parameterize the kernel specs file. In the example shown below, we can see the kernel specs file from the kernel xeus-cling. We suggest changing the last parameter of the execution command <code class="docutils literal notranslate"><span class="pre">-std=c++11</span></code> to have a variable <code class="docutils literal notranslate"><span class="pre">-std={cpp_version}</span></code> and adding a new object <code class="docutils literal notranslate"><span class="pre">parameters</span></code> to the metadata of the kernel specs.</p>
+<div class="highlight-=json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;display_name&quot;: &quot;C++11&quot;,
+  &quot;argv&quot;: [
+      &quot;/home/user/micromamba/envs/kernel_spec/bin/xcpp&quot;,
+      &quot;-f&quot;,
+      &quot;{connection_file}&quot;,
+      &quot;-std=c++11&quot;
+  ],
+  env: {
+    &quot;XEUS_LOGLEVEL&quot;: &quot;ERROR&quot;
+  },
+  &quot;language&quot;: &quot;C++11&quot;
+}
+</pre></div>
+</div>
+<div class="highlight-=json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;display_name&quot;: &quot;C++&quot;,
+  &quot;argv&quot;: [
+      &quot;/home/user/micromamba/envs/kernel_spec/bin/xcpp&quot;,
+      &quot;-f&quot;,
+      &quot;{connection_file}&quot;,
+      &quot;-std={cpp_version}&quot;
+  ],
+  env: {
+    &quot;XEUS_LOGLEVEL: {xeus_log_level}&quot;
+  },
+  &quot;language&quot;: &quot;C++&quot;,
+  &quot;metadata&quot;: {
+    &quot;parameters&quot;: {
+      &quot;properties&quot;: {
+        &quot;cpp_version&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;default&quot;: &quot;C++14&quot;,
+          &quot;enum&quot;: [&quot;C++11&quot;, &quot;C++14&quot;, &quot;C++17&quot;]
+        },
+        &quot;xeus_log_level&quot;: {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;default&quot;: &quot;ERROR&quot;,
+          &quot;enum&quot;: [&quot;TRACE&quot;, &quot;DEBUG&quot;, &quot;INFO&quot;, &quot;WARN&quot;, &quot;ERROR&quot;, &quot;FATAL&quot;]
+        }
+      }
+    }
+  },
+}
+</pre></div>
+</div>
+<p>Note: Using the JSON Schema, we can automate how front-end forms are created directly from the parameters allowing kernels’ authors to decide which parameters are necessary and how to validate them. (Note that JupyterLab already makes use of react-jsonschema-form in other parts of its UI).</p>
+<p>In the following screenshots, you can see a small demo of how we envision the UI changes in JupyterLab.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Jupyterlab Launcher</p></th>
+<th class="head text-center"><p>Select c++ version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><img alt="" src="../_images/launcher.png" /></p></td>
+<td class="text-center"><p><img alt="" src="../_images/launcher-select-c-version.png" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="" src="../_images/notebook-select-kernel.gif" /></p>
+</section>
+<section id="pros-and-cons">
+<h2>Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Link to this heading">#</a></h2>
+<p>Pros:</p>
 <ul class="simple">
-<li><p><a class="github reference external" href="https://github.com/jupyter-incubator/dashboards_server">jupyter-incubator/dashboards_server</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/jupyter-incubator/dashboards_bundlers">jupyter-incubator/dashboards_bundlers</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/jupyter-incubator/dashboards_setup">jupyter-incubator/dashboards_setup</a></p></li>
-<li><p><a class="github reference external" href="https://github.com/jupyter-incubator/showcase">jupyter-incubator/showcase</a></p></li>
+<li><p>A less crowded list of kernels specs</p></li>
 </ul>
-<p>We should use the remainder of this document to capture:</p>
-<ol class="arabic simple">
-<li><p>Why the projects should move to the attic according to our governance criteria</p></li>
-<li><p>Lessons learned from the incubation effort</p></li>
-<li><p>Ideas for what to do next with respect to Jupyter and dashboards</p></li>
-</ol>
-</section>
-<section id="why-the-attic">
-<h2>Why the attic?<a class="headerlink" href="#why-the-attic" title="Link to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://github.com/jupyter/governance/blob/master/newsubprojects.md">Jupyter Governance - New Subproject Process</a> lists eight criteria used to evaluate projects for incorporation into one of the official Jupyter organizations. The dashboard deployment projects have been failing to meet at least five of these criteria for some time.</p>
-<section id="have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">
-<h3>Have an active developer community that offers a sustainable model for future development.<a class="headerlink" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development" title="Link to this heading">#</a></h3>
-<p>Members of the original development team have moved on from the project for a variety of reasons. While developers from the broader Jupyter community have opened a handful of pull requests (PRs) over the past year, there are no active maintainers who review PRs, respond to issues, upgrade components, maintain compatibility with other Jupyter projects, write documentation, fix failing tests, and so on.</p>
-</section>
-<section id="have-an-active-user-community">
-<h3>Have an active user community.<a class="headerlink" href="#have-an-active-user-community" title="Link to this heading">#</a></h3>
-<p>There is <a class="reference external" href="https://github.com/jupyter-incubator/dashboards_server/issues/319">certainly user interest</a> in a dashboard deployment solution for Jupyter notebooks. However, users who have tried the deployment projects <a class="reference external" href="https://github.com/jupyter-incubator/dashboards_server/issues">have met with limited success</a> given the current complexity of <a class="reference external" href="https://github.com/jupyter/dashboards/wiki#get-started">running the full project stack</a> due to lack of work on making it easier over the past year.</p>
-</section>
-<section id="demonstrate-continued-growth-and-development">
-<h3>Demonstrate continued growth and development.<a class="headerlink" href="#demonstrate-continued-growth-and-development" title="Link to this heading">#</a></h3>
-<p>Development of new features has ceased. The original project roadmap ends at the current feature set and calls for work to continue on <a class="reference external" href="https://github.com/jupyter/dashboards/wiki/Deployment-Roadmap#may-2016-update">“how dashboarding features materialize in JupyterLab.”</a>.</p>
-</section>
-<section id="integrate-well-with-other-official-subprojects">
-<h3>Integrate well with other official Subprojects.<a class="headerlink" href="#integrate-well-with-other-official-subprojects" title="Link to this heading">#</a></h3>
-<p>The <a class="reference external" href="https://github.com/jupyter/dashboards">dashboards layout extension</a> defines a <a class="reference external" href="http://jupyter-dashboards-layout.readthedocs.io/en/latest/metadata.html">notebook metadata format</a> and uses it to persist information about on-screen notebook cell arrangements. The dashboard deployment projects depend on this metadata. No other Jupyter projects support it.</p>
-<p>Conversely, the dashboard deployment projects use ipywidgets and various JupyterLab components for interactivity and rendering. These two libraries have undergone major development over the past year as they’ve matured. The dashboard deployment projects have not kept pace, and currently rely on <a class="reference external" href="https://github.com/jupyter-incubator/dashboards_server/blob/master/package.json#L48">back-level versions</a>.</p>
-</section>
-<section id="have-a-well-defined-scope">
-<h3>Have a well-defined scope.<a class="headerlink" href="#have-a-well-defined-scope" title="Link to this heading">#</a></h3>
-<p>The <a class="reference external" href="https://github.com/jupyter-incubator/proposals/blob/master/dashboards/proposal.md#scope">dashboards incubator proposal</a> includes a section concerning project scope. The stated objective of “establish[ing] a baseline prototype that demonstrates how notebook authors can publish dashboards” is not, however, clearly documented outside the proposal nor refined in response to <a class="reference external" href="https://github.com/jupyter-incubator/dashboards_server/issues/302">evolving technical constraints</a>. Users are left guessing about the scope of “dashboard deployment” supported by the projects.</p>
-</section>
-</section>
-<section id="what-did-we-learn">
-<h2>What did we learn?<a class="headerlink" href="#what-did-we-learn" title="Link to this heading">#</a></h2>
-<p>Briefly:</p>
+<p>Cons:</p>
 <ul class="simple">
-<li><p>The Jupyter community has a <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/1640">variety of perspectives</a> on what a “dashboard” is, whether a dashboard is really the desired artifact for many use cases, how Jupyter users want to author dashboards, what “deploying” a dashboard means, and so on. Having a discussion and coming to some form of consensus on where to focus effort seems prudent.</p></li>
-<li><p>The ability to write any notebook and deploy it anywhere as an interactive web app is too large an undertaking. Constraints on what libraries are supported and how much of the deployment is automated are necessary to set user expectations, manage project scope, and leave room for third-parties to develop solutions atop common specs.</p></li>
-<li><p>We need to clearly note when projects in the incubator are experimental and we are not certain they will succeed.</p></li>
+<li><p>Changes are required in multiple components of the stack, from the protocol specification to the front-end.</p></li>
+<li><p>Unless we require default values for all parameters, this would be a backward-incompatible change.</p></li>
 </ul>
 </section>
-<section id="what-might-we-do-next">
-<h2>What might we do next?<a class="headerlink" href="#what-might-we-do-next" title="Link to this heading">#</a></h2>
-<p>The following list consolidates ideas proposed across various projects. The list is most certainly non-exhaustive.</p>
+<section id="decisions">
+<h2>Decisions<a class="headerlink" href="#decisions" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>We should <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/1640">continue the discussion about what the community wants to see in JupyterLab</a> with respect to dashboards and other notebook presentation formats.</p></li>
-<li><p>We could <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues/1640#issuecomment-291883316">collaborate on a Jupyter nbformat spec</a> about how notebook documents should persist layout information in hopes of spurring development of multiple tools that use it.</p></li>
-<li><p>We could create a <a class="reference external" href="https://github.com/jupyter/surveys">new user survey</a> to gather information about how dashboard deployment, or, more broadly, notebook publication, fits into Jupyter-user workflows today and to solicit feedback on initial design choices.</p></li>
-<li><p>We could <a class="reference external" href="https://github.com/jupyter/dashboards/issues/279">change stance on security in the jupyter/dashboard project</a>, and let the layout extension create the semblance of deployed dashboards in Jupyter Notebook by modifying the notebook interface and automatically executing trusted notebooks when opened.</p></li>
+<li><p>Kernel custom parameters won’t be saved into a notebook metadata due to security reasons</p></li>
+<li><p>The application can be run with <code class="docutils literal notranslate"><span class="pre">allowed_insecure_kernelspec_params</span></code> parameter which allows a user to see a dialog where they can set up custom kernel parameters</p></li>
 </ul>
+</section>
+<section id="checking-secure-kernelspecs">
+<h2>Checking secure kernelspecs<a class="headerlink" href="#checking-secure-kernelspecs" title="Link to this heading">#</a></h2>
+<p>Upon starting, a kernel client checks whether available kernel spec files are secure:</p>
+<ul class="simple">
+<li><p>if a kernel spec does not have a <code class="docutils literal notranslate"><span class="pre">metadata.parameters</span></code> field, it is considered as secure. The kernel can be started directly.</p></li>
+<li><p>if all parameters in a kernel spec <code class="docutils literal notranslate"><span class="pre">metadata.parameters</span></code> have constraining types (i.e. the user cannot enter arbitrary input), the kernel spec is secure. Starting a kernel will show a form where the user can choose the parameters.</p></li>
+</ul>
+<p>If a kernel spec file is not secure and the flag <code class="docutils literal notranslate"><span class="pre">allowed_insecure_kernelspec_params</span></code> is passed when starting the app then a user will be able to fill a form.</p>
+<p>If a kernel parameter has a non-constraining type but provides a default value, this latter will be used, and the user won’t be able to fill this parameter in the form.</p>
+<p>If a kernel parameter has a non-constraining type, and does not provide a default value, then the kernel spec is considered as unsecure. In that case, unless the <code class="docutils literal notranslate"><span class="pre">allowed_insecure_kernelspec_params</span></code> has been passed when starting, the kernelspec is discarded and the user won’t be able to start the kernel.</p>
 </section>
 </section>
 
@@ -509,24 +549,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../25-jupyter-enterprise-gateway-incorporation/jupyter-enterprise-gateway-incorporation.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Jupyter Enterprise Gateway Incorporation</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../18-jupyter-declarativewidgets-incorporation/jupyter-declarativewidgets-extension-incorporation.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Jupyter DeclarativeWidgets Extension Incorporation</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -544,17 +566,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposal">Proposal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-attic">Why the attic?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-developer-community-that-offers-a-sustainable-model-for-future-development">Have an active developer community that offers a sustainable model for future development.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#have-an-active-user-community">Have an active user community.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstrate-continued-growth-and-development">Demonstrate continued growth and development.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-well-with-other-official-subprojects">Integrate well with other official Subprojects.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#have-a-well-defined-scope">Have a well-defined scope.</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-did-we-learn">What did we learn?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-might-we-do-next">What might we do next?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-enhancement">Proposed Enhancement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-explanation">Detailed Explanation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pros-and-cons">Pros and Cons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-secure-kernelspecs">Checking secure kernelspecs</a></li>
 </ul>
   </nav></div>
 
