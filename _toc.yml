@@ -10,16 +10,15 @@ parts:
 - caption: Accepted JEPs
   chapters:
   - file: 72-language-server-protocol/language-server-protocol
-  - file: 65-jupyter-xpub/jupyter-xpub
-  - file: 91-kernel-subshells/kernel-subshells
-  - file: 92-jupyter-optional-features/jupyter-optional-features
-  - file: 93-debugger-info-copy-to-globals/debugger-info-copy-to-globals
   - file: 97-add-schema/add-schema-to-notebook-format
   - file: 104-jep-process-v2/jep-process-v2
   - file: 105-kernelspec-spec/kernelspec-spec
   - file: 106-connectionfile-spec/connectionfile-spec
   - file: 108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas
   - file: 118-restart-clarification/restart-clarification
+  - file: 87-jupyter-parametrized-kerel-spec/jupyter-parametrized-kerel-spec.md
+  - file: 122-jupyter-book-incorporation/jupyter-book-incorporation.md
+  - file: 66-jupyter-handshaking/jupyter-handshaking.md
 
 - caption: Implemented JEPs
   chapters:
@@ -37,3 +36,7 @@ parts:
   - file: 28-jupyter-server/jupyter-server
   - file: 79-notebook-v7/notebook-v7
   - file: 80-kernel-info/kernel-info
+  - file: 65-jupyter-xpub/jupyter-xpub
+  - file: 91-kernel-subshells/kernel-subshells
+  - file: 93-debugger-info-copy-to-globals/debugger-info-copy-to-globals
+  - file: 92-jupyter-optional-features/jupyter-optional-features
