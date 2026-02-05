@@ -16,7 +16,7 @@ parts:
   - file: 106-connectionfile-spec/connectionfile-spec
   - file: 108-jupyter-subdomain-for-schemas/jupyter-subdomain-for-schemas
   - file: 118-restart-clarification/restart-clarification
-  - file: 87-jupyter-parametrized-kerel-spec/jupyter-parametrized-kerel-spec.md
+  - file: 87-jupyter-parametrized-kerel-spec/jupyter-parametrized-kerel-spec
   - file: 122-jupyter-book-incorporation/jupyter-book-incorporation.md
   - file: 66-jupyter-handshaking/jupyter-handshaking.md
 
