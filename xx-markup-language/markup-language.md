@@ -20,7 +20,7 @@ Every Jupyter Notebook has one and only one kernel. When using Jupyter Lab refer
 
 ![Screenshot of Jupyter Lab.](./jupyterlab.png)
 
-This enhancement proposal adds the option for users to select a markup language.
+This enhancement proposal adds the option for users to select one and only one markup language.
 
 ![Screenshot of mock up of Jupyter Lab with markup language selector next to kernel selector.](./jupyterlab-with-markup-selector.png)
 
@@ -32,15 +32,15 @@ Support to markup languages are implemented by *the IDE*. If *the IDE* does not 
 - `Quarto`, that would convert `@knuth` to `Knuth 1984` and append the `Knuth, Donald E. 1984. “Literate Programming.” The Computer Journal 27 (2): 97–111.` at the end of the cell text.
 - `MyST`, that would convert `[](doi.org/10.1093/comjnl/27.2.97)` to `Knuth 1984` and append the `Knuth, Donald E. 1984. “Literate Programming.” The Computer Journal 27 (2): 97–111.` at the end of the cell text.
 
-The details of the implementation of how the text provided by the user is converted to display is left to *the IDE*. *The IDE*  might select different strategies to convert the text provided by the user to display to different languages. For example, `CommonMark` can be converted in the user webbrowser and `Quarto` can be converted by the Jupyter kernel.
+The details of the implementation of how the text provided by the user is converted to display is left to *the IDE*. *The IDE*  might select different strategies to convert the text provided by the user to display to different languages. For example, `CommonMark` can be converted in the user web browser and `Quarto` can be converted by the Jupyter kernel.
 
-To accomodate the proposed new architecture, this enhancement proposal also introduces a new "Markup" cell to be use instead of the existing Markdown cell. The new "Markup" cell is based on the existing Code cell and include the source and the output.
+To accomodate the proposed new architecture, this enhancement proposal extends the existing `markdown` cell type. The **new** `markdown` cell type is based on the existing `code` cell type and includes the fields `source` and `outputs`. The **new** `markdown` cell type is backward compatible.
 
 ## Reference-level explanation
 
-### Markup info
+### Markdown info
 
-A new key `markup_info` is introduced to the Jupyter Notebook metadata.
+A new key `markdown_info` is introduced to the Jupyter Notebook metadata.
 
 ```json
 {
@@ -55,8 +55,8 @@ A new key `markup_info` is introduced to the Jupyter Notebook metadata.
             "version": "the version of the language",
             "codemirror_mode": "The name of the codemirror mode to use [optional]",
         },
-        "markup_info": {
-            # if markup_info is defined, its name field is required.
+        "markdown_info": {
+            # if markdown_info is defined, its name field is required.
             "name": "the markup language of the kernel",
             "version": "the version of the markup language",
             "enabled_extensions": [
@@ -70,9 +70,9 @@ A new key `markup_info` is introduced to the Jupyter Notebook metadata.
             "authoring_extension": "name of the IDE extension used to process the cell"
         },
     },
-    # the nbformat was increased
-    "nbformat": 5,
-    "nbformat_minor": 0,
+    "nbformat": 4,
+    # the nbformat_minor was increased
+    "nbformat_minor": 1,
     "cells": [
         # list of cell dictionaries
     ],
@@ -84,7 +84,7 @@ A new key `markup_info` is introduced to the Jupyter Notebook metadata.
 A existing Jupyter Notebook version 4 adopts the CommonMark flavour by default:
 
 ```
-"markup_info": {
+"markdown_info": {
     "name": "CommonMark",
     "version": "0.31.2",
     "authoring_extension": "marked.js"
@@ -94,7 +94,7 @@ A existing Jupyter Notebook version 4 adopts the CommonMark flavour by default:
 A Jupyter Notebook using [MyST]:
 
 ```
-"markup_info": {
+"markdown_info": {
     "name": "MyST",
     "version": "1.8.0",
     "authoring_extension": "mystmd"
@@ -104,7 +104,7 @@ A Jupyter Notebook using [MyST]:
 A Jupyter Notebook using Pandoc:
 
 ```
-"markup_info": {
+"markdown_info": {
     "name": "Pandoc",
     "version": "3.8.3",
     "enabled_extensions": [
@@ -117,13 +117,13 @@ A Jupyter Notebook using Pandoc:
 },
 ```
 
-### Markup cell
+### **New** Markdown cell
 
-A new cell type `markup` is introduced. It has a field `source` where the user input is stored and a field `outputs` where different output formats are stored as a dictionary.
+The existing `markdown` cell type is extended by the introduction of the field `outputs` where different output formats are stored as a dictionary, in a similar fashion as the `code` cell type stores the its output.
 
 ```json
 {
-    "cell_type": "markup",
+    "cell_type": "markdown",
     "source": "[some multi-line markup]",
     "outputs": {
         "text/plain": "[multiline plain text output]",
@@ -138,7 +138,7 @@ A small example of CommonMark where user input is converted into HTML and plain 
 
 ```json
 {
-    "cell_type": "markup",
+    "cell_type": "markdown",
     "source": [
         "# Lorem ipsum\n",
         "\n",
@@ -160,10 +160,9 @@ A small example of CommonMark where user input is converted into HTML and plain 
 
 A small example of MyST where user input is converted into HTML and plain text.
 
-```
 ```json
 {
-    "cell_type": "markup",
+    "cell_type": "markdown",
     "source": [
         "# Lorem ipsum\n",
         "\n",
@@ -199,6 +198,8 @@ The impact of not improve the user experience for new markup languages is the re
 ## Unresolved questions
 
 ## Future possibilities
+
+In February 2026, [Pandoc 3.9](https://pandoc.org/releases.html#pandoc-3.9-2026-02-03) was realeased with support to compilation to WebAssembly (Wasm) allowing Jupyter Notebook creators to convert between two markup languages without any dependency from the Jupyter kernel in use.
 
 [MyST]: https://mystmd.org/
 [Quarto]: https://quarto.org/
