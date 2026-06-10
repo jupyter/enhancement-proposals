@@ -14,7 +14,7 @@ We propose to support encrypting the traffic exchanged between the kernels and c
 
 ## Motivation
 
-With the default TCP transport non-authenticated clients with access to ports on the same machine are currently able to monitor IOPub, accessing any secrets exchanged during kernel runtime (code, outputs, etc). It can be only prevented by using ICP transport and file permissions.
+With the default TCP transport non-authenticated clients with access to ports on the same machine are currently able to monitor IOPub, accessing any secrets exchanged during kernel runtime (code, outputs, etc). It can be only prevented by using IPC transport and file permissions.
 
 ## Guide-level explanation
 
@@ -62,7 +62,7 @@ And requesting `transport_encryption` of `required` for a kernel that does not a
 
 > RuntimeError: transport_encryption='required' but kernelspec does not declare `metadata.supported_encryption='curve'`.
 
-We recommend other kernels that decide to implement encryption to emit similar warning and error messages.
+We recommend other kernels and clients that decide to implement encryption to emit similar warning and error messages.
 
 ## Reference-level explanation
 
@@ -117,7 +117,7 @@ On the client side, for the connecting sockets the behavior differs slightly by 
 
 - The `heartbeat` client instead generates a fresh ephemeral keypair per socket and only needs the server's public key (`curve_serverkey`); it never receives the secret key. The heartbeat runs in its own ZMQ context and thread (so the GIL cannot stall it), and the curve options are therefore applied when its socket is created inside that thread.
 
-This "simplest version" (a single keypair used by both ends) choice from the variants considered in the pre-proposal is intentional. The connection file already carries the keypair, so reusing it avoids introducing a second key-distribution mechanism. `curve_serverkey` is what actually authenticates the connection; the rest configures encryption.
+This "simplest version" (a single keypair used by both ends) choice from the variants considered in the pre-proposal is intentional. The connection file already carries the keypair, so reusing it avoids introducing a second key-distribution mechanism. `curve_serverkey` authenticates the connection; the rest configures encryption.
 
 ### The `transport_encryption` policy
 
