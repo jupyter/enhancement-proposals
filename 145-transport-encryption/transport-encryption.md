@@ -123,7 +123,9 @@ This "simplest version" (a single keypair used by both ends) choice from the var
 
 The `transport_encryption` setting is configurable on the kernel manager in both `jupyter_client` and `jupyter_server`, with the values `disabled` (the default), `auto`, and `required`. `jupyter_server` is a thin layer: when the policy is not `disabled`, it forwards the policy into the per-kernel launch; the actual key generation, kernelspec check, and connection-file writing happen in `jupyter_client`. Setting the policy to `auto` or `required` while the local `libzmq` lacks Curve support (`zmq.has("curve")` is false) is rejected at configuration time, so the misconfiguration surfaces immediately rather than at first kernel start.
 
-The kernel itself has no encryption toggle of its own; it is purely _data-driven_. It applies Curve options if and only if the connection file it loads contains _both_ `curve_publickey` and `curve_secretkey`. A file with only one of the two is treated as unencrypted.
+The kernel itself has no encryption toggle of its own; it is purely _data-driven_.
+It should apply Curve options if the connection file it loads contains _both_ `curve_publickey` and `curve_secretkey`.
+A file with only one of the two should lead to an error and the kernel refusing to connect.
 
 ### Kernelspec capability advertisement
 
