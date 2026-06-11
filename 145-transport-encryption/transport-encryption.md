@@ -72,7 +72,7 @@ The design deliberately reuses the trust model Jupyter already has for the HMAC 
 
 Key generation is owned by the client side, concretely the kernel manager's provisioner, not the kernel:
 
-1. Before launch, if the resolved policy is `auto` or `required`, the transport is `tcp`, and the kernel is eligible (the kernelspec advertises `curve`, or the policy is `required`), the provisioner calls `zmq.curve_keypair()` once to produce a public and secret key pair.
+1. Before launch, if the resolved policy is `auto` or `required`, the transport is `tcp` or `ipc`, and the kernel is eligible (the kernelspec advertises `curve`, or the policy is `required`), the provisioner calls `zmq.curve_keypair()` once to produce a public and secret key pair.
 2. It writes both into the connection file as two new fields, `curve_publickey` and `curve_secretkey`, each a Z85-encoded, 40-character ASCII string (the standard text encoding of a 32-byte Curve key).
 3. The kernel reads the connection file, sees both keys, and binds its sockets as a CurveZMQ server.
 4. The manager (and any other local client reading the same connection file) configures its connecting sockets as CurveZMQ clients.
@@ -84,7 +84,7 @@ sequenceDiagram
     participant M as kernel manager<br/>(jupyter_client)
     participant FS as connection file
     participant K as kernel<br/>(e.g. ipykernel)
-    note over M: policy auto/required, tcp,<br/>kernelspec supports curve
+    note over M: policy auto/required, tcp/ipc,<br/>kernelspec supports curve
     note over M: zmq.curve_keypair() → (pub, sec)
     M->>FS: write connection file<br/>{curve_publickey: pub, curve_secretkey: sec, ports, key, …}
     M->>K: launch (points at connection file)
@@ -144,9 +144,9 @@ Both keys are optional and MUST appear together; their absence means no transpor
 
 - _Default off._ With `transport_encryption` set to `disabled`, no keys are generated, the kernel launch is identical to today, and the Curve fields are absent from the connection file. A kernel that loads such a file behaves exactly as before.
 - `auto` with a non-advertising kernelspec silently starts the kernel unencrypted; `required` with such a kernelspec fails at startup.
-- _Transport._ Encryption applies to `tcp` only; `ipc://` connections rely on filesystem permissions as today, and `required` with a non-`tcp` transport is an error.
+- _Transport._ Encryption applies to both supported transports, `tcp` and `ipc`. It is essential for `tcp`, where loopback ports have no access control; for `ipc`, where the socket file is already access-controlled by filesystem permissions, CurveZMQ is optional defense-in-depth (it additionally encrypts the traffic and authenticates peers that share the socket's permissions). Both policies (`auto` and `required`) provision keys over either transport.
 - _Curve availability._ The check lives on the manager (`zmq.has("curve")`); a `libzmq` built without `libsodium` or Curve support simply never produces a connection file with keys, so the kernel never attempts to apply Curve options.
-- _Browser exposure._ `jupyter_server`'s REST API (`/api/kernels`) and WebSocket models carry no Curve fields; the keys exist only in the on-disk connection file and on the server-side manager. CurveZMQ here protects the local-host TCP sockets between the server-side client and the kernel process, not the browser-to-server channel (which is HTTPS/WSS's responsibility).
+- _Browser exposure._ `jupyter_server`'s REST API (`/api/kernels`) and WebSocket models carry no Curve fields; the keys exist only in the on-disk connection file and on the server-side manager. CurveZMQ here protects the local-host kernel sockets between the server-side client and the kernel process, not the browser-to-server channel (which is HTTPS/WSS's responsibility).
 - _Restart._ Keys are reused across restarts (the connection file is preserved) to allow reconnection on restart.
 - _Debugger._ `ipykernel`'s debugger socket, which connects back to the now-encrypted `shell` channel, is configured as a Curve client; the `debugpy` socket is not given Curve options.
 
