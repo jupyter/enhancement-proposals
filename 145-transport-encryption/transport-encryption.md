@@ -34,7 +34,7 @@ A kernel advertises that it understands encryption through a new key in its `ker
   "display_name": "Python 3 (ipykernel)",
   "language": "python",
   "metadata": {
-    "supported_encryption": "curve"
+    "supported_encryption": ["curve"]
   }
 }
 ```
@@ -50,7 +50,7 @@ From a user's point of view nothing in the notebook experience changes; the diff
 
 How others should think about the feature:
 
-- Kernel authors add one line to their `kernel.json` metadata (`"supported_encryption": "curve"`) and, if their kernel is not built on `ipykernel` or `jupyter_client`, set three socket options (see the reference section) on the sockets they bind. They do _not_ generate or manage keys.
+- Kernel authors add one line to their `kernel.json` metadata (`"supported_encryption": ["curve"]`) and, if their kernel is not built on `ipykernel` or `jupyter_client`, set three socket options (see the reference section) on the sockets they bind. They do _not_ generate or manage keys.
 - Client, front-end, and server authors generally get this for free through `jupyter_client` ≥ 8.9 and `jupyter_server` ≥ 2.20; the manager generates the keys and writes them into the connection file.
 - Operators flip one setting; the `auto` versus `required` distinction lets them roll encryption out gradually and then enforce it.
 
@@ -127,7 +127,7 @@ The kernel itself has no encryption toggle of its own; it is purely _data-driven
 
 ### Kernelspec capability advertisement
 
-A kernel declares support with `metadata.supported_encryption`. The value is matched case-insensitively and may be either the string `"curve"` or a list containing `"curve"` (leaving room to advertise multiple schemes in future). The check happens _before_ the connection is established: capability cannot be discovered at runtime via `kernel_info_reply`, because by the time a reply could arrive the (unencrypted) connection already exists. This mirrors how JEP 66 gates the handshake pattern on the static `kernel_protocol_version` field.
+A kernel declares support with `metadata.supported_encryption`, a list of the encryption schemes it understands, for example `["curve"]`. Entries are matched case-insensitively, and a kernel may advertise more than one, leaving room for additional schemes in future. The check happens _before_ the connection is established: capability cannot be discovered at runtime via `kernel_info_reply`, because by the time a reply could arrive the (unencrypted) connection already exists. This mirrors how JEP 66 gates the handshake pattern on the static `kernel_protocol_version` field.
 
 To implement this JEP we will reflect these additions in the official schemas (JEP 105/106). In the connection file (currently `connectionfile-v1.0.schema.json`, which composes a `kernel_network` and a `signature` group), the two Curve fields fit naturally as a new optional `encryption` group, following the precedent that the `signature_scheme` and `key` material lives in the connection file:
 
