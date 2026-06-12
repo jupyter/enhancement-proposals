@@ -18,7 +18,7 @@ With the default TCP transport non-authenticated clients with access to ports on
 
 ## Guide-level explanation
 
-The five ZMQ channels a kernel exposes (`shell`, `iopub`, `stdin`, `control`, and `heartbeat`) can now be wrapped in _transport encryption_: the connection between a client and a kernel is encrypted and mutually authenticated at the socket level, using ZeroMQ's [CurveZMQ](https://rfc.zeromq.org/spec/26/) protocol. CurveZMQ provides forward secrecy (it negotiates ephemeral per-connection session keys, so traffic captured today cannot be decrypted later even if the long-term keys leak) and connection-level authentication (a peer that does not hold the right key never gets its messages delivered, instead of being filtered out after the fact by an HMAC check).
+The five ZMQ channels a kernel exposes (`shell`, `iopub`, `stdin`, `control`, and `heartbeat`) can now be wrapped in _transport encryption_: the connection between a client and a kernel is bidirectionally encrypted and the kernel is authenticated at the socket level, using ZeroMQ's [CurveZMQ](https://rfc.zeromq.org/spec/26/) protocol. CurveZMQ provides forward secrecy (it negotiates ephemeral per-connection session keys, so traffic captured today cannot be decrypted later even if the long-term keys leak) and connection-level authentication (a peer that does not hold the right key never gets its messages delivered, instead of being filtered out after the fact by an HMAC check).
 
 Encryption is off by default and is controlled by a single operator-facing setting on the kernel manager, `transport_encryption`, which takes one of three values:
 
