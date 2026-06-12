@@ -10,7 +10,7 @@ date-started: 2026-06-10
 
 ## Summary
 
-We propose to support encrypting the traffic exchanged between the kernels and client, adding a dedicated stanza in `kernelspec` to enable kernels to communicate support for encryption, adding a new set of fields for key exhange in the connection file, and using CurveZMQ protocol as a default implementation of such an encryption.
+We propose to support encrypting the traffic exchanged between the kernels and client, adding a dedicated stanza in `kernelspec` to enable kernels to communicate support for encryption, adding a new set of fields for key exchange in the connection file, and using CurveZMQ protocol as a default implementation of such an encryption.
 
 ## Motivation
 
@@ -202,7 +202,7 @@ To be discussed during the JEP process:
 
 ### Key isolation
 
-The reference implementation reuses one keypair for both the kernel's server identity and the local clients' identity, so the _secret_ key sits in the connection file and is loaded by every local client. This matches the `session.key` trust model and gives forward secrecy against passive capture, but the long-term secret in the file is sufficient for a live man-in-the-middle. Should we instead distribute only the server _public_ key and have clients (and possibly the kernel) use distinct keypairs? The pre-proposal raised holding the secret in an environment variable (for example `$JUPYTER_CURVE_SECRETKEY`) so the connection file alone is no longer enough to impersonate either end. As of now this JEP leaves standardizing it to a follow-up work, but should it be deemded universally desirable, we could support alternative key distribution mechanisms.
+The reference implementation reuses one keypair for both the kernel's server identity and the local clients' identity, so the _secret_ key sits in the connection file and is loaded by every local client. This matches the `session.key` trust model and gives forward secrecy against passive capture, but the long-term secret in the file is sufficient for a live man-in-the-middle. Should we instead distribute only the server _public_ key and have clients (and possibly the kernel) use distinct keypairs? The pre-proposal raised holding the secret in an environment variable (for example `$JUPYTER_CURVE_SECRETKEY`) so the connection file alone is no longer enough to impersonate either end. As of now this JEP leaves standardizing it to a follow-up work, but should it be deemed universally desirable, we could support alternative key distribution mechanisms.
 
 ### HMAC message signing
 
@@ -210,7 +210,7 @@ Connection-level authentication can in principle remove the need for per-message
 
 ### Connection-file schema
 
-As of now the added fileds are `curve_publickey` and `curve_secretkey` but we could consider a dedicated `encryption` group before we codify that in the schema.
+As of now the added fields are `curve_publickey` and `curve_secretkey` but we could consider a dedicated `encryption` group before we codify that in the schema.
 
 ### Out of scope
 
