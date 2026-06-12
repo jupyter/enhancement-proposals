@@ -60,7 +60,7 @@ There are two new diagnostics a user may notice. When a kernel runs over TCP _wi
 
 And requesting `transport_encryption` of `required` for a kernel that does not advertise support fails at startup:
 
-> RuntimeError: transport_encryption='required' but kernelspec does not declare `metadata.supported_encryption='curve'`.
+> RuntimeError: transport_encryption='required' but kernelspec does not declare 'curve' in `metadata.supported_encryption`.
 
 We recommend other kernels and clients that decide to implement encryption to emit similar warning and error messages.
 
