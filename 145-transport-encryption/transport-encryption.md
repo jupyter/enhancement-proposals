@@ -152,6 +152,37 @@ Both keys are optional and MUST appear together; their absence means no transpor
 - _Restart._ Keys are reused across restarts (the connection file is preserved) to allow reconnection on restart.
 - _Debugger._ `ipykernel`'s debugger socket, which connects back to the now-encrypted `shell` channel, is configured as a Curve client; the `debugpy` socket is not given Curve options.
 
+### Composition with the JEP 66 handshake pattern
+
+Transport encryption and the [JEP 66](https://github.com/jupyter/enhancement-proposals/blob/main/66-jupyter-handshaking/jupyter-handshaking.md) handshake (registration-socket) pattern are orthogonal capabilities that compose without a new scheme. A kernel advertises encryption support through `supported_encryption` and handshake support through `kernel_protocol_version`, independently, and the launcher decides which connection pattern to use.
+
+There are three ways the curve keypair could be combined with the handshake. This JEP specifies only the first; the other two are larger changes recorded under [Future possibilities](#future-possibilities).
+
+_(a) Keys in the initial connection file (specified here)._ In the handshake pattern the kernel sets `curve_server` and binds its sockets _before_ it reports its chosen ports back over the registration socket. The keys must therefore reach the kernel in the _initial_ connection file (the one that carries the registration-socket address), just as ports do in the current pattern; they cannot be negotiated during the handshake itself. The manager-owned key distribution is unchanged, so the kernel's curve logic (read the keys, apply them before binding) is identical for both connection patterns and needs no handshake-specific code. The trade-off is that this is only a consistency win: the secret still lives in a connection file, so for a local provisioner it is still persisted to disk. It makes encryption available to handshake-pattern kernels but does not harden key distribution. The registration socket stays plaintext: it carries only ports, not the keys or user data, and is HMAC-signed with the session key for integrity.
+
+```mermaid
+sequenceDiagram
+    participant M as kernel manager<br/>(launcher / client)
+    participant FS as initial connection file
+    participant K as kernel
+    participant R as registration socket<br/>(bound by manager)
+    note over M: zmq.curve_keypair() → (pub, sec)
+    M->>FS: write initial connection file<br/>{registration addr, key, curve_publickey: pub, curve_secretkey: sec}
+    M->>K: launch (points at initial connection file)
+    K->>FS: read initial connection file
+    note over K: set curve_server + (pub, sec),<br/>THEN bind shell/iopub/… on free ports
+    K->>R: register: chosen ports (HMAC-signed)
+    R-->>K: ACK
+    note over M: already holds (pub, sec) →<br/>connect client sockets with curve_serverkey = pub
+    M<<->>K: encrypted, authenticated ZMQ traffic
+```
+
+Two future variants would stop persisting the secret, at a higher cost:
+
+_(b) Keys sent over the registration socket._ Rather than the connection file, the launcher delivers the curve keys to the kernel over the registration socket, so the kernel's secret is never written to disk. Because that channel would then carry secret key material, the registration socket must itself be encrypted: it would use its own short-lived curve keypair, with the launcher's registration public key distributed in the initial connection file, so the registration exchange cannot be eavesdropped either. This removes the persisted secret but introduces a second, bootstrap keypair. (The registration socket today carries connection metadata in plaintext and so is subject to the same exposure that motivates curve in the first place, which this variant also addresses.)
+
+_(c) Kernel-generated keys._ The kernel generates its own curve keypair and returns only the _public_ key over the registration socket; the secret never leaves the kernel process and is never shared or persisted. This is likely the best end state and makes remote key exchange tractable, but it has the steepest adoption cost: every kernel must generate its own keys (and so be built against a libsodium-enabled `libzmq`), and it depends on the JEP 66 handshake being implemented end to end. It is closely tied to the server-authentication model in [Future possibilities](#future-possibilities).
+
 ### Reference implementation
 
 - `jupyter_client` ≥ 8.9: [#1110](https://github.com/jupyter/jupyter_client/pull/1110) (key generation in the provisioner, connection-file fields, client-socket configuration, the `transport_encryption` setting) and [#1124](https://github.com/jupyter/jupyter_client/pull/1124) (restart key reuse).
@@ -186,7 +217,7 @@ Encryption must be negotiated _before_ the connection exists, so it cannot be di
 - `ipc://` transport with filesystem permissions: the current mitigation; it is local-only, does not encrypt, and is not the default.
 - Distinct per-side keypairs, distributing only the server public key: more conservative cryptographically (the kernel's secret would not need to sit in the connection file) but requires a second distribution channel for the kernel's secret. The proposal opts for the simplest version that matches the existing `session.key` trust model; see [Unresolved questions](#unresolved-questions).
 
-**Impact of not doing this**
+_Impact of not doing this._
 Kernel traffic over TCP remains plaintext, and any local process can monitor `iopub`, reading code, outputs, and secrets. The only mitigations stay `ipc://` with file permissions (local only) or external tunneling (manual).
 
 ## Prior art
@@ -221,7 +252,7 @@ Considered out of scope for this JEP (addressable independently later):
 
 ## Future possibilities
 
-- _Handshake key exchange._ Rather than writing the secret into a shared connection file, encryption keys could be exchanged over the registration socket during the JEP 66 handshake, which would also make remote key exchange tractable without persisting secrets to disk.
+- _Off-disk key exchange (handshake variants b and c)._ Two improvements to the JEP 66 composition would stop persisting the curve secret to disk: delivering the keys over an encrypted registration socket, or having the kernel generate its own keypair and share only its public key. Both also make remote key exchange more tractable. See [Composition with the JEP 66 handshake pattern](#composition-with-the-jep-66-handshake-pattern) for the trade-offs; variant (c) is closely tied to the server-authentication model below.
 - _Server-authentication model._ Distribute only the kernel's public key and let each client use its own ephemeral keypair (as the heartbeat client already does), removing the kernel's secret from the connection file entirely.
 - _Additional schemes._ Because `transport_encryption` is a multi-valued setting and `supported_encryption` accepts a list, future transports (TLS-based encryption, GSSAPI, or PLAIN for auth-only environments) can be added without breaking the configuration surface, and kernels can advertise several.
 - _Relaxing HMAC signing_ when a connection is authenticated and encrypted at the transport level, reducing the amount of security-sensitive code Jupyter maintains itself.
