@@ -1,6 +1,0 @@
-linkify-it-py
-myst-parser
-sphinx-book-theme
-sphinx-copybutton
-sphinx_external_toc
-sphinxcontrib-mermaid

@@ -1,4 +1,8 @@
 ---
+JEP: 91
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/91
+date: 2024-09-09
 title: Jupyter kernel subshells
 authors: David Brochart (@davidbrochart), Sylvain Corlay (@SylvainCorlay), Johan Mabille (@JohanMabille), Ian Thomas (@ianthomas23)
 issue-number: XX

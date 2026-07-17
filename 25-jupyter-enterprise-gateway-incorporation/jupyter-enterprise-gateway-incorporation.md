@@ -1,3 +1,10 @@
+---
+JEP: 25
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/25
+date: 2018-09-16
+---
+
 # Jupyter Enterprise Gateway Incorporation
 
 ## Problem

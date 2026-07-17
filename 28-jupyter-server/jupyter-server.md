@@ -1,4 +1,8 @@
 ---
+JEP: 28
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/28
+date: 2019-03-01
 title: Standalone Jupyter server
 authors: Zach Sailer ([@Zsailer](https://github.com/Zsailer)) and Sylvain Corlay ([@SylvainCorlay](https://github.com/sylvaincorlay))
 issue-number: 31

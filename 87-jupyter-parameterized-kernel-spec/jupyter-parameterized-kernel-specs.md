@@ -1,4 +1,8 @@
 ---
+JEP: 87
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/87
+date: 2026-02-05
 title: Jupyter Parameterized Kernel Specs
 authors: Carlos Herrero, Anastasiia Sliusar
 pr-number: 87

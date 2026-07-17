@@ -1,3 +1,10 @@
+---
+JEP: 8
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/8
+date: 2016-03-08
+---
+
 # Diffing and merging notebooks
 
 ## Problem

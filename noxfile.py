@@ -1,26 +1,19 @@
 import nox
 
 nox.options.reuse_existing_virtualenvs = True
+# ponytail: uv when available, plain venv otherwise (e.g. CI without uv)
+nox.options.default_venv_backend = "uv|virtualenv"
 
-build_command = ["-b", "html", ".", "_build/html"]
 
 @nox.session
 def docs(session):
-    session.install("-r", "requirements.txt")
-    session.run("sphinx-build", *build_command)
+    """Build the site with MyST."""
+    session.install("mystmd")
+    session.run("myst", "build", "--html")
+
 
 @nox.session(name="docs-live")
 def docs_live(session):
-    session.install("-r", "requirements.txt")
-    session.install("sphinx-autobuild")
-
-    AUTOBUILD_IGNORE = [
-        "_build",
-        "build_assets",
-        "tmp",
-    ]
-    cmd = ["sphinx-autobuild"]
-    for folder in AUTOBUILD_IGNORE:
-        cmd.extend(["--ignore", f"*/{folder}/*"])
-    cmd.extend(build_command)
-    session.run(*cmd)
+    """Serve the site locally with live reload."""
+    session.install("mystmd")
+    session.run("myst", "start")

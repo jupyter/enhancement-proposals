@@ -1,4 +1,8 @@
 ---
+JEP: 97
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/97
+date: 2023-07-11
 title: Add `$schema` to notebook format
 authors: Jason Grout (@jasongrout), Angus Hollands (@agoose77), Nicholas Bollweg (@bollwyvl), Filip Schouwenaars (@filipsch), Tony Fast (@tonyfast)
 issue-number: xxx

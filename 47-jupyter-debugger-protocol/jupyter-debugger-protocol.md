@@ -1,3 +1,10 @@
+---
+JEP: 47
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/47
+date: 2020-07-27
+---
+
 # Jupyter debugger protocol
 
 | Item       | Value                                                                                                                        |

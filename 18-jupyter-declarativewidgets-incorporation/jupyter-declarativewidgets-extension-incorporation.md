@@ -1,3 +1,10 @@
+---
+JEP: 18
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/18
+date: 2017-01-12
+---
+
 # Jupyter DeclarativeWidgets Extension Incorporation
 
 ## Problem
@@ -174,8 +181,11 @@ The declarativewidgets extension is packaged using setuptools, released on PyPI,
 @lbustelo
 
 ---
-<a name="1"></a> [1] R support though [IRkernel](https://github.com/IRkernel/IRkernel)
+(1)=
+[1] R support though [IRkernel](https://github.com/IRkernel/IRkernel)
 
-<a name="2"></a> [2] Scala support is only available for [Apache Toree](https://toree.incubator.apache.org/)
+(2)=
+[2] Scala support is only available for [Apache Toree](https://toree.incubator.apache.org/)
 
-<a name="3"></a> [3] As part of enabling R support, [contributions](https://github.com/IRkernel/IRkernel/pull/272) were made to IRkernel to add Comm channel support.
+(3)=
+[3] As part of enabling R support, [contributions](https://github.com/IRkernel/IRkernel/pull/272) were made to IRkernel to add Comm channel support.

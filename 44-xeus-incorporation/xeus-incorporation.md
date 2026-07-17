@@ -1,4 +1,8 @@
 ---
+JEP: 44
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/44
+date: 2019-12-14
 title: Xeus Incorporation
 authors: SylvainCorlay
 issue-number: XX
