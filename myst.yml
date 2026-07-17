@@ -26,6 +26,6 @@ site:
   template: book-theme
   options:
     logo_text: Jupyter Enhancement Proposals
-    logo: https://github.com/jupyter/governance/raw/main/docs/images/jupyter-logo.png
+    logo: https://github.com/jupyter/governance/raw/main/docs/images/jupyter-logo-light.png
     logo_dark: https://github.com/jupyter/governance/raw/main/docs/images/jupyter-logo-dark.png
     analytics_plausible: jupyter.org
