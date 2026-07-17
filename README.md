@@ -1,19 +1,8 @@
 # Jupyter Enhancement Proposals
 
-This repository contains enhancement proposals for the Jupyter ecosystem, known as Jupyter Enhancement Proposals or JEPs. Jupyter Enhancement Proposals will be used when presenting changes or additions that affect multiple components of the Jupyter ecosystem OR changes to a single key component.
+This repository contains enhancement proposals for the Jupyter ecosystem, known as Jupyter Enhancement Proposals or JEPs. JEPs are used when proposing changes that affect multiple components of the Jupyter ecosystem OR significant changes to a single key component.[^guidelines]
 
-See [the Enhancement Proposal Guidelines](jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md)
-for more information.
-
-Nicely rendered version of the JEPs: <https://jupyter.org/enhancement-proposals>
-
-## Index of JEPs
-
-Below is a list of JEPs that have been Submitted in the past.
-
-If a JEP is in the **Submitted** state, a pull-request is currently open for conversation and comments. If a JEP
-is in the **Accepted** state, the JEP has been merged into this repository, and work is
-encouraged to commence on the topic.
+[^guidelines]: See [the Enhancement Proposal Guidelines](jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md) for more information.
 
 ```{searchfilter} .myst-listing-item
 ```
