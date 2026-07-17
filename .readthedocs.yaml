@@ -11,3 +11,4 @@ build:
     # mystmd writes the site to _build/html; hand it to Read the Docs.
     - mkdir -p $READTHEDOCS_OUTPUT/html
     - cp -r _build/html/. $READTHEDOCS_OUTPUT/html
+    - rm -rf _build
