@@ -1,10 +1,34 @@
 # JEPs that were never merged; each url points at its pull request.
 # Rendered by the {listing} directive in README.md.
-- {JEP: 4, status: Withdrawn, title: New Notebook Format for improved workflow integration, url: "https://github.com/jupyter/enhancement-proposals/pull/4"}
-- {JEP: 7, status: Withdrawn, title: Jupyter Extension Generator, url: "https://github.com/jupyter/enhancement-proposals/pull/7"}
-- {JEP: 14, status: Submitted, title: Kernel Nanny, url: "https://github.com/jupyter/enhancement-proposals/pull/14"}
-- {JEP: 15, status: Withdrawn, title: Layout Namespaces and Discovery, url: "https://github.com/jupyter/enhancement-proposals/pull/15"}
-- {JEP: 16, status: Submitted, title: Notebook Translation and Localization, url: "https://github.com/jupyter/enhancement-proposals/pull/16"}
-- {JEP: 23, status: Submitted, title: Jupyter Template as Metadata, url: "https://github.com/jupyter/enhancement-proposals/pull/23"}
-- {JEP: 24, status: Submitted, title: Simplifying Error Reporting in Jupyter Protocol, url: "https://github.com/jupyter/enhancement-proposals/pull/24"}
-- {JEP: 26, status: Withdrawn, title: Add Language Server Support to Jupyter Server and jupyterlab-monaco, url: "https://github.com/jupyter/enhancement-proposals/pull/26"}
+- JEP: 4
+  status: Withdrawn
+  title: New Notebook Format for improved workflow integration
+  url: https://github.com/jupyter/enhancement-proposals/pull/4
+- JEP: 7
+  status: Withdrawn
+  title: Jupyter Extension Generator
+  url: https://github.com/jupyter/enhancement-proposals/pull/7
+- JEP: 14
+  status: Submitted
+  title: Kernel Nanny
+  url: https://github.com/jupyter/enhancement-proposals/pull/14
+- JEP: 15
+  status: Withdrawn
+  title: Layout Namespaces and Discovery
+  url: https://github.com/jupyter/enhancement-proposals/pull/15
+- JEP: 16
+  status: Submitted
+  title: Notebook Translation and Localization
+  url: https://github.com/jupyter/enhancement-proposals/pull/16
+- JEP: 23
+  status: Submitted
+  title: Jupyter Template as Metadata
+  url: https://github.com/jupyter/enhancement-proposals/pull/23
+- JEP: 24
+  status: Submitted
+  title: Simplifying Error Reporting in Jupyter Protocol
+  url: https://github.com/jupyter/enhancement-proposals/pull/24
+- JEP: 26
+  status: Withdrawn
+  title: Add Language Server Support to Jupyter Server and jupyterlab-monaco
+  url: https://github.com/jupyter/enhancement-proposals/pull/26
