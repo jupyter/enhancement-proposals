@@ -103,7 +103,7 @@ The extension to the notebook server creates a new route for requesting the inst
 
 #### Kernel side code
 
-The declarativewidgets extension contains code to enable support in Python, R[[1]](#1), and Scala[[2]](#2).
+The declarativewidgets extension contains code to enable support in Python, R[^1], and Scala[^2].
 
 In Python, the code is built on to of the `ipywidgets` foundation. In the other languages, where only the code necessary exists to enable declarativewidgets, they are built directly on top of the Comm channel support.
 
