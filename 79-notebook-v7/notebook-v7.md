@@ -1,4 +1,8 @@
 ---
+JEP: 79
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/79
+date: 2021-12-24
 title: Build Jupyter Notebook v7 off of JupyterLab components
 authors: (alphabetically) Sylvain Corlay (@SylvainCorlay), Afshin Darian (@afshin), Sharan Foga (@sharanf), Kevin Goldsmith (@KevinGoldsmith), Brian Granger (@ellisonbg) , Jason Grout (@jasongrout), Fernando Pérez (@fperez), Zach Sailer (@Zsailer), Jeremy Tuloup (@jtpio).
 issue-number: 78

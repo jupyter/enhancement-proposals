@@ -1,3 +1,10 @@
+---
+JEP: 22
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/22
+date: 2017-09-11
+---
+
 # Move the Jupyter Dashboards Deployment Projects from Incubator to Attic
 
 ## Problem

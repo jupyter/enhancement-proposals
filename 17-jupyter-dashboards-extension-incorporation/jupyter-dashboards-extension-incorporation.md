@@ -1,3 +1,10 @@
+---
+JEP: 17
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/17
+date: 2016-07-18
+---
+
 # Jupyter Dashboards Extension Incorporation
 
 ## Problem

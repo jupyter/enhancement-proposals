@@ -1,4 +1,8 @@
 ---
+JEP: 104
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/104
+date: 2023-10-30
 title: Jupyter Enhancement Proposal
 authors: |
   Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu))

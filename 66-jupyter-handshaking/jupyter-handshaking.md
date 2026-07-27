@@ -1,4 +1,8 @@
 ---
+JEP: 66
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/66
+date: 2023-06-26
 title: Kernel Handshaking pattern
 authors: Johan Mabille (@JohanMabille)
 issue-number:

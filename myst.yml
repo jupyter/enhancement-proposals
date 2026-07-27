@@ -1,0 +1,31 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  title: Jupyter Enhancement Proposals
+  github: https://github.com/jupyter/enhancement-proposals
+  error_rules:
+    # JEP pages carry custom frontmatter (JEP, status, PR, issue-number, etc)
+    # we read with the listing plugin; silence "extra keys ignored" warnings.
+    - rule: valid-page-frontmatter
+      severity: ignore
+  plugins:
+    - https://github.com/jupyter-book/myst-plugins/raw/refs/heads/main/plugins/searchfilter/searchfilter.mjs
+    - https://github.com/myst-contrib/myst-listing/releases/latest/download/plugin.mjs
+    - jep-links.mjs
+  toc:
+    - file: README.md
+    - title: Information
+      children:
+        - file: jupyter-enhancement-proposal-guidelines/jupyter-enhancement-proposal-guidelines.md
+        - title: JEP Template
+          url: https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md
+    - title: JEPs
+      children:
+        - pattern: "**/*.md"
+site:
+  template: book-theme
+  options:
+    logo_text: Jupyter Enhancement Proposals
+    logo: https://github.com/jupyter/governance/raw/main/docs/images/jupyter-logo-light.png
+    logo_dark: https://github.com/jupyter/governance/raw/main/docs/images/jupyter-logo-dark.png
+    analytics_plausible: jupyter.org

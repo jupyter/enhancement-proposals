@@ -1,4 +1,8 @@
 ---
+JEP: 122
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/123
+date: 2024-06-28
 title: Incorporate `jupyter-book` as a Jupyter sub-project
 authors: choldgraf, gregcaporaso, jstac, rowanc1
 issue-number: 122
@@ -144,6 +148,5 @@ From a technology standpoint, we are adopting tools that have a good accessibili
 
 (note the "last updated" field is out of date, and reflects when this draft first started in early March 2024)
 
-```{csv-table} 
-:file: repositoriestoinclude.csv
+```{include} repositoriestoinclude.csv
 ``` 

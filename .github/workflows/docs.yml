@@ -30,6 +30,9 @@ jobs:
       run: |
         pip install nox
         nox -s docs
+      env:
+        # The site is hosted at jupyter.org/enhancement-proposals (a subpath)
+        BASE_URL: /enhancement-proposals
 
     # Push the book's HTML to github-pages
     - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}

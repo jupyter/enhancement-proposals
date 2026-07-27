@@ -1,4 +1,8 @@
 ---
+JEP: 105
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/105
+date: 2024-06-10
 title: kernelspec specification
 authors: Johan Mabille
 issue-number: XX

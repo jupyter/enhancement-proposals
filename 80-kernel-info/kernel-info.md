@@ -1,3 +1,10 @@
+---
+JEP: 80
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/80
+date: 2021-12-02
+---
+
 # Support `kernel_info` request on the control channel
 
 ## Problem

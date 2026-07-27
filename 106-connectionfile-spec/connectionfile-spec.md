@@ -1,4 +1,8 @@
 ---
+JEP: 106
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/106
+date: 2024-06-10
 title: connection file specification
 authors: Johan Mabille
 issue-number: XX

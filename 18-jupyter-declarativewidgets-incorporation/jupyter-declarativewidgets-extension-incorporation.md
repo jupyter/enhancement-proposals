@@ -1,3 +1,10 @@
+---
+JEP: 18
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/18
+date: 2017-01-12
+---
+
 # Jupyter DeclarativeWidgets Extension Incorporation
 
 ## Problem
@@ -58,7 +65,7 @@ The following are the most relevant features:
 2. A set of declarative elements for visualizing data in a variety of chart types.
 3. An extension to the `<template>` element that enables data bindings across multiple Notebook output cells.
 4. A notebook server extension to install and importing web-components at runtime.
-5. An implementation of all features for Python, R[[1]](#1), and Scala[[2]](#2) kernels.
+5. An implementation of all features for Python, R[^1], and Scala[^2] kernels.
 
 More details and information can be found in the [documentation](https://jupyter-incubator.github.io/declarativewidgets/docs.html). The project also contains many example and demo notebooks.
 
@@ -69,7 +76,7 @@ The declarativewidgets extensions is a combination of:
 * A set of [web component](http://webcomponents.org/) elements and extensions built using [Polymer](https://www.polymer-project.org/1.0/)
 * A frontend extension that loads the elements and dependencies
 * A notebook server extension that enables installing web components using [Bower](https://bower.io/)
-* Kernel side implementations for Python, R[[1]](#1), and Scala[[2]](#2)
+* Kernel side implementations for Python, R[^1], and Scala[^2]
 
 #### Elements
 ##### Core elements
@@ -81,7 +88,7 @@ The declarativewidgets extensions is a combination of:
 
 There are other `core` elements, but they play a supporting role.
 
-Some of the `core` elements are a combination of browser and kernel component. On the browser side, these elements are built on top of the `jupyter-js-widgets` foundation. They communicate with the kernel through the Comm channel[[3]](#3).
+Some of the `core` elements are a combination of browser and kernel component. On the browser side, these elements are built on top of the `jupyter-js-widgets` foundation. They communicate with the kernel through the Comm channel[^3].
 
 ##### Viz elements
 
@@ -96,7 +103,7 @@ The extension to the notebook server creates a new route for requesting the inst
 
 #### Kernel side code
 
-The declarativewidgets extension contains code to enable support in Python, R[[1]](#1), and Scala[[2]](#2).
+The declarativewidgets extension contains code to enable support in Python, R[^1], and Scala[^2].
 
 In Python, the code is built on to of the `ipywidgets` foundation. In the other languages, where only the code necessary exists to enable declarativewidgets, they are built directly on top of the Comm channel support.
 
@@ -174,8 +181,8 @@ The declarativewidgets extension is packaged using setuptools, released on PyPI,
 @lbustelo
 
 ---
-<a name="1"></a> [1] R support though [IRkernel](https://github.com/IRkernel/IRkernel)
+[^1]: R support though [IRkernel](https://github.com/IRkernel/IRkernel)
 
-<a name="2"></a> [2] Scala support is only available for [Apache Toree](https://toree.incubator.apache.org/)
+[^2]: Scala support is only available for [Apache Toree](https://toree.incubator.apache.org/)
 
-<a name="3"></a> [3] As part of enabling R support, [contributions](https://github.com/IRkernel/IRkernel/pull/272) were made to IRkernel to add Comm channel support.
+[^3]: As part of enabling R support, [contributions](https://github.com/IRkernel/IRkernel/pull/272) were made to IRkernel to add Comm channel support.

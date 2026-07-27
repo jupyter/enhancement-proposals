@@ -1,4 +1,8 @@
 ---
+JEP: 62
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/62
+date: 2020-09-25
 title: Cell ID Addition to Notebook Format
 authors: Matthew Seal ([@MSeal](https://github.com/MSeal)) and Carol Willing ([@willingc](https://github.com/willingc))
 issue-number: 61

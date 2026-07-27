@@ -1,4 +1,8 @@
 ---
+JEP: 42
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/43
+date: 2019-10-21
 title: Voilà Incorporation
 authors: SylvainCorlay
 issue-number: XX

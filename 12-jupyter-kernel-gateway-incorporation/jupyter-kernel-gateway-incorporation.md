@@ -1,3 +1,10 @@
+---
+JEP: 12
+status: Implemented
+PR: https://github.com/jupyter/enhancement-proposals/pull/12
+date: 2016-03-06
+---
+
 # Jupyter Kernel Gateway Incorporation
 
 ## Problem
