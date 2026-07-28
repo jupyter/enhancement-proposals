@@ -11,6 +11,7 @@ project:
   plugins:
     - https://github.com/jupyter-book/myst-plugins/raw/refs/heads/main/plugins/searchfilter/searchfilter.mjs
     - https://github.com/myst-contrib/myst-listing/releases/latest/download/plugin.mjs
+    - https://github.com/myst-contrib/myst-github/releases/latest/download/index.mjs
     - jep-links.mjs
   toc:
     - file: README.md
@@ -21,7 +22,8 @@ project:
           url: https://github.com/jupyter/enhancement-proposals/blob/master/jupyter-enhancement-proposal-guidelines/JEP-TEMPLATE.md
     - title: JEPs
       children:
-        - pattern: "**/*.md"
+        # Don't use **/* or it'll find all the sub-folder markdwown files in _build etc
+        - pattern: "*/*.md"
 site:
   template: book-theme
   options:
