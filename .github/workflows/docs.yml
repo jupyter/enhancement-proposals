@@ -31,8 +31,17 @@ jobs:
         pip install nox
         nox -s docs
       env:
-        # The site is hosted at jupyter.org/enhancement-proposals (a subpath)
-        BASE_URL: /enhancement-proposals
+        # The deployed site is hosted at jupyter.org/enhancement-proposals (a
+        # subpath). Pull request builds are downloaded as an artifact and served
+        # from the root of a local web server, so they must not be prefixed.
+        BASE_URL: ${{ github.event_name == 'push' && '/enhancement-proposals' || '' }}
+
+    - name: Upload the built site
+      uses: actions/upload-artifact@v7
+      with:
+        name: html
+        path: ./_build/html
+        if-no-files-found: error
 
     # Push the book's HTML to github-pages
     - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
