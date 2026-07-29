@@ -31,3 +31,6 @@ _build
 
 # Python files
 __pycache__
+
+# Jupyter Server
+.ipynb_checkpoints/
