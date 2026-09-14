@@ -78,7 +78,7 @@ python-pkg-cookiecutter,"A cookiecutter for python packages, with docs and GitHu
 sphinx-ext-autodoc,Auto-documentation for sphinx extension components,6/3/2020,executablebooks
 myst-nb.example-project,An example project for working with myst-nb and developing myst syntax,6/3/2020,executablebooks
 tcs_to_jb,For conversion of TCS to Jupyter Book format,5/26/2020,executablebooks
-cli,"馃洃馃洃DEPRECATED, see https://github.com/ExecutableBookProject/jupyter-book馃洃馃洃",5/15/2020,executablebooks
+cli,"🛑🛑DEPRECATED, see https://github.com/ExecutableBookProject/jupyter-book🛑🛑",5/15/2020,executablebooks
 multi-book-demo,,5/1/2020,executablebooks
 myst-parser.example-project,An self contained example project for testing and development of myst syntax using myst-parser,4/11/2020,executablebooks
 sphinx-jupyter-book-theme,An experimental Sphinx theme for Jupyter Book,3/5/2020,executablebooks

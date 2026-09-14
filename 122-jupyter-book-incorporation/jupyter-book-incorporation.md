@@ -148,5 +148,6 @@ From a technology standpoint, we are adopting tools that have a good accessibili
 
 (note the "last updated" field is out of date, and reflects when this draft first started in early March 2024)
 
-```{include} repositoriestoinclude.csv
+```{csv-table-file} 122-jupyter-book-incorporation/repositoriestoinclude.csv
+:header-rows: 1
 ``` 
