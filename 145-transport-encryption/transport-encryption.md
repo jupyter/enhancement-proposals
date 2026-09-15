@@ -1,6 +1,12 @@
 ---
 title: Transport encryption for ZMQ communication
-authors: Benjamin Ragan-Kelley (@minrk), Michał Krassowski (@krassowski), Matthias Bussonnier (@Carreau)
+authors:
+  - name: Benjamin Ragan-Kelley
+    github: minrk
+  - name: Michał Krassowski
+    github: krassowski
+  - name: Matthias Bussonnier
+    github: Carreau
 issue-number: 75
 pr-number: 145
 date-started: 2026-06-10
