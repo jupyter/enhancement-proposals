@@ -12,7 +12,8 @@ project:
     - https://github.com/jupyter-book/myst-plugins/raw/refs/heads/main/plugins/searchfilter/searchfilter.mjs
     - https://github.com/myst-contrib/myst-listing/releases/latest/download/plugin.mjs
     - https://github.com/myst-contrib/myst-github/releases/latest/download/index.mjs
-    - jep-links.mjs
+    - src/jep-links.mjs
+    - src/csv-table-file.mjs
   toc:
     - file: README.md
     - title: Information
