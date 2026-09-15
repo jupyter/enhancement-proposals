@@ -4,8 +4,19 @@ status: Implemented
 PR: https://github.com/jupyter/enhancement-proposals/pull/29
 date: 2019-03-04
 title: Jupyter Enhancement Proposal
-authors: |
-  Jason Grout ([jason@jasongrout.org](mailto:jason@jasongrout.org)), Safia Abdalla ([safia@safia.rocks](mailto:safia@safia.rocks)), John Lam ([jflam@microsoft.com](mailto:jflam@microsoft.com)), Kevin M. McCormick ([mckev@amazon.com](mailto:mckev@amazon.com)), Pierre Brunelle ([brunep@amazon.com](mailto:brunep@amazon.com)), Paul Ivanov ([pi@berkeley.edu](mailto:pi@berkeley.edu))
+authors:
+  - name: Jason Grout
+    email: jason@jasongrout.org
+  - name: Safia Abdalla
+    email: safia@safia.rocks
+  - name: John Lam
+    email: jflam@microsoft.com
+  - name: Kevin M. McCormick
+    email: mckev@amazon.com
+  - name: Pierre Brunelle
+    email: brunep@amazon.com
+  - name: Paul Ivanov
+    email: pi@berkeley.edu
 issue-number: 27
 pr-number: 29
 date-started: "2019-02-23"

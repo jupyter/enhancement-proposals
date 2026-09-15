@@ -4,7 +4,9 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/93
 date: 2023-12-11
 title: Debugger support to `copyToGlobals`
-authors: Nicolas Brichet (@brichet)
+authors:
+  - name: Nicolas Brichet
+    github: brichet
 issue-number: xxx
 pr-number: 93
 date-started: 2023-02-20

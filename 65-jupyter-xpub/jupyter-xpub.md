@@ -4,7 +4,9 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/65
 date: 2021-12-24
 title: Replace PUB socket with XPUB socket
-authors: Johan Mabille (@JohanMabille)
+authors:
+  - name: Johan Mabille
+    github: JohanMabille
 issue-number:
 pr-number: 65
 date-started: 2021-01-05

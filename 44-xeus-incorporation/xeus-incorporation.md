@@ -4,7 +4,9 @@ status: Implemented
 PR: https://github.com/jupyter/enhancement-proposals/pull/44
 date: 2019-12-14
 title: Xeus Incorporation
-authors: SylvainCorlay
+authors:
+  - name: Sylvain Corlay
+    github: SylvainCorlay
 issue-number: XX
 pr-number: 44
 date-started: "2019-11-30"

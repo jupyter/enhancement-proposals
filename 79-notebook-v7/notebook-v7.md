@@ -4,7 +4,25 @@ status: Implemented
 PR: https://github.com/jupyter/enhancement-proposals/pull/79
 date: 2021-12-24
 title: Build Jupyter Notebook v7 off of JupyterLab components
-authors: (alphabetically) Sylvain Corlay (@SylvainCorlay), Afshin Darian (@afshin), Sharan Foga (@sharanf), Kevin Goldsmith (@KevinGoldsmith), Brian Granger (@ellisonbg) , Jason Grout (@jasongrout), Fernando Pérez (@fperez), Zach Sailer (@Zsailer), Jeremy Tuloup (@jtpio).
+authors:  # listed alphabetically
+  - name: Sylvain Corlay
+    github: SylvainCorlay
+  - name: Afshin Darian
+    github: afshin
+  - name: Sharan Foga
+    github: sharanf
+  - name: Kevin Goldsmith
+    github: KevinGoldsmith
+  - name: Brian Granger
+    github: ellisonbg
+  - name: Jason Grout
+    github: jasongrout
+  - name: Fernando Pérez
+    github: fperez
+  - name: Zach Sailer
+    github: Zsailer
+  - name: Jeremy Tuloup
+    github: jtpio
 issue-number: 78
 pr-number: 79
 date-started: 2021-11-12
