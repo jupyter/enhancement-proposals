@@ -4,7 +4,13 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/72
 date: 2021-09-23
 title: Jupyter integration with the Language Server Protocol
-authors: Nicholas Bollweg (@bollwyvl), Jeremy Tuloup (@jtpio), Michał Krassowski (@krassowski)
+authors:
+  - name: Nicholas Bollweg
+    github: bollwyvl
+  - name: Jeremy Tuloup
+    github: jtpio
+  - name: Michał Krassowski
+    github: krassowski
 issue-number: 67
 pr-number: 72
 date-started: 2021-06-27

@@ -4,7 +4,9 @@ status: Implemented
 PR: https://github.com/jupyter/enhancement-proposals/pull/43
 date: 2019-10-21
 title: Voilà Incorporation
-authors: SylvainCorlay
+authors:
+  - name: Sylvain Corlay
+    github: SylvainCorlay
 issue-number: XX
 pr-number: 42
 date-started: "2019-10-14"

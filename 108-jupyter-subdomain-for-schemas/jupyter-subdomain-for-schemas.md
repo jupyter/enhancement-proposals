@@ -4,7 +4,13 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/108
 date: 2023-06-05
 title: subdomain and repository for publishing schemas under jupyter.org
-authors: Zach Sailer, Nick Bollweg, Tony Fast
+authors:
+  - name: Zach Sailer
+    github: Zsailer
+  - name: Nick Bollweg
+    github: bollwyvl
+  - name: Tony Fast
+    github: tonyfast
 issue-number: "[#107](https://github.com/jupyter/enhancement-proposals/issues/107)"
 pr-number: 108
 date-started: 2023-04-24

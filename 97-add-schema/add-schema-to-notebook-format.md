@@ -4,7 +4,17 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/97
 date: 2023-07-11
 title: Add `$schema` to notebook format
-authors: Jason Grout (@jasongrout), Angus Hollands (@agoose77), Nicholas Bollweg (@bollwyvl), Filip Schouwenaars (@filipsch), Tony Fast (@tonyfast)
+authors:
+  - name: Jason Grout
+    github: jasongrout
+  - name: Angus Hollands
+    github: agoose77
+  - name: Nicholas Bollweg
+    github: bollwyvl
+  - name: Filip Schouwenaars
+    github: filipsch
+  - name: Tony Fast
+    github: tonyfast
 issue-number: xxx
 pr-number: 97
 date-started: 2023-03-01
