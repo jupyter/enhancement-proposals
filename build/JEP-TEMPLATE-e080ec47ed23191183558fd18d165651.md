@@ -1,6 +1,8 @@
 ---
 title: <your-JEP-title>
-authors: <list-of-authors>
+authors:
+  - name: <author name>
+    github: <github-username>
 issue-number: <pre-proposal-issue-number>
 pr-number: <proposal-pull-request-number>
 date-started: <yyyy-mm-dd>

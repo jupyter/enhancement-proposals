@@ -4,7 +4,15 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/123
 date: 2024-06-28
 title: Incorporate `jupyter-book` as a Jupyter sub-project
-authors: choldgraf, gregcaporaso, jstac, rowanc1
+authors:
+  - name: Chris Holdgraf
+    github: choldgraf
+  - name: Greg Caporaso
+    github: gregcaporaso
+  - name: John Stachurski
+    github: jstac
+  - name: Rowan Cockett
+    github: rowanc1
 issue-number: 122
 pr-number: 123
 date-started: 2024-05-21

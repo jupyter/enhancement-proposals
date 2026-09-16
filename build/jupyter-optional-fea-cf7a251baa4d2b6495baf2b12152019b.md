@@ -4,7 +4,9 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/92
 date: 2023-06-26
 title: Jupyter Optional Features
-authors: Johan Mabille (@JohanMabille)
+authors:
+  - name: Johan Mabille
+    github: JohanMabille
 issue-number: xxx
 pr-number: 92
 date-started: 2023-01-16

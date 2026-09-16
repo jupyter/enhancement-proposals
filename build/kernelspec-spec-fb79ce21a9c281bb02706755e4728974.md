@@ -4,7 +4,9 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/105
 date: 2024-06-10
 title: kernelspec specification
-authors: Johan Mabille
+authors:
+  - name: Johan Mabille
+    github: JohanMabille
 issue-number: XX
 pr-number: 105
 date-started: "2023-04-19"

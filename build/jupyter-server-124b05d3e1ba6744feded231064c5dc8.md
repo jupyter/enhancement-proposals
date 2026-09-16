@@ -4,7 +4,11 @@ status: Implemented
 PR: https://github.com/jupyter/enhancement-proposals/pull/28
 date: 2019-03-01
 title: Standalone Jupyter server
-authors: Zach Sailer ([@Zsailer](https://github.com/Zsailer)) and Sylvain Corlay ([@SylvainCorlay](https://github.com/sylvaincorlay))
+authors:
+  - name: Zach Sailer
+    github: Zsailer
+  - name: Sylvain Corlay
+    github: SylvainCorlay
 issue-number: 31
 pr-number: 28
 date-started: "2016-09-20"

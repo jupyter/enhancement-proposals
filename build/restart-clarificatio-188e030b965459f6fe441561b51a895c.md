@@ -4,7 +4,9 @@ status: Accepted
 PR: https://github.com/jupyter/enhancement-proposals/pull/118
 date: 2023-11-13
 title: Restart Clarification
-authors: Marc Udoff (@mlucool)
+authors:
+  - name: Marc Udoff
+    github: mlucool
 issue-number: "[#117](https://github.com/jupyter/enhancement-proposals/issues)"
 pr-number: "[#118](https://github.com/jupyter/enhancement-proposals/pull/118)"
 date-started: 2023-08-23
