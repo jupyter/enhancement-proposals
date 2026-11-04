@@ -1,4 +1,8 @@
 ---
+JEP: 145
+status: Accepted
+PR: https://github.com/jupyter/enhancement-proposals/pull/145
+date: 2026-11-04
 title: Transport encryption for ZMQ communication
 authors:
   - name: Benjamin Ragan-Kelley
@@ -160,7 +164,7 @@ Both keys are optional and MUST appear together; their absence means no transpor
 
 ### Composition with the JEP 66 handshake pattern
 
-Transport encryption and the [JEP 66](https://github.com/jupyter/enhancement-proposals/blob/main/66-jupyter-handshaking/jupyter-handshaking.md) handshake (registration-socket) pattern are orthogonal capabilities that compose without a new scheme. A kernel advertises encryption support through `supported_encryption` and handshake support through `kernel_protocol_version`, independently, and the launcher decides which connection pattern to use.
+Transport encryption and the [JEP 66](../66-jupyter-handshaking/jupyter-handshaking.md) handshake (registration-socket) pattern are orthogonal capabilities that compose without a new scheme. A kernel advertises encryption support through `supported_encryption` and handshake support through `kernel_protocol_version`, independently, and the launcher decides which connection pattern to use.
 
 There are three ways the curve keypair could be combined with the handshake. This JEP specifies only the first; the other two are larger changes recorded under [Future possibilities](#future-possibilities).
 
