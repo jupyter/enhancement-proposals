@@ -50,7 +50,7 @@
                     "description": "port used by the heartbeat channel"
                 },
                 "iopub_port": {
-                    "type": ["ingerer","string"],
+                    "type": ["integer","string"],
                     "description": "port used by the iopub channel"
                 }
             }
